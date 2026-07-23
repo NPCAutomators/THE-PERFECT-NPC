@@ -7,14 +7,14 @@ import type {
   ToolsetInfo,
   ToolsetProvider,
 } from "@/lib/api";
-import { useToast } from "@npcautomators/ui/hooks/use-toast";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Switch } from "@npcautomators/ui/ui/components/switch";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
-import { Toast } from "@npcautomators/ui/ui/components/toast";
+import { useToast } from "@zorin/ui/hooks/use-toast";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Switch } from "@zorin/ui/ui/components/switch";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
+import { Toast } from "@zorin/ui/ui/components/toast";
 import { cn, themedBody } from "@/lib/utils";
 
 interface Props {

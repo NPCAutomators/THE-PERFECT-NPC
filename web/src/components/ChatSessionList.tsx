@@ -18,9 +18,9 @@
  * keeps the chat context focused on switching conversations quickly.
  */
 
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { ListItem } from "@npcautomators/ui/ui/components/list-item";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
+import { Button } from "@zorin/ui/ui/components/button";
+import { ListItem } from "@zorin/ui/ui/components/list-item";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
 import { AlertCircle, MessageSquarePlus, RefreshCw } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";

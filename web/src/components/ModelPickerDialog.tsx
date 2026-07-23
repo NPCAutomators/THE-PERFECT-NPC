@@ -1,9 +1,9 @@
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Checkbox } from "@npcautomators/ui/ui/components/checkbox";
-import { ListItem } from "@npcautomators/ui/ui/components/list-item";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Checkbox } from "@zorin/ui/ui/components/checkbox";
+import { ListItem } from "@zorin/ui/ui/components/list-item";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 import type { GatewayClient } from "@/lib/gatewayClient";
 import { Check, RefreshCw, Search, X } from "lucide-react";

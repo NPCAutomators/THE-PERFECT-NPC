@@ -1,7 +1,7 @@
-import { Select, SelectOption } from "@npcautomators/ui/ui/components/select";
-import { Switch } from "@npcautomators/ui/ui/components/switch";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
+import { Select, SelectOption } from "@zorin/ui/ui/components/select";
+import { Switch } from "@zorin/ui/ui/components/switch";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
 
 function FieldHint({ schema, schemaKey }: { schema: Record<string, unknown>; schemaKey: string }) {
   const keyPath = schemaKey.includes(".") ? schemaKey : "";

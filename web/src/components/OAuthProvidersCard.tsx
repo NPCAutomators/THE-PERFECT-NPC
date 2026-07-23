@@ -7,18 +7,18 @@ import {
   Terminal,
 } from "lucide-react";
 import { api, type OAuthProvider } from "@/lib/api";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { CopyButton } from "@npcautomators/ui/ui/components/command-block";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
+import { Button } from "@zorin/ui/ui/components/button";
+import { CopyButton } from "@zorin/ui/ui/components/command-block";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@npcautomators/ui/ui/components/card";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { ConfirmDialog } from "@npcautomators/ui/ui/components/confirm-dialog";
+} from "@zorin/ui/ui/components/card";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { ConfirmDialog } from "@zorin/ui/ui/components/confirm-dialog";
 import { OAuthLoginModal } from "@/components/OAuthLoginModal";
 import { useI18n } from "@/i18n";
 

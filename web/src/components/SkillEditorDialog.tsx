@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@npcautomators/ui/ui/components/dialog";
+} from "@zorin/ui/ui/components/dialog";
 
 /* ------------------------------------------------------------------ */
 /*  SkillEditorDialog — create or edit a SKILL.md from the dashboard   */

@@ -54,15 +54,15 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { SelectionSwitcher } from "@npcautomators/ui/ui/components/selection-switcher";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
-import { Typography } from "@npcautomators/ui/ui/components/typography/index";
-import { ConfirmDialog } from "@npcautomators/ui/ui/components/confirm-dialog";
+import { Button } from "@zorin/ui/ui/components/button";
+import { SelectionSwitcher } from "@zorin/ui/ui/components/selection-switcher";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
+import { Typography } from "@zorin/ui/ui/components/typography/index";
+import { ConfirmDialog } from "@zorin/ui/ui/components/confirm-dialog";
 import { cn } from "@/lib/utils";
 import { SidebarFooter } from "@/components/SidebarFooter";
 import { SidebarStatusStrip, gatewayLine } from "@/components/SidebarStatusStrip";
-import { useBelowBreakpoint } from "@npcautomators/ui/hooks/use-below-breakpoint";
+import { useBelowBreakpoint } from "@zorin/ui/hooks/use-below-breakpoint";
 import { useSidebarStatus } from "@/hooks/useSidebarStatus";
 import { AuthWidget } from "@/components/AuthWidget";
 import { PageHeaderProvider } from "@/contexts/PageHeaderProvider";

@@ -1,4 +1,4 @@
-import { Button } from "@npcautomators/ui/ui/components/button";
+import { Button } from "@zorin/ui/ui/components/button";
 import { AlertTriangle } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";

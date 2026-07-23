@@ -12,18 +12,18 @@ import type {
   MemoryProviderSetupResult,
   PluginsHubResponse,
 } from "@/lib/api";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Select, SelectOption } from "@npcautomators/ui/ui/components/select";
-import { Switch } from "@npcautomators/ui/ui/components/switch";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
-import { CommandBlock, CopyButton } from "@npcautomators/ui/ui/components/command-block";
-import { Card, CardContent, CardHeader, CardTitle } from "@npcautomators/ui/ui/components/card";
-import { ConfirmDialog } from "@npcautomators/ui/ui/components/confirm-dialog";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
-import { useToast } from "@npcautomators/ui/hooks/use-toast";
-import { Toast } from "@npcautomators/ui/ui/components/toast";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Select, SelectOption } from "@zorin/ui/ui/components/select";
+import { Switch } from "@zorin/ui/ui/components/switch";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
+import { CommandBlock, CopyButton } from "@zorin/ui/ui/components/command-block";
+import { Card, CardContent, CardHeader, CardTitle } from "@zorin/ui/ui/components/card";
+import { ConfirmDialog } from "@zorin/ui/ui/components/confirm-dialog";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
+import { useToast } from "@zorin/ui/hooks/use-toast";
+import { Toast } from "@zorin/ui/ui/components/toast";
 import { useI18n } from "@/i18n";
 import { PluginSlot } from "@/plugins";
 import { cn } from "@/lib/utils";

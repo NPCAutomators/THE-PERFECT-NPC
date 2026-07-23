@@ -29,11 +29,11 @@ import {
   shouldCloseOuterModalOnEscape,
 } from "@/lib/dashboard-modal-shell";
 import { formatTokenCount } from "@/lib/format";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
-import { Stats } from "@npcautomators/ui/ui/components/stats";
-import { Card, CardContent, CardHeader, CardTitle } from "@npcautomators/ui/ui/components/card";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
+import { Stats } from "@zorin/ui/ui/components/stats";
+import { Card, CardContent, CardHeader, CardTitle } from "@zorin/ui/ui/components/card";
+import { Badge } from "@zorin/ui/ui/components/badge";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 import { useModalBehavior } from "@/hooks/useModalBehavior";
 import { usePageHeader } from "@/contexts/usePageHeader";

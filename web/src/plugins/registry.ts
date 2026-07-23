@@ -19,15 +19,15 @@ import React, {
 } from "react";
 import { api, fetchJSON, authedFetch, buildWsUrl, buildWsAuthParam } from "@/lib/api";
 import { cn, timeAgo, isoTimeAgo } from "@/lib/utils";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Checkbox } from "@npcautomators/ui/ui/components/checkbox";
-import { Select, SelectOption } from "@npcautomators/ui/ui/components/select";
-import { Card, CardHeader, CardTitle, CardContent } from "@npcautomators/ui/ui/components/card";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
-import { Separator } from "@npcautomators/ui/ui/components/separator";
-import { Tabs, TabsList, TabsTrigger } from "@npcautomators/ui/ui/components/tabs";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Checkbox } from "@zorin/ui/ui/components/checkbox";
+import { Select, SelectOption } from "@zorin/ui/ui/components/select";
+import { Card, CardHeader, CardTitle, CardContent } from "@zorin/ui/ui/components/card";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
+import { Separator } from "@zorin/ui/ui/components/separator";
+import { Tabs, TabsList, TabsTrigger } from "@zorin/ui/ui/components/tabs";
 import { useI18n } from "@/i18n";
 import { registerSlot, PluginSlot } from "./slots";
 

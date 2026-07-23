@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import { KeyRound, Package, Power, Server, Trash2, X, Zap } from "lucide-react";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Select, SelectOption } from "@npcautomators/ui/ui/components/select";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
-import { H2 } from "@npcautomators/ui/ui/components/typography/h2";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Select, SelectOption } from "@zorin/ui/ui/components/select";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
+import { H2 } from "@zorin/ui/ui/components/typography/h2";
 import { api } from "@/lib/api";
 import type {
   McpCatalogDiagnostic,
@@ -14,13 +14,13 @@ import type {
   McpTestResult,
 } from "@/lib/api";
 import { DeleteConfirmDialog } from "@/components/DeleteConfirmDialog";
-import { useToast } from "@npcautomators/ui/hooks/use-toast";
-import { useConfirmDelete } from "@npcautomators/ui/hooks/use-confirm-delete";
+import { useToast } from "@zorin/ui/hooks/use-toast";
+import { useConfirmDelete } from "@zorin/ui/hooks/use-confirm-delete";
 import { useModalBehavior } from "@/hooks/useModalBehavior";
-import { Toast } from "@npcautomators/ui/ui/components/toast";
-import { Card, CardContent } from "@npcautomators/ui/ui/components/card";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
+import { Toast } from "@zorin/ui/ui/components/toast";
+import { Card, CardContent } from "@zorin/ui/ui/components/card";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
 import { usePageHeader } from "@/contexts/usePageHeader";
 import { cn, themedBody } from "@/lib/utils";
 import {

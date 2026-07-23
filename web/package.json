@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@zorin/shared": "file:../apps/shared",
-    "@npcautomators/ui": "file:../apps/ui",
+    "@zorin/ui": "file:../apps/ui",
     "@observablehq/plot": "^0.6.17",
     "@react-three/fiber": "^9.6.0",
     "@tailwindcss/vite": "^4.2.1",

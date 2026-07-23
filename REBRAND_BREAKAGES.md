@@ -10,5 +10,5 @@ resources must exist before a public release:
 - CLI entry point: `zorin`
 - Any npm packages owned by NPCAUTOMATORS
 
-The frontend now imports the repo-local `@npcautomators/ui` workspace package,
+The frontend now imports the repo-local `@zorin/ui` workspace package,
 so builds no longer depend on a retired external UI package identity.

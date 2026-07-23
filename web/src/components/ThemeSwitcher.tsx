@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Palette, Check, Type } from "lucide-react";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { ListItem } from "@npcautomators/ui/ui/components/list-item";
-import { BottomSheet } from "@npcautomators/ui/ui/components/bottom-sheet";
-import { Typography } from "@npcautomators/ui/ui/components/typography/index";
-import { useBelowBreakpoint } from "@npcautomators/ui/hooks/use-below-breakpoint";
+import { Button } from "@zorin/ui/ui/components/button";
+import { ListItem } from "@zorin/ui/ui/components/list-item";
+import { BottomSheet } from "@zorin/ui/ui/components/bottom-sheet";
+import { Typography } from "@zorin/ui/ui/components/typography/index";
+import { useBelowBreakpoint } from "@zorin/ui/hooks/use-below-breakpoint";
 import { BUILTIN_THEMES, THEME_DEFAULT_FONT_ID, useTheme } from "@/themes";
 import type { DashboardTheme, FontChoice, ThemeListEntry } from "@/themes";
 import { useI18n } from "@/i18n";

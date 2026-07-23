@@ -1,8 +1,8 @@
 import { useCallback } from "react";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
-import { Select, SelectOption } from "@npcautomators/ui/ui/components/select";
-import { Button } from "@npcautomators/ui/ui/components/button";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
+import { Select, SelectOption } from "@zorin/ui/ui/components/select";
+import { Button } from "@zorin/ui/ui/components/button";
 import { useI18n } from "@/i18n";
 import {
   buildScheduleString,

@@ -37,5 +37,5 @@ export interface HeaderProps {
     themeLabel?: string;
     themeToggle?: boolean;
 }
-/** @deprecated Use `SocialLink` from `@npcautomators/ui`. Same shape. */
+/** @deprecated Use `SocialLink` from `@zorin/ui`. Same shape. */
 export type HeaderSocial = SocialLink;

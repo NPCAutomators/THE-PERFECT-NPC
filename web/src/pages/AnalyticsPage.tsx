@@ -17,10 +17,10 @@ import type {
   AnalyticsSkillEntry,
 } from "@/lib/api";
 import { timeAgo } from "@/lib/utils";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
-import { Stats } from "@npcautomators/ui/ui/components/stats";
-import { Card, CardContent, CardHeader, CardTitle } from "@npcautomators/ui/ui/components/card";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
+import { Stats } from "@zorin/ui/ui/components/stats";
+import { Card, CardContent, CardHeader, CardTitle } from "@zorin/ui/ui/components/card";
 import { usePageHeader } from "@/contexts/usePageHeader";
 import { useI18n } from "@/i18n";
 import { PluginSlot } from "@/plugins";

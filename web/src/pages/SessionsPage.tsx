@@ -46,17 +46,17 @@ import type {
 import { timeAgo } from "@/lib/utils";
 import { Markdown } from "@/components/Markdown";
 import { PlatformsCard } from "@/components/PlatformsCard";
-import { Toast } from "@npcautomators/ui/ui/components/toast";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Checkbox } from "@npcautomators/ui/ui/components/checkbox";
-import { ListItem } from "@npcautomators/ui/ui/components/list-item";
-import { Segmented } from "@npcautomators/ui/ui/components/segmented";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@npcautomators/ui/ui/components/card";
+import { Toast } from "@zorin/ui/ui/components/toast";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Checkbox } from "@zorin/ui/ui/components/checkbox";
+import { ListItem } from "@zorin/ui/ui/components/list-item";
+import { Segmented } from "@zorin/ui/ui/components/segmented";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@zorin/ui/ui/components/card";
 import { DeleteConfirmDialog } from "@/components/DeleteConfirmDialog";
-import { useConfirmDelete } from "@npcautomators/ui/hooks/use-confirm-delete";
-import { Input } from "@npcautomators/ui/ui/components/input";
+import { useConfirmDelete } from "@zorin/ui/hooks/use-confirm-delete";
+import { Input } from "@zorin/ui/ui/components/input";
 import {
   Dialog,
   DialogContent,
@@ -64,9 +64,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@npcautomators/ui/ui/components/dialog";
+} from "@zorin/ui/ui/components/dialog";
 import { useSystemActions } from "@/contexts/useSystemActions";
-import { useToast } from "@npcautomators/ui/hooks/use-toast";
+import { useToast } from "@zorin/ui/hooks/use-toast";
 import { useI18n } from "@/i18n";
 import { usePageHeader } from "@/contexts/usePageHeader";
 import { PluginSlot } from "@/plugins";

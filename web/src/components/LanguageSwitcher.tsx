@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Check } from "lucide-react";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { BottomSheet } from "@npcautomators/ui/ui/components/bottom-sheet";
-import { Typography } from "@npcautomators/ui/ui/components/typography/index";
-import { useBelowBreakpoint } from "@npcautomators/ui/hooks/use-below-breakpoint";
+import { Button } from "@zorin/ui/ui/components/button";
+import { BottomSheet } from "@zorin/ui/ui/components/bottom-sheet";
+import { Typography } from "@zorin/ui/ui/components/typography/index";
+import { useBelowBreakpoint } from "@zorin/ui/hooks/use-below-breakpoint";
 import { useI18n } from "@/i18n/context";
 import { LOCALE_META } from "@/i18n";
 import type { Locale } from "@/i18n";

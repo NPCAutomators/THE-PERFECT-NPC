@@ -16,15 +16,15 @@ import {
   X,
 } from "lucide-react";
 import * as QRCode from "qrcode";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Card, CardContent } from "@npcautomators/ui/ui/components/card";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
-import { Switch } from "@npcautomators/ui/ui/components/switch";
-import { Toast } from "@npcautomators/ui/ui/components/toast";
-import { useToast } from "@npcautomators/ui/hooks/use-toast";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Card, CardContent } from "@zorin/ui/ui/components/card";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
+import { Switch } from "@zorin/ui/ui/components/switch";
+import { Toast } from "@zorin/ui/ui/components/toast";
+import { useToast } from "@zorin/ui/hooks/use-toast";
 import { api } from "@/lib/api";
 import type {
   MessagingPlatform,

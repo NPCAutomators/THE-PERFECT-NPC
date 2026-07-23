@@ -42,23 +42,23 @@ import type {
 import { useProfileScope } from "@/contexts/useProfileScope";
 import { ToolsetConfigDrawer } from "@/components/ToolsetConfigDrawer";
 import { SkillEditorDialog } from "@/components/SkillEditorDialog";
-import { useToast } from "@npcautomators/ui/hooks/use-toast";
-import { Toast } from "@npcautomators/ui/ui/components/toast";
-import { Card, CardContent, CardHeader, CardTitle } from "@npcautomators/ui/ui/components/card";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { ListItem } from "@npcautomators/ui/ui/components/list-item";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
-import { Switch } from "@npcautomators/ui/ui/components/switch";
+import { useToast } from "@zorin/ui/hooks/use-toast";
+import { Toast } from "@zorin/ui/ui/components/toast";
+import { Card, CardContent, CardHeader, CardTitle } from "@zorin/ui/ui/components/card";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Button } from "@zorin/ui/ui/components/button";
+import { ListItem } from "@zorin/ui/ui/components/list-item";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
+import { Switch } from "@zorin/ui/ui/components/switch";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@npcautomators/ui/ui/components/dialog";
+} from "@zorin/ui/ui/components/dialog";
 import { cn } from "@/lib/utils";
-import { Input } from "@npcautomators/ui/ui/components/input";
+import { Input } from "@zorin/ui/ui/components/input";
 import { useI18n } from "@/i18n";
 import { usePageHeader } from "@/contexts/usePageHeader";
 import { PluginSlot } from "@/plugins";

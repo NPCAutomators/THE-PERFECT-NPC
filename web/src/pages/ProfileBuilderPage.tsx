@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { H2 } from "@npcautomators/ui/ui/components/typography/h2";
-import { Card, CardContent } from "@npcautomators/ui/ui/components/card";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
-import { Checkbox } from "@npcautomators/ui/ui/components/checkbox";
-import { Toast } from "@npcautomators/ui/ui/components/toast";
-import { useToast } from "@npcautomators/ui/hooks/use-toast";
+import { H2 } from "@zorin/ui/ui/components/typography/h2";
+import { Card, CardContent } from "@zorin/ui/ui/components/card";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
+import { Checkbox } from "@zorin/ui/ui/components/checkbox";
+import { Toast } from "@zorin/ui/ui/components/toast";
+import { useToast } from "@zorin/ui/hooks/use-toast";
 import { api } from "@/lib/api";
 import type {
   McpHttpAuth,

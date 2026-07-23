@@ -18,23 +18,23 @@ import {
 import { api } from "@/lib/api";
 import type { EnvVarInfo } from "@/lib/api";
 import { DeleteConfirmDialog } from "@/components/DeleteConfirmDialog";
-import { Toast } from "@npcautomators/ui/ui/components/toast";
-import { useConfirmDelete } from "@npcautomators/ui/hooks/use-confirm-delete";
-import { useToast } from "@npcautomators/ui/hooks/use-toast";
+import { Toast } from "@zorin/ui/ui/components/toast";
+import { useConfirmDelete } from "@zorin/ui/hooks/use-confirm-delete";
+import { useToast } from "@zorin/ui/hooks/use-toast";
 import { OAuthProvidersCard } from "@/components/OAuthProvidersCard";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { ListItem } from "@npcautomators/ui/ui/components/list-item";
-import { Spinner } from "@npcautomators/ui/ui/components/spinner";
+import { Button } from "@zorin/ui/ui/components/button";
+import { ListItem } from "@zorin/ui/ui/components/list-item";
+import { Spinner } from "@zorin/ui/ui/components/spinner";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@npcautomators/ui/ui/components/card";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
+} from "@zorin/ui/ui/components/card";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
 import { useI18n } from "@/i18n";
 import { usePageHeader } from "@/contexts/usePageHeader";
 import { PluginSlot } from "@/plugins";

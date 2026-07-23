@@ -23,24 +23,24 @@ import {
   X,
 } from "lucide-react";
 import spinners from "unicode-animations";
-import { H2 } from "@npcautomators/ui/ui/components/typography/h2";
+import { H2 } from "@zorin/ui/ui/components/typography/h2";
 import { api } from "@/lib/api";
 import type { ActiveProfileInfo, ProfileInfo } from "@/lib/api";
 import { DeleteConfirmDialog } from "@/components/DeleteConfirmDialog";
-import { useToast } from "@npcautomators/ui/hooks/use-toast";
-import { useConfirmDelete } from "@npcautomators/ui/hooks/use-confirm-delete";
+import { useToast } from "@zorin/ui/hooks/use-toast";
+import { useConfirmDelete } from "@zorin/ui/hooks/use-confirm-delete";
 import { useModalBehavior } from "@/hooks/useModalBehavior";
-import { Toast } from "@npcautomators/ui/ui/components/toast";
-import { Card, CardContent } from "@npcautomators/ui/ui/components/card";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Input } from "@npcautomators/ui/ui/components/input";
-import { Label } from "@npcautomators/ui/ui/components/label";
+import { Toast } from "@zorin/ui/ui/components/toast";
+import { Card, CardContent } from "@zorin/ui/ui/components/card";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Input } from "@zorin/ui/ui/components/input";
+import { Label } from "@zorin/ui/ui/components/label";
 import {
   Select,
   SelectOption,
-} from "@npcautomators/ui/ui/components/select";
-import { Checkbox } from "@npcautomators/ui/ui/components/checkbox";
+} from "@zorin/ui/ui/components/select";
+import { Checkbox } from "@zorin/ui/ui/components/checkbox";
 import { useI18n } from "@/i18n";
 import { usePageHeader } from "@/contexts/usePageHeader";
 import { cn, themedBody } from "@/lib/utils";

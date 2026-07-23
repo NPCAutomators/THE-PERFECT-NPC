@@ -23,9 +23,9 @@
  * terminal pane keeps working unimpaired.
  */
 
-import { Button } from "@npcautomators/ui/ui/components/button";
-import { Badge } from "@npcautomators/ui/ui/components/badge";
-import { Card } from "@npcautomators/ui/ui/components/card";
+import { Button } from "@zorin/ui/ui/components/button";
+import { Badge } from "@zorin/ui/ui/components/badge";
+import { Card } from "@zorin/ui/ui/components/card";
 
 import { ModelPickerDialog } from "@/components/ModelPickerDialog";
 import { ModelReloadConfirm } from "@/components/ModelReloadConfirm";
