@@ -136,7 +136,7 @@ if is_termux; then
     if command -v python >/dev/null 2>&1; then
         PYTHON_PATH="$(command -v python)"
         if "$PYTHON_PATH" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 11) else 1)' 2>/dev/null; then
-            PYTHON_FOUND_VERSION=$($PYTHON_PATH --version 2>/dev/null)
+            PYTHON_FOUND_VERSION=$("$PYTHON_PATH" --version 2>/dev/null)
             echo -e "${GREEN}✓${NC} $PYTHON_FOUND_VERSION found"
         else
             echo -e "${RED}✗${NC} Termux Python must be 3.11+"
@@ -151,13 +151,13 @@ if is_termux; then
 else
     if $UV_CMD python find "$PYTHON_VERSION" &> /dev/null; then
         PYTHON_PATH=$($UV_CMD python find "$PYTHON_VERSION")
-        PYTHON_FOUND_VERSION=$($PYTHON_PATH --version 2>/dev/null)
+        PYTHON_FOUND_VERSION=$("$PYTHON_PATH" --version 2>/dev/null)
         echo -e "${GREEN}✓${NC} $PYTHON_FOUND_VERSION found"
     else
         echo -e "${CYAN}→${NC} Python $PYTHON_VERSION not found, installing via uv..."
         $UV_CMD python install "$PYTHON_VERSION"
         PYTHON_PATH=$($UV_CMD python find "$PYTHON_VERSION")
-        PYTHON_FOUND_VERSION=$($PYTHON_PATH --version 2>/dev/null)
+        PYTHON_FOUND_VERSION=$("$PYTHON_PATH" --version 2>/dev/null)
         echo -e "${GREEN}✓${NC} $PYTHON_FOUND_VERSION installed"
     fi
 fi
@@ -452,8 +452,9 @@ echo "  zorin cron list     # View scheduled jobs"
 echo "  zorin doctor        # Diagnose issues"
 echo ""
 
-# Ask if they want to run setup wizard now
-read -p "Would you like to run the setup wizard now? [Y/n] " -n 1 -r
+# Ask if they want to run setup wizard now (skip cleanly when non-interactive)
+REPLY=""
+read -p "Would you like to run the setup wizard now? [Y/n] " -n 1 -r || REPLY="n"
 echo
 if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]; then
     echo ""
