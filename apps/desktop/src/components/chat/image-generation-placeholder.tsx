@@ -1,7 +1,6 @@
-import { type FC, useCallback, useEffect, useRef } from 'react'
-
 import { useResizeObserver } from '@/hooks/use-resize-observer'
 import { onThemeRepaint } from '@/hooks/use-theme-epoch'
+import { type FC, useCallback, useEffect, useRef } from 'react'
 
 type Rgb = { r: number; g: number; b: number }
 

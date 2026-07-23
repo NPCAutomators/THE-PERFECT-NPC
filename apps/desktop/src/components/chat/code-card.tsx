@@ -1,7 +1,6 @@
-import * as React from 'react'
-
 import { Codicon, type CodiconProps } from '@/components/ui/codicon'
 import { cn } from '@/lib/utils'
+import * as React from 'react'
 
 /**
  * Rounded-card shell for fenced code (and any equivalent: diffs, raw payloads,

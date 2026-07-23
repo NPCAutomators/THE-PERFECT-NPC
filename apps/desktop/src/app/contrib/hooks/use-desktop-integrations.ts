@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react'
-
 import { closeActiveTab } from '@/app/chat/close-tab'
 import { storedSessionIdForNotification } from '@/lib/session-ids'
 import { respondToApprovalAction } from '@/store/native-notifications'
@@ -7,6 +5,7 @@ import { getRememberedRoute, getRememberedSessionId, setRememberedRoute, setReme
 import { onSessionsChanged } from '@/store/session-sync'
 import { openUpdatesWindow, startUpdatePoller, stopUpdatePoller } from '@/store/updates'
 import { isSecondaryWindow } from '@/store/windows'
+import { useEffect, useRef } from 'react'
 
 import { requestComposerFocus, requestComposerInsert } from '../../chat/composer/focus'
 import { appViewForPath, isOverlayView, NEW_CHAT_ROUTE, sessionRoute } from '../../routes'

@@ -1,9 +1,4 @@
-import type {
-  ZorinConnection,
-  ZorinReadDirResult,
-  ZorinReadFileTextResult,
-  ZorinSelectPathsOptions
-} from '@/global'
+import type { ZorinConnection, ZorinReadDirResult, ZorinReadFileTextResult, ZorinSelectPathsOptions } from '@/global'
 import { $connection } from '@/store/session'
 
 export interface DesktopFsRemotePicker {

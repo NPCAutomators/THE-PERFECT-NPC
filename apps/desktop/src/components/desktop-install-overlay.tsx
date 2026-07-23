@@ -1,5 +1,3 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-
 import { BrandMark } from '@/components/brand-mark'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
@@ -17,6 +15,7 @@ import { useI18n } from '@/i18n'
 import { ChevronDown, ChevronRight, iconSize } from '@/lib/icons'
 import { capitalize } from '@/lib/text'
 import { cn } from '@/lib/utils'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 /**
  * DesktopInstallOverlay

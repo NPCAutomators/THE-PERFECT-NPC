@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type RefObject, useCallback, useEffect, useRef, useState } from 'react'
-
 import { useI18n } from '@/i18n'
 import { triggerHaptic } from '@/lib/haptics'
 import { useSessionSlice } from '@/lib/use-session-slice'
@@ -21,6 +18,8 @@ import {
   updateQueuedPrompt
 } from '@/store/composer-queue'
 import { notify } from '@/store/notifications'
+import { useStore } from '@nanostores/react'
+import { type RefObject, useCallback, useEffect, useRef, useState } from 'react'
 
 import { cloneAttachments, type QueueEditState } from '../composer-utils'
 import { useComposerScope } from '../scope'

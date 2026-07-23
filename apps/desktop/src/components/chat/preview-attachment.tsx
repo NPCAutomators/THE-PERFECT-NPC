@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useRef, useState } from 'react'
-
 import { useI18n } from '@/i18n'
 import { MonitorPlay } from '@/lib/icons'
 import { normalizeOrLocalPreviewTarget } from '@/lib/local-preview'
@@ -13,6 +10,8 @@ import {
   setCurrentSessionPreviewTarget
 } from '@/store/preview'
 import { $currentCwd } from '@/store/session'
+import { useStore } from '@nanostores/react'
+import { useEffect, useRef, useState } from 'react'
 
 export function PreviewAttachment({ source = 'manual', target }: { source?: PreviewRecordSource; target: string }) {
   const { t } = useI18n()

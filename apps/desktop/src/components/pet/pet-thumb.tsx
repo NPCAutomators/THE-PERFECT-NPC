@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-
 import { PawPrint } from '@/lib/icons'
+import { useEffect, useRef, useState } from 'react'
 
 // petdex frames are a fixed 192×208 grid; the box matches that aspect.
 const THUMB_W = 40

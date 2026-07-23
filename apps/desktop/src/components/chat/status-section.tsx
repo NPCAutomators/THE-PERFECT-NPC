@@ -1,6 +1,5 @@
-import { type ReactNode, useState } from 'react'
-
 import { DisclosureCaret } from '@/components/ui/disclosure-caret'
+import { type ReactNode, useState } from 'react'
 
 interface StatusSectionProps {
   /** Optional right-aligned actions (text links / micro buttons). Pass

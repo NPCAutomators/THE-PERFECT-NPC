@@ -1,7 +1,6 @@
-import { Profiler, type ProfilerOnRenderCallback, type ReactNode } from 'react'
-
 import { $gateway } from '@/store/gateway'
 import { $messages, setBusy, setMessages } from '@/store/session'
+import { Profiler, type ProfilerOnRenderCallback, type ReactNode } from 'react'
 
 type Sample = {
   id: string

@@ -18,7 +18,7 @@ Create, read, edit Word .docx documents and templates.
 | Path | `skills/productivity/docx` |
 | Version | `1.0.0` |
 | Author | Anthropic (adapted by NPCAUTOMATORS) |
-| License | Proprietary. LICENSE.txt has complete terms |
+| License | Proprietary |
 | Platforms | linux, macos, windows |
 | Tags | `Word`, `DOCX`, `Documents`, `Office`, `Productivity` |
 | Related skills | [`pdf`](/docs/user-guide/skills/bundled/productivity/productivity-pdf), [`xlsx`](/docs/user-guide/skills/bundled/productivity/productivity-xlsx), [`powerpoint`](/docs/user-guide/skills/bundled/productivity/productivity-powerpoint), [`ocr-and-documents`](/docs/user-guide/skills/bundled/productivity/productivity-ocr-and-documents) |

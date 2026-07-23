@@ -7,9 +7,6 @@
  * toggle never re-pulls the network gallery.
  */
 
-import { useStore } from '@nanostores/react'
-import { useEffect, useMemo } from 'react'
-
 import { HUD_ITEM, HUD_TEXT } from '@/app/floating-hud'
 import { useGatewayRequest } from '@/app/gateway/hooks/use-gateway-request'
 import { PetThumb } from '@/components/pet/pet-thumb'
@@ -28,6 +25,8 @@ import {
   rankedGalleryPets,
   setPetEnabled
 } from '@/store/pet-gallery'
+import { useStore } from '@nanostores/react'
+import { useEffect, useMemo } from 'react'
 
 interface PetPalettePageProps {
   search: string

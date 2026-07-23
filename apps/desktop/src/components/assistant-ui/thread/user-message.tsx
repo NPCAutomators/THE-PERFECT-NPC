@@ -1,6 +1,3 @@
-import { ActionBarPrimitive, BranchPickerPrimitive, MessagePrimitive, useAuiState } from '@assistant-ui/react'
-import { type FC, type ReactNode, useCallback, useRef, useState } from 'react'
-
 import { DirectiveContent } from '@/components/assistant-ui/directive-text'
 import { messageAttachmentRefs, messageContentText } from '@/components/assistant-ui/thread/content'
 import { type RestoreMessageTarget } from '@/components/assistant-ui/thread/types'
@@ -13,6 +10,8 @@ import { StopFilled } from '@/lib/icons'
 import { cn } from '@/lib/utils'
 import { notifyThreadEditOpen } from '@/store/thread-scroll'
 import { isWatchWindow } from '@/store/windows'
+import { ActionBarPrimitive, BranchPickerPrimitive, MessagePrimitive, useAuiState } from '@assistant-ui/react'
+import { type FC, type ReactNode, useCallback, useRef, useState } from 'react'
 
 export function StickyHumanMessageContainer({
   attachments,

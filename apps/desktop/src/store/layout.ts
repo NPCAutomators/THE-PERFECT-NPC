@@ -1,10 +1,9 @@
-import { atom, computed, type ReadableAtom, type WritableAtom } from 'nanostores'
-
 import { SIDEBAR_COLLAPSE_MEDIA_QUERY } from '@/app/layout-constants'
 import { PANE_TOGGLE_REVEAL_EVENT } from '@/components/pane-shell'
 import { matchesQuery } from '@/hooks/use-media-query'
 import { Codecs, persistentAtom } from '@/lib/persisted'
 import { arraysEqual, insertUniqueId } from '@/lib/storage'
+import { atom, computed, type ReadableAtom, type WritableAtom } from 'nanostores'
 
 import { $paneStates, ensurePaneRegistered, setPaneOpen, setPaneWidthOverride, togglePane } from './panes'
 

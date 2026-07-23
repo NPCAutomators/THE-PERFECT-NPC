@@ -1,7 +1,6 @@
+import { cn } from '@/lib/utils'
 import { motion, useSpring, useTransform } from 'motion/react'
 import { useEffect } from 'react'
-
-import { cn } from '@/lib/utils'
 
 // Snappy spring — fast transitions per the design.
 const SPRING = { stiffness: 320, damping: 30, mass: 0.5 } as const

@@ -601,7 +601,9 @@ describe('BillingSettings', () => {
     renderBilling()
 
     expect(await screen.findByText('Connect your NPCAUTOMATORS account')).toBeTruthy()
-    expect(screen.getByText('Run /portal in the TUI or open the NpcAutomators portal to connect your account.')).toBeTruthy()
+    expect(
+      screen.getByText('Run /portal in the TUI or open the NpcAutomators portal to connect your account.')
+    ).toBeTruthy()
     expect(screen.queryByText('Payment method')).toBeNull()
     expect(screen.queryByText('Usage')).toBeNull()
   })

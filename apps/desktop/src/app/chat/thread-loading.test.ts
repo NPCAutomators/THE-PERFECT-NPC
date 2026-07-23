@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { ChatMessage } from '@/lib/chat-messages'
+import { describe, expect, it } from 'vitest'
 
 import { lastVisibleMessageIsUser, threadLoadingState } from './thread-loading'
 

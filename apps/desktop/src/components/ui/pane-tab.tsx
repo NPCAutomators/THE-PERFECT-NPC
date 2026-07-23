@@ -1,6 +1,5 @@
-import * as React from 'react'
-
 import { cn } from '@/lib/utils'
+import * as React from 'react'
 
 /** Inset bottom stroke for a horizontal tab strip — titlebar color, cut by the active tab. */
 export const PANE_TAB_STRIP_LINE = 'shadow-[inset_0_-1px_0_var(--ui-stroke-tertiary)]'

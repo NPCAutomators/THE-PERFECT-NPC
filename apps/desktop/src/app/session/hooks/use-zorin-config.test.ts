@@ -1,8 +1,3 @@
-// @vitest-environment jsdom
-import { act, renderHook } from '@testing-library/react'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
-
-import { getZorinConfig } from '@/zorin'
 import { persistString } from '@/lib/storage'
 import {
   $currentCwd,
@@ -14,6 +9,10 @@ import {
   setCurrentModelSource,
   setCurrentReasoningEffort
 } from '@/store/session'
+import { getZorinConfig } from '@/zorin'
+// @vitest-environment jsdom
+import { act, renderHook } from '@testing-library/react'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { useZorinConfig } from './use-zorin-config'
 

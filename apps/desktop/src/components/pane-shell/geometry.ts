@@ -11,10 +11,9 @@
  * threading rects through React.
  */
 
-import { type RefObject, useLayoutEffect, useState, useSyncExternalStore } from 'react'
-
 import { $layoutTree } from '@/components/pane-shell/tree/store'
 import { $connection } from '@/store/session'
+import { type RefObject, useLayoutEffect, useState, useSyncExternalStore } from 'react'
 
 // ---------------------------------------------------------------------------
 // Rects

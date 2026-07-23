@@ -1,8 +1,7 @@
-import { atom, computed } from 'nanostores'
-
 import { translateNow } from '@/i18n'
 import { stableArray } from '@/lib/stable-array'
 import type { TodoItem, TodoStatus } from '@/lib/todos'
+import { atom, computed } from 'nanostores'
 
 import { $gateway } from './gateway'
 import { dispatchNativeNotification } from './native-notifications'

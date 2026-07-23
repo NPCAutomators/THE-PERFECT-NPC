@@ -14,11 +14,6 @@
  * restarts and re-resume on boot.
  */
 
-import { useStore } from '@nanostores/react'
-import { useQueryClient } from '@tanstack/react-query'
-import { atom, computed } from 'nanostores'
-import { useEffect, useMemo, useRef } from 'react'
-
 import { useGatewayRequest } from '@/app/gateway/hooks/use-gateway-request'
 import { useModelControls } from '@/app/session/hooks/use-model-controls'
 import { blobToDataUrl } from '@/app/session/hooks/use-prompt-actions/utils'
@@ -29,7 +24,6 @@ import { findGroupOfPane } from '@/components/pane-shell/tree/model'
 import { $layoutTree, moveTreePane, setTreeGroupHeaderHidden } from '@/components/pane-shell/tree/store'
 import { Button } from '@/components/ui/button'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
-import { transcribeAudio } from '@/zorin'
 import { useI18n } from '@/i18n'
 import type { ChatMessage } from '@/lib/chat-messages'
 import { sessionTitle } from '@/lib/chat-runtime'
@@ -54,6 +48,11 @@ import {
   type SessionTile,
   sessionTileDelegate
 } from '@/store/session-states'
+import { transcribeAudio } from '@/zorin'
+import { useStore } from '@nanostores/react'
+import { useQueryClient } from '@tanstack/react-query'
+import { atom, computed } from 'nanostores'
+import { useEffect, useMemo, useRef } from 'react'
 
 import type { SessionDragPayload } from './composer/inline-refs'
 import { type ComposerScope, ComposerScopeProvider } from './composer/scope'

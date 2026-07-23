@@ -1,7 +1,6 @@
-import type { ReactNode } from 'react'
-
 import { DisclosureCaret } from '@/components/ui/disclosure-caret'
 import { cn } from '@/lib/utils'
+import type { ReactNode } from 'react'
 
 // Shared header row for any collapsible block (thinking, tool group, single
 // tool). Each parent supplies its own outer wrapper (with the data-slot CSS

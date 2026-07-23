@@ -1,7 +1,6 @@
-import { atom, computed } from 'nanostores'
-
 import type { ZorinGitWorktree, ZorinRepoStatus } from '@/global'
 import { desktopGit } from '@/lib/desktop-git'
+import { atom, computed } from 'nanostores'
 
 import { $worktreeRefreshToken } from './projects'
 import { $busy, $currentCwd, $selectedStoredSessionId } from './session'

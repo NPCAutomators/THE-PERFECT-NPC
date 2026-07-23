@@ -1,8 +1,7 @@
+import { $gateway } from '@/store/gateway'
 import { useStore } from '@nanostores/react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useCallback, useEffect, useRef, useState } from 'react'
-
-import { $gateway } from '@/store/gateway'
 
 import { useBillingApi } from './api'
 import { resolveRefusal } from './errors'

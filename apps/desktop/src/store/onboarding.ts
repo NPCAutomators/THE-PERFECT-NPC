@@ -1,5 +1,6 @@
-import { atom } from 'nanostores'
-
+import { evaluateRuntimeReadiness, type RuntimeReadinessResult } from '@/lib/runtime-readiness'
+import { notify, notifyError } from '@/store/notifications'
+import type { ModelOptionProvider, OAuthProvider, OAuthStartResponse } from '@/types/zorin'
 import {
   cancelOAuthSession,
   getGlobalModelOptions,
@@ -12,9 +13,7 @@ import {
   submitOAuthCode,
   validateProviderCredential
 } from '@/zorin'
-import { evaluateRuntimeReadiness, type RuntimeReadinessResult } from '@/lib/runtime-readiness'
-import { notify, notifyError } from '@/store/notifications'
-import type { ModelOptionProvider, OAuthProvider, OAuthStartResponse } from '@/types/zorin'
+import { atom } from 'nanostores'
 
 type PkceStart = Extract<OAuthStartResponse, { flow: 'pkce' }>
 type DeviceStart = Extract<OAuthStartResponse, { flow: 'device_code' }>

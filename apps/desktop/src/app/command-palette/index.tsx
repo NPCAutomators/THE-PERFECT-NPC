@@ -1,14 +1,7 @@
-import { useStore } from '@nanostores/react'
-import { useQuery } from '@tanstack/react-query'
-import { Dialog as DialogPrimitive } from 'radix-ui'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { HUD_HEADING, HUD_ITEM, HUD_POSITION, HUD_SURFACE, HUD_TEXT } from '@/app/floating-hud'
 import { setTerminalTakeover } from '@/app/right-sidebar/store'
 import { Command, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
 import { KbdCombo } from '@/components/ui/kbd'
-import { getZorinConfigRecord, listAllProfileSessions } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { sessionTitle } from '@/lib/chat-runtime'
 import {
@@ -64,6 +57,12 @@ import { canOpenNewWindow, openNewWindow } from '@/store/windows'
 import { luminance } from '@/themes/color'
 import { type ThemeMode, useTheme } from '@/themes/context'
 import { isUserTheme, resolveTheme } from '@/themes/user-themes'
+import { getZorinConfigRecord, listAllProfileSessions } from '@/zorin'
+import { useStore } from '@nanostores/react'
+import { useQuery } from '@tanstack/react-query'
+import { Dialog as DialogPrimitive } from 'radix-ui'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import {
   AGENTS_ROUTE,

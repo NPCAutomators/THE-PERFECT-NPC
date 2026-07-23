@@ -1,8 +1,5 @@
-import { useStore } from '@nanostores/react'
-
 import type { ModelSelection } from '@/app/shell/model-menu-panel'
 import { ModelPickerDialog } from '@/components/model-picker'
-import type { ZorinGateway } from '@/zorin'
 import {
   $activeSessionId,
   $currentModel,
@@ -12,6 +9,8 @@ import {
   setModelPickerOpen
 } from '@/store/session'
 import { $focusedRuntimeId, $focusedSessionState } from '@/store/session-states'
+import type { ZorinGateway } from '@/zorin'
+import { useStore } from '@nanostores/react'
 
 interface ModelPickerOverlayProps {
   gateway?: ZorinGateway

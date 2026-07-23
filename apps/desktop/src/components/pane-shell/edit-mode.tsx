@@ -6,10 +6,9 @@
  * This hook only owns Escape-to-exit.
  */
 
+import { ESCAPE_PRIORITY, isTopEscapeLayer, pushEscapeLayer } from '@/lib/escape-layers'
 import { atom } from 'nanostores'
 import { useEffect } from 'react'
-
-import { ESCAPE_PRIORITY, isTopEscapeLayer, pushEscapeLayer } from '@/lib/escape-layers'
 
 export const $layoutEditMode = atom(false)
 

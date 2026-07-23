@@ -1,8 +1,3 @@
-import { act, cleanup, render, waitFor } from '@testing-library/react'
-import type { MutableRefObject } from 'react'
-import { useEffect } from 'react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import {
   $currentBranch,
   $currentCwd,
@@ -12,6 +7,10 @@ import {
   setCurrentCwdTransient,
   setNewChatWorkspaceTarget
 } from '@/store/session'
+import { act, cleanup, render, waitFor } from '@testing-library/react'
+import type { MutableRefObject } from 'react'
+import { useEffect } from 'react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { useCwdActions } from './use-cwd-actions'
 

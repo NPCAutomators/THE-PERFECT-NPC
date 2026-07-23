@@ -1,6 +1,6 @@
 import type { ZorinGitWorktree } from '@/global'
-import type { ProjectInfo, SessionInfo } from '@/zorin'
 import { normalize } from '@/lib/text'
+import type { ProjectInfo, SessionInfo } from '@/zorin'
 
 // Session grouping is now computed authoritatively on the backend
 // (`tui_gateway/project_tree.py`, exposed via `projects.tree` /

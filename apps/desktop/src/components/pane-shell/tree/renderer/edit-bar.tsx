@@ -5,13 +5,12 @@
  * toggles within a session.
  */
 
-import { useStore } from '@nanostores/react'
-import { type PointerEvent as ReactPointerEvent, useCallback, useRef, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { useI18n } from '@/i18n'
 import { formatCombo } from '@/lib/keybinds/combo'
 import { $bindings, bindingsFor } from '@/store/keybinds'
+import { useStore } from '@nanostores/react'
+import { type PointerEvent as ReactPointerEvent, useCallback, useRef, useState } from 'react'
 
 import { $layoutEditMode } from '../../edit-mode'
 import { resetLayoutTree } from '../store'

@@ -1,9 +1,8 @@
-import { atom } from 'nanostores'
-
-import { getActionStatus, restartGateway } from '@/zorin'
 import { translateNow } from '@/i18n'
 import { notifyError } from '@/store/notifications'
 import type { ActionResponse } from '@/types/zorin'
+import { getActionStatus, restartGateway } from '@/zorin'
+import { atom } from 'nanostores'
 
 const POLL_ATTEMPTS = 18
 const POLL_INTERVAL_MS = 1200

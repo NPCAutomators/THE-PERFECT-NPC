@@ -1,7 +1,6 @@
+import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 import spinners, { type BrailleSpinnerName as SpinnerName } from 'unicode-animations'
-
-import { cn } from '@/lib/utils'
 
 export type { SpinnerName }
 

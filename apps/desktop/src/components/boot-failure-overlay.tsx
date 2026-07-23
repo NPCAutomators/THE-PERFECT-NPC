@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type ComponentProps, lazy, type ReactNode, Suspense, useEffect, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { ErrorIcon } from '@/components/ui/error-state'
 import { Loader } from '@/components/ui/loader'
@@ -11,6 +8,8 @@ import { ChevronLeft, FileText, Loader2, LogIn, RefreshCw, SlidersHorizontal, Wr
 import { $desktopBoot } from '@/store/boot'
 import { notify, notifyError } from '@/store/notifications'
 import { $desktopOnboarding } from '@/store/onboarding'
+import { useStore } from '@nanostores/react'
+import { type ComponentProps, lazy, type ReactNode, Suspense, useEffect, useState } from 'react'
 
 import type { RemoteReauth } from './boot-failure-reauth'
 import {

@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useState } from 'react'
-
 import { BrandMark } from '@/components/brand-mark'
 import { Button } from '@/components/ui/button'
 import { writeClipboardText } from '@/components/ui/copy-button'
@@ -36,6 +33,8 @@ import {
   setUpdateOverlayOpen,
   type UpdateApplyState
 } from '@/store/updates'
+import { useStore } from '@nanostores/react'
+import { useEffect, useState } from 'react'
 
 function totalItems(groups: readonly CommitGroup[]) {
   return groups.reduce((sum, g) => sum + g.items.length, 0)

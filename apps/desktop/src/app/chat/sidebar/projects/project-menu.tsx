@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import type * as React from 'react'
-import { useState } from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { ColorSwatches } from '@/components/ui/color-swatches'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
@@ -27,6 +23,9 @@ import {
   setActiveProject,
   setProjectAppearance
 } from '@/store/projects'
+import { useStore } from '@nanostores/react'
+import type * as React from 'react'
+import { useState } from 'react'
 
 import type { SidebarProjectTree } from './workspace-groups'
 

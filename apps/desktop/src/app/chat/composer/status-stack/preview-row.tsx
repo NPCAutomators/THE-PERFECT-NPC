@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { memo, useState } from 'react'
-
 import { StatusRow } from '@/components/chat/status-row'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
@@ -13,6 +10,8 @@ import { notifyError } from '@/store/notifications'
 import { $paneOpen } from '@/store/panes'
 import { $previewTarget, dismissPreviewTarget, setCurrentSessionPreviewTarget } from '@/store/preview'
 import { type PreviewArtifact } from '@/store/preview-status'
+import { useStore } from '@nanostores/react'
+import { memo, useState } from 'react'
 
 interface PreviewStatusRowProps {
   item: PreviewArtifact

@@ -1,5 +1,3 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-
 import { useI18n } from '@/i18n'
 import { chatMessageText } from '@/lib/chat-messages'
 import { triggerHaptic } from '@/lib/haptics'
@@ -7,6 +5,7 @@ import { resetBrowseState } from '@/store/composer-input-history'
 import { notifyError } from '@/store/notifications'
 import { $messages } from '@/store/session'
 import { $autoSpeakReplies, setAutoSpeakReplies } from '@/store/voice-prefs'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import type { ComposerTarget } from '../focus'
 import { onComposerVoiceToggleRequest } from '../focus'

@@ -1,10 +1,9 @@
 'use client'
 
-import { type CSSProperties, useState } from 'react'
-
 import { SplitButton } from '@/components/ui/split-button'
 import { Play } from '@/lib/icons'
 import { allowProvider } from '@/store/embed-consent'
+import { type CSSProperties, useState } from 'react'
 
 import type { EmbedDescriptor } from './providers/types'
 

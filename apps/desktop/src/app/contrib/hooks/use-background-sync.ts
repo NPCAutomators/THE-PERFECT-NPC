@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-
 import { createClientSessionState } from '@/lib/chat-runtime'
 import { refreshActiveProfile } from '@/store/profile'
 import { $activeSessionId, $currentCwd, setCurrentCwd } from '@/store/session'
@@ -9,6 +7,7 @@ import {
   SESSION_WATCHDOG_TIMEOUT_MS,
   setSessionStalled
 } from '@/store/session-states'
+import { useEffect } from 'react'
 
 import type { GatewayRequester } from '../types'
 

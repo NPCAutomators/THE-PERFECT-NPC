@@ -1,8 +1,7 @@
-import { Checkbox as CheckboxPrimitive } from 'radix-ui'
-import * as React from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { cn } from '@/lib/utils'
+import { Checkbox as CheckboxPrimitive } from 'radix-ui'
+import * as React from 'react'
 
 function Checkbox({ className, ...props }: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
   return (

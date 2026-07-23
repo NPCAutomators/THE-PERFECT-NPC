@@ -1,9 +1,8 @@
+import { registerHapticTrigger } from '@/lib/haptics'
+import { $hapticsMuted } from '@/store/haptics'
 import { useStore } from '@nanostores/react'
 import { type ReactNode, useEffect } from 'react'
 import { useWebHaptics } from 'web-haptics/react'
-
-import { registerHapticTrigger } from '@/lib/haptics'
-import { $hapticsMuted } from '@/store/haptics'
 
 export function HapticsProvider({ children }: { children: ReactNode }) {
   const muted = useStore($hapticsMuted)

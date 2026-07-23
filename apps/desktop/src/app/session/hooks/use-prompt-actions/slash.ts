@@ -1,6 +1,3 @@
-import { type MutableRefObject, useCallback } from 'react'
-
-import { getProfiles } from '@/zorin'
 import type { Translations } from '@/i18n'
 import { type ChatMessage } from '@/lib/chat-messages'
 import { parseCommandDispatch, parseSlashCommand, sessionTitle } from '@/lib/chat-runtime'
@@ -28,6 +25,8 @@ import {
   setSessions,
   setYoloActive
 } from '@/store/session'
+import { getProfiles } from '@/zorin'
+import { type MutableRefObject, useCallback } from 'react'
 
 import type { BrowserManageResponse, SessionTitleResponse, SlashExecResponse } from '../../../types'
 

@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { CopyButton } from '@/components/ui/copy-button'
 import {
@@ -13,6 +11,7 @@ import {
 import { Tip } from '@/components/ui/tooltip'
 import { useI18n } from '@/i18n'
 import { Upload } from '@/lib/icons'
+import { useState } from 'react'
 
 interface ShareControlsProps {
   // True when the shown map was loaded from a pasted code (not the live scan).

@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import { previewName } from '@/lib/preview-targets'
+import { atom } from 'nanostores'
 
 /**
  * Session-scoped feed of previewable artifacts (HTML files, localhost dev URLs)

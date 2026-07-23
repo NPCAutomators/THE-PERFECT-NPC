@@ -6,13 +6,12 @@
  * tiles; each supplies only what differs (key, title, render, close, edge).
  */
 
-import type { ReadableAtom } from 'nanostores'
-import type { ReactElement, ReactNode, PointerEvent as ReactPointerEvent } from 'react'
-
 import type { DoubleTapContext } from '@/components/pane-shell/tree/renderer/drag-session'
 import { registerPaneCloser, removeTreePane, treePanesWithPrefix } from '@/components/pane-shell/tree/store'
 import { registry } from '@/contrib/registry'
 import type { TileDock } from '@/store/session-states'
+import type { ReadableAtom } from 'nanostores'
+import type { ReactElement, ReactNode, PointerEvent as ReactPointerEvent } from 'react'
 
 export interface PaneMirror<T> {
   /** Reactive source list. */

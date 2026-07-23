@@ -1,15 +1,4 @@
 import {
-  ActionBarPrimitive,
-  BranchPickerPrimitive,
-  ErrorPrimitive,
-  MessagePrimitive,
-  useAuiState,
-  useMessageRuntime
-} from '@assistant-ui/react'
-import { useStore } from '@nanostores/react'
-import { type FC, useCallback, useMemo, useState } from 'react'
-
-import {
   contentHasVisibleText,
   messageContentText,
   pickPrimaryPreviewTarget
@@ -37,6 +26,16 @@ import { cn } from '@/lib/utils'
 import { playSpeechText, stopVoicePlayback } from '@/lib/voice-playback'
 import { notifyError } from '@/store/notifications'
 import { $voicePlayback } from '@/store/voice-playback'
+import {
+  ActionBarPrimitive,
+  BranchPickerPrimitive,
+  ErrorPrimitive,
+  MessagePrimitive,
+  useAuiState,
+  useMessageRuntime
+} from '@assistant-ui/react'
+import { useStore } from '@nanostores/react'
+import { type FC, useCallback, useMemo, useState } from 'react'
 
 interface MessageActionProps {
   messageId: string

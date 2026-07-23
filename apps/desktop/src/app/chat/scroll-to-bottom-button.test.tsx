@@ -1,9 +1,8 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { afterEach, describe, expect, it, vi } from 'vitest'
-
 import { clearAllPrompts, setApprovalRequest } from '@/store/prompts'
 import { $activeSessionId } from '@/store/session'
 import { onScrollToBottomRequest, resetThreadScroll, setThreadAtBottom } from '@/store/thread-scroll'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { ScrollToBottomButton } from './scroll-to-bottom-button'
 

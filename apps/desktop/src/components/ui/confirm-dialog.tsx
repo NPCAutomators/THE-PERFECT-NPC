@@ -1,6 +1,3 @@
-import type { ReactNode } from 'react'
-import { useEffect, useState } from 'react'
-
 import { ActionStatus } from '@/components/ui/action-status'
 import { Button } from '@/components/ui/button'
 import {
@@ -13,6 +10,8 @@ import {
 } from '@/components/ui/dialog'
 import { useI18n } from '@/i18n'
 import { AlertTriangle } from '@/lib/icons'
+import type { ReactNode } from 'react'
+import { useEffect, useState } from 'react'
 
 interface ConfirmDialogProps {
   open: boolean

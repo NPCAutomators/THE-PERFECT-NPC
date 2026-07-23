@@ -1,6 +1,5 @@
-import { memo, useEffect, useMemo, useRef } from 'react'
-
 import { $petState, type PetInfo, type PetState } from '@/store/pet'
+import { memo, useEffect, useMemo, useRef } from 'react'
 
 const DEFAULT_FRAME_W = 192
 const DEFAULT_FRAME_H = 208

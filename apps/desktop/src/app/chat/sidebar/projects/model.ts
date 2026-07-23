@@ -1,12 +1,11 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useMemo, useState } from 'react'
-
 import type { ZorinGitWorktree } from '@/global'
-import type { SessionInfo } from '@/zorin'
 import { desktopGit } from '@/lib/desktop-git'
 import { mapPool } from '@/lib/pool'
 import { $sidebarWorkspaceCollapsedIds, toggleWorkspaceNodeCollapsed } from '@/store/layout'
 import { $worktreeRefreshToken } from '@/store/projects'
+import type { SessionInfo } from '@/zorin'
+import { useStore } from '@nanostores/react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { sessionRecency, type SidebarProjectTree } from './workspace-groups'
 

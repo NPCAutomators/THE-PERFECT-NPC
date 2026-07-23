@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
 import { INITIAL_STATE, parseMultipleKeypresses } from './parse-keypress.js'
-import { oscColor, TerminalQuerier } from './terminal-querier.js'
 import { parseOscColor } from './terminal.js'
+import { oscColor, TerminalQuerier } from './terminal-querier.js'
 
 // End-to-end (minus the PTY): a terminal's OSC 11 reply arriving on stdin
 // must tokenize as a response, match the pending oscColor(11) query, and

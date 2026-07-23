@@ -1,8 +1,7 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useState } from 'react'
-
 import { AlertCircle, Clock, type IconComponent } from '@/lib/icons'
 import { $petActivity, $petState, type PetState } from '@/store/pet'
+import { useStore } from '@nanostores/react'
+import { useEffect, useState } from 'react'
 
 /**
  * Speech bubble + status glyph for the popped-out pet overlay — the

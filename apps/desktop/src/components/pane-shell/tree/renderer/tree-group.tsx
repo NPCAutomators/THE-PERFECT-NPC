@@ -9,9 +9,6 @@
  * contextual zone menu (split/move + header/minimize toggles).
  */
 
-import { useStore } from '@nanostores/react'
-import { type CSSProperties, Fragment, type ReactNode, type RefObject, useRef, useState } from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from '@/components/ui/context-menu'
 import { DecodeText } from '@/components/ui/decode-text'
@@ -27,6 +24,8 @@ import { ContribBoundary } from '@/contrib/react/boundary'
 import { useContributions } from '@/contrib/react/use-contributions'
 import { useI18n } from '@/i18n'
 import { cn } from '@/lib/utils'
+import { useStore } from '@nanostores/react'
+import { type CSSProperties, Fragment, type ReactNode, type RefObject, useRef, useState } from 'react'
 
 import { $layoutEditMode } from '../../edit-mode'
 import { useWindowControlsOverlap } from '../../geometry'

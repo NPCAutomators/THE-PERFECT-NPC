@@ -1,10 +1,9 @@
-import { type RefObject, useEffect, useRef } from 'react'
-
 import { SLASH_COMMAND_RE } from '@/lib/chat-runtime'
 import { triggerHaptic } from '@/lib/haptics'
 import { clearSessionDraft, type ComposerAttachment } from '@/store/composer'
 import { resetBrowseState } from '@/store/composer-input-history'
 import { enqueueQueuedPrompt, type QueuedPromptEntry } from '@/store/composer-queue'
+import { type RefObject, useEffect, useRef } from 'react'
 
 import { cloneAttachments, type QueueEditState } from '../composer-utils'
 import { onComposerSubmitRequest } from '../focus'

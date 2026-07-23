@@ -1,9 +1,3 @@
-import { act, cleanup, render, waitFor } from '@testing-library/react'
-import type { MutableRefObject } from 'react'
-import { useEffect } from 'react'
-import { afterEach, describe, expect, it, vi } from 'vitest'
-
-import { getSessionMessages, type SessionInfo } from '@/zorin'
 import { createClientSessionState } from '@/lib/chat-runtime'
 import { clearSessionDraft, stashSessionDraft, takeSessionDraft } from '@/store/composer'
 import { $activeGatewayProfile, $newChatProfile, ensureGatewayProfile } from '@/store/profile'
@@ -33,6 +27,11 @@ import {
   setSelectedStoredSessionId,
   setSessions
 } from '@/store/session'
+import { getSessionMessages, type SessionInfo } from '@/zorin'
+import { act, cleanup, render, waitFor } from '@testing-library/react'
+import type { MutableRefObject } from 'react'
+import { useEffect } from 'react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { sessionRoute } from '../../routes'
 import type { ClientSessionState } from '../../types'

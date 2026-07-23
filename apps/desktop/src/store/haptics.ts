@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import { persistBoolean, storedBoolean } from '@/lib/storage'
+import { atom } from 'nanostores'
 
 const HAPTICS_MUTED_STORAGE_KEY = 'zorin.desktop.hapticsMuted'
 

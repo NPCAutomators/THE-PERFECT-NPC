@@ -1,12 +1,11 @@
-import type { ConnectionState } from '@zorin/shared'
-import { atom, computed } from 'nanostores'
-
 import { lastVisibleMessageIsUser } from '@/app/chat/thread-loading'
 import type { ContextSuggestion } from '@/app/types'
 import type { ZorinConnection } from '@/global'
 import type { ChatMessage } from '@/lib/chat-messages'
 import { persistBoolean, persistString, storedBoolean, storedString } from '@/lib/storage'
 import type { SessionInfo, UsageStats } from '@/types/zorin'
+import type { ConnectionState } from '@zorin/shared'
+import { atom, computed } from 'nanostores'
 
 type Updater<T> = T | ((current: T) => T)
 export type ComposerModelSource = '' | 'default' | 'manual'

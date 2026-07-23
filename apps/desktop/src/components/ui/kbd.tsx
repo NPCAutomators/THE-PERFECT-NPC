@@ -1,8 +1,7 @@
-import { cva, type VariantProps } from 'class-variance-authority'
-import * as React from 'react'
-
 import { comboTokens } from '@/lib/keybinds/combo'
 import { cn } from '@/lib/utils'
+import { cva, type VariantProps } from 'class-variance-authority'
+import * as React from 'react'
 
 const COMPACT_KEY = /^[\p{L}\p{N}⌘⌥⇧⌃↵⇥⌫↑↓←→@/?]$/u
 

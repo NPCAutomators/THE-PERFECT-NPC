@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
+import { refreshActiveProfile } from './store/profile'
 import {
   AUDIO_SPEAK_MAX_REQUEST_TIMEOUT_MS,
   AUDIO_SPEAK_MIN_REQUEST_TIMEOUT_MS,
@@ -10,11 +11,11 @@ import {
   getCronJobs,
   getGlobalModelInfo,
   getGlobalModelOptions,
-  getZorinConfig,
-  getZorinConfigDefaults,
   getProfiles,
   getSessionMessages,
   getStatus,
+  getZorinConfig,
+  getZorinConfigDefaults,
   listAllProfileSessions,
   listSessions,
   listSidebarSessions,
@@ -22,7 +23,6 @@ import {
   speakText,
   transcribeAudio
 } from './zorin'
-import { refreshActiveProfile } from './store/profile'
 
 const emptySessionsResponse = {
   limit: 0,

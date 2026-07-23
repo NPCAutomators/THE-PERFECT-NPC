@@ -1,5 +1,3 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { $sessionsLimit, resetSessionsLimit, SIDEBAR_SESSIONS_PAGE_SIZE } from '@/store/layout'
 import {
   $cronSessions,
@@ -16,6 +14,7 @@ import {
   setSessionsTotal
 } from '@/store/session'
 import { $stalledSessionIds } from '@/store/session-states'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { $gatewaySwitching, wipeSessionListsForGatewaySwitch } from './gateway-switch'
 

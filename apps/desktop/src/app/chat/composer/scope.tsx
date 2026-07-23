@@ -1,10 +1,9 @@
-import type { ReadableAtom } from 'nanostores'
-import { createContext, useContext } from 'react'
-
 import type { ChatMessage } from '@/lib/chat-messages'
 import { type ComposerAttachmentScope, mainComposerScope } from '@/store/composer'
 import { $activeSessionAwaitingInput } from '@/store/prompts'
 import { $messages } from '@/store/session'
+import type { ReadableAtom } from 'nanostores'
+import { createContext, useContext } from 'react'
 
 import type { ComposerTarget } from './focus'
 

@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import { triggerHaptic } from '@/lib/haptics'
+import { atom } from 'nanostores'
 
 export interface ComposerAttachment {
   id: string

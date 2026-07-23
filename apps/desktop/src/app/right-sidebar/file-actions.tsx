@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type KeyboardEvent as ReactKeyboardEvent, type ReactNode, useRef, useState } from 'react'
-
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
 import {
   ContextMenu,
@@ -27,6 +24,8 @@ import {
   toRelativePath
 } from '@/store/file-actions'
 import { notifyError } from '@/store/notifications'
+import { useStore } from '@nanostores/react'
+import { type KeyboardEvent as ReactKeyboardEvent, type ReactNode, useRef, useState } from 'react'
 
 const IS_WIN = typeof navigator !== 'undefined' && /win/i.test(navigator.platform || navigator.userAgent || '')
 

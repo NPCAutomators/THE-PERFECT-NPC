@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
-
 import { useI18n } from '@/i18n'
 import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react'
 
 // Braille spinner frames — reads as a tiny ASCII loader in monospace.
 const FRAMES = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']

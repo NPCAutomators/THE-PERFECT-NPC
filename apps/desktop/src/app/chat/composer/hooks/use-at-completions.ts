@@ -1,8 +1,7 @@
+import { normalize } from '@/lib/text'
+import type { ZorinGateway } from '@/zorin'
 import type { Unstable_TriggerAdapter, Unstable_TriggerItem } from '@assistant-ui/core'
 import { useCallback } from 'react'
-
-import type { ZorinGateway } from '@/zorin'
-import { normalize } from '@/lib/text'
 
 import type { CompletionEntry, CompletionPayload } from './use-live-completion-adapter'
 import { useLiveCompletionAdapter } from './use-live-completion-adapter'

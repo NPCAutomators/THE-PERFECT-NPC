@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useCallback, useEffect, useRef, useState } from 'react'
-
 import { useGatewayRequest } from '@/app/gateway/hooks/use-gateway-request'
 import { useOnProfileSwitch } from '@/app/hooks/use-on-profile-switch'
 import { useRouteOverlayActive } from '@/app/hooks/use-route-overlay-active'
@@ -21,6 +18,8 @@ import { $petOverlayActive, initPetOverlayBridge, popOutPet, restorePetOverlay }
 import { $gatewayState } from '@/store/session'
 import { isSecondaryWindow } from '@/store/windows'
 import { useTheme } from '@/themes/context'
+import { useStore } from '@nanostores/react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { PetSprite, roamWalkRow } from './pet-sprite'
 import { usePetRoam } from './use-pet-roam'

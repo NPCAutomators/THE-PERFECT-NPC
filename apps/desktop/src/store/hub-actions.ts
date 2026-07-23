@@ -1,9 +1,8 @@
-import { atom, map } from 'nanostores'
-
-import { getActionStatus, installSkillFromHub, uninstallSkillFromHub, updateSkillsFromHub } from '@/zorin'
 import { queryClient } from '@/lib/query-client'
 import { upsertDesktopActionTask } from '@/store/activity'
 import { $activeGatewayProfile, normalizeProfileKey } from '@/store/profile'
+import { getActionStatus, installSkillFromHub, uninstallSkillFromHub, updateSkillsFromHub } from '@/zorin'
+import { atom, map } from 'nanostores'
 
 const POLL_MS = 1200
 

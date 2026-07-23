@@ -1,13 +1,12 @@
+import { tryFormatJson } from '@/lib/json-format'
+import { cn } from '@/lib/utils'
+import { useTheme } from '@/themes/context'
 import { defaultKeymap, history, historyKeymap, indentWithTab } from '@codemirror/commands'
 import { bracketMatching, indentOnInput, LanguageDescription } from '@codemirror/language'
 import { languages } from '@codemirror/language-data'
 import { Compartment, EditorState } from '@codemirror/state'
 import { Decoration, drawSelection, EditorView, keymap, lineNumbers } from '@codemirror/view'
 import { type RefObject, useEffect, useRef } from 'react'
-
-import { tryFormatJson } from '@/lib/json-format'
-import { cn } from '@/lib/utils'
-import { useTheme } from '@/themes/context'
 
 import { githubEditorTheme } from './code-editor-theme'
 

@@ -1,18 +1,21 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Switch } from '@/components/ui/switch'
+import { useI18n } from '@/i18n'
+import { AlertTriangle, Cpu, Loader2 } from '@/lib/icons'
+import { cn } from '@/lib/utils'
+import { notifyError } from '@/store/notifications'
+import { startManualLocalEndpoint, startManualOnboarding, startManualProviderOAuth } from '@/store/onboarding'
 import {
   getAuxiliaryModels,
   getGlobalModelInfo,
   getGlobalModelOptions,
   getMoaModels,
   getRecommendedDefaultModel,
-  saveZorinConfig,
   saveMoaModels,
+  saveZorinConfig,
   setEnvVar,
   setModelAssignment
 } from '@/zorin'
@@ -23,11 +26,7 @@ import type {
   ModelOptionProvider,
   StaleAuxAssignment
 } from '@/zorin'
-import { useI18n } from '@/i18n'
-import { AlertTriangle, Cpu, Loader2 } from '@/lib/icons'
-import { cn } from '@/lib/utils'
-import { notifyError } from '@/store/notifications'
-import { startManualLocalEndpoint, startManualOnboarding, startManualProviderOAuth } from '@/store/onboarding'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { invalidateZorinConfig, setZorinConfigCache, useZorinConfigRecord } from '../hooks/use-config-record'
 import { useOnProfileSwitch } from '../hooks/use-on-profile-switch'

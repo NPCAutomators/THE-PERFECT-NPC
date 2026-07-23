@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { ZorinConfigRecord } from '@/types/zorin'
+import { describe, expect, it } from 'vitest'
 
 import { FIELD_DESCRIPTIONS, FIELD_LABELS, SECTIONS } from './constants'
 import { defineFieldCopy, fieldCopyForSchemaKey, schemaKeyToFieldCopyKey } from './field-copy'

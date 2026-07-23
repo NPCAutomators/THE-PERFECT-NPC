@@ -1,8 +1,3 @@
-import { QueryClient } from '@tanstack/react-query'
-import { act, cleanup, render, waitFor } from '@testing-library/react'
-import { useEffect, useRef } from 'react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { ClientSessionState } from '@/app/types'
 import { createClientSessionState } from '@/lib/chat-runtime'
 import {
@@ -13,6 +8,10 @@ import {
   setCurrentProvider
 } from '@/store/session'
 import type { RpcEvent } from '@/types/zorin'
+import { QueryClient } from '@tanstack/react-query'
+import { act, cleanup, render, waitFor } from '@testing-library/react'
+import { useEffect, useRef } from 'react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { useMessageStream } from './index'
 

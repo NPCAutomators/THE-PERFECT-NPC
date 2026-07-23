@@ -1,5 +1,3 @@
-import type { ThreadMessage } from '@assistant-ui/react'
-
 import type { QuickModelOption } from '@/app/chat/composer/types'
 import type { ClientSessionState, CommandDispatchResponse } from '@/app/types'
 import { formatRefValue } from '@/components/assistant-ui/directive-text'
@@ -7,6 +5,7 @@ import { type ChatMessage, type ChatMessagePart, chatMessageText, textPart } fro
 import { normalize } from '@/lib/text'
 import type { ComposerAttachment } from '@/store/composer'
 import type { ModelOptionsResponse, SessionInfo } from '@/types/zorin'
+import type { ThreadMessage } from '@assistant-ui/react'
 
 export const SLASH_COMMAND_RE = /^\/[^\s/]*(?:\s|$)/
 export const BUILTIN_PERSONALITIES = [

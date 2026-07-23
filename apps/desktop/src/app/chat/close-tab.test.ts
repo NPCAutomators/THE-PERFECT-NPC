@@ -1,5 +1,3 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { $rightRailActiveTabId, RIGHT_RAIL_PREVIEW_TAB_ID } from '@/store/layout'
 import {
   $filePreviewTabs,
@@ -9,6 +7,7 @@ import {
   setCurrentSessionPreviewTarget
 } from '@/store/preview'
 import { $activeSessionId, $selectedStoredSessionId } from '@/store/session'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { closeActiveTab } from './close-tab'
 

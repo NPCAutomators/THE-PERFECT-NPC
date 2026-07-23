@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import type { CronJob } from '@/types/zorin'
+import { atom } from 'nanostores'
 
 // Cron *jobs* (not run sessions) power the sidebar "Cron jobs" section. Listing
 // the job — schedule, state, live next-run countdown — makes the job the

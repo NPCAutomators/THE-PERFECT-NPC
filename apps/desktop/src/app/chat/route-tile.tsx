@@ -7,11 +7,10 @@
  * main -> tree adoption lands it on the chosen edge; closing removes it.
  */
 
-import { lazy, type ReactNode, Suspense } from 'react'
-
 import { ContribBoundary } from '@/contrib/react/boundary'
 import { useContributions } from '@/contrib/react/use-contributions'
 import { $routeTiles, closeRouteTile, type RouteTile } from '@/store/route-tiles'
+import { lazy, type ReactNode, Suspense } from 'react'
 
 import { ARTIFACTS_ROUTE, contributedRoutes, MESSAGING_ROUTE, ROUTES_AREA, SKILLS_ROUTE } from '../routes'
 

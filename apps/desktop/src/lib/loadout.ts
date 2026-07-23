@@ -1,6 +1,5 @@
-import { deflateSync, inflateSync } from 'fflate'
-
 import { capitalize } from '@/lib/text'
+import { deflateSync, inflateSync } from 'fflate'
 
 // ── Loadout codec ─────────────────────────────────────────────────────────────
 //

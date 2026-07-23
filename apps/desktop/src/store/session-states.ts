@@ -16,8 +16,6 @@
  * itself here as the delegate so tile UI stays dependency-light.
  */
 
-import { atom, computed } from 'nanostores'
-
 import type { ClientSessionState } from '@/app/types'
 import { findGroup, findGroupOfPane, type LayoutNode } from '@/components/pane-shell/tree/model'
 import {
@@ -29,6 +27,7 @@ import {
 } from '@/components/pane-shell/tree/store'
 import { stableArray } from '@/lib/stable-array'
 import { readJson, writeJson } from '@/lib/storage'
+import { atom, computed } from 'nanostores'
 
 import { $activeGatewayProfile, normalizeProfileKey } from './profile'
 import {

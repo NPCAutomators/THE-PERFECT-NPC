@@ -1,9 +1,8 @@
-import { useState } from 'react'
-
 import { ImageLightbox } from '@/components/chat/zoomable-image'
 import { useImageDownload } from '@/hooks/use-image-download'
 import { useI18n } from '@/i18n'
 import { X } from '@/lib/icons'
+import { useState } from 'react'
 
 interface ReferenceChipProps {
   name: string

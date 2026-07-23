@@ -1,8 +1,7 @@
+import { $backdrop } from '@/store/backdrop'
 import { useStore } from '@nanostores/react'
 import { Leva, useControls } from 'leva'
 import { type CSSProperties, useEffect, useState } from 'react'
-
-import { $backdrop } from '@/store/backdrop'
 
 const BLEND_MODES = [
   'normal',

@@ -1,10 +1,9 @@
-import type { AppendMessage } from '@assistant-ui/react'
-
 import { translateNow, type Translations } from '@/i18n'
 import type { ChatMessage } from '@/lib/chat-messages'
 import { type CommandsCatalogLike, filterDesktopCommandsCatalog } from '@/lib/desktop-slash-commands'
 import { isProviderSetupErrorMessage } from '@/lib/provider-setup-errors'
 import type { ComposerAttachment } from '@/store/composer'
+import type { AppendMessage } from '@assistant-ui/react'
 
 export type GatewayRequest = <T>(method: string, params?: Record<string, unknown>, timeoutMs?: number) => Promise<T>
 

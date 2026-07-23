@@ -1,7 +1,6 @@
+import { registry } from '@/contrib/registry'
 import { atom } from 'nanostores'
 import type { ReactNode } from 'react'
-
-import { registry } from '@/contrib/registry'
 
 export const SESSION_ROUTE_PREFIX = '/'
 export const NEW_CHAT_ROUTE = '/'

@@ -8,10 +8,6 @@
  * user can grab several.
  */
 
-import { useStore } from '@nanostores/react'
-import { useQuery } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
-
 import { HUD_ITEM, HUD_TEXT } from '@/app/floating-hud'
 import type { DesktopMarketplaceSearchItem } from '@/global'
 import { useI18n } from '@/i18n'
@@ -20,6 +16,9 @@ import { Check, Download, Loader2, Palette } from '@/lib/icons'
 import { cn } from '@/lib/utils'
 import { installVscodeThemeFromMarketplace } from '@/themes/install'
 import { $marketplaceInstalls } from '@/themes/user-themes'
+import { useStore } from '@nanostores/react'
+import { useQuery } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
 
 const compactNumber = new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 })
 

@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import { capitalize } from '@/lib/text'
+import { atom } from 'nanostores'
 
 export type SubagentStatus = 'completed' | 'failed' | 'interrupted' | 'queued' | 'running'
 export type SubagentStreamKind = 'progress' | 'summary' | 'thinking' | 'tool'

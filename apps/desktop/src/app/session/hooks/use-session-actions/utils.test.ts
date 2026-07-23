@@ -1,9 +1,8 @@
-import { beforeEach, describe, expect, it } from 'vitest'
-
 import type { ChatMessage } from '@/lib/chat-messages'
 import { $approvalModes, approvalModeForProfile } from '@/store/approval-mode'
 import { $activeGatewayProfile } from '@/store/profile'
 import type { SessionInfo } from '@/types/zorin'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import {
   appendLiveSessionProjection,

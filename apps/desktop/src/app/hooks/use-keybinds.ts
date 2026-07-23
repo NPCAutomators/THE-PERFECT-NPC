@@ -1,6 +1,3 @@
-import { useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { closeActiveTab } from '@/app/chat/close-tab'
 import { $terminalTakeover, setTerminalTakeover } from '@/app/right-sidebar/store'
 import { closeActiveTerminal, createTerminal, cycleTerminal } from '@/app/right-sidebar/terminal/terminals'
@@ -43,6 +40,8 @@ import {
 } from '@/store/session-switcher'
 import { openNewWindow } from '@/store/windows'
 import { useTheme } from '@/themes/context'
+import { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { requestComposerFocus, requestVoiceToggle } from '../chat/composer/focus'
 import {

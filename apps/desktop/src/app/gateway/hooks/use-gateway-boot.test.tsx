@@ -1,8 +1,7 @@
-import { act, cleanup, render } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { $desktopBoot } from '@/store/boot'
 import { $gatewayState } from '@/store/session'
+import { act, cleanup, render } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { useGatewayBoot } from './use-gateway-boot'
 

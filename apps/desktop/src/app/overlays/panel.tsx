@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
@@ -8,6 +6,7 @@ import { SearchField } from '@/components/ui/search-field'
 import { Tip } from '@/components/ui/tooltip'
 import { translateNow } from '@/i18n'
 import { cn } from '@/lib/utils'
+import type { ReactNode } from 'react'
 
 import { OverlayView } from './overlay-view'
 

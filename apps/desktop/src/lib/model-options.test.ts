@@ -1,6 +1,5 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
-
 import { getGlobalModelOptions } from '@/zorin'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { manualPickRemoved, modelOptionsQueryKey, requestModelOptions } from './model-options'
 

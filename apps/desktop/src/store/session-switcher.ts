@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import type { SessionInfo } from '@/types/zorin'
+import { atom } from 'nanostores'
 
 import { $selectedStoredSessionId, $sessions } from './session'
 

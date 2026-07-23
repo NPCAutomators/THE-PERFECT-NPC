@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react'
-
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Switch } from '@/components/ui/switch'
@@ -8,6 +6,7 @@ import { useI18n } from '@/i18n'
 import { prettyName } from '@/lib/text'
 import { cn } from '@/lib/utils'
 import type { ConfigFieldSchema } from '@/types/zorin'
+import type { ReactNode } from 'react'
 
 import { CONTROL_TEXT, EMPTY_SELECT_VALUE, FIELD_DESCRIPTIONS, FIELD_LABELS, FREE_INPUT_KEYS } from './constants'
 import { FallbackModelsField } from './fallback-models-field'

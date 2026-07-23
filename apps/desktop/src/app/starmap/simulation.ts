@@ -1,6 +1,5 @@
-import { forceCollide, forceLink, forceManyBody, forceRadial, forceSimulation, type Simulation } from 'd3-force'
-
 import type { StarmapGraph, StarmapNode } from '@/types/zorin'
+import { forceCollide, forceLink, forceManyBody, forceRadial, forceSimulation, type Simulation } from 'd3-force'
 
 import { RING_STEPS } from './constants'
 import { clamp, hash, nodeRadius, radiusForRecency } from './geometry'

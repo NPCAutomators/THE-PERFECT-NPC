@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import type * as React from 'react'
-import { useEffect, useRef, useState } from 'react'
-
 import {
   closeAllTreeTabs,
   closeOtherTreeTabs,
@@ -42,7 +38,6 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
 import { Tip } from '@/components/ui/tooltip'
-import { renameSession } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { triggerHaptic } from '@/lib/haptics'
 import { PROFILE_SWATCHES } from '@/lib/profile-color'
@@ -60,6 +55,10 @@ import {
 import { $sessionColorOverrides, setSessionColorOverride } from '@/store/session-color'
 import { $sessionTiles, openSessionTile } from '@/store/session-states'
 import { canOpenSessionWindow, openSessionInNewWindow } from '@/store/windows'
+import { renameSession } from '@/zorin'
+import { useStore } from '@nanostores/react'
+import type * as React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import type { SessionTitleResponse } from '../../types'
 

@@ -1,7 +1,6 @@
-import { memo, useMemo } from 'react'
-
 import { ansiColorClass, hasAnsiCodes, parseAnsi } from '@/lib/ansi'
 import { cn } from '@/lib/utils'
+import { memo, useMemo } from 'react'
 
 interface AnsiTextProps {
   text: string

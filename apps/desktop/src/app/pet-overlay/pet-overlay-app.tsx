@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useCallback, useEffect, useRef, useState } from 'react'
-
 import { PetHeartField, playVibeHearts } from '@/components/chat/vibe-hearts'
 import { PetBubble } from '@/components/pet/pet-bubble'
 import { PetSprite } from '@/components/pet/pet-sprite'
@@ -9,6 +6,8 @@ import { Mail } from '@/lib/icons'
 import { $petActivity, $petInfo, setPetInfo } from '@/store/pet'
 import { overlayWindowSize } from '@/store/pet-overlay'
 import { setAwaitingResponse, setBusy } from '@/store/session'
+import { useStore } from '@nanostores/react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 // Fallbacks mirror pet-sprite's defaults; the gateway normally sends real values.
 const DEFAULT_FRAME_W = 192

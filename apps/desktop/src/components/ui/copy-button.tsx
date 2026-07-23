@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import { Button } from '@/components/ui/button'
 import { ContextMenuItem } from '@/components/ui/context-menu'
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
@@ -8,6 +6,7 @@ import { useI18n } from '@/i18n'
 import { triggerHaptic } from '@/lib/haptics'
 import { Check, Copy, X } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import * as React from 'react'
 
 type CopyPayload = string | (() => Promise<string> | string)
 type CopyButtonAppearance = 'button' | 'icon' | 'inline' | 'menu-item' | 'context-menu-item' | 'tool-row'

@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { ZorinConfigRecord } from '@/types/zorin'
+import { describe, expect, it } from 'vitest'
 
 import { voiceFieldVisible } from './config-settings'
 

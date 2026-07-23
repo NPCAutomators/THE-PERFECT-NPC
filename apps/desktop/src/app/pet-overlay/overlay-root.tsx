@@ -1,8 +1,7 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-
 import { ErrorBoundary } from '@/components/error-boundary'
 import { ThemeProvider } from '@/themes/context'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 
 import { PetOverlayApp } from './pet-overlay-app'
 

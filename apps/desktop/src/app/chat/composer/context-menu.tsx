@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import { composerPanelCard } from '@/components/chat/composer-dock'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
@@ -17,6 +15,7 @@ import { Tip } from '@/components/ui/tooltip'
 import { useI18n } from '@/i18n'
 import { Clipboard, FileText, FolderOpen, type IconComponent, ImageIcon, Link, MessageSquareText } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { useState } from 'react'
 
 import { useComposerAttachmentProviders } from './contrib'
 import { GHOST_ICON_BTN } from './controls'

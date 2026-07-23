@@ -1,12 +1,11 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useRef } from 'react'
-
 import { playSpeechText } from '@/lib/voice-playback'
 import { ownsAmbientCue } from '@/store/ambient'
 import { notifyError } from '@/store/notifications'
 import { $messages } from '@/store/session'
 import { $voicePlayback } from '@/store/voice-playback'
 import { $autoSpeakReplies } from '@/store/voice-prefs'
+import { useStore } from '@nanostores/react'
+import { useEffect, useRef } from 'react'
 
 interface AutoSpeakReply {
   id: string

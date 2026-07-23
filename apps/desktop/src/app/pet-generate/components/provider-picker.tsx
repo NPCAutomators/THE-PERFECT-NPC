@@ -1,8 +1,7 @@
-import { useStore } from '@nanostores/react'
-
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Check, ChevronDown } from '@/lib/icons'
 import { $petGenProvider, $petGenProviders, setPetGenProvider } from '@/store/pet-generate'
+import { useStore } from '@nanostores/react'
 
 // Image-backend picker for pet generation — the composer's model-pill pattern:
 // a quiet trigger + a dropdown of options. No per-option notes: every backend

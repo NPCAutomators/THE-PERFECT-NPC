@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import type { PointerEvent as ReactPointerEvent } from 'react'
-import { useCallback, useEffect, useRef, useState } from 'react'
-
 import type { SetTitlebarToolGroup, TitlebarTool } from '@/app/shell/titlebar-controls'
 import { Tip } from '@/components/ui/tooltip'
 import { type Translations, useI18n } from '@/i18n'
@@ -11,6 +7,9 @@ import { rafCoalesce } from '@/lib/raf-coalesce'
 import { cn } from '@/lib/utils'
 import { notify, notifyError } from '@/store/notifications'
 import { $previewServerRestart, failPreviewServerRestart, type PreviewTarget } from '@/store/preview'
+import { useStore } from '@nanostores/react'
+import type { PointerEvent as ReactPointerEvent } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import {
   clampConsoleHeight,

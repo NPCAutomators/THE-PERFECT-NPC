@@ -1,8 +1,7 @@
-import { useStore } from '@nanostores/react'
-import { useMemo } from 'react'
-
 import type { ZorinReviewFile } from '@/global'
 import { $reviewMaxChurn } from '@/store/review'
+import { useStore } from '@nanostores/react'
+import { useMemo } from 'react'
 
 // Per-row "digital rain" churn bar: a right-anchored, clipped stream of
 // Matrix-ish glyphs whose width is the file's churn relative to the biggest

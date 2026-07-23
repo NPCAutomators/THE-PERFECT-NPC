@@ -1,8 +1,7 @@
+import { cn } from '@/lib/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { Slot } from 'radix-ui'
 import * as React from 'react'
-
-import { cn } from '@/lib/utils'
 
 // Text+icon actions underline the label on hover, not the glyph.
 const TEXT_ACTION_ICON = '[&_.codicon]:no-underline [&_svg]:no-underline'

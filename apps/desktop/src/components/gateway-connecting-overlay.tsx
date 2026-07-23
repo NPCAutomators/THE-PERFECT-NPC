@@ -1,11 +1,10 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useRef, useState } from 'react'
-
 import { DecodeText } from '@/components/ui/decode-text'
 import { cn } from '@/lib/utils'
 import { $desktopBoot } from '@/store/boot'
 import { $gatewaySwitching } from '@/store/gateway-switch'
 import { $gatewayState } from '@/store/session'
+import { useStore } from '@nanostores/react'
+import { useEffect, useRef, useState } from 'react'
 
 // Decode mechanics live in the shared <DecodeText> primitive
 // (components/ui/decode-text.tsx). "CONN" stays legible via prefix={4}.

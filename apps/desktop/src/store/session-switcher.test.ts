@@ -1,6 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { SessionInfo } from '@/types/zorin'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { $selectedStoredSessionId, $sessions } from './session'
 import {

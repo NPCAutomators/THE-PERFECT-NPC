@@ -1,10 +1,9 @@
-import { useQuery } from '@tanstack/react-query'
-import { useEffect, useMemo, useRef, useState } from 'react'
-
-import { getElevenLabsVoices, getZorinConfigSchema, saveZorinConfig } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { notifyError } from '@/store/notifications'
 import type { ZorinConfigRecord } from '@/types/zorin'
+import { getElevenLabsVoices, getZorinConfigSchema, saveZorinConfig } from '@/zorin'
+import { useQuery } from '@tanstack/react-query'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { setZorinConfigCache, useZorinConfigRecord } from '../hooks/use-config-record'
 

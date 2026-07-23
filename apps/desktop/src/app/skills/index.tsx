@@ -1,25 +1,9 @@
-import { useStore } from '@nanostores/react'
-import { useQuery } from '@tanstack/react-query'
-import type * as React from 'react'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { ArchiveSkillConfirmDialog } from '@/app/learning/archive-skill-confirm-dialog'
 import { CodeEditor } from '@/components/chat/code-editor'
 import { PageLoader } from '@/components/page-loader'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { CountSkeleton } from '@/components/ui/skeleton'
-import {
-  editLearningNode,
-  getLearningNode,
-  getSkills,
-  getToolsets,
-  getUsageAnalytics,
-  type ZorinGateway,
-  toggleSkill,
-  toggleToolset
-} from '@/zorin'
 import { useI18n } from '@/i18n'
 import { isDesktopToolsetVisible } from '@/lib/desktop-toolsets'
 import { compactNumber } from '@/lib/format'
@@ -29,6 +13,21 @@ import { $gateway } from '@/store/gateway'
 import { notify, notifyError } from '@/store/notifications'
 import { $activeGatewayProfile, normalizeProfileKey } from '@/store/profile'
 import type { SkillInfo, ToolsetInfo } from '@/types/zorin'
+import {
+  editLearningNode,
+  getLearningNode,
+  getSkills,
+  getToolsets,
+  getUsageAnalytics,
+  toggleSkill,
+  toggleToolset,
+  type ZorinGateway
+} from '@/zorin'
+import { useStore } from '@nanostores/react'
+import { useQuery } from '@tanstack/react-query'
+import type * as React from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { useOnProfileSwitch } from '../hooks/use-on-profile-switch'
 import { useRefreshHotkey } from '../hooks/use-refresh-hotkey'

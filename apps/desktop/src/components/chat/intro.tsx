@@ -1,6 +1,5 @@
-import { type CSSProperties, useState } from 'react'
-
 import { capitalize, normalize } from '@/lib/text'
+import { type CSSProperties, useState } from 'react'
 
 import introCopyJsonl from './intro-copy.jsonl?raw'
 

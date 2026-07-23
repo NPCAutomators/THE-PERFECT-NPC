@@ -1,5 +1,3 @@
-import type * as React from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import {
@@ -14,6 +12,7 @@ import { useI18n } from '@/i18n'
 import { triggerHaptic } from '@/lib/haptics'
 import { ExternalLink, Eye, EyeOff, KeyRound, Trash2 } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import type * as React from 'react'
 
 interface EnvVarActionsMenuProps extends Pick<
   React.ComponentProps<typeof DropdownMenuContent>,

@@ -1,5 +1,3 @@
-import { type PointerEvent as ReactPointerEvent, type RefObject, useCallback, useEffect, useRef, useState } from 'react'
-
 import {
   POPOUT_ESTIMATED_HEIGHT,
   POPOUT_WIDTH_REM,
@@ -8,6 +6,7 @@ import {
   readPopoutBounds,
   setComposerPopoutPosition
 } from '@/store/composer-popout'
+import { type PointerEvent as ReactPointerEvent, type RefObject, useCallback, useEffect, useRef, useState } from 'react'
 
 // Floating surface long-press before it becomes draggable (the 5px platform drags
 // instantly; this only covers grabbing the composer body itself).

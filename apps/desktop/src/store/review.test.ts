@@ -1,6 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { ZorinReviewFile, ZorinReviewShipInfo } from '@/global'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import {
   $reviewCommitDefault,

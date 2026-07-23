@@ -7,9 +7,8 @@
  * live pane contributions; the React split renderer reads it per render.
  */
 
-import type * as React from 'react'
-
 import type { Contribution } from '@/contrib/types'
+import type * as React from 'react'
 
 import type { GroupNode, LayoutNode } from '../model'
 import { allPaneIds } from '../model'

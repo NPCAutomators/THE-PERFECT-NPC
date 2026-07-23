@@ -1,7 +1,3 @@
-import type { Unstable_TriggerAdapter, Unstable_TriggerItem } from '@assistant-ui/core'
-import { useCallback } from 'react'
-
-import type { ZorinGateway } from '@/zorin'
 import { sessionTitle } from '@/lib/chat-runtime'
 import {
   type CommandsCatalogLike,
@@ -14,6 +10,9 @@ import {
 } from '@/lib/desktop-slash-commands'
 import { normalize } from '@/lib/text'
 import { $sessions } from '@/store/session'
+import type { ZorinGateway } from '@/zorin'
+import type { Unstable_TriggerAdapter, Unstable_TriggerItem } from '@assistant-ui/core'
+import { useCallback } from 'react'
 
 import type { CompletionEntry, CompletionPayload } from './use-live-completion-adapter'
 import { useLiveCompletionAdapter } from './use-live-completion-adapter'

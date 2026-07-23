@@ -1,10 +1,9 @@
-import type { Unstable_TriggerItem } from '@assistant-ui/core'
-import { Fragment } from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { GlyphSpinner } from '@/components/ui/glyph-spinner'
 import { useI18n } from '@/i18n'
 import { cn } from '@/lib/utils'
+import type { Unstable_TriggerItem } from '@assistant-ui/core'
+import { Fragment } from 'react'
 
 import { COMPLETION_DRAWER_BELOW_CLASS, COMPLETION_DRAWER_CLASS, CompletionDrawerEmpty } from './completion-drawer'
 

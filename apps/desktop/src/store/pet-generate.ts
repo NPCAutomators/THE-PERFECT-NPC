@@ -1,5 +1,3 @@
-import { atom } from 'nanostores'
-
 import { persistBoolean, persistString, storedBoolean, storedString } from '@/lib/storage'
 import { capitalize } from '@/lib/text'
 import { $gateway } from '@/store/gateway'
@@ -7,6 +5,7 @@ import { dispatchNativeNotification } from '@/store/native-notifications'
 import { notify } from '@/store/notifications'
 import { type PetInfo } from '@/store/pet'
 import { applyAdoptedPet, type GatewayRequest } from '@/store/pet-gallery'
+import { atom } from 'nanostores'
 /**
  * Feature store for the "generate a pet" flow (Cmd-K → Pets → Generate).
  *

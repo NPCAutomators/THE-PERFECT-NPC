@@ -1,10 +1,3 @@
-import { KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
-import { sortableKeyboardCoordinates } from '@dnd-kit/sortable'
-import { useStore } from '@nanostores/react'
-import type * as React from 'react'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-
 import { PlatformAvatar } from '@/app/messaging/platform-icon'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
@@ -23,7 +16,6 @@ import {
 } from '@/components/ui/sidebar'
 import { Tip, TipKeybindLabel } from '@/components/ui/tooltip'
 import { useContributions } from '@/contrib/react/use-contributions'
-import { searchSessions, type SessionInfo, type SessionSearchResult } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { comboTokens } from '@/lib/keybinds/combo'
 import { profileColor } from '@/lib/profile-color'
@@ -97,6 +89,13 @@ import {
   setCurrentCwd
 } from '@/store/session'
 import { $focusedStoredSessionId, $workingSessionIds, type SplitDir } from '@/store/session-states'
+import { searchSessions, type SessionInfo, type SessionSearchResult } from '@/zorin'
+import { KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
+import { sortableKeyboardCoordinates } from '@dnd-kit/sortable'
+import { useStore } from '@nanostores/react'
+import type * as React from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import {
   type AppView,

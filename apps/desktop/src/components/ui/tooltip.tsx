@@ -1,9 +1,8 @@
-import { Tooltip as TooltipPrimitive } from 'radix-ui'
-import * as React from 'react'
-
 import { useI18n } from '@/i18n'
 import { useKeybindHint } from '@/lib/keybinds/use-keybind-hint'
 import { cn } from '@/lib/utils'
+import { Tooltip as TooltipPrimitive } from 'radix-ui'
+import * as React from 'react'
 
 function TooltipProvider({
   delayDuration = 0,

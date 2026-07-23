@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type ReactNode, useEffect, useMemo, useState } from 'react'
-
 import { useElapsedSeconds } from '@/components/chat/activity-timer'
 import { ActivityTimerText } from '@/components/chat/activity-timer-text'
 import { Codicon } from '@/components/ui/codicon'
@@ -19,6 +16,8 @@ import {
   type SubagentStatus,
   type SubagentStreamEntry
 } from '@/store/subagents'
+import { useStore } from '@nanostores/react'
+import { type ReactNode, useEffect, useMemo, useState } from 'react'
 
 import { Panel, PanelEmpty, PanelHeader } from '../overlays/panel'
 

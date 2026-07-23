@@ -1,5 +1,5 @@
 import { asText, normalize } from '@/lib/text'
-import type { ConfigFieldSchema, ZorinConfigRecord, ToolsetInfo } from '@/types/zorin'
+import type { ConfigFieldSchema, ToolsetInfo, ZorinConfigRecord } from '@/types/zorin'
 
 import { BUILTIN_PERSONALITIES, ENUM_OPTIONS, PROVIDER_GROUPS, SECTIONS } from './constants'
 

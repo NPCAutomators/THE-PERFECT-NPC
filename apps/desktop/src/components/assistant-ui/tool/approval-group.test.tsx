@@ -1,11 +1,10 @@
-import { AssistantRuntimeProvider, type ThreadMessage, useExternalStoreRuntime } from '@assistant-ui/react'
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { clearAllPrompts, setApprovalRequest } from '@/store/prompts'
 import { $activeSessionId } from '@/store/session'
 import { clearDismissedToolRows } from '@/store/tool-dismiss'
 import { $toolDisclosureStates } from '@/store/tool-view'
+import { AssistantRuntimeProvider, type ThreadMessage, useExternalStoreRuntime } from '@assistant-ui/react'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { Thread } from '../thread'
 

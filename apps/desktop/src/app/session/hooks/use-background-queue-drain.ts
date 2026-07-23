@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
-
 import { useI18n } from '@/i18n'
 import { resetBrowseState } from '@/store/composer-input-history'
 import {
@@ -14,6 +11,8 @@ import {
 } from '@/store/composer-queue'
 import { notify } from '@/store/notifications'
 import { $workingSessionIds } from '@/store/session-states'
+import { useStore } from '@nanostores/react'
+import { type MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
 
 import type { SubmitTextOptions } from './use-prompt-actions/utils'
 

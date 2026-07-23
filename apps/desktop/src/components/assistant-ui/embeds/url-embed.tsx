@@ -1,10 +1,9 @@
 'use client'
 
-import { useStore } from '@nanostores/react'
-import { type CSSProperties, lazy, Suspense, useState } from 'react'
-
 import { PrettyLink } from '@/lib/external-link'
 import { $embedAllowed, $embedMode } from '@/store/embed-consent'
+import { useStore } from '@nanostores/react'
+import { type CSSProperties, lazy, Suspense, useState } from 'react'
 
 import { EmbedFacade } from './embed-consent'
 import { EMBED_MAX_H } from './embed-size'

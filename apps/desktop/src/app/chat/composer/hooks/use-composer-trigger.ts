@@ -1,8 +1,7 @@
-import type { Unstable_TriggerAdapter, Unstable_TriggerItem } from '@assistant-ui/core'
-import { type MutableRefObject, type RefObject, useCallback, useEffect, useRef, useState } from 'react'
-
 import { zorinDirectiveFormatter } from '@/components/assistant-ui/directive-text'
 import { desktopSlashCommandTakesArgs } from '@/lib/desktop-slash-commands'
+import type { Unstable_TriggerAdapter, Unstable_TriggerItem } from '@assistant-ui/core'
+import { type MutableRefObject, type RefObject, useCallback, useEffect, useRef, useState } from 'react'
 
 import { COMPLETION_ACTIONS, slashArgStage, slashChipKindForItem, slashCommandToken } from '../composer-utils'
 import {

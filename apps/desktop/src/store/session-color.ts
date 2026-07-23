@@ -1,10 +1,9 @@
-import { computed } from 'nanostores'
-
 import { sessionProjectColor } from '@/app/chat/sidebar/projects/workspace-groups'
 import { Codecs, persistentAtom } from '@/lib/persisted'
 import { $projects } from '@/store/projects'
 import { $sessions, sessionPinId } from '@/store/session'
 import type { SessionInfo } from '@/types/zorin'
+import { computed } from 'nanostores'
 
 // Per-session color OVERRIDES — a user-picked color that wins over the inherited
 // project color (#66565 layer 2). Desktop-local like pins, keyed by the DURABLE

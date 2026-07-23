@@ -1,5 +1,3 @@
-import { useStore } from '@nanostores/react'
-
 import { FileDiffPanel } from '@/components/chat/diff-lines'
 import { DiffSkeleton, TreeSkeleton } from '@/components/chat/skeletons'
 import { Button } from '@/components/ui/button'
@@ -38,6 +36,7 @@ import {
   toggleReviewTreeMode,
   unstageReviewFile
 } from '@/store/review'
+import { useStore } from '@nanostores/react'
 
 import { SidebarPanelLabel } from '../../shell/sidebar-label'
 import { PaneEmptyState, RightSidebarSectionHeader } from '../index'

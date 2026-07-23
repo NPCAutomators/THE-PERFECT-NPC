@@ -123,4 +123,4 @@ function verifyZorinCli(zorinCommand: string, opts?: { shell?: boolean }) {
   }
 }
 
-export { canImportZorinCli, zorinRuntimeImportProbe, PROBE_TIMEOUT_MS, verifyZorinCli }
+export { canImportZorinCli, PROBE_TIMEOUT_MS, verifyZorinCli, zorinRuntimeImportProbe }

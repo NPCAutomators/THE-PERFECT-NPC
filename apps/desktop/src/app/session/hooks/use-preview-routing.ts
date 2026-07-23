@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type MutableRefObject, useCallback, useEffect } from 'react'
-
 import { gatewayEventCompletedFileDiff } from '@/lib/gateway-events'
 import {
   $previewTarget,
@@ -14,6 +11,8 @@ import {
 } from '@/store/preview'
 import { $currentCwd } from '@/store/session'
 import type { RpcEvent } from '@/types/zorin'
+import { useStore } from '@nanostores/react'
+import { type MutableRefObject, useCallback, useEffect } from 'react'
 
 type EventHandler = (event: RpcEvent) => void
 

@@ -1,11 +1,10 @@
-import { type ReactNode, type RefObject, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import { Tip } from '@/components/ui/tooltip'
 import { useI18n } from '@/i18n'
 import { Loader2, Search } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { type ReactNode, type RefObject, useState } from 'react'
 
 interface SearchFieldProps {
   placeholder: string

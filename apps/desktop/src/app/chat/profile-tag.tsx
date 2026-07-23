@@ -1,10 +1,9 @@
-import { useStore } from '@nanostores/react'
-
 import { Tip } from '@/components/ui/tooltip'
 import { useI18n } from '@/i18n'
 import { profileColorSoft, resolveProfileColor } from '@/lib/profile-color'
 import { cn } from '@/lib/utils'
 import { $profileColors, normalizeProfileKey } from '@/store/profile'
+import { useStore } from '@nanostores/react'
 
 /** Owning-profile chip: soft profile-tint square with the initial, tooltip +
  *  accessible label carrying the full name. Same visual language as the

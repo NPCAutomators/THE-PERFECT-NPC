@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type RefObject, useCallback, useEffect } from 'react'
-
 import { triggerHaptic } from '@/lib/haptics'
 import {
   $composerPopoutPosition,
@@ -10,6 +7,8 @@ import {
   setComposerPoppedOut
 } from '@/store/composer-popout'
 import { isSecondaryWindow } from '@/store/windows'
+import { useStore } from '@nanostores/react'
+import { type RefObject, useCallback, useEffect } from 'react'
 
 import { useComposerScope } from '../scope'
 

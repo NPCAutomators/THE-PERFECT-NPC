@@ -1,9 +1,8 @@
-import { useAui, useAuiState, useComposerRuntime } from '@assistant-ui/react'
-import { type RefObject, useCallback, useEffect, useRef, useState } from 'react'
-
 import { SLASH_COMMAND_RE } from '@/lib/chat-runtime'
 import { type ComposerAttachment, stashSessionDraft, takeSessionDraft } from '@/store/composer'
 import { isBrowsingHistory } from '@/store/composer-input-history'
+import { useAui, useAuiState, useComposerRuntime } from '@assistant-ui/react'
+import { type RefObject, useCallback, useEffect, useRef, useState } from 'react'
 
 import {
   cloneAttachments,

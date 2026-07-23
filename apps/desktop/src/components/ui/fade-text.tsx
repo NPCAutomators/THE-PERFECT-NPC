@@ -1,8 +1,7 @@
-import type { ComponentProps, CSSProperties } from 'react'
-import { memo, useCallback, useRef, useState } from 'react'
-
 import { useResizeObserver } from '@/hooks/use-resize-observer'
 import { cn } from '@/lib/utils'
+import type { ComponentProps, CSSProperties } from 'react'
+import { memo, useCallback, useRef, useState } from 'react'
 
 interface FadeTextProps extends Omit<ComponentProps<'span'>, 'children'> {
   children: React.ReactNode

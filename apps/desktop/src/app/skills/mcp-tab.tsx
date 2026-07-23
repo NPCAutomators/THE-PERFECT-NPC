@@ -1,3 +1,35 @@
+import { type CodeEditorApi } from '@/components/chat/code-editor'
+import { JsonDocumentEditor } from '@/components/chat/json-document-editor'
+import { LogTail } from '@/components/chat/log-tail'
+import { PageLoader } from '@/components/page-loader'
+import { Button } from '@/components/ui/button'
+import { Codicon } from '@/components/ui/codicon'
+import { ErrorBanner } from '@/components/ui/error-state'
+import { Input } from '@/components/ui/input'
+import { Switch } from '@/components/ui/switch'
+import { TextTab } from '@/components/ui/text-tab'
+import { Tip } from '@/components/ui/tooltip'
+import { type Translations, useI18n } from '@/i18n'
+import { completeMcpDesktopOAuth } from '@/lib/mcp-dashboard-oauth'
+import { countEnabledTools, isToolEnabled, toggleToolInServer } from '@/lib/mcp-tool-filter'
+import { cn } from '@/lib/utils'
+import { notify, notifyError } from '@/store/notifications'
+import { $activeGatewayProfile, normalizeProfileKey } from '@/store/profile'
+import { $activeSessionId } from '@/store/session'
+import type { ZorinConfigRecord } from '@/types/zorin'
+import {
+  authMcpServer,
+  getActionStatus,
+  getLogs,
+  getMcpCatalog,
+  getMcpOAuthFlow,
+  installMcpCatalogEntry,
+  type McpCatalogEntry,
+  type McpTestResult,
+  saveMcpServers,
+  testMcpServer,
+  type ZorinGateway
+} from '@/zorin'
 import {
   SiFigma,
   SiGithub,
@@ -13,39 +45,6 @@ import {
 import { useStore } from '@nanostores/react'
 import { useQuery } from '@tanstack/react-query'
 import { type ComponentType, type SVGProps, useEffect, useMemo, useRef, useState } from 'react'
-
-import { type CodeEditorApi } from '@/components/chat/code-editor'
-import { JsonDocumentEditor } from '@/components/chat/json-document-editor'
-import { LogTail } from '@/components/chat/log-tail'
-import { PageLoader } from '@/components/page-loader'
-import { Button } from '@/components/ui/button'
-import { Codicon } from '@/components/ui/codicon'
-import { ErrorBanner } from '@/components/ui/error-state'
-import { Input } from '@/components/ui/input'
-import { Switch } from '@/components/ui/switch'
-import { TextTab } from '@/components/ui/text-tab'
-import { Tip } from '@/components/ui/tooltip'
-import {
-  authMcpServer,
-  getActionStatus,
-  getLogs,
-  getMcpCatalog,
-  getMcpOAuthFlow,
-  type ZorinGateway,
-  installMcpCatalogEntry,
-  type McpCatalogEntry,
-  type McpTestResult,
-  saveMcpServers,
-  testMcpServer
-} from '@/zorin'
-import { type Translations, useI18n } from '@/i18n'
-import { completeMcpDesktopOAuth } from '@/lib/mcp-dashboard-oauth'
-import { countEnabledTools, isToolEnabled, toggleToolInServer } from '@/lib/mcp-tool-filter'
-import { cn } from '@/lib/utils'
-import { notify, notifyError } from '@/store/notifications'
-import { $activeGatewayProfile, normalizeProfileKey } from '@/store/profile'
-import { $activeSessionId } from '@/store/session'
-import type { ZorinConfigRecord } from '@/types/zorin'
 
 import { setZorinConfigCache, useZorinConfigRecord } from '../hooks/use-config-record'
 import { useOnProfileSwitch } from '../hooks/use-on-profile-switch'

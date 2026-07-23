@@ -1,8 +1,7 @@
-import { describe, expect, it } from 'vitest'
-
 import { group, split } from '@/components/pane-shell/tree/model'
 import type { SessionTile } from '@/store/session-states'
 import { orderTilesByTree, selectionHomesToWorkspace } from '@/store/session-states'
+import { describe, expect, it } from 'vitest'
 
 const tile = (storedSessionId: string): SessionTile => ({ storedSessionId })
 const tilePane = (id: string) => `session-tile:${id}`

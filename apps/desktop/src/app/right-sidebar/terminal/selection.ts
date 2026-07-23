@@ -1,7 +1,6 @@
+import type { DesktopTerminalPalette } from '@/themes/types'
 import type { ITheme, Terminal } from '@xterm/xterm'
 import type { CSSProperties } from 'react'
-
-import type { DesktopTerminalPalette } from '@/themes/types'
 
 // VS Code's default integrated-terminal palette (terminalColorRegistry.ts) — a
 // fixed table per theme type, not luminance-derived. Light/dark diverge on

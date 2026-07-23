@@ -18,16 +18,15 @@
  *  - `ui.*` — the design language, so plugin UI looks native by default.
  */
 
-import { atom, type ReadableAtom } from 'nanostores'
-
 import { $narrowViewport } from '@/components/pane-shell/tree/store'
 import { onGatewayEvent } from '@/contrib/events'
-import { getLogs, getStatus } from '@/zorin'
 import { $gateway } from '@/store/gateway'
 import { notify, notifyError } from '@/store/notifications'
 import { $activeGatewayProfile } from '@/store/profile'
 import { $activeSessionId, $currentCwd, $currentModel, $gatewayState } from '@/store/session'
 import { runGatewayRestart } from '@/store/system-actions'
+import { getLogs, getStatus } from '@/zorin'
+import { atom, type ReadableAtom } from 'nanostores'
 
 // -- state: readonly views over the app's live atoms -------------------------
 
@@ -177,13 +176,7 @@ export { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 export { Textarea } from '@/components/ui/textarea'
 export { Tip, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 export type { GatewayEventListener } from '@/contrib/events'
-export type {
-  ZorinPlugin,
-  PluginContext,
-  PluginContribution,
-  PluginRestOptions,
-  PluginStorage
-} from '@/contrib/plugin'
+export type { PluginContext, PluginContribution, PluginRestOptions, PluginStorage, ZorinPlugin } from '@/contrib/plugin'
 
 // -- contracts ----------------------------------------------------------------
 

@@ -38,6 +38,17 @@
     "@streamdown/math": "^1.0.2",
     "agent-browser": "^0.26.0"
   },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.10.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-perfectionist": "^3.6.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^6.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "globals": "^15.12.0"
+  },
   "overrides": {
     "lodash": "4.18.1",
     "yauzl": "^3.3.1"

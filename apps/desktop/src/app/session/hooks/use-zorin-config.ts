@@ -1,6 +1,3 @@
-import { type MutableRefObject, useCallback, useRef, useState } from 'react'
-
-import { getZorinConfig, getZorinConfigDefaults } from '@/zorin'
 import { BUILTIN_PERSONALITIES, normalizePersonalityValue, personalityNamesFromConfig } from '@/lib/chat-runtime'
 import { normalize } from '@/lib/text'
 import {
@@ -16,6 +13,8 @@ import {
   setIntroPersonality
 } from '@/store/session'
 import { applyAutoSpeakFromConfig } from '@/store/voice-prefs'
+import { getZorinConfig, getZorinConfigDefaults } from '@/zorin'
+import { type MutableRefObject, useCallback, useRef, useState } from 'react'
 
 const DEFAULT_VOICE_SECONDS = 120
 const FAST_TIERS = new Set(['fast', 'priority', 'on'])

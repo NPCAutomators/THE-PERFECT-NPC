@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useQuery } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
-
 import { LanguageSwitcher } from '@/components/language-switcher'
 import { Button } from '@/components/ui/button'
 import { SegmentedControl } from '@/components/ui/segmented-control'
@@ -22,6 +18,9 @@ import { getBaseColors, useTheme } from '@/themes/context'
 import { installVscodeThemeFromMarketplace } from '@/themes/install'
 import type { DesktopTheme } from '@/themes/types'
 import { $marketplaceInstalls, isUserTheme, removeUserTheme } from '@/themes/user-themes'
+import { useStore } from '@nanostores/react'
+import { useQuery } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
 
 import { MODE_OPTIONS } from './constants'
 import { PetSettings } from './pet-settings'

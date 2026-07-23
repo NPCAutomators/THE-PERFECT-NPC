@@ -1,8 +1,7 @@
+import { $resumeExhaustedSessionId, setResumeExhaustedSessionId } from '@/store/session'
 import { cleanup, render } from '@testing-library/react'
 import type { MutableRefObject } from 'react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-
-import { $resumeExhaustedSessionId, setResumeExhaustedSessionId } from '@/store/session'
 
 import { useRouteResume } from './use-route-resume'
 

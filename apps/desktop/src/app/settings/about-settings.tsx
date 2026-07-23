@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useState } from 'react'
-
 import { BrandMark } from '@/components/brand-mark'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
@@ -17,6 +14,8 @@ import {
   refreshDesktopVersion,
   startActiveUpdate
 } from '@/store/updates'
+import { useStore } from '@nanostores/react'
+import { useEffect, useState } from 'react'
 
 import { ListRow, SectionHeading, SettingsContent } from './primitives'
 import { UninstallSection } from './uninstall-section'

@@ -154,8 +154,8 @@ const sidebars: SidebarsConfig = {
                   items: [
                     'user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-claude-code',
                     'user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-codex',
-                    'user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-zorin-agent',
                     'user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-opencode',
+                    'user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-zorin-agent',
                   ],
                 },
                 {
@@ -234,15 +234,6 @@ const sidebars: SidebarsConfig = {
                 },
                 {
                   type: 'category',
-                  label: 'zorin-desktop-plugins',
-                  key: 'skills-bundled-zorin-desktop-plugins',
-                  collapsed: true,
-                  items: [
-                    'user-guide/skills/bundled/zorin-desktop-plugins/zorin-desktop-plugins-zorin-desktop-plugins',
-                  ],
-                },
-                {
-                  type: 'category',
                   label: 'media',
                   key: 'skills-bundled-media',
                   collapsed: true,
@@ -294,6 +285,7 @@ const sidebars: SidebarsConfig = {
                     'user-guide/skills/bundled/productivity/productivity-petdex',
                     'user-guide/skills/bundled/productivity/productivity-powerpoint',
                     'user-guide/skills/bundled/productivity/productivity-teams-meeting-pipeline',
+                    'user-guide/skills/bundled/productivity/productivity-tui-widgets',
                     'user-guide/skills/bundled/productivity/productivity-xlsx',
                   ],
                 },
@@ -334,7 +326,6 @@ const sidebars: SidebarsConfig = {
                   key: 'skills-bundled-software-development',
                   collapsed: true,
                   items: [
-                    'user-guide/skills/bundled/software-development/software-development-zorin-agent-skill-authoring',
                     'user-guide/skills/bundled/software-development/software-development-node-inspect-debugger',
                     'user-guide/skills/bundled/software-development/software-development-plan',
                     'user-guide/skills/bundled/software-development/software-development-python-debugpy',
@@ -343,6 +334,7 @@ const sidebars: SidebarsConfig = {
                     'user-guide/skills/bundled/software-development/software-development-spike',
                     'user-guide/skills/bundled/software-development/software-development-systematic-debugging',
                     'user-guide/skills/bundled/software-development/software-development-test-driven-development',
+                    'user-guide/skills/bundled/software-development/software-development-zorin-agent-skill-authoring',
                   ],
                 },
                 {
@@ -352,6 +344,24 @@ const sidebars: SidebarsConfig = {
                   collapsed: true,
                   items: [
                     'user-guide/skills/bundled/yuanbao/yuanbao-yuanbao',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'zorin-desktop-plugins',
+                  key: 'skills-bundled-zorin-desktop-plugins',
+                  collapsed: true,
+                  items: [
+                    'user-guide/skills/bundled/zorin-desktop-plugins/zorin-desktop-plugins-zorin-desktop-plugins',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'zorin-themes',
+                  key: 'skills-bundled-zorin-themes',
+                  collapsed: true,
+                  items: [
+                    'user-guide/skills/bundled/zorin-themes/zorin-themes-zorin-themes',
                   ],
                 },
               ],
@@ -420,9 +430,9 @@ const sidebars: SidebarsConfig = {
                   items: [
                     'user-guide/skills/optional/devops/devops-cli',
                     'user-guide/skills/optional/devops/devops-docker-management',
-                    'user-guide/skills/optional/devops/devops-zorin-s6-container-supervision',
                     'user-guide/skills/optional/devops/devops-pinggy-tunnel',
                     'user-guide/skills/optional/devops/devops-watchers',
+                    'user-guide/skills/optional/devops/devops-zorin-s6-container-supervision',
                   ],
                 },
                 {

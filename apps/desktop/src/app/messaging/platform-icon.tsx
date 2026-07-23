@@ -1,3 +1,5 @@
+import { Globe, Link as LinkIcon, MessageSquareText } from '@/lib/icons'
+import { cn } from '@/lib/utils'
 import {
   SiApple,
   SiBilibili,
@@ -14,9 +16,6 @@ import {
 } from '@icons-pack/react-simple-icons'
 import type { ComponentPropsWithoutRef, ComponentType, SVGProps } from 'react'
 import { forwardRef } from 'react'
-
-import { Globe, Link as LinkIcon, MessageSquareText } from '@/lib/icons'
-import { cn } from '@/lib/utils'
 
 // We render simpleicons.org brand glyphs for platforms whose owners publish a
 // usable mark (telegram, discord, matrix, ...). A few brands — Slack, Dingtalk,

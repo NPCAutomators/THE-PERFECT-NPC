@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import type { ReactNode } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useI18n } from '@/i18n'
@@ -17,6 +14,8 @@ import {
   setNativeNotifyKind
 } from '@/store/native-notifications'
 import { notify } from '@/store/notifications'
+import { useStore } from '@nanostores/react'
+import type { ReactNode } from 'react'
 
 import { CONTROL_TEXT } from './constants'
 import { ListRow, SectionHeading, SettingsContent, ToggleRow } from './primitives'

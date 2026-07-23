@@ -25,8 +25,6 @@
  * that crossed windows).
  */
 
-import type { PointerEvent as ReactPointerEvent } from 'react'
-
 import { findGroup } from '@/components/pane-shell/tree/model'
 import {
   type DoubleTapContext,
@@ -47,6 +45,7 @@ import {
 } from '@/components/pane-shell/tree/store'
 import type { EngineZone, ZoneRect } from '@/components/pane-shell/tree/zones-engine'
 import { openSessionTile, type TileDock } from '@/store/session-states'
+import type { PointerEvent as ReactPointerEvent } from 'react'
 
 import { requestComposerInsertRefs } from './composer/focus'
 import { type SessionDragPayload, sessionInlineRef, sessionLabel } from './composer/inline-refs'

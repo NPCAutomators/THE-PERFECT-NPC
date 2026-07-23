@@ -1,8 +1,7 @@
-import { atom } from 'nanostores'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { ZorinConnection } from '@/global'
 import type { ProfileInfo } from '@/types/zorin'
+import { atom } from 'nanostores'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Keep profile.ts's side-effecting imports inert: the gateway socket layer and
 // the REST query client must not run for real in a unit test.

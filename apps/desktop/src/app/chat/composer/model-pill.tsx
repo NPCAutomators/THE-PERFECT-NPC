@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useState } from 'react'
-
 import { useSessionView } from '@/app/chat/session-view'
 import { ModelMenuCloseContext } from '@/app/shell/model-menu-panel'
 import { Button } from '@/components/ui/button'
@@ -12,6 +9,8 @@ import { ChevronDown } from '@/lib/icons'
 import { formatModelStatusLabel } from '@/lib/model-status-label'
 import { cn } from '@/lib/utils'
 import { $currentModelSource, setModelPickerOpen } from '@/store/session'
+import { useStore } from '@nanostores/react'
+import { useState } from 'react'
 
 import type { ChatBarState } from './types'
 

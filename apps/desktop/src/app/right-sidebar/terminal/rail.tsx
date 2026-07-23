@@ -1,5 +1,3 @@
-import { useStore } from '@nanostores/react'
-
 import { Codicon } from '@/components/ui/codicon'
 import {
   ContextMenu,
@@ -13,6 +11,7 @@ import { useI18n } from '@/i18n'
 import { formatCombo } from '@/lib/keybinds/combo'
 import { cn } from '@/lib/utils'
 import { $bindings } from '@/store/keybinds'
+import { useStore } from '@nanostores/react'
 
 import { setTerminalTakeover } from '../store'
 

@@ -1,6 +1,5 @@
-import { memo, useCallback, useEffect, useMemo, useRef } from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
+import { memo, useCallback, useEffect, useMemo, useRef } from 'react'
 
 import type { TimeAxis } from './time-axis'
 

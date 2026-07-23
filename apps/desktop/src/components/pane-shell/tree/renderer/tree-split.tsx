@@ -6,13 +6,12 @@
  * last track absorb the slack (VS Code style).
  */
 
-import { useStore } from '@nanostores/react'
-import { type PointerEvent as ReactPointerEvent, useCallback, useMemo, useRef, useSyncExternalStore } from 'react'
-
 import { useContributions } from '@/contrib/react/use-contributions'
 import { rafCoalesce } from '@/lib/raf-coalesce'
 import { cn } from '@/lib/utils'
 import { $paneStates, type PaneStateSnapshot, setPaneHeightOverride, setPaneWidthOverride } from '@/store/panes'
+import { useStore } from '@nanostores/react'
+import { type PointerEvent as ReactPointerEvent, useCallback, useMemo, useRef, useSyncExternalStore } from 'react'
 
 import { $layoutEditMode } from '../../edit-mode'
 import type { LayoutNode, SplitNode } from '../model'

@@ -1,11 +1,10 @@
-import { Dialog as DialogPrimitive } from 'radix-ui'
-import * as React from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Tip } from '@/components/ui/tooltip'
 import { useI18n } from '@/i18n'
 import { X } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { Dialog as DialogPrimitive } from 'radix-ui'
+import * as React from 'react'
 
 function Dialog({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />

@@ -1,12 +1,11 @@
-import { useStore } from '@nanostores/react'
-import { useRef } from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { useI18n } from '@/i18n'
 import { triggerHaptic } from '@/lib/haptics'
 import { cn } from '@/lib/utils'
 import { $approvalRequest } from '@/store/prompts'
 import { $threadJumpButtonVisible, requestScrollToBottom } from '@/store/thread-scroll'
+import { useStore } from '@nanostores/react'
+import { useRef } from 'react'
 
 /**
  * Floating "jump to bottom" control. Sits centered just above the composer,

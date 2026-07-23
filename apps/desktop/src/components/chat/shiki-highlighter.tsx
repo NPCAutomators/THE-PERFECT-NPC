@@ -1,9 +1,5 @@
 'use client'
 
-import type { SyntaxHighlighterProps } from '@assistant-ui/react-streamdown'
-import { type FC, useMemo } from 'react'
-import ShikiHighlighter from 'react-shiki'
-
 import {
   CodeCard,
   CodeCardBody,
@@ -16,6 +12,9 @@ import { ExpandableBlock } from '@/components/chat/expandable-block'
 import { CopyButton } from '@/components/ui/copy-button'
 import { useI18n } from '@/i18n'
 import { codiconForLanguage, isLikelyProseCodeBlock, sanitizeLanguageTag } from '@/lib/markdown-code'
+import type { SyntaxHighlighterProps } from '@assistant-ui/react-streamdown'
+import { type FC, useMemo } from 'react'
+import ShikiHighlighter from 'react-shiki'
 
 /**
  * Streamdown's code adapter renders header + body as inline siblings, so we

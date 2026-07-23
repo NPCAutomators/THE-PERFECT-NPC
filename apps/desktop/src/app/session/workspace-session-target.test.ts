@@ -1,5 +1,3 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
-
 import {
   $currentBranch,
   $currentCwd,
@@ -8,6 +6,7 @@ import {
   setCurrentCwd,
   setNewChatWorkspaceTarget
 } from '@/store/session'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { startWorkspaceSession } from './workspace-session-target'
 

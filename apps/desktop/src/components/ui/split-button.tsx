@@ -1,8 +1,7 @@
-import type { VariantProps } from 'class-variance-authority'
-import type { ReactNode } from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { cn } from '@/lib/utils'
+import type { VariantProps } from 'class-variance-authority'
+import type { ReactNode } from 'react'
 
 import type { buttonVariants } from './button'
 import { Button } from './button'

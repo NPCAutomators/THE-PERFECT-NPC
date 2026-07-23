@@ -1,5 +1,3 @@
-import type * as React from 'react'
-
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -12,6 +10,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { useI18n } from '@/i18n'
 import { Globe } from '@/lib/icons'
+import type * as React from 'react'
 
 const URL_HINT = /^https?:\/\//i
 

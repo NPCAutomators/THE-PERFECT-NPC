@@ -1,8 +1,7 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-
 import { $desktopBoot } from '@/store/boot'
 import { $desktopOnboarding } from '@/store/onboarding'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 
 import { BootFailureOverlay } from './boot-failure-overlay'
 

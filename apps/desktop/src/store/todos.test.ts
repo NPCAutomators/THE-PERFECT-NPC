@@ -1,6 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { TodoItem } from '@/lib/todos'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import {
   $todosBySession,

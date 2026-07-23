@@ -1,10 +1,9 @@
-import type { ReactNode } from 'react'
-
 import { ErrorBoundary } from '@/components/error-boundary'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import { ErrorState } from '@/components/ui/error-state'
 import { Tip } from '@/components/ui/tooltip'
+import type { ReactNode } from 'react'
 
 interface ContribBoundaryProps {
   children: ReactNode

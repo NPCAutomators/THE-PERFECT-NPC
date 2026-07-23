@@ -1,6 +1,5 @@
-import { afterEach, describe, expect, it } from 'vitest'
-
 import { setRuntimeI18nLocale } from '@/i18n'
+import { afterEach, describe, expect, it } from 'vitest'
 
 import {
   buildToolView,

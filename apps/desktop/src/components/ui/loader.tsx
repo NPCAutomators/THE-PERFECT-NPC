@@ -1,6 +1,5 @@
-import { type ComponentProps, useEffect, useRef } from 'react'
-
 import { cn } from '@/lib/utils'
+import { type ComponentProps, useEffect, useRef } from 'react'
 
 export const LOADER_TYPES = [
   'original-thinking',

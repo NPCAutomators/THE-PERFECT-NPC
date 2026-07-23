@@ -1,7 +1,6 @@
-import { atom } from 'nanostores'
-
 import type { DesktopBootProgress } from '@/global'
 import { translateNow } from '@/i18n'
+import { atom } from 'nanostores'
 
 export interface DesktopBootState extends DesktopBootProgress {
   visible: boolean

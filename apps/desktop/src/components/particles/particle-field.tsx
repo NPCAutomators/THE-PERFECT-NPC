@@ -1,8 +1,7 @@
 import './particle-field.css'
 
-import { type CSSProperties, type ReactNode, useEffect, useMemo, useRef, useState } from 'react'
-
 import { cn } from '@/lib/utils'
+import { type CSSProperties, type ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 
 /**
  * Reusable float-up particle emitter. It owns the motion (rise + organic sway +

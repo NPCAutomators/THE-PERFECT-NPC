@@ -1,6 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { DesktopUpdateStatus } from '@/global'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 const storage = new Map<string, string>()
 

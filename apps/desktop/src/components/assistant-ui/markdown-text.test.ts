@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import { preprocessMarkdown } from '@/lib/markdown-preprocess'
+import { describe, expect, it } from 'vitest'
 
 describe('preprocessMarkdown', () => {
   it('strips inline accidental triple-backtick starts', () => {

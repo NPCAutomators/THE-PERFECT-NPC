@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
-
 import { Loader2 } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react'
 
 // Borrowed from the gateway "connecting" overlay: a mono, letter-spaced label
 // that decodes left-to-right from scrambled glyphs into the real text, with a

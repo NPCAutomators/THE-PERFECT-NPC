@@ -1,15 +1,14 @@
-import type { useSensors } from '@dnd-kit/core'
-import type * as React from 'react'
-import { useMemo } from 'react'
-
 import { SidebarPanelLabel } from '@/app/shell/sidebar-label'
 import { DisclosureCaret } from '@/components/ui/disclosure-caret'
 import { SidebarGroup, SidebarGroupContent } from '@/components/ui/sidebar'
 import type { ZorinGitWorktree } from '@/global'
-import type { SessionInfo } from '@/zorin'
 import { flattenSessionsWithBranches } from '@/lib/session-branch-tree'
 import { cn } from '@/lib/utils'
 import { sessionPinId } from '@/store/session'
+import type { SessionInfo } from '@/zorin'
+import type { useSensors } from '@dnd-kit/core'
+import type * as React from 'react'
+import { useMemo } from 'react'
 
 import { SidebarCount } from './chrome'
 import {

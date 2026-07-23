@@ -1,10 +1,9 @@
-import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
-import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
-
 import { StatusbarControls } from '@/app/shell/statusbar-controls'
 import { I18nProvider } from '@/i18n'
 import { $approvalModes } from '@/store/approval-mode'
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
+import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 
 import { useApprovalModeStatusbarItem } from './approval-mode-menu'
 

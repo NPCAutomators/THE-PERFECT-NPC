@@ -1,9 +1,8 @@
-import { useRef } from 'react'
-
 import type { DragKind } from '@/app/chat/hooks/use-file-drop-zone'
 import { DROP_SHEET_BLUR_CLASS, DROP_SHEET_CLASS } from '@/components/ui/drop-affordance'
 import { useI18n } from '@/i18n'
 import { cn } from '@/lib/utils'
+import { useRef } from 'react'
 
 /**
  * Full-bleed affordance shown while files or a session are dragged over the chat

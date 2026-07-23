@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import { chunkByLines, exceedsHighlightBudget } from '@/components/chat/shiki-highlighter'
+import { describe, expect, it } from 'vitest'
 
 describe('exceedsHighlightBudget', () => {
   it('highlights normal-sized blocks', () => {

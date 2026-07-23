@@ -1,7 +1,6 @@
-import { useSyncExternalStore } from 'react'
-
 import { $statusItemsBySession } from '@/store/composer-status'
 import { $previewStatusBySession } from '@/store/preview-status'
+import { useSyncExternalStore } from 'react'
 
 const subscribe = (onChange: () => void) => {
   const offItems = $statusItemsBySession.listen(onChange)

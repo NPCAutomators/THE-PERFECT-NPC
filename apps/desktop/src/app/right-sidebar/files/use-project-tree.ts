@@ -1,9 +1,8 @@
+import { $connection } from '@/store/session'
+import { $workspaceChangeTick, consumeWorkspaceChange } from '@/store/workspace-events'
 import { useStore } from '@nanostores/react'
 import { atom } from 'nanostores'
 import { useCallback, useEffect, useMemo } from 'react'
-
-import { $connection } from '@/store/session'
-import { $workspaceChangeTick, consumeWorkspaceChange } from '@/store/workspace-events'
 
 import { clearProjectDirCache, type ProjectTreeEntry, readProjectDir } from './ipc'
 

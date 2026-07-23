@@ -1,9 +1,8 @@
+import type { MessagingPlatformInfo } from '@/types/zorin'
 // @vitest-environment jsdom
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
-import type { MessagingPlatformInfo } from '@/types/zorin'
 
 const getMessagingPlatforms = vi.fn()
 const updateMessagingPlatform = vi.fn()

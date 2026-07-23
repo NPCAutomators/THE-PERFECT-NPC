@@ -1,8 +1,7 @@
-import { type CSSProperties } from 'react'
-
 import { createParticleEmitter, ParticleField, type ParticleFieldConfig } from '@/components/particles/particle-field'
 import { $petActive, flashPetActivity } from '@/store/pet'
 import { $petOverlayActive, forwardPetReaction } from '@/store/pet-overlay'
+import { type CSSProperties } from 'react'
 
 /**
  * TikTok-style floating hearts — a thin skin over {@link ParticleField} (pixel

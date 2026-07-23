@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import { readJson, writeJson } from '@/lib/storage'
+import { atom } from 'nanostores'
 
 import type { SplitDir } from './session-states'
 

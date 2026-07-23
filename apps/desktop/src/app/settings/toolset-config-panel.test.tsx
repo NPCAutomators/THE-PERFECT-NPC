@@ -1,11 +1,10 @@
+import type { ToolsetConfig } from '@/types/zorin'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { cleanup, fireEvent, render as rtlRender, screen, waitFor } from '@testing-library/react'
 import type { ReactElement } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import type * as ReactRouterDom from 'react-router-dom'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
-import type { ToolsetConfig } from '@/types/zorin'
 
 // EnvVarField navigates to Settings → Keys via useNavigate, so every render
 // needs a router context. The navigate spy asserts the deep-link target.

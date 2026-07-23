@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { computed } from 'nanostores'
-import type { CSSProperties, ReactElement, PointerEvent as ReactPointerEvent } from 'react'
-
 import { PREVIEW_RAIL_MAX_WIDTH, PREVIEW_RAIL_MIN_WIDTH } from '@/app/chat/right-rail'
 import { PALETTE_AREA, type PaletteContribution } from '@/app/command-palette/contrib'
 import { type StatusbarItem } from '@/app/shell/statusbar-controls'
@@ -54,6 +50,9 @@ import { $filePreviewTarget, $previewTarget, closeRightRail } from '@/store/prev
 import { $reviewOpen, closeReview, REVIEW_PANE_ID } from '@/store/review'
 import { $currentCwd, $selectedStoredSessionId, $sessions, sessionMatchesStoredId } from '@/store/session'
 import { $sessionColorById, sessionColorFor } from '@/store/session-color'
+import { useStore } from '@nanostores/react'
+import { computed } from 'nanostores'
+import type { CSSProperties, ReactElement, PointerEvent as ReactPointerEvent } from 'react'
 
 import type { SessionDragPayload } from '../chat/composer/inline-refs'
 import { watchRouteTiles } from '../chat/route-tile'

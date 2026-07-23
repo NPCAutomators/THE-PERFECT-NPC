@@ -1,10 +1,10 @@
-import { speakText } from '@/zorin'
 import {
   $voicePlayback,
   setVoicePlaybackState,
   type VoicePlaybackSource,
   type VoicePlaybackState
 } from '@/store/voice-playback'
+import { speakText } from '@/zorin'
 
 import { sanitizeTextForSpeech } from './speech-text'
 

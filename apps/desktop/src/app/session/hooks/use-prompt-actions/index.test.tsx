@@ -1,12 +1,11 @@
-import { act, cleanup, render, waitFor } from '@testing-library/react'
-import type { MutableRefObject } from 'react'
-import { useEffect, useRef } from 'react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { textPart } from '@/lib/chat-messages'
 import { $composerAttachments, $composerDraft, type ComposerAttachment, setComposerDraft } from '@/store/composer'
 import { $busy, $connection, $messages, $sessions, $turnStartedAt, setSessions } from '@/store/session'
 import type { SessionInfo } from '@/types/zorin'
+import { act, cleanup, render, waitFor } from '@testing-library/react'
+import type { MutableRefObject } from 'react'
+import { useEffect, useRef } from 'react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import type { SubmitTextOptions } from './utils'
 

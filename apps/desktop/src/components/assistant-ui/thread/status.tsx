@@ -1,7 +1,3 @@
-import { useAuiState } from '@assistant-ui/react'
-import { useStore } from '@nanostores/react'
-import { type FC, type ReactNode, useEffect, useState } from 'react'
-
 import { useElapsedSeconds } from '@/components/chat/activity-timer'
 import { ActivityTimerText } from '@/components/chat/activity-timer-text'
 import { Codicon } from '@/components/ui/codicon'
@@ -12,6 +8,9 @@ import { $backgroundResume } from '@/store/background-delegation'
 import { $compactionActive } from '@/store/compaction'
 import { $activeSessionAwaitingInput } from '@/store/prompts'
 import { $activeSessionId, $turnStartedAt } from '@/store/session'
+import { useAuiState } from '@assistant-ui/react'
+import { useStore } from '@nanostores/react'
+import { type FC, type ReactNode, useEffect, useState } from 'react'
 
 const StatusRow: FC<{ children: ReactNode; label: string } & React.ComponentPropsWithoutRef<'div'>> = ({
   children,

@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { useGatewayRequest } from '@/app/gateway/hooks/use-gateway-request'
 import { SETTINGS_ROUTE } from '@/app/routes'
 import { Alert, AlertDescription } from '@/components/ui/alert'
@@ -36,6 +32,9 @@ import {
   hatchSelected,
   markRemixConfirmed
 } from '@/store/pet-generate'
+import { useStore } from '@nanostores/react'
+import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { DraftGrid } from './components/draft-grid'
 import { EmptyHint } from './components/empty-hint'

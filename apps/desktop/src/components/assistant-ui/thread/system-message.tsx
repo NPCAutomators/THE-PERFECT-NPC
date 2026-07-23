@@ -1,10 +1,9 @@
-import { MessagePrimitive, useAuiState } from '@assistant-ui/react'
-import { type FC } from 'react'
-
 import { messageContentText } from '@/components/assistant-ui/thread/content'
 import { Codicon } from '@/components/ui/codicon'
 import { LinkifiedText } from '@/lib/external-link'
 import { cn } from '@/lib/utils'
+import { MessagePrimitive, useAuiState } from '@assistant-ui/react'
+import { type FC } from 'react'
 
 const SLASH_STATUS_RE = /^slash:(?<command>\/[^\n]+)\n(?<output>[\s\S]*)$/
 const STEER_NOTE_RE = /^steer:(?<text>[\s\S]+)$/

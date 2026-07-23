@@ -1,8 +1,7 @@
-import { atom, computed } from 'nanostores'
-
 import { persistBoolean, storedBoolean } from '@/lib/storage'
 import { $activeGatewayProfile, normalizeProfileKey } from '@/store/profile'
 import { $busy } from '@/store/session'
+import { atom, computed } from 'nanostores'
 
 /**
  * Petdex mascot state for the desktop floating pet.

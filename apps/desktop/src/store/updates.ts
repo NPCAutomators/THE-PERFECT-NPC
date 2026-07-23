@@ -3,8 +3,6 @@
  * surfaces it as an ambient pill, and orchestrates the apply flow.
  */
 
-import { atom } from 'nanostores'
-
 import type {
   DesktopUpdateApplyOptions,
   DesktopUpdateApplyResult,
@@ -13,12 +11,13 @@ import type {
   DesktopUpdateStatus,
   DesktopVersionInfo
 } from '@/global'
-import { checkZorinUpdate, getActionStatus, updateZorin } from '@/zorin'
 import { translateNow } from '@/i18n'
 import { persistString, storedString } from '@/lib/storage'
 import { dismissNotification, notify } from '@/store/notifications'
 import { $connection } from '@/store/session'
 import type { BackendUpdateCheckResponse } from '@/types/zorin'
+import { checkZorinUpdate, getActionStatus, updateZorin } from '@/zorin'
+import { atom } from 'nanostores'
 
 export interface UpdateApplyState {
   applying: boolean

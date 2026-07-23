@@ -1,8 +1,7 @@
-import { useAuiState } from '@assistant-ui/react'
-import { type FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-
 import { triggerHaptic } from '@/lib/haptics'
 import { cn } from '@/lib/utils'
+import { useAuiState } from '@assistant-ui/react'
+import { type FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import {
   activeTimelineIndex,

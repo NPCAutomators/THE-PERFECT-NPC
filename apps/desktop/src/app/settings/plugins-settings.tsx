@@ -1,16 +1,15 @@
-import { useStore } from '@nanostores/react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import { Switch } from '@/components/ui/switch'
 import { Tip } from '@/components/ui/tooltip'
 import { $pluginRecords, type PluginRecord, setPluginEnabled } from '@/contrib/plugins-store'
 import { discoverRuntimePlugins } from '@/contrib/runtime-loader'
-import { getStatus } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { triggerHaptic } from '@/lib/haptics'
 import { Package } from '@/lib/icons'
 import { notifyError } from '@/store/notifications'
+import { getStatus } from '@/zorin'
+import { useStore } from '@nanostores/react'
 
 import { EmptyState, ListRow, Pill, SectionHeading, SettingsContent } from './primitives'
 

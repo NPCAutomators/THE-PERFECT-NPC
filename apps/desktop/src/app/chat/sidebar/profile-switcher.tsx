@@ -1,27 +1,3 @@
-import {
-  closestCenter,
-  DndContext,
-  type DragEndEvent,
-  type DragOverEvent,
-  type DragStartEvent,
-  KeyboardSensor,
-  type Modifier,
-  PointerSensor,
-  useSensor,
-  useSensors
-} from '@dnd-kit/core'
-import {
-  arrayMove,
-  horizontalListSortingStrategy,
-  SortableContext,
-  sortableKeyboardCoordinates,
-  useSortable
-} from '@dnd-kit/sortable'
-import { CSS } from '@dnd-kit/utilities'
-import { useStore } from '@nanostores/react'
-import { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { CodeEditor } from '@/components/chat/code-editor'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
@@ -31,7 +7,6 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '
 import { Popover, PopoverAnchor, PopoverContent } from '@/components/ui/popover'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tip, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { getProfileSoul, updateProfileSoul } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { triggerHaptic } from '@/lib/haptics'
 import { PROFILE_SWATCHES, profileColorSoft, resolveProfileColor } from '@/lib/profile-color'
@@ -60,6 +35,30 @@ import {
   sortByProfileOrder
 } from '@/store/profile'
 import type { ProfileInfo } from '@/types/zorin'
+import { getProfileSoul, updateProfileSoul } from '@/zorin'
+import {
+  closestCenter,
+  DndContext,
+  type DragEndEvent,
+  type DragOverEvent,
+  type DragStartEvent,
+  KeyboardSensor,
+  type Modifier,
+  PointerSensor,
+  useSensor,
+  useSensors
+} from '@dnd-kit/core'
+import {
+  arrayMove,
+  horizontalListSortingStrategy,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable
+} from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
+import { useStore } from '@nanostores/react'
+import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { CreateProfileDialog } from '../../profiles/create-profile-dialog'
 import { DeleteProfileDialog } from '../../profiles/delete-profile-dialog'

@@ -1,12 +1,7 @@
-import { useStore } from '@nanostores/react'
-import { useQuery } from '@tanstack/react-query'
-import { useMemo, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { GlyphSpinner } from '@/components/ui/glyph-spinner'
 import { Switch } from '@/components/ui/switch'
-import type { ZorinGateway } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { modelOptionsQueryKey, requestModelOptions } from '@/lib/model-options'
 import { displayModelName, modelDisplayParts } from '@/lib/model-status-label'
@@ -20,6 +15,10 @@ import {
   toggleModelVisibility
 } from '@/store/model-visibility'
 import type { ModelOptionProvider, ModelOptionsResponse } from '@/types/zorin'
+import type { ZorinGateway } from '@/zorin'
+import { useStore } from '@nanostores/react'
+import { useQuery } from '@tanstack/react-query'
+import { useMemo, useState } from 'react'
 
 interface ModelVisibilityDialogProps {
   gw?: ZorinGateway

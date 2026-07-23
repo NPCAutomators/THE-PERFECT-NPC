@@ -1,7 +1,6 @@
+import { $activeSessionId, $selectedStoredSessionId } from '@/store/session'
 import { atom } from 'nanostores'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-
-import { $activeSessionId, $selectedStoredSessionId } from '@/store/session'
 
 import { renameSessionPreferringRpc } from './session-actions-menu'
 

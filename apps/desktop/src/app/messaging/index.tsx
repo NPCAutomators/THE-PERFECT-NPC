@@ -1,6 +1,3 @@
-import type * as React from 'react'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-
 import { PageLoader } from '@/components/page-loader'
 import { StatusDot, type StatusTone } from '@/components/status-dot'
 import { Button } from '@/components/ui/button'
@@ -9,12 +6,6 @@ import { ErrorBanner } from '@/components/ui/error-state'
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
 import { Tip } from '@/components/ui/tooltip'
-import {
-  getMessagingPlatforms,
-  type MessagingEnvVarInfo,
-  type MessagingPlatformInfo,
-  updateMessagingPlatform
-} from '@/zorin'
 import { type Translations, useI18n } from '@/i18n'
 import { openExternalLink } from '@/lib/external-link'
 import { ExternalLink, Save, Trash2 } from '@/lib/icons'
@@ -22,6 +13,14 @@ import { normalize } from '@/lib/text'
 import { cn } from '@/lib/utils'
 import { notify, notifyError } from '@/store/notifications'
 import { runGatewayRestart } from '@/store/system-actions'
+import {
+  getMessagingPlatforms,
+  type MessagingEnvVarInfo,
+  type MessagingPlatformInfo,
+  updateMessagingPlatform
+} from '@/zorin'
+import type * as React from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { useRefreshHotkey } from '../hooks/use-refresh-hotkey'
 import { useRouteEnumParam } from '../hooks/use-route-enum-param'
@@ -551,8 +550,7 @@ const PLATFORM_INTRO: Record<string, string> = {
   matrix: 'Sign in to your homeserver with the bot account, then copy the access token, user ID, and homeserver URL.',
   signal:
     'Run a signal-cli REST bridge somewhere reachable, then point Zorin at the URL and the registered phone number.',
-  whatsapp:
-    'Start the WhatsApp bridge that ships with Zorin, scan the QR code on first run, then enable the platform.',
+  whatsapp: 'Start the WhatsApp bridge that ships with Zorin, scan the QR code on first run, then enable the platform.',
   bluebubbles:
     'Run BlueBubbles Server on a Mac with iMessage, expose its API, then point Zorin at the URL with the server password.',
   homeassistant:

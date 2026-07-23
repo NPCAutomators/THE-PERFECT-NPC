@@ -1,7 +1,3 @@
-import { act, cleanup, render, waitFor } from '@testing-library/react'
-import { useEffect, useRef } from 'react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { assistantTextPart, type ChatMessage } from '@/lib/chat-messages'
 import {
   $previewTarget,
@@ -11,6 +7,9 @@ import {
 } from '@/store/preview'
 import { $currentCwd, $messages } from '@/store/session'
 import type { RpcEvent } from '@/types/zorin'
+import { act, cleanup, render, waitFor } from '@testing-library/react'
+import { useEffect, useRef } from 'react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { usePreviewRouting } from './use-preview-routing'
 

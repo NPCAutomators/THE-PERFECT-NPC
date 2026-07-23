@@ -1,7 +1,6 @@
+import { getStatus } from '@/zorin'
 import { act, cleanup, renderHook } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
-import { getStatus } from '@/zorin'
 
 import { useStatusSnapshot } from './use-status-snapshot'
 

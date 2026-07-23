@@ -1,9 +1,8 @@
-import { atom } from 'nanostores'
-
 import { translateNow } from '@/i18n'
 import { copyTextToClipboard, renameDesktopPath, revealDesktopPath, trashDesktopPath } from '@/lib/desktop-fs'
 import { notify, notifyError } from '@/store/notifications'
 import { notifyWorkspaceChanged } from '@/store/workspace-events'
+import { atom } from 'nanostores'
 
 // Shared file-row actions for BOTH trees (the file browser + the review/git
 // tree): reveal, copy path, rename, delete. Rename/delete route through a single

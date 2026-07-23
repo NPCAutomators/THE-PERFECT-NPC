@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type ComponentProps, type MouseEvent, type ReactNode, useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-
 import { toggleLayoutEditMode } from '@/components/pane-shell/edit-mode'
 import { resetLayoutTree } from '@/components/pane-shell/tree/store'
 import { Button } from '@/components/ui/button'
@@ -18,6 +14,9 @@ import {
   togglePanesFlipped,
   toggleSidebarOpen
 } from '@/store/layout'
+import { useStore } from '@nanostores/react'
+import { type ComponentProps, type MouseEvent, type ReactNode, useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { appViewForPath, isOverlayView, SETTINGS_ROUTE } from '../routes'
 

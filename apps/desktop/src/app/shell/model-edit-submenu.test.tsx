@@ -1,13 +1,9 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuSub,
   DropdownMenuSubTrigger
 } from '@/components/ui/dropdown-menu'
-import type * as ZorinApi from '@/zorin'
 import { $modelPresets, getModelPreset } from '@/store/model-presets'
 import {
   $activeSessionId,
@@ -18,6 +14,9 @@ import {
   setCurrentModelSource,
   setCurrentReasoningEffort
 } from '@/store/session'
+import type * as ZorinApi from '@/zorin'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { type FastControl, ModelEditSubmenu } from './model-edit-submenu'
 

@@ -1,6 +1,3 @@
-import { type MutableRefObject, useCallback } from 'react'
-
-import { PROMPT_SUBMIT_REQUEST_TIMEOUT_MS } from '@/zorin'
 import type { Translations } from '@/i18n'
 import { type ChatMessage, textPart } from '@/lib/chat-messages'
 import { optimisticAttachmentRef } from '@/lib/chat-runtime'
@@ -15,6 +12,8 @@ import {
 import { clearNotifications, notify, notifyError } from '@/store/notifications'
 import { requestDesktopOnboarding } from '@/store/onboarding'
 import { setAwaitingResponse, setBusy, setMessages } from '@/store/session'
+import { PROMPT_SUBMIT_REQUEST_TIMEOUT_MS } from '@/zorin'
+import { type MutableRefObject, useCallback } from 'react'
 
 import type { ClientSessionState } from '../../../types'
 

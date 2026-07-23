@@ -1,5 +1,3 @@
-import { useCallback } from 'react'
-
 import { requestComposerFocus, requestComposerInsert, requestComposerInsertRefs } from '@/app/chat/composer/focus'
 import { droppedFileInlineRef } from '@/app/chat/composer/inline-refs'
 import { formatRefValue } from '@/components/assistant-ui/directive-text'
@@ -14,6 +12,7 @@ import {
   setComposerTerminalSelection
 } from '@/store/composer'
 import { notify, notifyError } from '@/store/notifications'
+import { useCallback } from 'react'
 
 import type { ImageDetachResponse } from '../../types'
 

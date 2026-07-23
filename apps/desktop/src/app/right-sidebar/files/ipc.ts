@@ -1,8 +1,7 @@
-import ignore from 'ignore'
-
 import type { ZorinReadDirEntry, ZorinReadDirResult } from '@/global'
 import { desktopFsCacheKey, desktopGitRoot, readDesktopDir, readDesktopFileDataUrl } from '@/lib/desktop-fs'
 import { ALWAYS_EXCLUDED } from '@/lib/excluded-paths'
+import ignore from 'ignore'
 
 export type ProjectTreeEntry = ZorinReadDirEntry
 

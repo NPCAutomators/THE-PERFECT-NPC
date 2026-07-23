@@ -9,9 +9,8 @@
  * just no-op.
  */
 
-import { atom } from 'nanostores'
-
 import { persistBoolean, storedBoolean } from '@/lib/storage'
+import { atom } from 'nanostores'
 
 const KEY = 'zorin.desktop.keepAwake.v1'
 

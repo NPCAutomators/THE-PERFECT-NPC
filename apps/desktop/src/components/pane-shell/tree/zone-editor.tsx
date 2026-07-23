@@ -16,16 +16,15 @@
  * disable Save with an explanation.
  */
 
-import { useStore } from '@nanostores/react'
-import { atom } from 'nanostores'
-import { type PointerEvent as ReactPointerEvent, useCallback, useEffect, useRef, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { registry } from '@/contrib/registry'
 import { useI18n } from '@/i18n'
 import { ESCAPE_PRIORITY, isTopEscapeLayer, pushEscapeLayer } from '@/lib/escape-layers'
 import { cn } from '@/lib/utils'
+import { useStore } from '@nanostores/react'
+import { atom } from 'nanostores'
+import { type PointerEvent as ReactPointerEvent, useCallback, useEffect, useRef, useState } from 'react'
 
 import {
   canSplit,

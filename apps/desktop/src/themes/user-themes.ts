@@ -10,9 +10,8 @@
  * React mounts) can resolve a user theme synchronously, same as built-ins.
  */
 
-import { atom, computed } from 'nanostores'
-
 import { registry } from '@/contrib/registry'
+import { atom, computed } from 'nanostores'
 
 import { $backendThemes } from './backend-sync'
 import { BUILTIN_THEMES } from './presets'

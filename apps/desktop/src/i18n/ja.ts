@@ -912,7 +912,8 @@ export const ja = defineLocale({
       ready: '準備完了',
       needsSignIn: 'サインインが必要',
       needsSetup: 'セットアップが必要',
-      npcAutomatorsIncluded: 'NpcAutomators サブスクリプションに含まれています。有効にするには NPCAUTOMATORS Portal にサインインしてください。',
+      npcAutomatorsIncluded:
+        'NpcAutomators サブスクリプションに含まれています。有効にするには NPCAUTOMATORS Portal にサインインしてください。',
       npcAutomatorsAuthNeededTitle: 'NPCAUTOMATORS Portal にサインイン',
       npcAutomatorsAuthNeededMessage: provider =>
         `${provider} は保存されましたが、NPCAUTOMATORS Portal にサインインするまで有効になりません。`,
@@ -2320,8 +2321,7 @@ export const ja = defineLocale({
       showConsole: 'プレビューコンソールを表示',
       hideDevTools: 'プレビュー DevTools を非表示',
       openDevTools: 'プレビュー DevTools を開く',
-      finishedRestarting: message =>
-        `Zorin がプレビューサーバーの再起動を完了しました${message ? `: ${message}` : ''}`,
+      finishedRestarting: message => `Zorin がプレビューサーバーの再起動を完了しました${message ? `: ${message}` : ''}`,
       failedRestarting: message => `サーバーの再起動に失敗しました: ${message}`,
       unknownError: '不明なエラー',
       restartedTitle: 'プレビューサーバーが再起動しました',

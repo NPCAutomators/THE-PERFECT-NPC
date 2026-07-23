@@ -1,12 +1,11 @@
-import type * as React from 'react'
-import { useState } from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
-import type { SessionInfo } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { notifyError } from '@/store/notifications'
 import { newSessionInProfile } from '@/store/profile'
 import { switchBranchInRepo } from '@/store/projects'
+import type { SessionInfo } from '@/zorin'
+import type * as React from 'react'
+import { useState } from 'react'
 
 import { countLabel, SidebarRowStack } from '../chrome'
 import { SidebarLoadMoreRow } from '../load-more-row'

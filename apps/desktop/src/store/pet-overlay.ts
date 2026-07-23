@@ -1,8 +1,7 @@
-import { atom } from 'nanostores'
-
 import { persistBoolean, persistString, storedBoolean, storedString } from '@/lib/storage'
 import { $petActivity, $petInfo, $petUnread, clearPetUnread, type PetActivity, type PetInfo } from '@/store/pet'
 import { $awaitingResponse, $busy } from '@/store/session'
+import { atom } from 'nanostores'
 
 /**
  * Controller for the pop-out pet overlay (main-renderer side).

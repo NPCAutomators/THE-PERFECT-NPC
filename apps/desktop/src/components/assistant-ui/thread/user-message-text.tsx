@@ -1,8 +1,7 @@
-import type { FC } from 'react'
-import { Fragment, useMemo } from 'react'
-
 import { DirectiveContent } from '@/components/assistant-ui/directive-text'
 import { cn } from '@/lib/utils'
+import type { FC } from 'react'
+import { Fragment, useMemo } from 'react'
 
 // User messages should render the bare-minimum of markdown: backtick `code`
 // spans and ``` fenced blocks. We deliberately don't pull in the full

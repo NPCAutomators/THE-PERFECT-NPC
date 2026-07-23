@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import { persistString, storedString } from '@/lib/storage'
+import { atom } from 'nanostores'
 
 const STORAGE_KEY = 'zorin.desktop.completionSoundVariantId'
 

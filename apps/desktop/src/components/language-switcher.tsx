@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Command, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -11,6 +9,7 @@ import { Check, ChevronDown, Globe } from '@/lib/icons'
 import { normalize } from '@/lib/text'
 import { cn } from '@/lib/utils'
 import { notifyError } from '@/store/notifications'
+import { useState } from 'react'
 
 export interface LanguageSwitcherProps {
   className?: string

@@ -1,12 +1,11 @@
-import { useCallback, useEffect, useState } from 'react'
-
 import { PageLoader } from '@/components/page-loader'
 import { Button } from '@/components/ui/button'
 import { DisclosureCaret } from '@/components/ui/disclosure-caret'
-import { getMemoryProviderConfig, saveMemoryProviderConfig } from '@/zorin'
 import { SlidersHorizontal } from '@/lib/icons'
 import { notifyError } from '@/store/notifications'
 import type { MemoryProviderConfig, MemoryProviderField } from '@/types/zorin'
+import { getMemoryProviderConfig, saveMemoryProviderConfig } from '@/zorin'
+import { useCallback, useEffect, useState } from 'react'
 
 import { ListRow, Pill } from '../primitives'
 

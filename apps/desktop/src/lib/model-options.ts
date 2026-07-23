@@ -1,5 +1,5 @@
-import { getGlobalModelOptions, type ZorinGateway, type ModelOptionsResponse } from '@/zorin'
 import type { ModelOptionProvider } from '@/types/zorin'
+import { getGlobalModelOptions, type ModelOptionsResponse, type ZorinGateway } from '@/zorin'
 
 /**
  * True only when a persisted **manual** composer pick has been removed from the

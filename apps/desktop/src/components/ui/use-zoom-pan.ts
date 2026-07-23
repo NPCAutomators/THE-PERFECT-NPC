@@ -1,3 +1,4 @@
+import { isSmartZoomWheel } from '@/lib/trackpad-gestures'
 import {
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
@@ -6,8 +7,6 @@ import {
   useRef,
   useState
 } from 'react'
-
-import { isSmartZoomWheel } from '@/lib/trackpad-gestures'
 
 interface Transform {
   scale: number

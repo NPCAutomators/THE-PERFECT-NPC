@@ -1,7 +1,6 @@
-import { type MutableRefObject, useEffect, useRef } from 'react'
-
 import { isNewChatRoute } from '@/app/routes'
 import { setResumeExhaustedSessionId } from '@/store/session'
+import { type MutableRefObject, useEffect, useRef } from 'react'
 
 interface RouteResumeOptions {
   activeSessionId: string | null

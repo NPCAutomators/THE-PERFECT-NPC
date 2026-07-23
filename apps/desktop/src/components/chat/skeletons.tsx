@@ -1,6 +1,5 @@
-import type { CSSProperties } from 'react'
-
 import { Skeleton } from '@/components/ui/skeleton'
+import type { CSSProperties } from 'react'
 
 // Shared loading skeletons for the file/git trees and diffs — quieter than a
 // spinner and shaped like the content that's about to land.

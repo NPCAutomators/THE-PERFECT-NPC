@@ -1,7 +1,6 @@
-import { useStore } from '@nanostores/react'
-
 import { SessionPickerDialog } from '@/components/session-picker'
 import { $gatewayState, $selectedStoredSessionId, $sessionPickerOpen, setSessionPickerOpen } from '@/store/session'
+import { useStore } from '@nanostores/react'
 
 interface SessionPickerOverlayProps {
   onResume: (storedSessionId: string) => void

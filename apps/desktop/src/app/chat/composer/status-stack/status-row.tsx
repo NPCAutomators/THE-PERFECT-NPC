@@ -1,5 +1,3 @@
-import { Fragment, memo, type ReactNode } from 'react'
-
 import { openAgentTerminal } from '@/app/right-sidebar/terminal/terminals'
 import { StatusRow } from '@/components/chat/status-row'
 import { Button } from '@/components/ui/button'
@@ -11,6 +9,7 @@ import { capitalize } from '@/lib/text'
 import type { TodoStatus } from '@/lib/todos'
 import { cn } from '@/lib/utils'
 import type { ComposerStatusItem } from '@/store/composer-status'
+import { Fragment, memo, type ReactNode } from 'react'
 
 const toolLabel = (name: string) => name.split('_').filter(Boolean).map(capitalize).join(' ') || name
 

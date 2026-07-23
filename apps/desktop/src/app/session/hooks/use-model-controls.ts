@@ -1,8 +1,4 @@
-import { type QueryClient } from '@tanstack/react-query'
-import { useCallback, useRef } from 'react'
-
 import type { ModelSelection } from '@/app/shell/model-menu-panel'
-import { getGlobalModelInfo } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { manualPickRemoved, modelOptionsQueryKey } from '@/lib/model-options'
 import { notifyError } from '@/store/notifications'
@@ -20,6 +16,9 @@ import {
 } from '@/store/session'
 import { $sessionStates, sessionTileDelegate } from '@/store/session-states'
 import type { ModelOptionsResponse } from '@/types/zorin'
+import { getGlobalModelInfo } from '@/zorin'
+import { type QueryClient } from '@tanstack/react-query'
+import { useCallback, useRef } from 'react'
 
 interface ModelControlsOptions {
   queryClient: QueryClient

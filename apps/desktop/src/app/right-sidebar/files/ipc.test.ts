@@ -2,9 +2,8 @@
 
 import { Buffer } from 'node:buffer'
 
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { ZorinReadDirEntry, ZorinReadDirResult } from '@/global'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { clearProjectDirCache, readProjectDir } from './ipc'
 

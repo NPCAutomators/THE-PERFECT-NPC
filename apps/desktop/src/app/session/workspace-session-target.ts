@@ -1,5 +1,3 @@
-import type { MutableRefObject } from 'react'
-
 import { followActiveSessionCwd, resolveNewSessionCwd } from '@/store/projects'
 import {
   $newChatWorkspaceTargetGeneration,
@@ -7,6 +5,7 @@ import {
   setCurrentCwd,
   setNewChatWorkspaceTarget
 } from '@/store/session'
+import type { MutableRefObject } from 'react'
 
 interface WorkspaceSessionOptions {
   activeSessionIdRef: MutableRefObject<string | null>

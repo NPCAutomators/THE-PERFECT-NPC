@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import type { ReactNode } from 'react'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-
 import { runInTerminal } from '@/app/right-sidebar/store'
 import {
   FEATURED_ID,
@@ -15,7 +11,6 @@ import {
 import { Button } from '@/components/ui/button'
 import { RowButton } from '@/components/ui/row-button'
 import { SearchField } from '@/components/ui/search-field'
-import { disconnectOAuthProvider, listOAuthProviders } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { Check, ChevronDown, ChevronRight, KeyRound, Loader2, Terminal, Trash2 } from '@/lib/icons'
 import { normalize } from '@/lib/text'
@@ -23,6 +18,10 @@ import { cn } from '@/lib/utils'
 import { notify, notifyError } from '@/store/notifications'
 import { $desktopOnboarding, startManualLocalEndpoint, startManualProviderOAuth } from '@/store/onboarding'
 import type { EnvVarInfo, OAuthProvider } from '@/types/zorin'
+import { disconnectOAuthProvider, listOAuthProviders } from '@/zorin'
+import { useStore } from '@nanostores/react'
+import type { ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { isKeyVar, ProviderKeyRows } from './credential-key-ui'
 import { CustomEndpointsSettings } from './custom-endpoints-settings'

@@ -1,6 +1,5 @@
-import type { ComponentProps } from 'react'
-
 import { cn } from '@/lib/utils'
+import type { ComponentProps } from 'react'
 
 export type StatusTone = 'good' | 'muted' | 'warn' | 'bad'
 

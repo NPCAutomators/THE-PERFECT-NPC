@@ -1,6 +1,5 @@
-import { type RefObject, useEffect } from 'react'
-
 import { $petMotion, $petRoamDir, type PetState } from '@/store/pet'
+import { type RefObject, useEffect } from 'react'
 
 import { chooseMove, dwellMs, PAUSE_DWELL, pickStrollTarget } from './roam-behavior'
 import {

@@ -8,11 +8,6 @@
  *    StatusbarItem) — plugins add theirs through the identical call.
  */
 
-import { useStore } from '@nanostores/react'
-import { useQuery } from '@tanstack/react-query'
-import { atom } from 'nanostores'
-import type { CSSProperties } from 'react'
-
 import { ChatPreviewRail } from '@/app/chat/right-rail/preview'
 import { RightSidebarPane } from '@/app/right-sidebar'
 import { ReviewPane } from '@/app/right-sidebar/review'
@@ -24,11 +19,15 @@ import { DecodeText } from '@/components/ui/decode-text'
 import { ContribBoundary } from '@/contrib/react/boundary'
 import { useContributions } from '@/contrib/react/use-contributions'
 import { registry } from '@/contrib/registry'
-import { getLogs } from '@/zorin'
 import { normalizeOrLocalPreviewTarget } from '@/lib/local-preview'
 import { cn } from '@/lib/utils'
 import { $filePreviewTarget, $previewTarget, setCurrentSessionPreviewTarget } from '@/store/preview'
 import { $currentCwd } from '@/store/session'
+import { getLogs } from '@/zorin'
+import { useStore } from '@nanostores/react'
+import { useQuery } from '@tanstack/react-query'
+import { atom } from 'nanostores'
+import type { CSSProperties } from 'react'
 
 // ---------------------------------------------------------------------------
 // Logs — live agent-log tail. OPTIONAL chrome: not in any default layout,

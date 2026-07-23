@@ -1,8 +1,7 @@
-import type { Unstable_TriggerItem } from '@assistant-ui/core'
-
 import type { SlashChipKind } from '@/components/assistant-ui/directive-text'
 import type { ComposerAttachment } from '@/store/composer'
 import { setSessionPickerOpen } from '@/store/session'
+import type { Unstable_TriggerItem } from '@assistant-ui/core'
 
 export const COMPOSER_STACK_BREAKPOINT_PX = 320
 

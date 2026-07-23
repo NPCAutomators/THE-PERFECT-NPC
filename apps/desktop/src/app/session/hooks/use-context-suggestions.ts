@@ -1,6 +1,5 @@
-import { type MutableRefObject, useCallback, useEffect } from 'react'
-
 import { $currentCwd, setContextSuggestions } from '@/store/session'
+import { type MutableRefObject, useCallback, useEffect } from 'react'
 
 import type { ContextSuggestion } from '../../types'
 

@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useRef, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import {
@@ -28,6 +25,8 @@ import {
   pickProjectFolder,
   renameProject
 } from '@/store/projects'
+import { useStore } from '@nanostores/react'
+import { useEffect, useRef, useState } from 'react'
 
 // Single dialog mounted once in the sidebar; it renders create / rename /
 // add-folder flows driven by the $projectDialog atom. Folders are chosen via

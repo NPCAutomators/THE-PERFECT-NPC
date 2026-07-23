@@ -1,5 +1,3 @@
-import { useStore } from '@nanostores/react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { Tip } from '@/components/ui/tooltip'
 import { useI18n } from '@/i18n'
@@ -10,6 +8,7 @@ import type { ComposerAttachment } from '@/store/composer'
 import { notifyError } from '@/store/notifications'
 import { setCurrentSessionPreviewTarget } from '@/store/preview'
 import { $currentCwd } from '@/store/session'
+import { useStore } from '@nanostores/react'
 
 export function AttachmentList({
   attachments,

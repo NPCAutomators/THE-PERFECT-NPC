@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { ZorinReviewFile } from '@/global'
+import { describe, expect, it } from 'vitest'
 
 import { buildReviewTree } from './tree-data'
 

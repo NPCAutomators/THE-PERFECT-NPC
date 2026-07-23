@@ -1,7 +1,3 @@
-import { act, cleanup, render } from '@testing-library/react'
-import type { MutableRefObject } from 'react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { ChatMessage } from '@/lib/chat-messages'
 import {
   $activeSessionStoredIdRotation,
@@ -21,6 +17,9 @@ import {
   setCurrentServiceTier,
   setTurnStartedAt
 } from '@/store/session'
+import { act, cleanup, render } from '@testing-library/react'
+import type { MutableRefObject } from 'react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { useSessionStateCache } from './use-session-state-cache'
 

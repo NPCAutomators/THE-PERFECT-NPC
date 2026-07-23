@@ -1,10 +1,9 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { cleanup, fireEvent, render, screen } from '@testing-library/react'
-import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { DropdownMenu, DropdownMenuContent } from '@/components/ui/dropdown-menu'
 import { $collapsedProviders, toggleCollapsedProvider } from '@/store/provider-collapse'
 import { $activeSessionId, $currentModel, $currentProvider } from '@/store/session'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { ModelMenuPanel } from './model-menu-panel'
 

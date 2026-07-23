@@ -1,6 +1,5 @@
-import type { ComponentProps } from 'react'
-
 import { cn } from '@/lib/utils'
+import type { ComponentProps } from 'react'
 
 // Shared raw-log viewer: no bg, hairline border, tight padding, small mono.
 // One style everywhere we surface logs. Pass a max-h-* via className.

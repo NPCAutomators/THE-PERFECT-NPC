@@ -1,7 +1,6 @@
+import type { TerminalBackendsResponse } from '@/types/zorin'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
-import type { TerminalBackendsResponse } from '@/types/zorin'
 
 const getTerminalBackends = vi.fn()
 const selectTerminalBackend = vi.fn()

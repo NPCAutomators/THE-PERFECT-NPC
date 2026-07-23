@@ -1,7 +1,6 @@
-import { atom } from 'nanostores'
-
 import { normalize } from '@/lib/text'
 import { $petInfo, type PetInfo, petProfile, setPetInfo } from '@/store/pet'
+import { atom } from 'nanostores'
 
 /**
  * Feature store for the petdex gallery picker (Cmd+K "Pets…" + Settings).

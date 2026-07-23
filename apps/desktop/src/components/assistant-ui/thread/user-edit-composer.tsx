@@ -1,18 +1,3 @@
-import type { Unstable_TriggerAdapter, Unstable_TriggerItem } from '@assistant-ui/core'
-import { ComposerPrimitive, useAui, useAuiState } from '@assistant-ui/react'
-import {
-  type ClipboardEvent,
-  type FC,
-  type FocusEvent,
-  type FormEvent,
-  type KeyboardEvent,
-  type DragEvent as ReactDragEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState
-} from 'react'
-
 import { COMPOSER_DROP_ACTIVE_CLASS, COMPOSER_DROP_FADE_CLASS } from '@/app/chat/composer/drop-affordance'
 import {
   type ComposerInsertMode,
@@ -40,9 +25,9 @@ import { detectTrigger, textBeforeCaret, type TriggerState } from '@/app/chat/co
 import { ComposerTriggerPopover } from '@/app/chat/composer/trigger-popover'
 import {
   extractDroppedFiles,
-  ZORIN_PATHS_MIME,
   isImagePath,
-  partitionDroppedFiles
+  partitionDroppedFiles,
+  ZORIN_PATHS_MIME
 } from '@/app/chat/hooks/use-composer-actions'
 import { uploadComposerAttachment } from '@/app/session/hooks/use-prompt-actions'
 import { zorinDirectiveFormatter } from '@/components/assistant-ui/directive-text'
@@ -54,7 +39,6 @@ import {
   USER_BUBBLE_BASE_CLASS
 } from '@/components/assistant-ui/thread/user-message'
 import { Codicon } from '@/components/ui/codicon'
-import type { ZorinGateway } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { attachmentDisplayText, attachmentId, pathLabel } from '@/lib/chat-runtime'
 import { sanitizeComposerInput } from '@/lib/composer-input-sanitize'
@@ -66,6 +50,21 @@ import type { ComposerAttachment } from '@/store/composer'
 import { notifyError } from '@/store/notifications'
 import { $connection } from '@/store/session'
 import { notifyThreadEditClose } from '@/store/thread-scroll'
+import type { ZorinGateway } from '@/zorin'
+import type { Unstable_TriggerAdapter, Unstable_TriggerItem } from '@assistant-ui/core'
+import { ComposerPrimitive, useAui, useAuiState } from '@assistant-ui/react'
+import {
+  type ClipboardEvent,
+  type FC,
+  type FocusEvent,
+  type FormEvent,
+  type KeyboardEvent,
+  type DragEvent as ReactDragEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 
 interface UserEditComposerProps {
   cwd: string | null

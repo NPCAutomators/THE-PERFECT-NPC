@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
@@ -9,6 +6,8 @@ import type { ZorinGitBaseBranch } from '@/global'
 import { useI18n } from '@/i18n'
 import { $repoStatus } from '@/store/coding-status'
 import { listBaseBranches } from '@/store/projects'
+import { useStore } from '@nanostores/react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 // Filterable combobox for picking the base branch of a new worktree. Lists
 // local + remote-tracking branches, defaults to the default branch

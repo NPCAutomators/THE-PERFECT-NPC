@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useMemo, useRef, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -25,6 +22,8 @@ import { selectableCardClass } from '@/lib/selectable-card'
 import { cn } from '@/lib/utils'
 import { notify, notifyError } from '@/store/notifications'
 import { $profiles, refreshActiveProfile } from '@/store/profile'
+import { useStore } from '@nanostores/react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { CONTROL_TEXT } from './constants'
 import { EmptyState, ListRow, LoadingState, Pill, SettingsContent } from './primitives'

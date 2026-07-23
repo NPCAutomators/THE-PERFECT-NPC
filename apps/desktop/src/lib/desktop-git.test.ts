@@ -1,6 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { $connection } from '@/store/session'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { desktopGit } from './desktop-git'
 

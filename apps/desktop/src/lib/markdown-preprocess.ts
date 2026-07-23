@@ -1,7 +1,6 @@
-import { normalizeMathDelimiters } from '@assistant-ui/react-streamdown'
-
 import { isLikelyProseFence, sanitizeLanguageTag } from '@/lib/markdown-code'
 import { stripPreviewTargets } from '@/lib/preview-targets'
+import { normalizeMathDelimiters } from '@assistant-ui/react-streamdown'
 
 const REASONING_BLOCK_RE = /<(think|thinking|reasoning|scratchpad|analysis)>[\s\S]*?<\/\1>\s*/gi
 const PREVIEW_MARKER_RE = /\[Preview:[^\]]+\]\(#preview[:/][^)]+\)/gi

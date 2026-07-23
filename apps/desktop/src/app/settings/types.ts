@@ -1,8 +1,7 @@
-import type { Dispatch, SetStateAction } from 'react'
-
-import type { ZorinGateway } from '@/zorin'
 import type { IconComponent } from '@/lib/icons'
 import type { EnvVarInfo } from '@/types/zorin'
+import type { ZorinGateway } from '@/zorin'
+import type { Dispatch, SetStateAction } from 'react'
 
 export type SettingsView =
   | 'about'

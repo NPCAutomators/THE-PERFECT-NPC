@@ -1,6 +1,3 @@
-import { atom, computed } from 'nanostores'
-
-import { getProfiles, setApiRequestProfile, STARTUP_REQUEST_TIMEOUT_MS } from '@/zorin'
 import { invalidateProfileScopedQueries } from '@/lib/query-client'
 import {
   arraysEqual,
@@ -15,6 +12,8 @@ import { $gateway, ensureGatewayForProfile, openGatewayForProfile } from '@/stor
 import { setConnection } from '@/store/session'
 import { resetStarmapGraph } from '@/store/starmap'
 import type { ProfileInfo } from '@/types/zorin'
+import { getProfiles, setApiRequestProfile, STARTUP_REQUEST_TIMEOUT_MS } from '@/zorin'
+import { atom, computed } from 'nanostores'
 
 // Canonical key for a profile: trimmed, empty → "default". Used everywhere we
 // compare a session's owning profile against the live gateway's profile.

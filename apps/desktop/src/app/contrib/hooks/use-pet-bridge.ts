@@ -1,11 +1,10 @@
-import { useEffect, useRef } from 'react'
-
 import { setPetActivity } from '@/store/pet'
 import { setPetScale } from '@/store/pet-gallery'
 import { setPetOverlayOpenAppHandler, setPetOverlayScaleHandler, setPetOverlaySubmitHandler } from '@/store/pet-overlay'
 import { $sessions } from '@/store/session'
 import { $attentionSessionIds } from '@/store/session-states'
 import { isSecondaryWindow } from '@/store/windows'
+import { useEffect, useRef } from 'react'
 
 import type { GatewayRequester } from '../types'
 

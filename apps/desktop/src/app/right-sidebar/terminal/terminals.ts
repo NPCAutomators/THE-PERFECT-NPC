@@ -1,7 +1,6 @@
-import { atom, computed } from 'nanostores'
-
 import { readKey, writeKey } from '@/lib/storage'
 import { $currentCwd } from '@/store/session'
+import { atom, computed } from 'nanostores'
 
 import { setTerminalTakeover } from '../store'
 

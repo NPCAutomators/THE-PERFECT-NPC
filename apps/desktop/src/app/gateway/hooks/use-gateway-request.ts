@@ -1,11 +1,10 @@
-import { isGatewayReauthRequired, resolveGatewayWsUrl } from '@zorin/shared'
-import { useStore } from '@nanostores/react'
-import { useCallback, useEffect, useRef } from 'react'
-
-import type { ZorinGateway } from '@/zorin'
 import { $gateway, ensureActiveGatewayOpen, isActivePrimary } from '@/store/gateway'
 import { $activeGatewayProfile } from '@/store/profile'
 import { $gatewayState, setConnection } from '@/store/session'
+import type { ZorinGateway } from '@/zorin'
+import { useStore } from '@nanostores/react'
+import { isGatewayReauthRequired, resolveGatewayWsUrl } from '@zorin/shared'
+import { useCallback, useEffect, useRef } from 'react'
 
 export function useGatewayRequest() {
   const gatewayState = useStore($gatewayState)

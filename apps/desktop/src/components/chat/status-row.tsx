@@ -1,6 +1,5 @@
-import { type KeyboardEvent, type MouseEvent, type ReactNode } from 'react'
-
 import { cn } from '@/lib/utils'
+import { type KeyboardEvent, type MouseEvent, type ReactNode } from 'react'
 
 interface StatusRowProps {
   children: ReactNode

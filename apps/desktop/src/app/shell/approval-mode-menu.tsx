@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useMemo } from 'react'
-
 import type { StatusbarItem } from '@/app/shell/statusbar-controls'
 import {
   DropdownMenuLabel,
@@ -17,6 +14,8 @@ import {
   setApprovalModeForProfile,
   syncApprovalModeForProfile
 } from '@/store/approval-mode'
+import { useStore } from '@nanostores/react'
+import { useEffect, useMemo } from 'react'
 
 export function useApprovalModeStatusbarItem(profile: string, requestGateway: ApprovalModeRequester): StatusbarItem {
   const { t } = useI18n()

@@ -1,7 +1,6 @@
+import { $connection } from '@/store/session'
 import { act, cleanup, render } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
-import { $connection } from '@/store/session'
 
 import { PreviewPane } from './preview-pane'
 

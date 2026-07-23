@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type MutableRefObject, useCallback, useEffect, useRef } from 'react'
-
 import type { ChatMessage } from '@/lib/chat-messages'
 import { preserveLocalAssistantErrors } from '@/lib/chat-messages'
 import { createClientSessionState } from '@/lib/chat-runtime'
@@ -18,6 +15,8 @@ import {
   setYoloActive
 } from '@/store/session'
 import { publishSessionState } from '@/store/session-states'
+import { useStore } from '@nanostores/react'
+import { type MutableRefObject, useCallback, useEffect, useRef } from 'react'
 
 import type { ClientSessionState } from '../../types'
 

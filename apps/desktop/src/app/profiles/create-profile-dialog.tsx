@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import { ActionStatus } from '@/components/ui/action-status'
 import { Button } from '@/components/ui/button'
 import {
@@ -13,11 +11,12 @@ import {
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
-import { createProfile, updateProfileSoul } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { AlertTriangle } from '@/lib/icons'
 import { cn } from '@/lib/utils'
 import type { ProfileInfo } from '@/types/zorin'
+import { createProfile, updateProfileSoul } from '@/zorin'
+import { useEffect, useState } from 'react'
 
 const PROFILE_NAME_RE = /^[a-z0-9][a-z0-9_-]{0,63}$/
 

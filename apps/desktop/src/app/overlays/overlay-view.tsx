@@ -1,5 +1,3 @@
-import { type CSSProperties, type ReactNode, useEffect } from 'react'
-
 import { TITLEBAR_HEIGHT } from '@/app/shell/titlebar'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
@@ -8,6 +6,7 @@ import { translateNow } from '@/i18n'
 import { ESCAPE_PRIORITY, isTopEscapeLayer, pushEscapeLayer } from '@/lib/escape-layers'
 import { triggerHaptic } from '@/lib/haptics'
 import { cn } from '@/lib/utils'
+import { type CSSProperties, type ReactNode, useEffect } from 'react'
 
 interface OverlayViewProps {
   children: ReactNode

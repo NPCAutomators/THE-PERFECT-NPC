@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import { ActionStatus } from '@/components/ui/action-status'
 import { Button } from '@/components/ui/button'
 import {
@@ -11,10 +9,11 @@ import {
   DialogTitle
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import { renameProfile } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { AlertTriangle } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { renameProfile } from '@/zorin'
+import { useEffect, useState } from 'react'
 
 import { isValidProfileName } from './create-profile-dialog'
 

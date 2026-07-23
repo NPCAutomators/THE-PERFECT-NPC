@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { DesktopConnectionConfig } from '@/global'
+import { describe, expect, it } from 'vitest'
 
 import {
   deriveProviderShape,
@@ -134,7 +133,9 @@ describe('deriveProviderShape', () => {
   })
 
   it('OAuth shape when the provider is a redirect IDP', () => {
-    expect(deriveProviderShape([{ name: 'npcautomators', displayName: 'NPCAUTOMATORS', supportsPassword: false }])).toEqual({
+    expect(
+      deriveProviderShape([{ name: 'npcautomators', displayName: 'NPCAUTOMATORS', supportsPassword: false }])
+    ).toEqual({
       isPassword: false,
       providerLabel: 'NPCAUTOMATORS'
     })

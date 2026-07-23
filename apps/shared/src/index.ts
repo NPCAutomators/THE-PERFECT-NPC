@@ -43,13 +43,13 @@ export {
   type WebSocketLike
 } from './json-rpc-gateway'
 export {
-  type ZorinSkin,
   SKIN_BRANDING_TOKENS,
   SKIN_COLOR_TOKENS,
   type SkinBranding,
   type SkinBrandingToken,
   type SkinColors,
-  type SkinColorToken
+  type SkinColorToken,
+  type ZorinSkin
 } from './skin'
 export {
   buildZorinWebSocketUrl,
@@ -57,9 +57,9 @@ export {
   GatewayReauthRequiredError,
   type GatewayWsConnection,
   type GatewayWsUrlResult,
-  type ZorinWebSocketUrlOptions,
   isGatewayReauthRequired,
   resolveGatewayWsUrl,
   type ResolveGatewayWsUrlDeps,
-  type WebSocketAuthParam
+  type WebSocketAuthParam,
+  type ZorinWebSocketUrlOptions
 } from './websocket-url'

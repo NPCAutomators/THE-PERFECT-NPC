@@ -1,8 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
 import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react'
 
 /** Block wheel until ⌘/Ctrl so map embeds don't hijack transcript scroll. */
 export function ScrollGate() {

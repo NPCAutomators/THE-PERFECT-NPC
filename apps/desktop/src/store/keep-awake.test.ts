@@ -1,6 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { storedBoolean } from '@/lib/storage'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { $keepAwake, setKeepAwake } from './keep-awake'
 

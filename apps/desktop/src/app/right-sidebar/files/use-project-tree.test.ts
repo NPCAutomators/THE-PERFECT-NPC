@@ -1,8 +1,7 @@
-import { act, cleanup, renderHook, waitFor } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { ZorinReadDirResult } from '@/global'
 import { $connection } from '@/store/session'
+import { act, cleanup, renderHook, waitFor } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { clearProjectDirCache, readProjectDir } from './ipc'
 import { resetProjectTreeState, useProjectTree } from './use-project-tree'

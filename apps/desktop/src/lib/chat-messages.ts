@@ -1,10 +1,9 @@
-import type { ThreadMessageLike } from '@assistant-ui/react'
-
 import { dedupeGeneratedImageEchoesInParts } from '@/lib/generated-images'
 import { mediaDisplayLabel, mediaMarkdownHref } from '@/lib/media'
 import { normalize } from '@/lib/text'
 import { parseTodos } from '@/lib/todos'
 import type { SessionMessage, UsageStats } from '@/types/zorin'
+import type { ThreadMessageLike } from '@assistant-ui/react'
 
 export type ChatMessagePart = Exclude<ThreadMessageLike['content'], string>[number]
 

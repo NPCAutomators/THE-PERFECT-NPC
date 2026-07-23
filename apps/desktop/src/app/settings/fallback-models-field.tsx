@@ -1,12 +1,11 @@
-import { useQuery } from '@tanstack/react-query'
-import { useEffect, useRef, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { getGlobalModelOptions } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { Plus, X } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { getGlobalModelOptions } from '@/zorin'
+import { useQuery } from '@tanstack/react-query'
+import { useEffect, useRef, useState } from 'react'
 
 import { CONTROL_TEXT } from './constants'
 

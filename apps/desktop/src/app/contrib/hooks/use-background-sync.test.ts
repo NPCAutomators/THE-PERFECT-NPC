@@ -1,5 +1,3 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import {
   $attentionSessionIds,
   $stalledSessionIds,
@@ -7,6 +5,7 @@ import {
   clearAllSessionStates,
   SESSION_WATCHDOG_TIMEOUT_MS
 } from '@/store/session-states'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { rehydrateLiveSessionStatuses } from './use-background-sync'
 

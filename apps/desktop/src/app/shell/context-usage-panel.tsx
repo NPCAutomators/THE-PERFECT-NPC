@@ -1,9 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
-
 import { useI18n } from '@/i18n'
 import { compactNumber } from '@/lib/format'
 import { cn } from '@/lib/utils'
 import type { ContextBreakdown, ContextUsageCategory, UsageStats } from '@/types/zorin'
+import { useEffect, useMemo, useState } from 'react'
 
 interface ContextUsagePanelProps {
   currentUsage: UsageStats

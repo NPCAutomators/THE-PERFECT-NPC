@@ -1,7 +1,3 @@
-import type { ZorinSkin } from '@zorin/shared/skin'
-import type { QueryClient } from '@tanstack/react-query'
-import { type MutableRefObject, useCallback, useEffect, useRef } from 'react'
-
 import { writeAgentTerminalChunk } from '@/app/right-sidebar/terminal/agent-terminal-stream'
 import { readActiveTerminal } from '@/app/right-sidebar/terminal/buffer'
 import { closeAgentTerminalByProc } from '@/app/right-sidebar/terminal/terminals'
@@ -47,6 +43,9 @@ import { clearActiveSessionTodos } from '@/store/todos'
 import { recordToolDiff } from '@/store/tool-diffs'
 import { reportInstallMethodWarning } from '@/store/updates'
 import { notifyWorkspaceChanged, toolChangedPath, toolMayMutateFiles } from '@/store/workspace-events'
+import type { QueryClient } from '@tanstack/react-query'
+import type { ZorinSkin } from '@zorin/shared/skin'
+import { type MutableRefObject, useCallback, useEffect, useRef } from 'react'
 // Leaf import (not the `@/themes` barrel) to avoid pulling the ThemeProvider
 // module graph into the gateway event hot path.
 import { ingestBackendSkin } from '@/themes/backend-sync'

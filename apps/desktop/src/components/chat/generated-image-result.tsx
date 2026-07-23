@@ -1,7 +1,5 @@
 'use client'
 
-import { type FC, useEffect, useState } from 'react'
-
 import { DiffusionCanvas } from '@/components/chat/image-generation-placeholder'
 import { ImageActionButton, ImageLightbox } from '@/components/chat/zoomable-image'
 import { useImageDownload } from '@/hooks/use-image-download'
@@ -9,6 +7,7 @@ import { useI18n } from '@/i18n'
 import { generatedImageFromResult } from '@/lib/generated-images'
 import { filePathFromMediaPath, gatewayMediaDataUrl, isRemoteGateway, mediaExternalUrl, mediaName } from '@/lib/media'
 import { cn } from '@/lib/utils'
+import { type FC, useEffect, useState } from 'react'
 
 // Aspect hint from the tool args sizes the frame *before* the image loads, so
 // the placeholder and the resolved image occupy the same box — no layout shift.

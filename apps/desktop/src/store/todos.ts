@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import type { TodoItem } from '@/lib/todos'
+import { atom } from 'nanostores'
 
 /**
  * Live todo list per runtime session, rendered by the composer status stack

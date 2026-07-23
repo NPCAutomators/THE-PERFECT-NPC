@@ -1,6 +1,3 @@
-import type * as React from 'react'
-import { useState } from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { DisclosureCaret } from '@/components/ui/disclosure-caret'
 import {
@@ -14,6 +11,8 @@ import { Tip } from '@/components/ui/tooltip'
 import { useI18n } from '@/i18n'
 import { cn } from '@/lib/utils'
 import { copyPath, revealPath } from '@/store/projects'
+import type * as React from 'react'
+import { useState } from 'react'
 
 import { SidebarCount, SidebarRowLead } from '../chrome'
 

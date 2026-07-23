@@ -1,7 +1,3 @@
-import { ComposerPrimitive } from '@assistant-ui/react'
-import { useStore } from '@nanostores/react'
-import { type ClipboardEvent, type FormEvent, type KeyboardEvent, useCallback, useEffect, useRef } from 'react'
-
 import { composerFill, composerSurfaceGlass } from '@/components/chat/composer-dock'
 import { Button } from '@/components/ui/button'
 import { Slot as ContribSlot } from '@/contrib/react/slot'
@@ -19,6 +15,9 @@ import { $gatewayState } from '@/store/session'
 import { $threadScrolledUp } from '@/store/thread-scroll'
 import { $autoSpeakReplies } from '@/store/voice-prefs'
 import { useTheme } from '@/themes'
+import { ComposerPrimitive } from '@assistant-ui/react'
+import { useStore } from '@nanostores/react'
+import { type ClipboardEvent, type FormEvent, type KeyboardEvent, useCallback, useEffect, useRef } from 'react'
 
 import { AttachmentList } from './attachments'
 import { COMPOSER_FADE_BACKGROUND, type QueueEditState, slashArgStage } from './composer-utils'

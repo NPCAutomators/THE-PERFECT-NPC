@@ -1,13 +1,12 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
-
 import { $connection } from '@/store/session'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import {
   attachmentPreviewDataUrl,
   type DroppedFile,
   extractDroppedFiles,
-  ZORIN_PATHS_MIME,
-  partitionDroppedFiles
+  partitionDroppedFiles,
+  ZORIN_PATHS_MIME
 } from './use-composer-actions'
 
 // A Finder/Explorer drop carries a native File handle; an in-app drag (project

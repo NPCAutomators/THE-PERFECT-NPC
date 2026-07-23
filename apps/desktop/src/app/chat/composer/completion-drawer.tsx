@@ -1,9 +1,8 @@
+import { composerPanelCard } from '@/components/chat/composer-dock'
+import { cn } from '@/lib/utils'
 import type { Unstable_TriggerAdapter } from '@assistant-ui/core'
 import { ComposerPrimitive } from '@assistant-ui/react'
 import type { ReactNode } from 'react'
-
-import { composerPanelCard } from '@/components/chat/composer-dock'
-import { cn } from '@/lib/utils'
 
 // A standalone glassy panel floating just off the composer edge, inset from the
 // left. Skin is the shared composerPanelCard (also used by the attach menu).

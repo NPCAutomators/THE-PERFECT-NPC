@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import type { ComponentProps } from 'react'
-
 import { TreeSkeleton } from '@/components/chat/skeletons'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { Button } from '@/components/ui/button'
@@ -14,6 +11,8 @@ import { $panesFlipped } from '@/store/layout'
 import { notifyError } from '@/store/notifications'
 import { setCurrentSessionPreviewTarget } from '@/store/preview'
 import { $currentCwd } from '@/store/session'
+import { useStore } from '@nanostores/react'
+import type { ComponentProps } from 'react'
 
 import { SidebarPanelLabel } from '../shell/sidebar-label'
 

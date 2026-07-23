@@ -1,5 +1,3 @@
-import { atom, computed } from 'nanostores'
-
 import { SIDEBAR_COLLAPSE_MEDIA_QUERY } from '@/app/layout-constants'
 import { PANE_TOGGLE_REVEAL_EVENT } from '@/components/pane-shell'
 import { revealTreePane } from '@/components/pane-shell/tree/store'
@@ -9,6 +7,7 @@ import { desktopGit } from '@/lib/desktop-git'
 import { isExcludedPath } from '@/lib/excluded-paths'
 import { requestOneShot } from '@/lib/oneshot'
 import { Codecs, persistentAtom } from '@/lib/persisted'
+import { atom, computed } from 'nanostores'
 
 import { refreshRepoStatus } from './coding-status'
 import { $busy, $currentCwd } from './session'

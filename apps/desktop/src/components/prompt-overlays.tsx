@@ -1,8 +1,5 @@
 'use client'
 
-import { useStore } from '@nanostores/react'
-import { type FormEvent, useCallback, useEffect, useMemo, useState } from 'react'
-
 import { PendingApprovalFallback } from '@/components/assistant-ui/tool/approval'
 import { Button } from '@/components/ui/button'
 import {
@@ -21,6 +18,8 @@ import { KeyRound, Loader2, Lock } from '@/lib/icons'
 import { $gateway } from '@/store/gateway'
 import { notifyError } from '@/store/notifications'
 import { clearSecretRequest, clearSudoRequest, sessionSecretRequest, sessionSudoRequest } from '@/store/prompts'
+import { useStore } from '@nanostores/react'
+import { type FormEvent, useCallback, useEffect, useMemo, useState } from 'react'
 
 // Renders the modal mid-turn prompts the gateway raises and waits on: sudo
 // password and skill secret capture. Dangerous-command / execute_code approval

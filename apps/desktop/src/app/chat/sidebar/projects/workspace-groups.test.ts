@@ -1,7 +1,6 @@
-import { describe, expect, it } from 'vitest'
-
 import type { ZorinGitWorktree } from '@/global'
 import type { ProjectInfo, SessionInfo } from '@/types/zorin'
+import { describe, expect, it } from 'vitest'
 
 import {
   baseName,

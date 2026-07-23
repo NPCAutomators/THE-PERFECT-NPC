@@ -1,7 +1,6 @@
+import { ArrowUpRight } from '@/lib/icons'
 import type { ComponentProps, ReactNode } from 'react'
 import { useEffect, useMemo, useState } from 'react'
-
-import { ArrowUpRight } from '@/lib/icons'
 
 import { cn } from './utils'
 

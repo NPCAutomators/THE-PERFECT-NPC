@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
-import { getActionStatus, getComputerUseStatus, grantComputerUsePermissions } from '@/zorin'
 import { AlertTriangle, Check, ExternalLink, Loader2, RefreshCw, X } from '@/lib/icons'
 import { upsertDesktopActionTask } from '@/store/activity'
 import { notify, notifyError } from '@/store/notifications'
 import type { ComputerUseStatus } from '@/types/zorin'
+import { getActionStatus, getComputerUseStatus, grantComputerUsePermissions } from '@/zorin'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { Pill } from './primitives'
 

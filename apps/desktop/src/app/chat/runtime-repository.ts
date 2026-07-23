@@ -1,8 +1,7 @@
-import { ExportedMessageRepository, type ThreadMessage } from '@assistant-ui/react'
-import { useMemo, useRef } from 'react'
-
 import type { ChatMessage } from '@/lib/chat-messages'
 import { coalesceToolOnlyAssistants, createToolMergeCache, toRuntimeMessage } from '@/lib/chat-runtime'
+import { ExportedMessageRepository, type ThreadMessage } from '@assistant-ui/react'
+import { useMemo, useRef } from 'react'
 
 /**
  * ChatMessage[] -> assistant-ui message repository, with a WeakMap identity

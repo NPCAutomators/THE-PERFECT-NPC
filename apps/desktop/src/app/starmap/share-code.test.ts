@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { StarmapGraph } from '@/types/zorin'
+import { describe, expect, it } from 'vitest'
 
 import { decodeShareCode, encodeShareCode, ShareCodeError } from './share-code'
 

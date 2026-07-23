@@ -1,8 +1,7 @@
-import { useQuery } from '@tanstack/react-query'
-
-import { getZorinConfigRecord } from '@/zorin'
 import { queryClient, writeCache } from '@/lib/query-client'
 import type { ZorinConfigRecord } from '@/types/zorin'
+import { getZorinConfigRecord } from '@/zorin'
+import { useQuery } from '@tanstack/react-query'
 
 // One shared cache for the whole profile config record (`GET /api/config`).
 // Every settings surface (MCP, model, config) reads and writes through this key

@@ -1,8 +1,7 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { ZorinReadDirResult } from '@/global'
 import { $connection, setCurrentCwd } from '@/store/session'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { resetProjectTreeState } from './files/use-project-tree'
 

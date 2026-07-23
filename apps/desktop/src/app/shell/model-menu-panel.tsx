@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { createContext, useContext, useMemo, useState } from 'react'
-
 import { useSessionView } from '@/app/chat/session-view'
 import { Codicon } from '@/components/ui/codicon'
 import {
@@ -16,7 +12,6 @@ import {
   DropdownMenuSubTrigger
 } from '@/components/ui/dropdown-menu'
 import { Skeleton } from '@/components/ui/skeleton'
-import type { ZorinGateway } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { ChevronDown, ChevronRight } from '@/lib/icons'
 import { modelOptionsQueryKey, requestModelOptions } from '@/lib/model-options'
@@ -40,6 +35,10 @@ import {
 } from '@/store/model-visibility'
 import { $collapsedProviders, toggleCollapsedProvider } from '@/store/provider-collapse'
 import type { ModelOptionProvider, ModelOptionsResponse } from '@/types/zorin'
+import type { ZorinGateway } from '@/zorin'
+import { useStore } from '@nanostores/react'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { createContext, useContext, useMemo, useState } from 'react'
 
 import { ModelEditSubmenu, resolveFastControl } from './model-edit-submenu'
 

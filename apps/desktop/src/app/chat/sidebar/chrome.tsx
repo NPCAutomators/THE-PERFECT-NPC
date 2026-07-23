@@ -1,8 +1,7 @@
-import type * as React from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { RowButton } from '@/components/ui/row-button'
 import { cn } from '@/lib/utils'
+import type * as React from 'react'
 
 // Shared, content-agnostic sidebar chrome — used by both the flat session
 // sections and the project/workspace tree, so it lives outside either to keep

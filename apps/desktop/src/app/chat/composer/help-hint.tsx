@@ -1,7 +1,6 @@
-import type { ReactNode } from 'react'
-
 import { KbdCombo } from '@/components/ui/kbd'
 import { useI18n } from '@/i18n'
+import type { ReactNode } from 'react'
 
 import { COMPLETION_DRAWER_CLASS } from './completion-drawer'
 

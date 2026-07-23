@@ -84,7 +84,10 @@ describe('fetchRuntimeReadinessSignals', () => {
 
     await fetchRuntimeReadinessSignals(requestGateway, 'npcautomators')
 
-    expect(calls).toEqual([{ method: 'setup.status' }, { method: 'setup.runtime_check', params: { provider: 'npcautomators' } }])
+    expect(calls).toEqual([
+      { method: 'setup.status' },
+      { method: 'setup.runtime_check', params: { provider: 'npcautomators' } }
+    ])
   })
 })
 

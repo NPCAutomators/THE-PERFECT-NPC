@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useState } from 'react'
-
 import { requestComposerSubmit } from '@/app/chat/composer/focus'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
@@ -22,6 +19,8 @@ import {
   createOrOpenPr,
   generateCommitMessage
 } from '@/store/review'
+import { useStore } from '@nanostores/react'
+import { useState } from 'react'
 
 // One size for every glyph in the bar so the row reads as a set of peers.
 const ICON = '0.85rem'

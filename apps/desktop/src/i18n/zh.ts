@@ -2178,8 +2178,7 @@ export const zh: Translations = {
     copy: '复制',
     copied: '已复制',
     done: '完成',
-    applyingBody:
-      'Zorin 更新器会在自己的窗口中接管，并在完成后自动重新打开 Zorin。更新期间请不要自行重新打开 Zorin。',
+    applyingBody: 'Zorin 更新器会在自己的窗口中接管，并在完成后自动重新打开 Zorin。更新期间请不要自行重新打开 Zorin。',
     applyingBodyBackend: '远程后端正在应用更新并将重启。恢复后 Zorin 会自动重新连接。',
     applyingClose: '此窗口会在更新期间关闭，随后 Zorin 会自动重新打开。',
     errorTitle: '更新未完成',

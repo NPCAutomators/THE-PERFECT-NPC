@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type ReactNode, useEffect, useLayoutEffect, useMemo, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { blurComposerInput } from '@/app/chat/composer/focus'
 import { AGENTS_ROUTE } from '@/app/routes'
 import { composerDockCard } from '@/components/chat/composer-dock'
@@ -23,6 +19,9 @@ import {
 import { $previewStatusBySession, dismissPreviewArtifact } from '@/store/preview-status'
 import { $threadScrolledUp } from '@/store/thread-scroll'
 import { openSessionInNewWindow } from '@/store/windows'
+import { useStore } from '@nanostores/react'
+import { type ReactNode, useEffect, useLayoutEffect, useMemo, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { PreviewStatusRow } from './preview-row'
 import { StatusItemRow } from './status-row'

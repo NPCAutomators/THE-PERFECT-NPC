@@ -1,8 +1,7 @@
-import { act, cleanup, render, screen } from '@testing-library/react'
-import { afterEach, describe, expect, it } from 'vitest'
-
 import { I18nProvider } from '@/i18n/context'
 import type { ComposerAttachment } from '@/store/composer'
+import { act, cleanup, render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it } from 'vitest'
 
 import { AttachmentList } from './attachments'
 

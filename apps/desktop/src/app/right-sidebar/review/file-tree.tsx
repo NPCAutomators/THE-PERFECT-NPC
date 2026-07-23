@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { AnimatePresence, motion } from 'motion/react'
-import { type CSSProperties, type ReactNode, useEffect, useMemo, useRef, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import {
@@ -34,6 +30,9 @@ import {
   unstageReviewFile
 } from '@/store/review'
 import { $currentCwd } from '@/store/session'
+import { useStore } from '@nanostores/react'
+import { AnimatePresence, motion } from 'motion/react'
+import { type CSSProperties, type ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 
 import { pickRevealLabel } from '../file-actions'
 

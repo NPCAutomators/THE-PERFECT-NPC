@@ -6,14 +6,13 @@
  * instead of squeezing it. Event reveals pin; hover reveals follow the mouse.
  */
 
-import { useStore } from '@nanostores/react'
-import { useEffect, useMemo, useRef, useState } from 'react'
-
 import { ContribBoundary } from '@/contrib/react/boundary'
 import { useContributions } from '@/contrib/react/use-contributions'
 import type { Contribution } from '@/contrib/types'
 import { ESCAPE_PRIORITY, isTopEscapeLayer, pushEscapeLayer } from '@/lib/escape-layers'
 import { cn } from '@/lib/utils'
+import { useStore } from '@nanostores/react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { PANE_TOGGLE_REVEAL_EVENT } from '../..'
 import { allPaneIds } from '../model'

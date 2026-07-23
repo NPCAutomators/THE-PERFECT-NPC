@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import { persistBoolean, persistString, storedBoolean, storedString } from '@/lib/storage'
+import { atom } from 'nanostores'
 
 const POPOUT_ENABLED_STORAGE_KEY = 'zorin.desktop.composerPopout.enabled'
 const POPOUT_POSITION_STORAGE_KEY = 'zorin.desktop.composerPopout.position'

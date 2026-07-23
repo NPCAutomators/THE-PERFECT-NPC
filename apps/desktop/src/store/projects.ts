@@ -1,8 +1,5 @@
-import { atom } from 'nanostores'
-
 import { liveSessionProjectId, type SidebarProjectTree } from '@/app/chat/sidebar/projects/workspace-groups'
 import type { ZorinGitBaseBranch, ZorinGitBranch } from '@/global'
-import { getZorinConfig, type ZorinGateway } from '@/zorin'
 import { translateNow } from '@/i18n'
 import { desktopDefaultCwd, isDesktopFsRemoteMode, selectDesktopPaths, writeDesktopFileText } from '@/lib/desktop-fs'
 import { desktopGit } from '@/lib/desktop-git'
@@ -14,6 +11,8 @@ import { notify } from '@/store/notifications'
 import { $activeGatewayProfile, requestFreshSession } from '@/store/profile'
 import { $selectedStoredSessionId, $sessions, sessionMatchesStoredId, workspaceCwdForNewSession } from '@/store/session'
 import type { ProjectInfo, ProjectsPayload } from '@/types/zorin'
+import { getZorinConfig, type ZorinGateway } from '@/zorin'
+import { atom } from 'nanostores'
 
 // First-class, per-profile Projects (named, multi-folder workspaces). State is
 // served by the live gateway's `projects.*` JSON-RPC methods, which wrap the

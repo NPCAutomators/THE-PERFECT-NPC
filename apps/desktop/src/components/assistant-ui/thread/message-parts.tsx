@@ -1,11 +1,3 @@
-import {
-  type ReasoningMessagePartComponent,
-  type ToolCallMessagePartProps,
-  useAuiState,
-  useMessagePartReasoning
-} from '@assistant-ui/react'
-import { type ComponentProps, type FC, type ReactNode, useEffect, useRef, useState } from 'react'
-
 import { ClarifyTool } from '@/components/assistant-ui/clarify-tool'
 import { MarkdownText, MarkdownTextContent } from '@/components/assistant-ui/markdown-text'
 import { ToolFallback, ToolGroupSlot } from '@/components/assistant-ui/tool/fallback'
@@ -16,6 +8,13 @@ import { GeneratedImage } from '@/components/chat/generated-image-result'
 import { useI18n } from '@/i18n'
 import { useEnterAnimation } from '@/lib/use-enter-animation'
 import { cn } from '@/lib/utils'
+import {
+  type ReasoningMessagePartComponent,
+  type ToolCallMessagePartProps,
+  useAuiState,
+  useMessagePartReasoning
+} from '@assistant-ui/react'
+import { type ComponentProps, type FC, type ReactNode, useEffect, useRef, useState } from 'react'
 
 const ImageGenerateTool: FC<ToolCallMessagePartProps> = ({ args, result }) => {
   const aspectRatio = typeof args?.aspect_ratio === 'string' ? args.aspect_ratio : undefined

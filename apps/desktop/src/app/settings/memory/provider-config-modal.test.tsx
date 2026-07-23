@@ -1,7 +1,6 @@
+import type { MemoryProviderConfig, MemoryProviderField } from '@/types/zorin'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
-import type { MemoryProviderConfig, MemoryProviderField } from '@/types/zorin'
 
 const saveMemoryProviderConfig = vi.fn()
 

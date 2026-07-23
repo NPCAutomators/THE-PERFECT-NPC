@@ -1,7 +1,6 @@
+import { $activeGatewayProfile } from '@/store/profile'
 import { useStore } from '@nanostores/react'
 import { useEffect, useRef } from 'react'
-
-import { $activeGatewayProfile } from '@/store/profile'
 
 /** Run `onSwitch` when the active gateway profile changes — never on first
  *  mount. For dropping per-profile view state (probes, cached usage, drafts)

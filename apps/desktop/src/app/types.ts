@@ -1,7 +1,6 @@
-import type * as React from 'react'
-
 import type { ChatMessage } from '@/lib/chat-messages'
 import type { UsageStats } from '@/types/zorin'
+import type * as React from 'react'
 
 export interface ContextSuggestion {
   text: string

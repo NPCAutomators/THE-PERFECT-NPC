@@ -18,7 +18,7 @@ Create, read, edit Excel .xlsx spreadsheets and CSVs.
 | Path | `skills/productivity/xlsx` |
 | Version | `1.0.0` |
 | Author | Anthropic (adapted by NPCAUTOMATORS) |
-| License | Proprietary. LICENSE.txt has complete terms |
+| License | Proprietary |
 | Platforms | linux, macos, windows |
 | Tags | `Excel`, `XLSX`, `Spreadsheets`, `Office`, `Productivity` |
 | Related skills | [`docx`](/docs/user-guide/skills/bundled/productivity/productivity-docx), [`pdf`](/docs/user-guide/skills/bundled/productivity/productivity-pdf), [`powerpoint`](/docs/user-guide/skills/bundled/productivity/productivity-powerpoint) |

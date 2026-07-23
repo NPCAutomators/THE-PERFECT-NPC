@@ -7,14 +7,13 @@
  * layout tree's zones independently rendered — the whole point of the shell.
  */
 
-import { useStore } from '@nanostores/react'
-import { type ComponentProps, lazy, memo, type ReactNode, Suspense, useMemo } from 'react'
-import { Navigate, Route, Routes, useParams } from 'react-router-dom'
-
 import { ContribBoundary } from '@/contrib/react/boundary'
 import { useContributions } from '@/contrib/react/use-contributions'
 import { $activeGatewayProfile } from '@/store/profile'
 import { $freshDraftReady, $gatewayState } from '@/store/session'
+import { useStore } from '@nanostores/react'
+import { type ComponentProps, lazy, memo, type ReactNode, Suspense, useMemo } from 'react'
+import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 
 import { ChatView } from '../chat'
 import { ChatSidebar } from '../chat/sidebar'

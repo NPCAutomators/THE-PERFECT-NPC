@@ -1,22 +1,6 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { SETTINGS_ROUTE } from '@/app/routes'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import {
-  deleteEnvVar,
-  getActionStatus,
-  getToolsetConfig,
-  getToolsetModels,
-  pollOAuthSession,
-  revealEnvVar,
-  runToolsetPostSetup,
-  selectToolsetModel,
-  selectToolsetProvider,
-  setEnvVar,
-  startOAuthLogin
-} from '@/zorin'
 import { useI18n } from '@/i18n'
 import { Check, Loader2, Save, Terminal } from '@/lib/icons'
 import { cn } from '@/lib/utils'
@@ -30,6 +14,21 @@ import type {
   ToolsetConfig,
   ToolsetModelsResponse
 } from '@/types/zorin'
+import {
+  deleteEnvVar,
+  getActionStatus,
+  getToolsetConfig,
+  getToolsetModels,
+  pollOAuthSession,
+  revealEnvVar,
+  runToolsetPostSetup,
+  selectToolsetModel,
+  selectToolsetProvider,
+  setEnvVar,
+  startOAuthLogin
+} from '@/zorin'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { EnvVarActionsMenu, EnvVarActionsTrigger } from './env-var-actions-menu'
 import { Pill } from './primitives'
@@ -626,7 +625,11 @@ export function ToolsetConfigPanel({ toolset, onConfiguredChange }: ToolsetConfi
         const polled = await pollOAuthSession('npcautomators', start.session_id)
 
         if (polled.status === 'approved') {
-          notify({ kind: 'success', title: copy.npcAutomatorsAuthDoneTitle, message: copy.npcAutomatorsAuthDoneMessage })
+          notify({
+            kind: 'success',
+            title: copy.npcAutomatorsAuthDoneTitle,
+            message: copy.npcAutomatorsAuthDoneMessage
+          })
           await refresh()
           onConfiguredChange?.()
 

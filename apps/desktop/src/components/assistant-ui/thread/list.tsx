@@ -1,3 +1,13 @@
+import { useI18n } from '@/i18n'
+import { cn } from '@/lib/utils'
+import {
+  onScrollToBottomRequest,
+  onThreadEditClose,
+  onThreadEditOpen,
+  resetThreadScroll,
+  setThreadAtBottom
+} from '@/store/thread-scroll'
+import { isSecondaryWindow } from '@/store/windows'
 import { ThreadPrimitive, useAuiEvent, useAuiState } from '@assistant-ui/react'
 import {
   type ComponentProps,
@@ -13,17 +23,6 @@ import {
   useState
 } from 'react'
 import { useStickToBottom } from 'use-stick-to-bottom'
-
-import { useI18n } from '@/i18n'
-import { cn } from '@/lib/utils'
-import {
-  onScrollToBottomRequest,
-  onThreadEditClose,
-  onThreadEditOpen,
-  resetThreadScroll,
-  setThreadAtBottom
-} from '@/store/thread-scroll'
-import { isSecondaryWindow } from '@/store/windows'
 
 import { MessageRenderBoundary } from '../message-render-boundary'
 

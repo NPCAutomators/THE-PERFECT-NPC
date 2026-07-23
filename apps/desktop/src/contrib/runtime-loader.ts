@@ -27,9 +27,9 @@
  * trust seam.
  */
 
-import { getStatus } from '@/zorin'
 import { installPluginSdk, sdkImportMap } from '@/sdk/runtime'
 import { notifyError } from '@/store/notifications'
+import { getStatus } from '@/zorin'
 
 import { createPluginContext, type ZorinPlugin } from './plugin'
 import { dropPlugin, pluginActive, type PluginKind, publishPlugin } from './plugins-store'

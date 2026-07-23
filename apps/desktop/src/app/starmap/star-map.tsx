@@ -1,10 +1,9 @@
-import { type Simulation } from 'd3-force'
-import { atom, type WritableAtom } from 'nanostores'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-
 import { useThemeEpoch } from '@/hooks/use-theme-epoch'
 import { createDoubleTapDetector, isSmartZoomWheel } from '@/lib/trackpad-gestures'
 import type { StarmapGraph } from '@/types/zorin'
+import { type Simulation } from 'd3-force'
+import { atom, type WritableAtom } from 'nanostores'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { computePalette, memoryInkFor, resolveRgb, rgba } from './color'
 import { RING_OUTER, TILT, ZOOM_MAX, ZOOM_MIN } from './constants'

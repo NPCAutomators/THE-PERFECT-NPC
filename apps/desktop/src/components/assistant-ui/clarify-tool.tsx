@@ -1,18 +1,5 @@
 'use client'
 
-import { type ToolCallMessagePartProps, useAuiState } from '@assistant-ui/react'
-import { useStore } from '@nanostores/react'
-import {
-  type ComponentProps,
-  type FormEvent,
-  type KeyboardEvent,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react'
-
 import { useSessionView } from '@/app/chat/session-view'
 import { ToolFallback } from '@/components/assistant-ui/tool/fallback'
 import { Button } from '@/components/ui/button'
@@ -25,6 +12,18 @@ import { cn } from '@/lib/utils'
 import { clearClarifyRequest, sessionClarifyRequest } from '@/store/clarify'
 import { $gateway } from '@/store/gateway'
 import { notifyError } from '@/store/notifications'
+import { type ToolCallMessagePartProps, useAuiState } from '@assistant-ui/react'
+import { useStore } from '@nanostores/react'
+import {
+  type ComponentProps,
+  type FormEvent,
+  type KeyboardEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 
 import { selectMessageRunning } from './tool/fallback-model'
 import { parseMaybeObject } from './tool/fallback-model/format'

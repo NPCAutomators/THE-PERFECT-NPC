@@ -5,9 +5,6 @@
  * user preset. The "New grid layout" button opens the zone editor.
  */
 
-import { useStore } from '@nanostores/react'
-import { type ReactNode, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import { Input } from '@/components/ui/input'
@@ -15,6 +12,8 @@ import { useContributions } from '@/contrib/react/use-contributions'
 import type { Contribution } from '@/contrib/types'
 import { useI18n } from '@/i18n'
 import { cn } from '@/lib/utils'
+import { useStore } from '@nanostores/react'
+import { type ReactNode, useState } from 'react'
 
 import type { LayoutNode } from '../model'
 import { isLayoutNode } from '../model'

@@ -1,9 +1,8 @@
-import { act, cleanup, render, screen } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { __resetElapsedTimerRegistryForTests } from '@/components/chat/activity-timer'
 import { I18nProvider } from '@/i18n'
 import { $activeSessionId, $turnStartedAt } from '@/store/session'
+import { act, cleanup, render, screen } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { ResponseLoadingIndicator } from './status'
 

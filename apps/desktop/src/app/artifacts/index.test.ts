@@ -1,7 +1,6 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
-
 import { $connection } from '@/store/session'
 import type { SessionInfo, SessionMessage } from '@/types/zorin'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { artifactImageSrc, collectArtifactsForSession } from './artifact-utils'
 

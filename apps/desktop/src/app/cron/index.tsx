@@ -1,8 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useQuery } from '@tanstack/react-query'
-import type * as React from 'react'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-
 import { PageLoader } from '@/components/page-loader'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
@@ -25,6 +20,13 @@ import {
   SelectValue
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
+import { type Translations, useI18n } from '@/i18n'
+import { AlertTriangle } from '@/lib/icons'
+import { requestModelOptions } from '@/lib/model-options'
+import { asText } from '@/lib/text'
+import { $cronFocusJobId, $cronJobs, setCronFocusJobId, setCronJobs, updateCronJobs } from '@/store/cron'
+import { notify, notifyError } from '@/store/notifications'
+import { $profileScope, ALL_PROFILES } from '@/store/profile'
 import {
   createCronJob,
   type CronJob,
@@ -37,13 +39,10 @@ import {
   triggerCronJob,
   updateCronJob
 } from '@/zorin'
-import { type Translations, useI18n } from '@/i18n'
-import { AlertTriangle } from '@/lib/icons'
-import { requestModelOptions } from '@/lib/model-options'
-import { asText } from '@/lib/text'
-import { $cronFocusJobId, $cronJobs, setCronFocusJobId, setCronJobs, updateCronJobs } from '@/store/cron'
-import { notify, notifyError } from '@/store/notifications'
-import { $profileScope, ALL_PROFILES } from '@/store/profile'
+import { useStore } from '@nanostores/react'
+import { useQuery } from '@tanstack/react-query'
+import type * as React from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { useRefreshHotkey } from '../hooks/use-refresh-hotkey'
 import {

@@ -20,8 +20,6 @@ import {
 } from '../parse-keypress.js'
 import reconciler from '../reconciler.js'
 import { clearSelection, finishSelection, hasSelection, type SelectionState, startSelection } from '../selection.js'
-import { getTerminalFocused, setTerminalFocused } from '../terminal-focus-state.js'
-import { decrqm, oscColor, TerminalQuerier, xtversion } from '../terminal-querier.js'
 import {
   isXtermJs,
   parseOscColor,
@@ -30,6 +28,8 @@ import {
   setXtversionName,
   supportsExtendedKeys
 } from '../terminal.js'
+import { getTerminalFocused, setTerminalFocused } from '../terminal-focus-state.js'
+import { decrqm, oscColor, TerminalQuerier, xtversion } from '../terminal-querier.js'
 import {
   DISABLE_KITTY_KEYBOARD,
   DISABLE_MODIFY_OTHER_KEYS,

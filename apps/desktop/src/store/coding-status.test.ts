@@ -1,6 +1,5 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { ZorinRepoStatus } from '@/global'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { $repoStatus, $repoStatusLoading, refreshRepoStatus } from './coding-status'
 import { $currentCwd, $selectedStoredSessionId } from './session'

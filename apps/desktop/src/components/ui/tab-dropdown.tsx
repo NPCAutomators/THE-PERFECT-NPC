@@ -1,5 +1,3 @@
-import { Fragment } from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import {
   DropdownMenu,
@@ -13,6 +11,7 @@ import { TextTab, TextTabMeta } from '@/components/ui/text-tab'
 import { compactNumber } from '@/lib/format'
 import type { IconComponent } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { Fragment } from 'react'
 
 // A count badge beside a tab label. `null` = still loading (pulsing chip, not a
 // fake 0); numbers render compact; strings pass through; `undefined` = no badge.

@@ -1,6 +1,5 @@
-import type { SimulationLinkDatum, SimulationNodeDatum } from 'd3-force'
-
 import type { StarmapGraph, StarmapNode } from '@/types/zorin'
+import type { SimulationLinkDatum, SimulationNodeDatum } from 'd3-force'
 
 export type MemoryCard = StarmapGraph['memory'][number]
 

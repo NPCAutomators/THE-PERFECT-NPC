@@ -1,10 +1,9 @@
 'use client'
 
-import { type ReactNode, useCallback, useRef, useState } from 'react'
-
 import { useResizeObserver } from '@/hooks/use-resize-observer'
 import { ChevronDown } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { type ReactNode, useCallback, useRef, useState } from 'react'
 
 interface ExpandableBlockProps {
   children: ReactNode

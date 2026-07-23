@@ -1,6 +1,5 @@
-import { type MutableRefObject, useCallback } from 'react'
-
 import { listRepoBranches, requestStartWorkSession, startWorkInRepo, switchBranchInRepo } from '@/store/projects'
+import { type MutableRefObject, useCallback } from 'react'
 
 import { useComposerScope } from '../scope'
 

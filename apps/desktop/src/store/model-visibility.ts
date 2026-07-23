@@ -1,7 +1,6 @@
-import { atom } from 'nanostores'
-
 import { persistString, storedString } from '@/lib/storage'
 import type { ModelOptionProvider } from '@/types/zorin'
+import { atom } from 'nanostores'
 
 const STORAGE_KEY = 'zorin.desktop.visible-models'
 

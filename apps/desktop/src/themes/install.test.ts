@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { DesktopMarketplaceThemeResult } from '@/global'
+import { describe, expect, it } from 'vitest'
 
 import { luminance } from './color'
 import { buildThemeFromMarketplace } from './install'

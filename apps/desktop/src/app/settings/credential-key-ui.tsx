@@ -1,11 +1,10 @@
-import { type ChangeEvent, type KeyboardEvent } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { translateNow, useI18n } from '@/i18n'
 import { ChevronDown, ExternalLink, Loader2, Save, Trash2 } from '@/lib/icons'
 import { cn } from '@/lib/utils'
 import type { EnvVarInfo } from '@/types/zorin'
+import { type ChangeEvent, type KeyboardEvent } from 'react'
 
 import { CONTROL_TEXT } from './constants'
 import { prettyName, withoutKey } from './helpers'

@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useRef } from 'react'
-
 import { prewarmProfileBackend } from '@/store/profile'
+import { useCallback, useEffect, useRef } from 'react'
 
 // Dwell before firing: long enough that sweeping the pointer across the rail
 // or a mixed-profile session list doesn't spawn a backend for every element

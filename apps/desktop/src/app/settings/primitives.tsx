@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react'
-
 import { PageLoader } from '@/components/page-loader'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -7,6 +5,7 @@ import { Switch } from '@/components/ui/switch'
 import { triggerHaptic } from '@/lib/haptics'
 import type { IconComponent } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import type { ReactNode } from 'react'
 
 import { PAGE_INSET_X } from '../layout-constants'
 

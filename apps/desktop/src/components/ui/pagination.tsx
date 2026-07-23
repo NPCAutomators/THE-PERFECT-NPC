@@ -1,8 +1,7 @@
-import * as React from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { useI18n } from '@/i18n'
 import { cn } from '@/lib/utils'
+import * as React from 'react'
 
 function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
   const { t } = useI18n()

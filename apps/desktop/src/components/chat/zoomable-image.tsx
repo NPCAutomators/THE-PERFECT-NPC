@@ -1,12 +1,11 @@
 'use client'
 
-import { type ComponentProps, useState } from 'react'
-
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { useImageDownload } from '@/hooks/use-image-download'
 import { useI18n } from '@/i18n'
 import { Download } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { type ComponentProps, useState } from 'react'
 
 export interface ZoomableImageProps extends ComponentProps<'img'> {
   containerClassName?: string

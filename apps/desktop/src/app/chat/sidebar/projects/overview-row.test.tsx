@@ -1,7 +1,6 @@
+import type { SessionInfo } from '@/zorin'
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-
-import type { SessionInfo } from '@/zorin'
 
 import { ProjectOverviewRow } from './overview-row'
 import type { SidebarProjectTree } from './workspace-groups'

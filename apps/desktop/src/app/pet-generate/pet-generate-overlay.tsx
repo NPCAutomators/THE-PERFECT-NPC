@@ -12,8 +12,6 @@
  * `./components`.
  */
 
-import { useStore } from '@nanostores/react'
-
 import { useGatewayRequest } from '@/app/gateway/hooks/use-gateway-request'
 import { useRouteOverlayActive } from '@/app/hooks/use-route-overlay-active'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
@@ -27,6 +25,7 @@ import {
   cleanupPetGenOnClose,
   closePetGenerate
 } from '@/store/pet-generate'
+import { useStore } from '@nanostores/react'
 
 import { PetGenerateContent } from './pet-generate-content'
 

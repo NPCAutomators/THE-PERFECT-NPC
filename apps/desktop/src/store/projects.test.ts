@@ -1,9 +1,8 @@
-import { atom } from 'nanostores'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
-
 import type { SidebarProjectTree } from '@/app/chat/sidebar/projects/workspace-groups'
 import { $sidebarAgentsGrouped } from '@/store/layout'
 import { $activeGatewayProfile } from '@/store/profile'
+import { atom } from 'nanostores'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import {
   $activeProjectId,

@@ -9,13 +9,12 @@
  * The two are persisted independently. Shift+X toggles light/dark.
  */
 
-import { useStore } from '@nanostores/react'
-import { createContext, type ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react'
-
 import { $registryVersion } from '@/contrib/registry'
 import { matchesQuery, useMediaQuery } from '@/hooks/use-media-query'
 import { persistString, persistStringRecord, storedString, storedStringRecord } from '@/lib/storage'
 import { $activeGatewayProfile, normalizeProfileKey } from '@/store/profile'
+import { useStore } from '@nanostores/react'
+import { createContext, type ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
 import { $backendThemes, $pendingSkinApply } from './backend-sync'
 import { hexToRgb, mix, readableOn } from './color'

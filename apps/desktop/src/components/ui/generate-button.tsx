@@ -1,10 +1,9 @@
-import type * as React from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import { Tip } from '@/components/ui/tooltip'
 import { Square } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import type * as React from 'react'
 
 interface GenerateButtonProps extends Omit<React.ComponentProps<typeof Button>, 'children' | 'onClick'> {
   /** True while a generation is in flight. */

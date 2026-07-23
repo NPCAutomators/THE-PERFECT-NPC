@@ -1,8 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Tip } from '@/components/ui/tooltip'
-import { deleteSession, listAllProfileSessions, setSessionArchived } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { sessionTitle } from '@/lib/chat-runtime'
 import { triggerHaptic } from '@/lib/haptics'
@@ -11,6 +8,8 @@ import { notify, notifyError } from '@/store/notifications'
 import { untombstoneSessions } from '@/store/projects'
 import { applyConfiguredDefaultProjectDir, ensureDefaultWorkspaceCwd, setSessions } from '@/store/session'
 import type { SessionInfo } from '@/types/zorin'
+import { deleteSession, listAllProfileSessions, setSessionArchived } from '@/zorin'
+import { useCallback, useEffect, useState } from 'react'
 
 import { EmptyState, ListRow, LoadingState, SectionHeading, SettingsContent } from './primitives'
 import { useDeepLinkHighlight } from './use-deep-link-highlight'

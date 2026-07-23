@@ -1,15 +1,14 @@
-import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
-
 import { useI18n } from '@/i18n'
 import { modelOptionsQueryKey, requestModelOptions } from '@/lib/model-options'
 import { currentPickerSelection } from '@/lib/model-status-label'
 import { normalize } from '@/lib/text'
 import type { ModelOptionProvider, ModelPricing } from '@/types/zorin'
+import { useQuery } from '@tanstack/react-query'
+import { useState } from 'react'
 
-import type { ZorinGateway } from '../zorin'
 import { cn } from '../lib/utils'
 import { startManualOnboarding } from '../store/onboarding'
+import type { ZorinGateway } from '../zorin'
 
 import { InlineNotice } from './notifications'
 import { Button } from './ui/button'

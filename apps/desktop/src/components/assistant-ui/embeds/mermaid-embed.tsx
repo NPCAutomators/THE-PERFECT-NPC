@@ -1,11 +1,10 @@
 'use client'
 
-import mermaid from 'mermaid'
-import { useEffect, useState } from 'react'
-
 import { Zoomable } from '@/components/ui/zoomable'
 import { copySvgAsPng } from '@/lib/svg-image'
 import { cn } from '@/lib/utils'
+import mermaid from 'mermaid'
+import { useEffect, useState } from 'react'
 
 import type { RichFenceProps } from './types'
 import { useIsDark } from './use-is-dark'

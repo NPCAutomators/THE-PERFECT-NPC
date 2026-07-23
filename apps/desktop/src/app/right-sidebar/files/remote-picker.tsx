@@ -1,11 +1,10 @@
-import { useEffect, useMemo, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
 import { useI18n } from '@/i18n'
 import { readDesktopDir, setDesktopFsRemotePicker } from '@/lib/desktop-fs'
 import { cn } from '@/lib/utils'
+import { useEffect, useMemo, useState } from 'react'
 
 function clean(path: string) {
   return path.replace(/\/+$/, '') || '/'

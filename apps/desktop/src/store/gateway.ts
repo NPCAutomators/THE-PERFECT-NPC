@@ -1,8 +1,7 @@
+import { setGatewayState } from '@/store/session'
+import { ZorinGateway } from '@/zorin'
 import { type ConnectionState, type GatewayEvent, resolveGatewayWsUrl } from '@zorin/shared'
 import { atom } from 'nanostores'
-
-import { ZorinGateway } from '@/zorin'
-import { setGatewayState } from '@/store/session'
 
 // ── Multi-profile gateway routing ──────────────────────────────────────────
 // Concurrent sessions across profiles need concurrent sockets: the renderer's

@@ -1,7 +1,6 @@
-import { type DragEvent as ReactDragEvent, useCallback, useEffect, useRef, useState } from 'react'
-
 import { dragHasAttachments } from '@/app/chat/composer/inline-refs'
 import { ESCAPE_PRIORITY, pushEscapeLayer } from '@/lib/escape-layers'
+import { type DragEvent as ReactDragEvent, useCallback, useEffect, useRef, useState } from 'react'
 
 import { type DroppedFile, extractDroppedFiles, ZORIN_PATHS_MIME } from './use-composer-actions'
 

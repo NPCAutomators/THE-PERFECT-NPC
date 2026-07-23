@@ -1,15 +1,3 @@
-import type * as React from 'react'
-import type {
-  ComponentProps,
-  CSSProperties,
-  DragEvent as ReactDragEvent,
-  MouseEvent as ReactMouseEvent,
-  ReactNode
-} from 'react'
-import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import ShikiHighlighter from 'react-shiki'
-import { Streamdown } from 'streamdown'
-
 import { requestComposerFocus, requestComposerInsertRefs } from '@/app/chat/composer/focus'
 import { droppedFileInlineRef } from '@/app/chat/composer/inline-refs'
 import { ZORIN_PATHS_MIME } from '@/app/chat/hooks/use-composer-actions'
@@ -35,6 +23,17 @@ import type { PreviewTarget } from '@/store/preview'
 import { setPreviewDirty } from '@/store/preview-edit'
 import { $currentCwd } from '@/store/session'
 import { notifyWorkspaceChanged } from '@/store/workspace-events'
+import type * as React from 'react'
+import type {
+  ComponentProps,
+  CSSProperties,
+  DragEvent as ReactDragEvent,
+  MouseEvent as ReactMouseEvent,
+  ReactNode
+} from 'react'
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import ShikiHighlighter from 'react-shiki'
+import { Streamdown } from 'streamdown'
 
 const SHIKI_THEME = { dark: 'github-dark-default', light: 'github-light-default' } as const
 const TEXT_PREVIEW_MAX_BYTES = 512 * 1024

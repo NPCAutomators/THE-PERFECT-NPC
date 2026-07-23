@@ -1,8 +1,4 @@
-import { isGatewayReauthRequired, resolveGatewayWsUrl } from '@zorin/shared'
-import { useEffect, useRef } from 'react'
-
 import type { ZorinConnection } from '@/global'
-import { ZorinGateway } from '@/zorin'
 import { translateNow } from '@/i18n'
 import { desktopDefaultCwd } from '@/lib/desktop-fs'
 import {
@@ -39,6 +35,9 @@ import {
 } from '@/store/session'
 import { $attentionSessionIds, $workingSessionIds, resetTileRuntimeBindings } from '@/store/session-states'
 import type { RpcEvent } from '@/types/zorin'
+import { ZorinGateway } from '@/zorin'
+import { isGatewayReauthRequired, resolveGatewayWsUrl } from '@zorin/shared'
+import { useEffect, useRef } from 'react'
 
 // After this many consecutive failed reconnects (≈45s with the 1→15s backoff)
 // raise a recoverable boot error. Otherwise a dropped remote gateway loops the

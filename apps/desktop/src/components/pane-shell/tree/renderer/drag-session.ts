@@ -28,11 +28,10 @@
  * commits at the exact final position.
  */
 
-import type { PointerEvent as ReactPointerEvent } from 'react'
-
 import { createDragGhost, type DragGhost } from '@/lib/drag-ghost'
 import { ESCAPE_PRIORITY, pushEscapeLayer } from '@/lib/escape-layers'
 import { reorderCommitHaptic, reorderStepHaptic } from '@/lib/reorder'
+import type { PointerEvent as ReactPointerEvent } from 'react'
 
 import type { DropPosition } from '../model'
 import { $dropHint, $treeDragging, type DropHint, mergeTreeZones, moveTreePane, reorderTreePane } from '../store'

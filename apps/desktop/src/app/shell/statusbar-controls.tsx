@@ -1,9 +1,8 @@
-import { type ComponentProps, type ReactNode, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Tip, TipKeybindLabel, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
+import { type ComponentProps, type ReactNode, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Shared chrome styling for interactive statusbar items (button / link / menu
 // trigger). The 'text' variant intentionally omits hover/transition/disabled.

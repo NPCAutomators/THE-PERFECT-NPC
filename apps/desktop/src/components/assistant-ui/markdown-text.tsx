@@ -1,15 +1,5 @@
 'use client'
 
-import { TextMessagePartProvider, useMessagePartText } from '@assistant-ui/react'
-import {
-  type StreamdownTextComponents,
-  StreamdownTextPrimitive,
-  type SyntaxHighlighterProps,
-  tailBoundedRemend
-} from '@assistant-ui/react-streamdown'
-import { code } from '@streamdown/code'
-import { type ComponentProps, memo, useEffect, useMemo, useState } from 'react'
-
 import { ExpandableBlock } from '@/components/chat/expandable-block'
 import { PreviewAttachment } from '@/components/chat/preview-attachment'
 import { chunkByLines, SyntaxHighlighter } from '@/components/chat/shiki-highlighter'
@@ -31,6 +21,15 @@ import {
 } from '@/lib/media'
 import { previewTargetFromMarkdownHref } from '@/lib/preview-targets'
 import { cn } from '@/lib/utils'
+import { TextMessagePartProvider, useMessagePartText } from '@assistant-ui/react'
+import {
+  type StreamdownTextComponents,
+  StreamdownTextPrimitive,
+  type SyntaxHighlighterProps,
+  tailBoundedRemend
+} from '@assistant-ui/react-streamdown'
+import { code } from '@streamdown/code'
+import { type ComponentProps, memo, useEffect, useMemo, useState } from 'react'
 
 import { detectEmbed, extractAlert, MarkdownAlert, RichCodeBlock, UrlEmbed } from './embeds'
 

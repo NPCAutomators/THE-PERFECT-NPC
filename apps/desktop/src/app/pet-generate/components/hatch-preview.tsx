@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import { PetSprite } from '@/components/pet/pet-sprite'
 import { PetStarShower } from '@/components/pet/pet-star-shower'
 import { PixelEggSprite } from '@/components/pet/pixel-egg-sprite'
@@ -10,6 +8,7 @@ import { useI18n } from '@/i18n'
 import { triggerHaptic } from '@/lib/haptics'
 import { Loader2, PawPrint, RefreshCw } from '@/lib/icons'
 import { type PetInfo } from '@/store/pet'
+import { useEffect, useState } from 'react'
 
 import { frameCountForRow } from '../lib/frame-count'
 

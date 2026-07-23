@@ -1,3 +1,4 @@
+import { useIncrementalExternalStoreRuntime } from '@/lib/incremental-external-store-runtime'
 import { ExportedMessageRepository } from '@assistant-ui/react'
 // Clicking a user bubble must open the inline edit composer — through the
 // app's incremental external-store runtime (which reimplements capability
@@ -10,8 +11,6 @@ import { ExportedMessageRepository } from '@assistant-ui/react'
 import { AssistantRuntimeProvider, type ThreadMessage, useExternalStoreRuntime } from '@assistant-ui/react'
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-
-import { useIncrementalExternalStoreRuntime } from '@/lib/incremental-external-store-runtime'
 
 import { Thread } from '.'
 

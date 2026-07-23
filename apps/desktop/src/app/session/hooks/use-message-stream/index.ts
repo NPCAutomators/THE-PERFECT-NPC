@@ -1,6 +1,3 @@
-import type { QueryClient } from '@tanstack/react-query'
-import { type MutableRefObject, useCallback, useEffect, useRef } from 'react'
-
 import { translateNow } from '@/i18n'
 import {
   appendAssistantTextPart,
@@ -25,6 +22,8 @@ import { dispatchNativeNotification } from '@/store/native-notifications'
 import { broadcastSessionsChanged } from '@/store/session-sync'
 import { upsertSubagent } from '@/store/subagents'
 import { setSessionTodos } from '@/store/todos'
+import type { QueryClient } from '@tanstack/react-query'
+import { type MutableRefObject, useCallback, useEffect, useRef } from 'react'
 
 import type { ClientSessionState } from '../../../types'
 

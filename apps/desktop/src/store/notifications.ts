@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import { translateNow } from '@/i18n'
+import { atom } from 'nanostores'
 
 export type NotificationKind = 'error' | 'warning' | 'info' | 'success'
 

@@ -27,8 +27,8 @@ If a skill is missing from this list but present in the repo, the catalog is reg
 |-------|-------------|------|
 | [`claude-code`](/docs/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-claude-code) | Delegate coding to Claude Code CLI (features, PRs). | `autonomous-ai-agents/claude-code` |
 | [`codex`](/docs/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-codex) | Delegate coding to OpenAI Codex CLI (features, PRs). | `autonomous-ai-agents/codex` |
-| [`zorin-agent`](/docs/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-zorin-agent) | Configure, extend, or contribute to ZORIN. | `autonomous-ai-agents/zorin-agent` |
 | [`opencode`](/docs/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-opencode) | Delegate coding to OpenCode CLI (features, PR review). | `autonomous-ai-agents/opencode` |
+| [`zorin-agent`](/docs/user-guide/skills/bundled/autonomous-ai-agents/autonomous-ai-agents-zorin-agent) | Configure, extend, or contribute to ZORIN. | `autonomous-ai-agents/zorin-agent` |
 
 ## computer-use
 
@@ -86,12 +86,6 @@ If a skill is missing from this list but present in the repo, the catalog is reg
 | [`github-pr-workflow`](/docs/user-guide/skills/bundled/github/github-github-pr-workflow) | GitHub PR lifecycle: branch, commit, open, CI, merge. | `github/github-pr-workflow` |
 | [`github-repo-management`](/docs/user-guide/skills/bundled/github/github-github-repo-management) | Clone/create/fork repos; manage remotes, releases. | `github/github-repo-management` |
 
-## zorin-desktop-plugins
-
-| Skill | Description | Path |
-|-------|-------------|------|
-| [`zorin-desktop-plugins`](/docs/user-guide/skills/bundled/zorin-desktop-plugins/zorin-desktop-plugins-zorin-desktop-plugins) | Write desktop app plugins that add UI panes and commands. | `zorin-desktop-plugins` |
-
 ## media
 
 | Skill | Description | Path |
@@ -134,6 +128,7 @@ If a skill is missing from this list but present in the repo, the catalog is reg
 | [`petdex`](/docs/user-guide/skills/bundled/productivity/productivity-petdex) | Install and select animated petdex mascots for Zorin. | `productivity/petdex` |
 | [`powerpoint`](/docs/user-guide/skills/bundled/productivity/productivity-powerpoint) | Create, read, edit .pptx decks, slides, notes, templates. | `productivity/powerpoint` |
 | [`teams-meeting-pipeline`](/docs/user-guide/skills/bundled/productivity/productivity-teams-meeting-pipeline) | Operate the Teams meeting summary pipeline via Zorin CLI — summarize meetings, inspect pipeline status, replay jobs, manage Microsoft Graph subscriptions. | `productivity/teams-meeting-pipeline` |
+| [`tui-widgets`](/docs/user-guide/skills/bundled/productivity/productivity-tui-widgets) | Author live widget apps for the Zorin TUI dock. | `productivity/tui-widgets` |
 | [`xlsx`](/docs/user-guide/skills/bundled/productivity/productivity-xlsx) | Create, read, edit Excel .xlsx spreadsheets and CSVs. | `productivity/xlsx` |
 
 ## research
@@ -162,7 +157,6 @@ If a skill is missing from this list but present in the repo, the catalog is reg
 
 | Skill | Description | Path |
 |-------|-------------|------|
-| [`zorin-agent-skill-authoring`](/docs/user-guide/skills/bundled/software-development/software-development-zorin-agent-skill-authoring) | Author in-repo SKILL.md: frontmatter, validator, structure, and writing-quality principles. | `software-development/zorin-agent-skill-authoring` |
 | [`node-inspect-debugger`](/docs/user-guide/skills/bundled/software-development/software-development-node-inspect-debugger) | Debug Node.js via --inspect + Chrome DevTools Protocol CLI. | `software-development/node-inspect-debugger` |
 | [`plan`](/docs/user-guide/skills/bundled/software-development/software-development-plan) | Plan mode: write an actionable markdown plan to .zorin/plans/, no execution. Bite-sized tasks, exact paths, complete code. | `software-development/plan` |
 | [`python-debugpy`](/docs/user-guide/skills/bundled/software-development/software-development-python-debugpy) | Debug Python: pdb REPL + debugpy remote (DAP). | `software-development/python-debugpy` |
@@ -171,9 +165,22 @@ If a skill is missing from this list but present in the repo, the catalog is reg
 | [`spike`](/docs/user-guide/skills/bundled/software-development/software-development-spike) | Throwaway experiments to validate an idea before build. | `software-development/spike` |
 | [`systematic-debugging`](/docs/user-guide/skills/bundled/software-development/software-development-systematic-debugging) | 4-phase root cause debugging: understand bugs before fixing. | `software-development/systematic-debugging` |
 | [`test-driven-development`](/docs/user-guide/skills/bundled/software-development/software-development-test-driven-development) | TDD: enforce RED-GREEN-REFACTOR, tests before code. | `software-development/test-driven-development` |
+| [`zorin-agent-skill-authoring`](/docs/user-guide/skills/bundled/software-development/software-development-zorin-agent-skill-authoring) | Author in-repo SKILL.md: frontmatter, validator, structure, and writing-quality principles. | `software-development/zorin-agent-skill-authoring` |
 
 ## yuanbao
 
 | Skill | Description | Path |
 |-------|-------------|------|
 | [`yuanbao`](/docs/user-guide/skills/bundled/yuanbao/yuanbao-yuanbao) | Yuanbao (元宝) groups: @mention users, query info/members. | `yuanbao` |
+
+## zorin-desktop-plugins
+
+| Skill | Description | Path |
+|-------|-------------|------|
+| [`zorin-desktop-plugins`](/docs/user-guide/skills/bundled/zorin-desktop-plugins/zorin-desktop-plugins-zorin-desktop-plugins) | Write desktop app plugins that add UI panes and commands. | `zorin-desktop-plugins` |
+
+## zorin-themes
+
+| Skill | Description | Path |
+|-------|-------------|------|
+| [`zorin-themes`](/docs/user-guide/skills/bundled/zorin-themes/zorin-themes-zorin-themes) | Author a Zorin color theme that skins every surface. | `zorin-themes` |

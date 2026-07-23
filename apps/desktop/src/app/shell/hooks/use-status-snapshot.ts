@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
-
-import { getStatus } from '@/zorin'
 import { evaluateRuntimeReadiness, type RuntimeReadinessResult } from '@/lib/runtime-readiness'
 import type { StatusResponse } from '@/types/zorin'
+import { getStatus } from '@/zorin'
+import { useEffect, useState } from 'react'
 
 const REFRESH_MS = 15_000
 

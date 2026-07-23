@@ -1,6 +1,5 @@
-import { atom } from 'nanostores'
-
 import { persistString, storedString } from '@/lib/storage'
+import { atom } from 'nanostores'
 
 import { $gateway } from './gateway'
 import { clearApprovalRequest } from './prompts'

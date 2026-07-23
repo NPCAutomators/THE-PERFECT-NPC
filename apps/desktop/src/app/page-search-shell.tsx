@@ -1,8 +1,7 @@
-import type { ReactNode } from 'react'
-
 import { SearchField } from '@/components/ui/search-field'
 import { ResponsiveTabs } from '@/components/ui/tab-dropdown'
 import { cn } from '@/lib/utils'
+import type { ReactNode } from 'react'
 
 // Tabs are data, not nodes: the shell owns their presentation so every page
 // gets the same behavior — a centered TextTab row on wide viewports that

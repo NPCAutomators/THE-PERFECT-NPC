@@ -1,7 +1,6 @@
-import type { ReactNode } from 'react'
-
 import type { SubmitTextOptions } from '@/app/session/hooks/use-prompt-actions/utils'
 import type { ZorinGateway } from '@/zorin'
+import type { ReactNode } from 'react'
 
 import type { DroppedFile } from '../hooks/use-composer-actions'
 

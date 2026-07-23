@@ -1,13 +1,12 @@
 'use client'
 
+import { ZoomableImage } from '@/components/chat/zoomable-image'
+import { extractEmbeddedImages } from '@/lib/embedded-images'
+import { gatewayMediaDataUrl, isRemoteGateway } from '@/lib/media'
 import type { Unstable_DirectiveFormatter, Unstable_DirectiveSegment, Unstable_TriggerItem } from '@assistant-ui/core'
 import type { TextMessagePartComponent, TextMessagePartProps } from '@assistant-ui/react'
 import type { FC } from 'react'
 import { Fragment, useEffect, useMemo, useState } from 'react'
-
-import { ZoomableImage } from '@/components/chat/zoomable-image'
-import { extractEmbeddedImages } from '@/lib/embedded-images'
-import { gatewayMediaDataUrl, isRemoteGateway } from '@/lib/media'
 
 const ZORIN_REF_TYPES = ['file', 'folder', 'url', 'image', 'tool', 'line', 'terminal', 'session'] as const
 type ZorinRefType = (typeof ZORIN_REF_TYPES)[number]

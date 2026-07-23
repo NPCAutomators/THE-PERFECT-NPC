@@ -1,8 +1,7 @@
-import { atom } from 'nanostores'
-
 import { sessionTitle } from '@/lib/chat-runtime'
 import type { PreviewServerRestart } from '@/store/preview'
 import type { ActionStatusResponse, SessionInfo } from '@/types/zorin'
+import { atom } from 'nanostores'
 
 const HISTORY_LIMIT = 8
 const COMPLETED_TTL_MS = 5 * 60 * 1000

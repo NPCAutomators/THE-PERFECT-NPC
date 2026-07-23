@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useMemo, useState } from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { DisclosureCaret } from '@/components/ui/disclosure-caret'
 import { Kbd, KbdCombo } from '@/components/ui/kbd'
@@ -29,6 +26,8 @@ import {
   resetAllBindings,
   resetBinding
 } from '@/store/keybinds'
+import { useStore } from '@nanostores/react'
+import { useMemo, useState } from 'react'
 
 import { SettingsContent } from './primitives'
 

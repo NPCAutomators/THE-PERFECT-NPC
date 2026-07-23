@@ -1,21 +1,5 @@
 'use client'
 
-import { type ToolCallMessagePartProps, useAuiState } from '@assistant-ui/react'
-import { useStore } from '@nanostores/react'
-import {
-  Children,
-  createContext,
-  type FC,
-  type PropsWithChildren,
-  type ReactNode,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from 'react'
-
 import { AnsiText } from '@/components/assistant-ui/ansi-text'
 import { useElapsedSeconds } from '@/components/chat/activity-timer'
 import { ActivityTimerText } from '@/components/chat/activity-timer-text'
@@ -42,6 +26,21 @@ import { $activeSessionId, $currentCwd } from '@/store/session'
 import { $toolInlineDiff } from '@/store/tool-diffs'
 import { $toolRowDismissed, dismissToolRow } from '@/store/tool-dismiss'
 import { $toolDisclosureOpen, $toolViewMode, setToolDisclosureOpen } from '@/store/tool-view'
+import { type ToolCallMessagePartProps, useAuiState } from '@assistant-ui/react'
+import { useStore } from '@nanostores/react'
+import {
+  Children,
+  createContext,
+  type FC,
+  type PropsWithChildren,
+  type ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 
 import { PendingToolApproval } from './approval'
 import {

@@ -1,8 +1,7 @@
-import { Fragment, type ReactNode } from 'react'
-
 import { TabDropdown } from '@/components/ui/tab-dropdown'
 import type { IconComponent } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { Fragment, type ReactNode } from 'react'
 
 import { PAGE_INSET_X, PAGE_MAX_W } from '../layout-constants'
 

@@ -1,9 +1,8 @@
+import { ExternalLink, ExternalLinkIcon } from '@/lib/external-link'
+import { cn } from '@/lib/utils'
 import type { ComponentProps, ElementType, FC } from 'react'
 import { memo } from 'react'
 import { Streamdown } from 'streamdown'
-
-import { ExternalLink, ExternalLinkIcon } from '@/lib/external-link'
-import { cn } from '@/lib/utils'
 
 // Compact markdown renderer for tool detail bodies. Same Streamdown pipeline
 // as the file preview pane, with tighter typography and external-link routing

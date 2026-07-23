@@ -1,5 +1,3 @@
-import { useCallback, useEffect, useState } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
@@ -17,6 +15,7 @@ import { useI18n } from '@/i18n'
 import { gitRef } from '@/lib/sanitize'
 import { notifyError } from '@/store/notifications'
 import { listRepoBranches, startWorkInRepo, switchBranchInRepo } from '@/store/projects'
+import { useCallback, useEffect, useState } from 'react'
 
 import { BaseBranchPicker } from './base-branch-picker'
 

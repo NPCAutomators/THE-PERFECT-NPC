@@ -1,11 +1,10 @@
+import { useTheme } from '@/themes/context'
 import { FitAddon } from '@xterm/addon-fit'
 import { Unicode11Addon } from '@xterm/addon-unicode11'
 import { WebLinksAddon } from '@xterm/addon-web-links'
 import { WebglAddon } from '@xterm/addon-webgl'
 import { Terminal } from '@xterm/xterm'
 import { useEffect, useRef } from 'react'
-
-import { useTheme } from '@/themes/context'
 
 import { registerAgentTerminalWriter } from './agent-terminal-stream'
 import { makeTerminalReader, registerTerminalReader } from './buffer'

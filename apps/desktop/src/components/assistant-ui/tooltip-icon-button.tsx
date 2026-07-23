@@ -1,10 +1,9 @@
 'use client'
 
-import { type ComponentPropsWithRef, forwardRef } from 'react'
-
 import { Button } from '@/components/ui/button'
 import { Tip } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
+import { type ComponentPropsWithRef, forwardRef } from 'react'
 
 export interface TooltipIconButtonProps extends ComponentPropsWithRef<typeof Button> {
   tooltip: string

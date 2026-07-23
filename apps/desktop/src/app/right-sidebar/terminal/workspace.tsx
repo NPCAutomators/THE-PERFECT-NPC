@@ -1,7 +1,6 @@
+import { $backgroundStatusBySession } from '@/store/composer-status'
 import { useStore } from '@nanostores/react'
 import { useEffect } from 'react'
-
-import { $backgroundStatusBySession } from '@/store/composer-status'
 
 import { seedAgentTerminalCommand, syncAgentTerminalSnapshot } from './agent-terminal-stream'
 import { setActiveTerminalId } from './buffer'

@@ -4,8 +4,6 @@
  * the persisted tree is the user's customization; reset returns to default.
  */
 
-import { atom, computed } from 'nanostores'
-
 import { SIDEBAR_COLLAPSE_MEDIA_QUERY } from '@/app/layout-constants'
 import { setPluginEnabled } from '@/contrib/plugins-store'
 import { registry } from '@/contrib/registry'
@@ -14,6 +12,7 @@ import { readJson, readKey, writeJson, writeKey } from '@/lib/storage'
 import { notify } from '@/store/notifications'
 import { clearAllPaneSizeOverrides } from '@/store/panes'
 import { isSecondaryWindow } from '@/store/windows'
+import { atom, computed } from 'nanostores'
 
 import {
   allPaneIds,

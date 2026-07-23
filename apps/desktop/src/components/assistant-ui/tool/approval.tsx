@@ -1,8 +1,5 @@
 'use client'
 
-import { useStore } from '@nanostores/react'
-import { type FC, useCallback, useEffect, useMemo, useState } from 'react'
-
 import { useSessionView } from '@/app/chat/session-view'
 import { Button } from '@/components/ui/button'
 import {
@@ -27,6 +24,8 @@ import {
   sessionApprovalInlineVisible,
   sessionApprovalRequest
 } from '@/store/prompts'
+import { useStore } from '@nanostores/react'
+import { type FC, useCallback, useEffect, useMemo, useState } from 'react'
 
 import type { ToolPart } from './fallback-model'
 

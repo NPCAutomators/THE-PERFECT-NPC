@@ -1,5 +1,3 @@
-import { useStore } from '@nanostores/react'
-
 import { useSessionView } from '@/app/chat/session-view'
 import {
   DropdownMenuItem,
@@ -18,6 +16,7 @@ import { setModelPreset } from '@/store/model-presets'
 import { notifyError } from '@/store/notifications'
 import { markComposerSelectionManual, setCurrentFastMode, setCurrentReasoningEffort } from '@/store/session'
 import { sessionTileDelegate } from '@/store/session-states'
+import { useStore } from '@nanostores/react'
 
 // Zorin' real reasoning levels (see VALID_REASONING_EFFORTS); `none` is owned
 // by the Thinking toggle, not the radio.

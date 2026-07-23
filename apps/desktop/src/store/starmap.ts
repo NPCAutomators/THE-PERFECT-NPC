@@ -1,7 +1,6 @@
-import { atom } from 'nanostores'
-
-import { getStarmapGraph } from '@/zorin'
 import type { StarmapGraph } from '@/types/zorin'
+import { getStarmapGraph } from '@/zorin'
+import { atom } from 'nanostores'
 
 // On-demand cache for the star map. The graph scan touches the skills catalog +
 // usage ledger + memory files, so we fetch it only when the panel opens (and on

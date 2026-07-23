@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { ModelOptionProvider } from '@/types/zorin'
+import { describe, expect, it } from 'vitest'
 
 import {
   collapseModelFamilies,
@@ -145,7 +144,10 @@ describe('toggleModelVisibility', () => {
   })
 
   it('clears only the toggled provider sentinel when a model is re-enabled', () => {
-    let stored: Set<string> | null = new Set([emptyProviderSentinelKey('openai'), emptyProviderSentinelKey('npcautomators')])
+    let stored: Set<string> | null = new Set([
+      emptyProviderSentinelKey('openai'),
+      emptyProviderSentinelKey('npcautomators')
+    ])
 
     stored = apply(stored, 'openai', 'gpt-a')
 

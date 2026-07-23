@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
-
 import { useI18n } from '@/i18n'
 import { notify, notifyError } from '@/store/notifications'
+import { useEffect, useRef, useState } from 'react'
 
 import type { VoiceActivityState, VoiceStatus } from '../types'
 

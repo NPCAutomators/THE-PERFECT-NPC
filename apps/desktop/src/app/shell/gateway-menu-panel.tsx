@@ -1,16 +1,15 @@
-import { type ReactNode, useEffect, useRef, useState } from 'react'
-
 import { StatusDot, type StatusTone } from '@/components/status-dot'
 import { Button } from '@/components/ui/button'
 import { LogView } from '@/components/ui/log-view'
 import { Tip } from '@/components/ui/tooltip'
-import { getLogs } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { LayoutDashboard, RefreshCw } from '@/lib/icons'
 import type { RuntimeReadinessResult } from '@/lib/runtime-readiness'
 import { cn } from '@/lib/utils'
 import { runGatewayRestart } from '@/store/system-actions'
 import type { StatusResponse } from '@/types/zorin'
+import { getLogs } from '@/zorin'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
 
 interface GatewayMenuPanelProps {
   gatewayState: string

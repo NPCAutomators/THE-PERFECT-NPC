@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type KeyboardEvent as ReactKeyboardEvent, useCallback, useEffect, useRef, useState } from 'react'
-import { type NodeApi, type NodeRendererProps, type RowRendererProps, Tree, type TreeApi } from 'react-arborist'
-
 import { TreeSkeleton } from '@/components/chat/skeletons'
 import { Codicon } from '@/components/ui/codicon'
 import { useResizeObserver } from '@/hooks/use-resize-observer'
@@ -9,6 +5,9 @@ import { cn } from '@/lib/utils'
 import { $repoChangeByPath, type RepoChangeKind } from '@/store/coding-status'
 import { $renamingPath, beginInlineRename } from '@/store/file-actions'
 import { $revealInTreeRequest } from '@/store/layout'
+import { useStore } from '@nanostores/react'
+import { type KeyboardEvent as ReactKeyboardEvent, useCallback, useEffect, useRef, useState } from 'react'
+import { type NodeApi, type NodeRendererProps, type RowRendererProps, Tree, type TreeApi } from 'react-arborist'
 
 import { FileEntryContextMenu, InlineRenameInput, isRenameShortcut } from '../file-actions'
 

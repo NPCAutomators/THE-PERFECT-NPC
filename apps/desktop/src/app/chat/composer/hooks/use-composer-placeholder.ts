@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
-
 import { useI18n } from '@/i18n'
 import { resetBrowseState } from '@/store/composer-input-history'
+import { useEffect, useRef, useState } from 'react'
 
 import { pickPlaceholder } from '../composer-utils'
 

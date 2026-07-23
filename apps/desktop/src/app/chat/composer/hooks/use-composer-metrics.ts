@@ -1,10 +1,9 @@
-import { useAuiState } from '@assistant-ui/react'
-import { type RefObject, useCallback, useEffect, useRef, useState } from 'react'
-
 import { useMediaQuery } from '@/hooks/use-media-query'
 import { useResizeObserver } from '@/hooks/use-resize-observer'
 import { $composerPoppedOut } from '@/store/composer-popout'
 import { isSecondaryWindow } from '@/store/windows'
+import { useAuiState } from '@assistant-ui/react'
+import { type RefObject, useCallback, useEffect, useRef, useState } from 'react'
 
 import { COMPOSER_COMPACT_PILL_PX, COMPOSER_SINGLE_LINE_MAX_PX, COMPOSER_STACK_BREAKPOINT_PX } from '../composer-utils'
 

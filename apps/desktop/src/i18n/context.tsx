@@ -1,6 +1,5 @@
+import { getZorinConfigRecord, saveZorinConfig, type ZorinConfigRecord } from '@/zorin'
 import { createContext, type ReactNode, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
-
-import { getZorinConfigRecord, type ZorinConfigRecord, saveZorinConfig } from '@/zorin'
 
 import { TRANSLATIONS } from './catalog'
 import { DEFAULT_LOCALE, localeConfigValue, normalizeLocale } from './languages'

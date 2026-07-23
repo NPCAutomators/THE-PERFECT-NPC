@@ -1,7 +1,6 @@
+import { cn } from '@/lib/utils'
 import type { Icon } from '@tabler/icons-react'
 import type * as React from 'react'
-
-import { cn } from '@/lib/utils'
 
 export interface CodiconProps extends React.HTMLAttributes<HTMLElement> {
   name: string

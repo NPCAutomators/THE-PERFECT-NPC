@@ -1,7 +1,6 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import * as notifications from '@/store/notifications'
 import type { OAuthProvider } from '@/types/zorin'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import {
   $desktopOnboarding,

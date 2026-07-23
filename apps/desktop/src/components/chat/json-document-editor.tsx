@@ -1,12 +1,11 @@
-import type * as React from 'react'
-import { type RefObject, useRef } from 'react'
-
 import { CodeEditor, type CodeEditorApi } from '@/components/chat/code-editor'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
 import { Tip } from '@/components/ui/tooltip'
 import { useI18n } from '@/i18n'
 import { cn } from '@/lib/utils'
+import type * as React from 'react'
+import { type RefObject, useRef } from 'react'
 
 // Kept a string (not a shared CSS utility): the `size-5` prefix lets
 // tailwind-merge override <Button size="icon">'s larger built-in size.

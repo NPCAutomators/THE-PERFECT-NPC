@@ -1,6 +1,5 @@
-import { useStore } from '@nanostores/react'
-
 import { $bindings } from '@/store/keybinds'
+import { useStore } from '@nanostores/react'
 
 import { KEYBIND_READONLY } from './actions'
 import { formatCombo } from './combo'

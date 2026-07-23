@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { SessionInfo } from '@/types/zorin'
+import { describe, expect, it } from 'vitest'
 
 import { sessionMatchesSearch } from './session-search'
 

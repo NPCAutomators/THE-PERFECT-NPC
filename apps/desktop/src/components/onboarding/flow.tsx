@@ -1,12 +1,8 @@
-import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
-
 import { ModelPickerDialog } from '@/components/model-picker'
 import { Button } from '@/components/ui/button'
 import { ErrorIcon } from '@/components/ui/error-state'
 import { Input } from '@/components/ui/input'
 import { Loader } from '@/components/ui/loader'
-import { getGlobalModelOptions } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { ExternalLink, Loader2 } from '@/lib/icons'
 import { cn } from '@/lib/utils'
@@ -21,6 +17,9 @@ import {
   setOnboardingModel,
   submitOnboardingCode
 } from '@/store/onboarding'
+import { getGlobalModelOptions } from '@/zorin'
+import { useQuery } from '@tanstack/react-query'
+import { useState } from 'react'
 
 import { DecodedLabel, GlyphText, HackeryButton, useScramble } from './glyph'
 import { providerTitle } from './providers'

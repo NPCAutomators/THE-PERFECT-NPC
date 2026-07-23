@@ -1,11 +1,10 @@
 'use client'
 
-import { type ReactNode, useEffect, useState } from 'react'
-
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { Tip } from '@/components/ui/tooltip'
 import { Check, Copy, Maximize, RefreshCw, X, ZoomIn, ZoomOut } from '@/lib/icons'
 import { cn } from '@/lib/utils'
+import { type ReactNode, useEffect, useState } from 'react'
 
 import { useZoomPan } from './use-zoom-pan'
 

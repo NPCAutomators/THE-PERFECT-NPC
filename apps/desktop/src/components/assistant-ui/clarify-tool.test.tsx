@@ -1,9 +1,8 @@
+import { I18nProvider } from '@/i18n'
 import type { ToolCallMessagePartProps } from '@assistant-ui/react'
 import { cleanup, render, screen } from '@testing-library/react'
 import type { ReactNode } from 'react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-
-import { I18nProvider } from '@/i18n'
 
 import { ClarifyTool, readClarifyResult } from './clarify-tool'
 

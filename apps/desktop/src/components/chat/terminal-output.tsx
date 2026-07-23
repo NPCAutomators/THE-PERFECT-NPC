@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useRef } from 'react'
-
 import { useResizeObserver } from '@/hooks/use-resize-observer'
 import { cn } from '@/lib/utils'
+import { useCallback, useEffect, useRef } from 'react'
 
 interface TerminalOutputProps {
   className?: string

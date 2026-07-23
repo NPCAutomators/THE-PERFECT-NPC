@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react'
-
 import { triggerHaptic } from '@/lib/haptics'
+import { useEffect, useRef } from 'react'
 
 import { type ComposerTarget, getActiveComposer } from '../focus'
 

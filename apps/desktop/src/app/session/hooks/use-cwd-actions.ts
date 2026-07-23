@@ -1,5 +1,3 @@
-import { type MutableRefObject, useCallback } from 'react'
-
 import { useI18n } from '@/i18n'
 import { notify, notifyError } from '@/store/notifications'
 import {
@@ -10,6 +8,7 @@ import {
   setNewChatWorkspaceTarget
 } from '@/store/session'
 import type { SessionRuntimeInfo } from '@/types/zorin'
+import { type MutableRefObject, useCallback } from 'react'
 
 interface CwdActionsOptions {
   activeSessionId: string | null

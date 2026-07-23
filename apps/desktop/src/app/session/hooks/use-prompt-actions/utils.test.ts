@@ -1,7 +1,6 @@
+import type { ChatMessage } from '@/lib/chat-messages'
 import type { AppendMessage } from '@assistant-ui/react'
 import { describe, expect, it } from 'vitest'
-
-import type { ChatMessage } from '@/lib/chat-messages'
 
 import {
   appendText,

@@ -1,3 +1,6 @@
+import { triggerHaptic } from '@/lib/haptics'
+import { $filePreviewTarget, $previewTarget } from '@/store/preview'
+import { useTheme } from '@/themes/context'
 import { FitAddon } from '@xterm/addon-fit'
 import { SerializeAddon } from '@xterm/addon-serialize'
 import { Unicode11Addon } from '@xterm/addon-unicode11'
@@ -6,10 +9,6 @@ import { WebglAddon } from '@xterm/addon-webgl'
 import { Terminal } from '@xterm/xterm'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
-
-import { triggerHaptic } from '@/lib/haptics'
-import { $filePreviewTarget, $previewTarget } from '@/store/preview'
-import { useTheme } from '@/themes/context'
 
 import { $terminalInjection } from '../store'
 

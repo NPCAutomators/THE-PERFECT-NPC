@@ -1,5 +1,3 @@
-import { JsonRpcGatewayClient } from '@zorin/shared'
-
 import type {
   ActionResponse,
   ActionStatusResponse,
@@ -20,8 +18,6 @@ import type {
   DebugShareResponse,
   ElevenLabsVoicesResponse,
   EnvVarInfo,
-  ZorinConfig,
-  ZorinConfigRecord,
   LogsResponse,
   McpCatalogResponse,
   McpServerSummary,
@@ -58,8 +54,11 @@ import type {
   TerminalBackendsResponse,
   ToolsetConfig,
   ToolsetInfo,
-  ToolsetModelsResponse
+  ToolsetModelsResponse,
+  ZorinConfig,
+  ZorinConfigRecord
 } from '@/types/zorin'
+import { JsonRpcGatewayClient } from '@zorin/shared'
 
 // Desktop startup fires a burst of read-only data calls (config, profiles,
 // model info/options, cron) the moment the backend passes readiness. On a
@@ -147,8 +146,6 @@ export type {
   ElevenLabsVoicesResponse,
   EnvVarInfo,
   GatewayReadyPayload,
-  ZorinConfig,
-  ZorinConfigRecord,
   LogsResponse,
   McpCatalogEntry,
   McpCatalogResponse,
@@ -202,7 +199,9 @@ export type {
   ToolsetConfig,
   ToolsetInfo,
   ToolsetModel,
-  ToolsetModelsResponse
+  ToolsetModelsResponse,
+  ZorinConfig,
+  ZorinConfigRecord
 } from '@/types/zorin'
 
 export class ZorinGateway extends JsonRpcGatewayClient {

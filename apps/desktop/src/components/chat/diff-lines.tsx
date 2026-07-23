@@ -1,14 +1,13 @@
 'use client'
 
-import type { ReactNode } from 'react'
-import * as React from 'react'
-import { useShikiHighlighter } from 'react-shiki'
-import { type BundledLanguage, codeToTokens, type ShikiTransformer, type ThemedToken } from 'shiki'
-
 import { chunkLines, type LineChunk, useFixedRowWindow } from '@/components/chat/fixed-row-window'
 import { exceedsHighlightBudget, SHIKI_THEME } from '@/components/chat/shiki-highlighter'
 import { shikiLanguageForFilename } from '@/lib/markdown-code'
 import { cn } from '@/lib/utils'
+import type { ReactNode } from 'react'
+import * as React from 'react'
+import { useShikiHighlighter } from 'react-shiki'
+import { type BundledLanguage, codeToTokens, type ShikiTransformer, type ThemedToken } from 'shiki'
 
 /**
  * Renders a unified diff for a tool's file edit. Two paths share one parse:

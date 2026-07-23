@@ -1,6 +1,5 @@
-import { atom, computed, type ReadableAtom } from 'nanostores'
-
 import { persistBoolean, storedBoolean } from '@/lib/storage'
+import { atom, computed, type ReadableAtom } from 'nanostores'
 
 export type ToolViewMode = 'product' | 'technical'
 

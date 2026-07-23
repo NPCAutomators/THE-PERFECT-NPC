@@ -1,6 +1,3 @@
-import type { ReadableAtom } from 'nanostores'
-import { createContext, useContext } from 'react'
-
 import type { ChatMessage } from '@/lib/chat-messages'
 import {
   $activeSessionId,
@@ -16,6 +13,8 @@ import {
   $messagesEmpty,
   $selectedStoredSessionId
 } from '@/store/session'
+import type { ReadableAtom } from 'nanostores'
+import { createContext, useContext } from 'react'
 
 /**
  * SESSION VIEW — the store surface a ChatView renders from. The PRIMARY view

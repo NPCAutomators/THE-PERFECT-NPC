@@ -1,10 +1,9 @@
-import { cleanup, render, screen } from '@testing-library/react'
-import { atom } from 'nanostores'
-import { afterEach, describe, expect, it } from 'vitest'
-
 import type { ChatBarState } from '@/app/chat/composer/types'
 import { type SessionView, SessionViewProvider } from '@/app/chat/session-view'
 import { $activeSessionId, $currentModel, setCurrentModel, setCurrentModelSource } from '@/store/session'
+import { cleanup, render, screen } from '@testing-library/react'
+import { atom } from 'nanostores'
+import { afterEach, describe, expect, it } from 'vitest'
 
 import { ModelPill } from './model-pill'
 

@@ -1,6 +1,5 @@
-import { type ComponentProps, useEffect, useState } from 'react'
-
 import { cn } from '@/lib/utils'
+import { type ComponentProps, useEffect, useState } from 'react'
 
 /**
  * DecodeText — the "CONNECTING" scramble-decode effect as a reusable

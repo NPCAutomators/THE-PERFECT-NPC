@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useMemo } from 'react'
-
 import type { CommandCenterSection } from '@/app/command-center'
 import { $terminalTakeover, setTerminalTakeover } from '@/app/right-sidebar/store'
 import { useApprovalModeStatusbarItem } from '@/app/shell/approval-mode-menu'
@@ -41,6 +38,8 @@ import {
   openUpdateOverlayFor
 } from '@/store/updates'
 import type { StatusResponse } from '@/types/zorin'
+import { useStore } from '@nanostores/react'
+import { useMemo } from 'react'
 
 import { CRON_ROUTE, SETTINGS_ROUTE } from '../../routes'
 import type { StatusbarItem } from '../statusbar-controls'

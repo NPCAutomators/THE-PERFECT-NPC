@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { GatewayEventPayload } from '@/lib/chat-messages'
+import { describe, expect, it } from 'vitest'
 
 import {
   completionErrorText,

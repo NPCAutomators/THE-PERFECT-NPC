@@ -1,6 +1,5 @@
-import { describe, expect, it } from 'vitest'
-
 import type { ComposerAttachment } from '@/store/composer'
+import { describe, expect, it } from 'vitest'
 
 import {
   attachmentDisplayText,

@@ -1,9 +1,5 @@
-import { useEffect, useRef } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-
 import { codiconIcon } from '@/components/ui/codicon'
 import { Tip } from '@/components/ui/tooltip'
-import { getZorinConfigDefaults, getZorinConfigRecord, saveZorinConfig } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { triggerHaptic } from '@/lib/haptics'
 import {
@@ -23,6 +19,9 @@ import {
   Zap
 } from '@/lib/icons'
 import { notifyError } from '@/store/notifications'
+import { getZorinConfigDefaults, getZorinConfigRecord, saveZorinConfig } from '@/zorin'
+import { useEffect, useRef } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useRouteEnumParam } from '../hooks/use-route-enum-param'
 import { OverlayIconButton } from '../overlays/overlay-chrome'

@@ -1,7 +1,6 @@
-import type * as React from 'react'
-
 import { Codicon } from '@/components/ui/codicon'
 import { cn } from '@/lib/utils'
+import type * as React from 'react'
 
 // Solid (filled) glyphs for in-thread tool rows. Codicons are an outline icon
 // *font*, so an outline glyph has no separate fillable region — a filled look

@@ -10,9 +10,8 @@
  * The renderer owns the value and mirrors it to the main process over IPC.
  */
 
-import { atom } from 'nanostores'
-
 import { persistString, storedString } from '@/lib/storage'
+import { atom } from 'nanostores'
 
 const KEY = 'zorin.desktop.translucency.v1'
 

@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { useEffect, useMemo } from 'react'
-
 import type { SetTitlebarToolGroup } from '@/app/shell/titlebar-controls'
 import { Codicon } from '@/components/ui/codicon'
 import {
@@ -33,6 +30,8 @@ import {
   type PreviewTarget
 } from '@/store/preview'
 import { $dirtyPreviewUrls } from '@/store/preview-edit'
+import { useStore } from '@nanostores/react'
+import { useEffect, useMemo } from 'react'
 
 import { PreviewPane } from './preview-pane'
 

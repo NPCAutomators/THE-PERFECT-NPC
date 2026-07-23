@@ -1,6 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { memo, useEffect, useRef, useState } from 'react'
-
 import { WorktreeDialog } from '@/app/chat/sidebar/projects/worktree-dialog'
 import { StatusRow } from '@/components/chat/status-row'
 import { Button } from '@/components/ui/button'
@@ -19,6 +16,8 @@ import { useI18n } from '@/i18n'
 import { $repoStatus, $repoWorktrees } from '@/store/coding-status'
 import { notifyError } from '@/store/notifications'
 import { $newWorktreeRequest } from '@/store/projects'
+import { useStore } from '@nanostores/react'
+import { memo, useEffect, useRef, useState } from 'react'
 
 // Tiny uppercase section header, matching the composer "+" menu's labels.
 const MENU_SECTION = 'text-[0.625rem] font-semibold uppercase tracking-wider text-(--ui-text-tertiary)'

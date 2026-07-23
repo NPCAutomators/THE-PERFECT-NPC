@@ -1,7 +1,3 @@
-import { useStore } from '@nanostores/react'
-import { type ReactNode, useEffect, useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
-
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Codicon } from '@/components/ui/codicon'
@@ -17,6 +13,9 @@ import {
   dismissNotification,
   type NotificationKind
 } from '@/store/notifications'
+import { useStore } from '@nanostores/react'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 type ToneVariant = 'default' | 'destructive' | 'warning' | 'success'
 
@@ -27,7 +26,8 @@ const tone: Record<NotificationKind, { icon: IconComponent; iconClass: string; v
   success: { icon: CheckCircle2, iconClass: 'text-primary', variant: 'success' }
 }
 
-const STACK_SURFACE = 'pointer-events-auto border border-(--stroke-npcautomators) bg-popover/95 shadow-npcautomators backdrop-blur-md'
+const STACK_SURFACE =
+  'pointer-events-auto border border-(--stroke-npcautomators) bg-popover/95 shadow-npcautomators backdrop-blur-md'
 
 function partitionNotifications(notifications: AppNotification[]) {
   const defaultStack: AppNotification[] = []

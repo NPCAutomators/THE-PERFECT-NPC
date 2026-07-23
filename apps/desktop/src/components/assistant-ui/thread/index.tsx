@@ -1,5 +1,3 @@
-import { type FC, useCallback, useMemo, useState } from 'react'
-
 import { AssistantMessage } from '@/components/assistant-ui/thread/assistant-message'
 import { ThreadMessageList } from '@/components/assistant-ui/thread/list'
 import {
@@ -14,9 +12,10 @@ import { UserEditComposer } from '@/components/assistant-ui/thread/user-edit-com
 import { UserMessage } from '@/components/assistant-ui/thread/user-message'
 import { Intro, type IntroProps } from '@/components/chat/intro'
 import { ConfirmDialog } from '@/components/ui/confirm-dialog'
-import type { ZorinGateway } from '@/zorin'
 import { useI18n } from '@/i18n'
 import { notifyError } from '@/store/notifications'
+import type { ZorinGateway } from '@/zorin'
+import { type FC, useCallback, useMemo, useState } from 'react'
 
 type ThreadLoadingState = 'response' | 'session'
 

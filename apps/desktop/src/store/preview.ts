@@ -1,7 +1,6 @@
-import { atom, computed } from 'nanostores'
-
 import { persistentAtom } from '@/lib/persisted'
 import { normalize } from '@/lib/text'
+import { atom, computed } from 'nanostores'
 
 import {
   $rightRailActiveTabId,

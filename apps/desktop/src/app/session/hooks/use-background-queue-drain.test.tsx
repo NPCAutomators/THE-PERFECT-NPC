@@ -1,7 +1,3 @@
-import { act, cleanup, render, waitFor } from '@testing-library/react'
-import type { MutableRefObject } from 'react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { createClientSessionState } from '@/lib/chat-runtime'
 import {
   $parkedQueueSessions,
@@ -11,6 +7,9 @@ import {
   parkQueuedPrompts
 } from '@/store/composer-queue'
 import { clearAllSessionStates, publishSessionState } from '@/store/session-states'
+import { act, cleanup, render, waitFor } from '@testing-library/react'
+import type { MutableRefObject } from 'react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { useBackgroundQueueDrain } from './use-background-queue-drain'
 import type { SubmitTextOptions } from './use-prompt-actions/utils'

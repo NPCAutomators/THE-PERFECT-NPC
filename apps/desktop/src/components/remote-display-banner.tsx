@@ -1,7 +1,6 @@
-import { useEffect } from 'react'
-
 import { translateNow } from '@/i18n'
 import { notify } from '@/store/notifications'
+import { useEffect } from 'react'
 
 // GPU acceleration is disabled under remote display (RDP/VNC/etc) to avoid
 // flicker. Surfaces once per launch as a persistent toast through the shared
