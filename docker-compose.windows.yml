@@ -1,0 +1,38 @@
+#
+# docker-compose.windows.yml — Windows Docker Desktop compatible
+#
+# Differences from docker-compose.yml:
+#   - Removes `network_mode: host` (not supported on Docker Desktop for Windows)
+#   - Uses explicit port mappings instead
+#   - Uses Windows-style volume path for ~/.zorin
+#
+# Usage:
+#   docker compose -f docker-compose.windows.yml up -d
+#
+services:
+  gateway:
+    image: npcautomators/agent-zorin:latest
+    container_name: zorin
+    restart: unless-stopped
+    volumes:
+      - ${USERPROFILE}/.zorin:/opt/data
+    environment:
+      - ZORIN_UID=10000
+      - ZORIN_GID=10000
+    command: ["gateway", "run"]
+
+  dashboard:
+    image: npcautomators/agent-zorin:latest
+    container_name: zorin-dashboard
+    restart: unless-stopped
+    depends_on:
+      - gateway
+    volumes:
+      - ${USERPROFILE}/.zorin:/opt/data
+    environment:
+      - ZORIN_UID=10000
+      - ZORIN_GID=10000
+      - ZORIN_DASHBOARD_HOST=0.0.0.0
+    ports:
+      - "127.0.0.1:9119:9119"
+    command: ["dashboard", "--host", "0.0.0.0", "--port", "9119", "--no-open", "--insecure"]

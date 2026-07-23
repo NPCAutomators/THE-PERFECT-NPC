@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@zorin/ink": ["src/types/zorin-ink.d.ts"]
+    }
+  }
+}
