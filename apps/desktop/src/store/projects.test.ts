@@ -1,7 +1,6 @@
 import type { SidebarProjectTree } from '@/app/chat/sidebar/projects/workspace-groups'
 import { $sidebarAgentsGrouped } from '@/store/layout'
 import { $activeGatewayProfile } from '@/store/profile'
-import { atom } from 'nanostores'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import {
@@ -38,11 +37,15 @@ vi.mock('@/lib/desktop-fs', () => ({
   writeDesktopFileText: vi.fn()
 }))
 
-vi.mock('@/store/gateway', () => ({
-  $gateway: atom(null),
-  activeGateway: vi.fn(),
-  ensureActiveGatewayOpen: vi.fn()
-}))
+vi.mock('@/store/gateway', async () => {
+  const { atom } = await import('nanostores')
+
+  return {
+    $gateway: atom(null),
+    activeGateway: vi.fn(),
+    ensureActiveGatewayOpen: vi.fn()
+  }
+})
 
 vi.mock('@/lib/desktop-git', () => ({ desktopGit: vi.fn() }))
 

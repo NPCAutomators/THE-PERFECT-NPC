@@ -78,7 +78,7 @@ def test_show_status_reports_npcautomators_auth_error(monkeypatch, capsys, tmp_p
     status_mod.show_status(SimpleNamespace(all=False, deep=False))
 
     output = capsys.readouterr().out
-    assert "NPCAUTOMATORS Portal   ✗ not logged in (run: zorin portal)" in output
+    assert "NPCAUTOMATORS Portal  ✗ not logged in (run: zorin portal)" in output
     assert "Error:      Refresh session has been revoked" in output
     assert "Access exp:" in output
     assert "Key exp:" in output
@@ -129,7 +129,7 @@ def test_show_status_reports_npcautomators_inference_key_without_portal_login(mo
     status_mod.show_status(SimpleNamespace(all=False, deep=False))
 
     output = capsys.readouterr().out
-    assert "NPCAUTOMATORS Portal   ✗ not logged in (NpcAutomators inference key configured)" in output
+    assert "NPCAUTOMATORS Portal  ✗ not logged in (NpcAutomators inference key configured)" in output
     assert "Inference:  https://inference.example.com/v1" in output
     assert "NpcAutomators inference credentials are configured" in output
 

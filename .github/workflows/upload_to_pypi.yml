@@ -108,7 +108,7 @@ jobs:
     timeout-minutes: 30
     environment:
       name: pypi
-      url: https://pypi.org/p/zorin-agent
+      url: https://pypi.org/project/zorin-agent/
     permissions:
       id-token: write # OIDC trusted publishing
 

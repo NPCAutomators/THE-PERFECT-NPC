@@ -11,7 +11,8 @@
 #
 services:
   gateway:
-    image: npcautomators/agent-zorin:latest
+    build: .
+    image: zorin-agent
     container_name: zorin
     restart: unless-stopped
     volumes:
@@ -22,7 +23,7 @@ services:
     command: ["gateway", "run"]
 
   dashboard:
-    image: npcautomators/agent-zorin:latest
+    image: zorin-agent
     container_name: zorin-dashboard
     restart: unless-stopped
     depends_on:

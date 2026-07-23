@@ -29,7 +29,7 @@ class TestGatewayLifecyclePattern:
         "zorin gateway restart",
         "zorin gateway stop",
         "zorin  gateway  restart",         # double spaces
-        "Hermez Gateway Restart".lower().replace("z", "s"),  # case handled
+        "Zorin Gateway Restart",           # mixed case handled
         "ZORIN GATEWAY RESTART",           # uppercase
     ])
     def test_zorin_gateway_commands(self, text):

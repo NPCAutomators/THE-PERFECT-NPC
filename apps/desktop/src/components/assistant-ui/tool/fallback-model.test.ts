@@ -82,7 +82,7 @@ describe('buildToolView browser_navigate title', () => {
     const view = buildToolView(
       part({
         toolName: 'browser_navigate',
-        args: { url: 'https://github.com/NPCAutomators/AGENT-ZORIN/tree/main/docs' },
+        args: { url: 'https://zorin-agent.npcautomators.com/docs' },
         result: { success: false, error: 'Command timed out after 60 seconds' }
       }),
       ''
@@ -96,8 +96,8 @@ describe('buildToolView browser_navigate title', () => {
     const view = buildToolView(
       part({
         toolName: 'browser_navigate',
-        args: { url: 'https://github.com/NPCAutomators/AGENT-ZORIN/tree/main/docs' },
-        result: { success: true, url: 'https://github.com/NPCAutomators/AGENT-ZORIN/tree/main/docs', title: 'Docs' }
+        args: { url: 'https://zorin-agent.npcautomators.com/docs' },
+        result: { success: true, url: 'https://zorin-agent.npcautomators.com/docs', title: 'Docs' }
       }),
       ''
     )
