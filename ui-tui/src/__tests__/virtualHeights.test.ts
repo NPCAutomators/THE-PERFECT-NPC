@@ -4,6 +4,16 @@ import { estimatedMsgHeight, messageHeightKey, wrappedLines } from '../lib/virtu
 import type { Msg } from '../types.js'
 
 describe('virtual height estimates', () => {
+  it('tracks the responsive startup banner tiers', () => {
+    const intro: Msg = { kind: 'intro', role: 'system', text: '' }
+    const options = { compact: false, details: false }
+
+    expect(estimatedMsgHeight(intro, 29, options)).toBe(1)
+    expect(estimatedMsgHeight(intro, 30, options)).toBe(7)
+    expect(estimatedMsgHeight(intro, 36, options)).toBe(6)
+    expect(estimatedMsgHeight(intro, 43, options)).toBe(11)
+  })
+
   it('uses stable content keys across resumed message objects', () => {
     const msg: Msg = { role: 'assistant', text: 'same text', tools: ['Search Files [long message]'] }
 

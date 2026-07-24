@@ -34,6 +34,56 @@ def test_build_startup_banner_is_focused_and_actionable():
     assert "ZORIN v" not in output
 
 
+def test_build_startup_banner_uses_a_responsive_inset_and_command_spacing():
+    """Alignment should stay intentional without creating awkward narrow rows."""
+    from zorin_cli.skin_engine import set_active_skin
+
+    set_active_skin("default")
+
+    wide = Console(record=True, force_terminal=False, color_system=None, width=90)
+    banner.build_startup_banner(wide)
+    wide_lines = wide.export_text().splitlines()
+
+    assert f"  {banner.ZORIN_LOGO_ART[0]}" in wide_lines
+    assert "  A product of NPCAUTOMATORS." in wide_lines
+    assert any(
+        line.startswith("  /help")
+        and all(command in line for command, _ in banner.STARTUP_COMMANDS)
+        for line in wide_lines
+    )
+
+    compact = Console(record=True, force_terminal=False, color_system=None, width=36)
+    banner.build_startup_banner(compact)
+    compact_lines = compact.export_text().splitlines()
+    command_lines = [
+        line
+        for line in compact_lines
+        if any(command in line for command, _ in banner.STARTUP_COMMANDS)
+    ]
+
+    assert len(command_lines) == 1
+    assert command_lines[0].startswith("  /help")
+    assert all(command in command_lines[0] for command, _ in banner.STARTUP_COMMANDS)
+    assert all(len(line) <= 36 for line in compact_lines)
+
+    narrow = Console(record=True, force_terminal=False, color_system=None, width=30)
+    banner.build_startup_banner(narrow)
+    narrow_lines = narrow.export_text().splitlines()
+    narrow_commands = [
+        line
+        for line in narrow_lines
+        if any(command in line for command, _ in banner.STARTUP_COMMANDS)
+    ]
+
+    assert "  A product of NPCAUTOMATORS." in narrow_lines
+    assert len(narrow_commands) == 2
+    assert all(
+        sum(command in line for command, _ in banner.STARTUP_COMMANDS) >= 2
+        for line in narrow_commands
+    )
+    assert all(len(line) <= 30 for line in narrow_lines)
+
+
 def test_display_toolset_name_strips_legacy_suffix():
     assert banner._display_toolset_name("homeassistant_tools") == "homeassistant"
     assert banner._display_toolset_name("honcho_tools") == "honcho"

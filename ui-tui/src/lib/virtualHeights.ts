@@ -88,9 +88,18 @@ export const estimatedMsgHeight = (
   }
 ) => {
   if (msg.kind === 'intro') {
-    // Full wordmark (6) + product line + spacing + one command row,
-    // including the intro wrapper's top padding and banner bottom margin.
-    return cols >= 45 ? 11 : 6
+    // Match the responsive banner tiers after AppLayout's two-column inset:
+    // hidden when the product line cannot fit, two command rows at the
+    // narrow tier, one compact row, then the six-row wordmark.
+    if (cols < 30) {
+      return 1
+    }
+
+    if (cols < 36) {
+      return 7
+    }
+
+    return cols >= 43 ? 11 : 6
   }
 
   if (msg.kind === 'panel') {

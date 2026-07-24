@@ -84,6 +84,11 @@ STARTUP_COMMANDS = (
     ("/quit", "Exit Zorin"),
 )
 
+_STARTUP_PRODUCT_LINE = "A product of NPCAUTOMATORS."
+_STARTUP_MAX_LEFT_PADDING = 2
+_STARTUP_RIGHT_MARGIN = 1
+_STARTUP_MAX_COMMAND_GAP = 3
+
 ZORIN_CADUCEUS = """[#CD7F32]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⣀⣀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [#CD7F32]⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣇⠸⣿⣿⠇⣸⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀[/]
 [#FFBF00]⠀⢀⣠⣴⣶⠿⠋⣩⡿⣿⡿⠻⣿⡇⢠⡄⢸⣿⠟⢿⣿⢿⣍⠙⠿⣶⣦⣄⡀⠀[/]
@@ -594,6 +599,51 @@ def _display_toolset_name(toolset_name: str) -> str:
     )
 
 
+def _startup_left_padding(width: int) -> int:
+    """Return a small inset without crowding the banner on narrow terminals."""
+    room_after_product = width - len(_STARTUP_PRODUCT_LINE) - _STARTUP_RIGHT_MARGIN
+    return max(0, min(_STARTUP_MAX_LEFT_PADDING, room_after_product))
+
+
+def _startup_command_rows(width: int) -> List[List[str]]:
+    """Pack commands into the fewest readable rows for the available width."""
+    rows: List[List[str]] = []
+    current: List[str] = []
+
+    for command, _ in STARTUP_COMMANDS:
+        candidate = [*current, command]
+        minimum_width = sum(map(len, candidate)) + max(0, len(candidate) - 1)
+        if current and minimum_width > width:
+            rows.append(current)
+            current = [command]
+        else:
+            current = candidate
+
+    if current:
+        rows.append(current)
+
+    # Greedy packing can leave one command stranded beneath a long first row.
+    # Move one item down when that produces the more balanced 3 + 2 layout.
+    if len(rows) >= 2 and len(rows[-1]) == 1 and len(rows[-2]) > 2:
+        moved = rows[-2][-1]
+        balanced_last = [moved, *rows[-1]]
+        balanced_width = sum(map(len, balanced_last)) + len(balanced_last) - 1
+        if balanced_width <= width:
+            rows[-2] = rows[-2][:-1]
+            rows[-1] = balanced_last
+
+    return rows
+
+
+def _startup_command_gap(commands: List[str], width: int) -> int:
+    """Use equal, bounded gaps so a command row stays compact and aligned."""
+    if len(commands) < 2:
+        return 0
+    target_width = min(width, max(len(line) for line in ZORIN_LOGO_ART) + 1)
+    available = target_width - sum(map(len, commands))
+    return max(1, min(_STARTUP_MAX_COMMAND_GAP, available // (len(commands) - 1)))
+
+
 def build_startup_banner(console: "Console") -> None:
     """Render the focused terminal welcome shown before the first prompt."""
     from rich.text import Text
@@ -614,28 +664,40 @@ def build_startup_banner(console: "Console") -> None:
     width = getattr(console, "width", None)
     if not isinstance(width, int):
         width = shutil.get_terminal_size((80, 24)).columns
+    left_padding = _startup_left_padding(width)
+    content_width = max(1, width - left_padding - _STARTUP_RIGHT_MARGIN)
+    indent = " " * left_padding
 
     console.print()
     if custom_logo:
-        console.print(custom_logo)
-    elif width >= max(len(line) for line in ZORIN_LOGO_ART) + 2:
+        from rich.padding import Padding
+
+        console.print(Padding(custom_logo, (0, 0, 0, left_padding)))
+    elif content_width >= max(len(line) for line in ZORIN_LOGO_ART):
         logo_colors = (title, title, accent, accent, border, border)
         for color, line in zip(logo_colors, ZORIN_LOGO_ART):
-            console.print(Text(line, style=f"bold {color}"))
+            logo_line = Text(indent)
+            logo_line.append(line, style=f"bold {color}")
+            console.print(logo_line)
     else:
-        console.print(Text(agent_name, style=f"bold {title}"))
+        name = Text(indent)
+        name.append(agent_name, style=f"bold {title}")
+        console.print(name)
 
-    product = Text("A product of ", style=dim)
+    product = Text(indent)
+    product.append("A product of ", style=dim)
     product.append("NPCAUTOMATORS.", style=f"bold {title}")
     console.print(product)
     console.print()
 
-    commands = Text(no_wrap=True, overflow="ellipsis")
-    for index, (command, _) in enumerate(STARTUP_COMMANDS):
-        if index:
-            commands.append("   ")
-        commands.append(command, style=f"bold {accent}")
-    console.print(commands)
+    for row in _startup_command_rows(content_width):
+        commands = Text(indent, no_wrap=True, overflow="ellipsis")
+        gap = " " * _startup_command_gap(row, content_width)
+        for index, command in enumerate(row):
+            if index:
+                commands.append(gap)
+            commands.append(command, style=f"bold {accent}")
+        console.print(commands)
 
 
 def build_welcome_banner(console: "Console", model: str, cwd: str,

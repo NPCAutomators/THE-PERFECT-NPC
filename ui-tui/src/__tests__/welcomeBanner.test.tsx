@@ -37,9 +37,10 @@ const renderBanner = (columns: number): string => {
 describe('startup banner', () => {
   it('renders the ZORIN wordmark, product line, and five essential commands', () => {
     const frame = renderBanner(90)
+    const lines = frame.split('\n')
 
-    expect(frame).toContain('███████╗ ██████╗ ██████╗ ██╗███╗   ██╗')
-    expect(frame).toContain('A product of NPCAUTOMATORS.')
+    expect(lines).toContain('  ███████╗ ██████╗ ██████╗ ██╗███╗   ██╗')
+    expect(lines).toContain('  A product of NPCAUTOMATORS.')
     expect(STARTER_COMMANDS).toHaveLength(5)
 
     for (const [command, description] of STARTER_COMMANDS) {
@@ -47,18 +48,33 @@ describe('startup banner', () => {
       expect(frame).not.toContain(description)
     }
 
-    expect(frame.split('\n').some(line => STARTER_COMMANDS.every(([command]) => line.includes(command)))).toBe(true)
+    expect(
+      lines.some(line => line.startsWith('  /help') && STARTER_COMMANDS.every(([command]) => line.includes(command)))
+    ).toBe(true)
     expect(frame).not.toContain('Messenger of the Digital Gods')
   })
 
   it('keeps all five commands on narrow terminals', () => {
     const frame = renderBanner(30)
+    const lines = frame.split('\n')
 
     expect(frame).toContain('ZORIN')
-    expect(frame).toContain('A product of NPCAUTOMATORS.')
+    expect(lines).toContain('  A product of NPCAUTOMATORS.')
 
     for (const [command] of STARTER_COMMANDS) {
       expect(frame).toContain(command)
     }
+
+    // renderSync's captured stream can contain the same row from more than
+    // one Ink frame; compare the distinct visual rows.
+    const commandLines = [
+      ...new Set(lines.filter(line => STARTER_COMMANDS.some(([command]) => line.includes(command))))
+    ]
+
+    expect(commandLines).toHaveLength(2)
+    expect(commandLines.every(line => STARTER_COMMANDS.filter(([command]) => line.includes(command)).length >= 2)).toBe(
+      true
+    )
+    expect(lines.every(line => line.length <= 30)).toBe(true)
   })
 })

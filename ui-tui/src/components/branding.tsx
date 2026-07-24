@@ -57,21 +57,87 @@ export const STARTER_COMMANDS = [
   ['/quit', 'Exit Zorin']
 ] as const
 
-const HIDE_BELOW = 12
+const PRODUCT_LINE = 'A product of NPCAUTOMATORS.'
+const MAX_LEFT_PADDING = 2
+const RIGHT_MARGIN = 1
+const MAX_COMMAND_GAP = 3
+const HIDE_BELOW = PRODUCT_LINE.length + RIGHT_MARGIN
+
+const bannerLeftPadding = (cols: number) =>
+  Math.max(0, Math.min(MAX_LEFT_PADDING, cols - PRODUCT_LINE.length - RIGHT_MARGIN))
+
+const starterCommandRows = (cols: number): string[][] => {
+  const rows: string[][] = []
+  let current: string[] = []
+
+  for (const [command] of STARTER_COMMANDS) {
+    const candidate = [...current, command]
+    const minimumWidth = candidate.reduce((total, item) => total + item.length, 0) + Math.max(0, candidate.length - 1)
+
+    if (current.length && minimumWidth > cols) {
+      rows.push(current)
+      current = [command]
+    } else {
+      current = candidate
+    }
+  }
+
+  if (current.length) {
+    rows.push(current)
+  }
+
+  const last = rows.at(-1)
+  const previous = rows.at(-2)
+
+  if (last?.length === 1 && previous && previous.length > 2) {
+    const moved = previous.at(-1)!
+    const balancedLast = [moved, ...last]
+    const balancedWidth = balancedLast.reduce((total, item) => total + item.length, 0) + balancedLast.length - 1
+
+    if (balancedWidth <= cols) {
+      rows[rows.length - 2] = previous.slice(0, -1)
+      rows[rows.length - 1] = balancedLast
+    }
+  }
+
+  return rows
+}
+
+const starterCommandGap = (commands: string[], cols: number) => {
+  if (commands.length < 2) {
+    return ''
+  }
+
+  const targetWidth = Math.min(cols, LOGO_WIDTH + 1)
+  const commandWidth = commands.reduce((total, command) => total + command.length, 0)
+
+  const gapWidth = Math.max(
+    1,
+    Math.min(MAX_COMMAND_GAP, Math.floor((targetWidth - commandWidth) / (commands.length - 1)))
+  )
+
+  return ' '.repeat(gapWidth)
+}
 
 function StarterCommands({ cols, t }: { cols: number; t: Theme }) {
-  const gap = cols >= 42 ? '   ' : ' '
+  const rows = starterCommandRows(cols)
 
   return (
-    <Box marginTop={1}>
-      <Text wrap="wrap">
-        {STARTER_COMMANDS.map(([command], index) => (
-          <Text bold color={t.color.accent} key={command}>
-            {index ? gap : ''}
-            {command}
+    <Box flexDirection="column" marginTop={1}>
+      {rows.map((commands, rowIndex) => {
+        const gap = starterCommandGap(commands, cols)
+
+        return (
+          <Text key={rowIndex} wrap="truncate-end">
+            {commands.map((command, index) => (
+              <Text bold color={t.color.accent} key={command}>
+                {index ? gap : ''}
+                {command}
+              </Text>
+            ))}
           </Text>
-        ))}
-      </Text>
+        )
+      })}
     </Box>
   )
 }
@@ -84,13 +150,16 @@ export function Banner({ maxWidth, t }: { maxWidth?: number; t: Theme }) {
     return null
   }
 
+  const leftPadding = bannerLeftPadding(cols)
+  const contentCols = Math.max(1, cols - leftPadding - RIGHT_MARGIN)
+
   const logoLines = logo(t.color, t.bannerLogo || undefined)
   const logoW = t.bannerLogo ? artWidth(logoLines) : LOGO_WIDTH
 
-  const showLogo = cols >= logoW + 2
+  const showLogo = contentCols >= logoW
 
   return (
-    <Box flexDirection="column" marginBottom={1} width={Math.max(1, cols - 2)}>
+    <Box flexDirection="column" marginBottom={1} paddingLeft={leftPadding} width={Math.max(1, cols - RIGHT_MARGIN)}>
       {showLogo ? (
         <ArtLines lines={logoLines} />
       ) : (
@@ -106,7 +175,7 @@ export function Banner({ maxWidth, t }: { maxWidth?: number; t: Theme }) {
         </Text>
       </Text>
 
-      <StarterCommands cols={cols} t={t} />
+      <StarterCommands cols={contentCols} t={t} />
     </Box>
   )
 }
