@@ -1,26 +1,11 @@
 /**
- * ChatSidebar — structured-events panel that sits next to the xterm.js
- * terminal in the dashboard Chat tab.
+ * Legacy structured-events panel retained for compatibility with older chat
+ * hosts. The current `/chat` experience uses `components/web-chat`.
  *
- * Two WebSockets, one per concern:
- *
- *   1. **JSON-RPC sidecar** (`GatewayClient` → /api/ws) — a lightweight
- *      session used only for connection state (the "live" badge) and
- *      credential warnings. Independent of the PTY pane's session by
- *      design. The model badge does NOT come from here: it reads the
- *      effective config model over REST (`/api/model/info`), and the model
- *      picker writes config over REST (`/api/model/set`) then offers a
- *      dashboard reload so the running chat adopts the new model.
- *
- *   2. **Event subscriber** (/api/events?channel=…) — passive, receives
- *      every dispatcher emit from the PTY-side `tui_gateway.entry` that
- *      the dashboard fanned out.  The sidebar uses it for `session.info`
- *      (live chat title) and `dashboard.new_session_requested`.  The
- *      `channel` id ties this listener to the same chat tab's PTY child —
- *      see `ChatPage.tsx` for where the id is generated.
- *
- * Best-effort throughout: WS failures show in the badge / banner, the
- * terminal pane keeps working unimpaired.
+ * Existing callers still get the original best-effort status behavior: a
+ * lightweight JSON-RPC session reports connection and credential state, while
+ * a channel-scoped event subscriber receives session metadata and new-session
+ * requests. Model selection continues to use the dashboard REST config path.
  */
 
 import { Button } from "@zorin/ui/ui/components/button";
@@ -83,8 +68,7 @@ interface ChatSidebarProps {
  *
  * Extracted from the effect below so the invariant — close_on_disconnect
  * is set, source is "tool", and the profile is forwarded when present —
- * can be tested without reading component source text. See
- * ``chat-sidebar-session-params.test.ts``.
+ * remains explicit for compatibility callers.
  */
 export function sidecarSessionCreateParams(profile?: string): Record<string, unknown> {
   return {
@@ -119,8 +103,8 @@ export function ChatSidebar({
   // model: that's a one-time snapshot of the throwaway sidecar agent taken when
   // its session is created, and it never updates when the model is changed
   // elsewhere, so the badge would go stale. Pass the chat profile explicitly so
-  // this card stays scoped to the PTY even if the global dashboard switcher
-  // changes while the chat is open.
+  // this card stays scoped to the active chat even if the global dashboard
+  // switcher changes while the chat is open.
   const [effectiveModel, setEffectiveModel] = useState("");
   // Whether the effective model supports reasoning effort — gates the
   // ReasoningPicker. Read from the same `/api/model/info` capabilities the
@@ -153,7 +137,7 @@ export function ChatSidebar({
       });
   }, [profile]);
 
-  // Profile or PTY channel change tears down both WebSockets. Bump `version`
+  // A profile or channel change tears down both WebSockets. Bump `version`
   // (same path as the manual Reconnect button) so the gateway client is
   // recreated and the events feed resubscribes — otherwise the old events
   // socket's close handler can leave a stale error banner after a switch.
@@ -195,7 +179,7 @@ export function ChatSidebar({
 
     // Create the sidecar session so the gateway surfaces session-scoped
     // signals (connection state, credential warnings). It's independent of the
-    // PTY pane's session by design. The model picker no longer rides this
+    // primary chat session by design. The model picker no longer rides this
     // session — it writes config.yaml over REST — so we don't track its id.
     gw.connect()
       .then(() => {
@@ -224,7 +208,7 @@ export function ChatSidebar({
   }, [gw]);
 
   // Event subscriber WebSocket — receives the rebroadcast of every
-  // dispatcher emit from the PTY child's gateway.  See /api/pub +
+  // dispatcher emit from the channel's gateway. See /api/pub +
   // /api/events in zorin_cli/web_server.py for the broadcast hop.
   //
   // Failures (auth/loopback rejection, server too old to expose the

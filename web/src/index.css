@@ -13,10 +13,9 @@
 @source '../node_modules/@zorin/ui/dist';
 
 /* ------------------------------------------------------------------ */
-/* JetBrains Mono — bundled for the embedded TUI (/chat tab).          */
-/* Gives the terminal a proper monospace font even on systems where    */
-/* the user doesn't have one installed locally; xterm.js picks it up   */
-/* via ChatPage's `fontFamily` option.                                 */
+/* JetBrains Mono — bundled for dashboard themes and dense code UI.    */
+/* This keeps the selectable monospace theme consistent on systems     */
+/* where the font is not installed locally.                            */
 /* Apache-2.0.                                                         */
 /* ------------------------------------------------------------------ */
 
@@ -43,34 +42,49 @@
 }
 
 /* ------------------------------------------------------------------ */
-/* ZORIN — NpcAutomators DS with the LENS_0 (Zorin teal) palette applied
-   statically as the default dashboard theme. */
+/* ZORIN — NpcAutomators DS with the NPC Cyber palette applied statically
+   as the default dashboard theme. */
 /* ------------------------------------------------------------------ */
 
 :root {
-  /* LENS_0 — from design-language/src/ui/components/overlays/index.tsx.
-     These are the defaults for the `default` (Zorin Teal) dashboard theme;
-     ThemeProvider rewrites them as inline styles when a user switches themes. */
-  --foreground: color-mix(in srgb, #ffffff 0%, transparent);
-  --foreground-base: #ffffff;
-  --foreground-alpha: 0;
-  --midground: color-mix(in srgb, #ffe6cb 100%, transparent);
-  --midground-base: #ffe6cb;
+  /* NPC Cyber defaults. ThemeProvider rewrites these as inline styles when a
+     user switches themes, so all existing theme APIs remain authoritative. */
+  --foreground: color-mix(in srgb, #c5ff4a 100%, transparent);
+  --foreground-base: #c5ff4a;
+  --foreground-alpha: 1;
+  --midground: color-mix(in srgb, #fafafa 100%, transparent);
+  --midground-base: #fafafa;
   --midground-alpha: 1;
-  --background: color-mix(in srgb, #041c1c 100%, transparent);
-  --background-base: #041c1c;
+  --background: color-mix(in srgb, #0a0a0a 100%, transparent);
+  --background-base: #0a0a0a;
   --background-alpha: 1;
 
-  /* Typography tokens — rewritten by ThemeProvider. Defaults match the
-     system stack so themes that don't override look native. */
-  --theme-font-sans: system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  --theme-font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo,
-    Consolas, monospace;
+  /* Stable NPC Cyber primitives for new pages and small rebrand passes. Use
+     the semantic shadcn/DS tokens for normal components; these are exposed
+     for decorative surfaces and branded effects. */
+  --npc-cyber-bg: #0a0a0a;
+  --npc-cyber-surface: #141414;
+  --npc-cyber-border: #262626;
+  --npc-cyber-accent: #c5ff4a;
+  --npc-cyber-accent-strong: #84cc16;
+  --npc-cyber-text: #fafafa;
+  --npc-cyber-muted: #8a8a8a;
+
+  /* Typography tokens — rewritten by ThemeProvider. Static defaults mirror
+     NPC Cyber so the first paint matches the active default theme. */
+  --theme-font-sans: "Inter Tight", "Inter", system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --theme-font-mono: "JetBrains Mono", ui-monospace, "SF Mono",
+    "Cascadia Mono", Menlo, Consolas, monospace;
   --theme-font-display: var(--theme-font-sans);
+  /* Keep the legacy design-system display utilities on the active theme
+     family so tabs and cards do not fall back to Mondwest/Rules fonts. */
+  --font-mondwest: var(--theme-font-sans);
+  --font-rules-compressed: var(--theme-font-sans);
+  --font-rules-expanded: var(--theme-font-sans);
   --theme-base-size: 15px;
   --theme-line-height: 1.55;
-  --theme-letter-spacing: 0;
+  --theme-letter-spacing: -0.005em;
 
   /* Layout tokens. */
   --radius: 0.5rem;
@@ -80,12 +94,11 @@
 
   /* Data-series accents — consumed by Analytics + Models pages for the
      input-vs-output token visualisations (chart bars, table values,
-     legend swatches). Defaults are tuned for the Zorin-teal LENS_0
-     look: cream input + emerald-400 output read as warm/cool against
-     the dark canvas. Themes override via ThemeProvider, which emits
+     legend swatches). Defaults follow the NPC Cyber lime scale. Themes
+     override via ThemeProvider, which emits
      these as `--series-input-token` / `--series-output-token`. */
-  --series-input-token: #ffe6cb;
-  --series-output-token: #34d399;
+  --series-input-token: #c5ff4a;
+  --series-output-token: #84cc16;
 }
 
 /* Theme tokens cascade into the document root so every descendant inherits
@@ -120,6 +133,14 @@ code, kbd, pre, samp, .font-mono, .font-mono-ui {
   --spacing: calc(0.25rem * var(--theme-spacing-mul, 1));
   --font-sans: var(--theme-font-sans);
   --font-mono: var(--theme-font-mono);
+
+  --color-cyber-bg: var(--npc-cyber-bg);
+  --color-cyber-surface: var(--npc-cyber-surface);
+  --color-cyber-border: var(--npc-cyber-border);
+  --color-cyber-accent: var(--npc-cyber-accent);
+  --color-cyber-accent-strong: var(--npc-cyber-accent-strong);
+  --color-cyber-text: var(--npc-cyber-text);
+  --color-cyber-muted: var(--npc-cyber-muted);
 }
 
 #root {
@@ -245,3 +266,72 @@ code { font-size: 0.875rem; }
     2px 2px;
 }
 
+/* NPC Cyber decorative utilities. They intentionally avoid setting a base
+   color, so they can layer on semantic surfaces without changing content or
+   interaction contrast. */
+.npc-cyber-grid {
+  background-image:
+    linear-gradient(rgb(250 250 250 / 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(250 250 250 / 0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.npc-cyber-radial {
+  background-image: radial-gradient(
+    ellipse at center,
+    rgb(197 255 74 / 0.12),
+    transparent 70%
+  );
+}
+
+.npc-cyber-backdrop {
+  background-image:
+    radial-gradient(circle at 72% -12%, rgb(197 255 74 / 0.07), transparent 32rem),
+    linear-gradient(rgb(250 250 250 / 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(250 250 250 / 0.018) 1px, transparent 1px);
+  background-size: auto, 40px 40px, 40px 40px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Chat shell — stable dark product surface inspired by the approved   */
+/* reference. These semantic tokens are intentionally local to /chat,  */
+/* so dashboard themes continue to own every management page.          */
+/* ------------------------------------------------------------------ */
+
+.zorin-chat-shell {
+  --chat-canvas: #101011;
+  --chat-panel: #050506;
+  --chat-surface: #19191b;
+  --chat-border: rgb(255 255 255 / 0.08);
+  --chat-text: #f5f5f7;
+  --chat-muted: #8b8b93;
+  --chat-accent: #8b5cf6;
+  color-scheme: dark;
+  scrollbar-color: rgb(255 255 255 / 0.14) transparent;
+  scrollbar-width: thin;
+  background:
+    radial-gradient(circle at 82% -10%, rgb(124 58 237 / 0.06), transparent 28rem),
+    var(--chat-canvas);
+  font-family: var(--theme-font-sans, "Inter Tight", "Inter", ui-sans-serif, sans-serif);
+}
+
+.zorin-chat-shell ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.zorin-chat-shell ::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zorin-chat-shell *,
+  .zorin-chat-shell *::before,
+  .zorin-chat-shell *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

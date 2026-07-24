@@ -18068,8 +18068,8 @@ def _render_active_theme_bootstrap_css() -> str:
     Returns a ``<style>`` block with the ``:root`` CSS variables that
     ``ThemeProvider.applyTheme()`` installs once the
     ``/api/dashboard/themes`` round-trip completes.  The goal is to
-    eliminate the green flash where the first paint shows the bundle's
-    default Zorin Teal canvas before the SPA flips the configured user
+    eliminate the palette flash where the first paint shows the bundle's
+    default NPC Cyber canvas before the SPA flips the configured user
     theme into place.
 
     Built-in themes return an empty string — their full definitions live
@@ -18221,7 +18221,7 @@ def mount_spa(application: FastAPI):
         # Theme flash mitigation: when the active theme is a user theme
         # (``ZORIN_HOME/dashboard-themes/<name>.yaml``), inject a minimal
         # critical-CSS block so the first paint uses the target palette.
-        # Without this the SPA paints the default Zorin Teal canvas, then
+        # Without this the SPA paints the default NPC Cyber canvas, then
         # ``ThemeProvider`` flips the CSS variables once
         # ``/api/dashboard/themes`` resolves.  Built-in themes are already
         # in the bundle's ``presets.ts`` so no shim is needed for them.
@@ -18292,8 +18292,8 @@ def mount_spa(application: FastAPI):
 # Built-in dashboard themes — label + description only.  The actual color
 # definitions live in the frontend (web/src/themes/presets.ts).
 _BUILTIN_DASHBOARD_THEMES = [
-    {"name": "default",       "label": "Zorin Teal",         "description": "Classic dark teal — the canonical Zorin look"},
-    {"name": "default-large", "label": "Zorin Teal (Large)", "description": "Zorin Teal with bigger fonts and roomier spacing"},
+    {"name": "default",       "label": "NPC Cyber",         "description": "Near-black operations UI with the NPCAUTOMATORS lime accent"},
+    {"name": "default-large", "label": "NPC Cyber (Large)", "description": "NPC Cyber with bigger fonts and roomier spacing"},
     {"name": "npcautomators-blue",     "label": "NpcAutomators Blue",           "description": "Light mode — vivid NpcAutomators-blue accents on cream canvas"},
     {"name": "midnight",      "label": "Midnight",            "description": "Deep blue-violet with cool accents"},
     {"name": "ember",     "label": "Ember",          "description": "Warm crimson and bronze — forge vibes"},

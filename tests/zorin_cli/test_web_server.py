@@ -7572,6 +7572,16 @@ class TestDiscoverUserThemes:
         assert [r["name"] for r in results] == ["mine"]
 
 
+def test_builtin_default_theme_uses_npc_cyber_brand():
+    """Server metadata must not overwrite the frontend's default rebrand."""
+    from zorin_cli.web_server import _BUILTIN_DASHBOARD_THEMES
+
+    themes = {theme["name"]: theme for theme in _BUILTIN_DASHBOARD_THEMES}
+    assert themes["default"]["label"] == "NPC Cyber"
+    assert themes["default-large"]["label"] == "NPC Cyber (Large)"
+    assert "NPCAUTOMATORS" in themes["default"]["description"]
+
+
 class TestThemeBootstrapCSS:
     """Tests for _render_active_theme_bootstrap_css() and its injection
     into index.html via _serve_index() — the critical-CSS shim that kills

@@ -42,8 +42,10 @@ import { useConfirmDelete } from "@zorin/ui/hooks/use-confirm-delete";
 import { ConfirmDialog } from "@zorin/ui/ui/components/confirm-dialog";
 import { useModalBehavior } from "@/hooks/useModalBehavior";
 import { DeleteConfirmDialog } from "@/components/DeleteConfirmDialog";
+import { PageLoadState } from "@/components/PageLoadState";
 import { ZorinConsoleModal } from "@/components/ZorinConsoleModal";
 import { cn, themedBody } from "@/lib/utils";
+import { withTimeout } from "@/lib/promise-timeout";
 import { api } from "@/lib/api";
 import type {
   StatusResponse,
@@ -59,6 +61,8 @@ import type {
   PortalStatus,
   DebugShareResponse,
 } from "@/lib/api";
+
+const INITIAL_LOAD_TIMEOUT_MS = 2_800;
 
 function formatBytes(n: number): string {
   if (n < 1024) return `${n} B`;
@@ -203,6 +207,7 @@ export default function SystemPage() {
   const [curator, setCurator] = useState<CuratorStatus | null>(null);
   const [portal, setPortal] = useState<PortalStatus | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   const [activeAction, setActiveAction] = useState<string | null>(null);
   const [consoleOpen, setConsoleOpen] = useState(false);
@@ -254,19 +259,24 @@ export default function SystemPage() {
 
   const loadAll = useCallback(() => {
     Promise.allSettled([
-      api.getStatus(),
-      api.getSystemStats(),
-      api.getMemory(),
-      api.getCredentialPool(),
-      api.getCheckpoints(),
-      api.getHooks(),
-      api.getCurator(),
-      api.getPortal(),
+      withTimeout(api.getStatus(), INITIAL_LOAD_TIMEOUT_MS, "System status"),
+      withTimeout(api.getSystemStats(), INITIAL_LOAD_TIMEOUT_MS, "System stats"),
+      withTimeout(api.getMemory(), INITIAL_LOAD_TIMEOUT_MS, "Memory status"),
+      withTimeout(api.getCredentialPool(), INITIAL_LOAD_TIMEOUT_MS, "Credential pool"),
+      withTimeout(api.getCheckpoints(), INITIAL_LOAD_TIMEOUT_MS, "Checkpoints"),
+      withTimeout(api.getHooks(), INITIAL_LOAD_TIMEOUT_MS, "Shell hooks"),
+      withTimeout(api.getCurator(), INITIAL_LOAD_TIMEOUT_MS, "Skill curator"),
+      withTimeout(api.getPortal(), INITIAL_LOAD_TIMEOUT_MS, "Portal status"),
       // Cached (non-forced) check so the version row shows update status on
       // load without a separate effect / a forced network round-trip.
-      api.checkZorinUpdate(false),
+      withTimeout(
+        api.checkZorinUpdate(false),
+        INITIAL_LOAD_TIMEOUT_MS,
+        "Update status",
+      ),
     ])
-      .then(([s, st, m, p, c, h, cur, prt, upd]) => {
+      .then((results) => {
+        const [s, st, m, p, c, h, cur, prt, upd] = results;
         if (s.status === "fulfilled") setStatus(s.value);
         if (st.status === "fulfilled") setStats(st.value);
         if (m.status === "fulfilled") setMemory(m.value);
@@ -276,6 +286,12 @@ export default function SystemPage() {
         if (cur.status === "fulfilled") setCurator(cur.value);
         if (prt.status === "fulfilled") setPortal(prt.value);
         if (upd.status === "fulfilled") setUpdateInfo(upd.value);
+        const failed = results.filter((result) => result.status === "rejected").length;
+        setLoadError(
+          failed > 0
+            ? `${failed} system ${failed === 1 ? "section is" : "sections are"} unavailable. Available data is shown below.`
+            : null,
+        );
       })
       .finally(() => setLoading(false));
   }, []);
@@ -630,9 +646,25 @@ export default function SystemPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-24">
-        <Spinner className="text-2xl text-primary" />
-      </div>
+      <PageLoadState label="Loading system information…" loading />
+    );
+  }
+
+  const hasSystemData = Boolean(
+    status || stats || memory || pool.length || checkpoints || hooks || curator || portal,
+  );
+
+  if (loadError && !hasSystemData) {
+    return (
+      <PageLoadState
+        error={loadError}
+        label="System information could not be loaded"
+        onRetry={() => {
+          setLoading(true);
+          setLoadError(null);
+          loadAll();
+        }}
+      />
     );
   }
 
@@ -646,8 +678,15 @@ export default function SystemPage() {
     : HOOK_EVENTS_FALLBACK;
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex min-w-0 max-w-full flex-col gap-8">
       <Toast toast={toast} />
+      {loadError ? (
+        <PageLoadState
+          error={loadError}
+          label="Some system information could not be loaded"
+          onRetry={() => loadAll()}
+        />
+      ) : null}
       <input
         ref={importUploadInputRef}
         type="file"

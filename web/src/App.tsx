@@ -118,17 +118,17 @@ const CHAT_NAV_ITEM: NavItem = {
   path: "/chat",
   labelKey: "chat",
   label: "Chat",
-  icon: Terminal,
+  icon: MessageSquare,
 };
 
 /**
  * Built-in routes except /chat.  Chat is rendered persistently (outside
  * <Routes>) when embedded — see the persistent chat host block rendered
- * inline near the bottom of this file — so the PTY child, WebSocket,
- * and xterm instance survive when the user visits another tab and comes
- * back.  A `display:none` toggle hides the terminal without unmounting.
- * Routing still owns the URL so /chat deep-links, browser back/forward,
- * and nav highlight keep working.
+ * inline near the bottom of this file — so its React Gateway connection,
+ * streaming turn, and session state survive when the user visits another
+ * dashboard page and comes back. A `display:none` toggle hides the chat
+ * surface without unmounting it. Routing still owns the URL so /chat deep
+ * links, browser back/forward, and nav highlighting keep working.
  */
 const BUILTIN_ROUTES_CORE: Record<string, ComponentType> = {
   "/": RootRedirect,
@@ -152,10 +152,9 @@ const BUILTIN_ROUTES_CORE: Record<string, ComponentType> = {
   "/docs": DocsPage,
 };
 
-// Route placeholder for /chat.  The persistent ChatPage host (rendered
-// outside <Routes> when embedded chat is on) paints on top; this empty
-// element just claims the path so the `*` catch-all redirect doesn't
-// fire when the user navigates to /chat.
+// Route placeholder for /chat. The persistent ChatPage host is rendered
+// outside <Routes> when embedded chat is on; this empty element just claims
+// the path so the `*` catch-all redirect doesn't fire on /chat.
 function ChatRouteSink() {
   return null;
 }
@@ -352,6 +351,16 @@ export default function App() {
   const { manifests, loading: pluginsLoading } = usePlugins();
   const { theme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigationPanelRef = useRef<HTMLElement | null>(null);
+  const navigationTriggerRef = useRef<HTMLElement | null>(null);
+  const wasNavigationOpenRef = useRef(false);
+  const openNavigation = useCallback(() => {
+    navigationTriggerRef.current =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    setMobileOpen(true);
+  }, []);
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   const [collapsed, setCollapsed] = useState(() => {
@@ -370,13 +379,14 @@ export default function App() {
       return next;
     });
   }, []);
+  const normalizedPath = pathname.replace(/\/$/, "") || "/";
+  const isChatRoute = normalizedPath === "/chat";
   const isMobile = useBelowBreakpoint(1024);
-  const isDesktopCollapsed = collapsed && !isMobile;
+  const navigationVisible = mobileOpen || (!isChatRoute && !isMobile);
+  const isDesktopCollapsed = collapsed && !isMobile && !isChatRoute;
   const tooltipWarmRef = useRef(0);
   const sidebarStatus = useSidebarStatus();
   const isDocsRoute = pathname === "/docs" || pathname === "/docs/";
-  const normalizedPath = pathname.replace(/\/$/, "") || "/";
-  const isChatRoute = normalizedPath === "/chat";
   const embeddedChat = isDashboardEmbeddedChatEnabled();
 
   // `dashboard.show_token_analytics` gates the Analytics nav item.  The
@@ -400,7 +410,7 @@ export default function App() {
   // in its manifest.  When one does, `buildRoutes` already swaps the route
   // element for <PluginPage /> — but we also have to suppress the
   // persistent ChatPage host below, or the plugin's page and the built-in
-  // terminal would paint on top of each other.  The override is niche
+  // chat surface would paint on top of each other. The override is niche
   // (nothing ships overriding /chat today) but it's an advertised
   // extension point, so preserve the pre-persistence contract: when a
   // plugin owns /chat, the built-in chat UI is entirely absent.
@@ -408,9 +418,9 @@ export default function App() {
   // Waiting on `pluginsLoading` is load-bearing: manifests arrive
   // asynchronously from /api/dashboard/plugins, so on initial render
   // `chatOverriddenByPlugin` is always false.  Without the loading
-  // gate, the persistent host would mount, spawn a PTY, and THEN get
-  // yanked out from under the user when the plugin's manifest resolves
-  // — killing the session mid-paint.  Delaying host mount by the
+  // gate, the persistent host would mount, initialize Gateway session state,
+  // and THEN get yanked out from under the user when the plugin's manifest
+  // resolves. Delaying host mount by the
   // plugin-load window (typically <50ms, worst case 2s safety timeout)
   // is the cheaper trade-off.
   const chatOverriddenByPlugin = useMemo(
@@ -457,18 +467,81 @@ export default function App() {
   const layoutVariant = theme.layoutVariant ?? "standard";
 
   useEffect(() => {
-    if (!mobileOpen) return;
+    if (!mobileOpen) {
+      if (!wasNavigationOpenRef.current) return;
+
+      wasNavigationOpenRef.current = false;
+      const frame = window.requestAnimationFrame(() => {
+        const previousTrigger = navigationTriggerRef.current;
+        const fallbackTrigger = document.querySelector<HTMLElement>(
+          "[data-app-navigation-trigger]",
+        );
+        const focusTarget = [previousTrigger, fallbackTrigger].find(
+          (element) =>
+            element?.isConnected &&
+            element.getClientRects().length > 0 &&
+            !element.closest('[aria-hidden="true"], [inert]'),
+        );
+        focusTarget?.focus();
+        navigationTriggerRef.current = null;
+      });
+
+      return () => window.cancelAnimationFrame(frame);
+    }
+
+    wasNavigationOpenRef.current = true;
+    const panel = navigationPanelRef.current;
+    const focusFrame = window.requestAnimationFrame(() => {
+      panel
+        ?.querySelector<HTMLElement>("[data-navigation-close]")
+        ?.focus();
+    });
+
+    const getFocusableElements = () =>
+      Array.from(
+        panel?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      ).filter(
+        (element) =>
+          element.getClientRects().length > 0 &&
+          !element.closest('[aria-hidden="true"], [inert]'),
+      );
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMobileOpen(false);
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeMobile();
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      const focusable = getFocusableElements();
+      if (focusable.length === 0) {
+        e.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey && (active === first || !panel?.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || !panel?.contains(active))) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
+      window.cancelAnimationFrame(focusFrame);
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
     };
-  }, [mobileOpen]);
+  }, [closeMobile, mobileOpen]);
 
   useEffect(() => {
     const mql = window.matchMedia("(min-width: 1024px)");
@@ -495,11 +568,14 @@ export default function App() {
       </div>
 
       <header
+        aria-hidden={mobileOpen}
+        inert={mobileOpen}
         className={cn(
-          "lg:hidden fixed top-0 left-0 right-0 z-40 min-h-14",
+          "fixed top-0 left-0 right-0 z-40 min-h-14",
           "flex items-center gap-2 px-4 py-2",
           "border-b border-current/20",
           "bg-background-base",
+          isChatRoute ? "hidden" : "lg:hidden",
         )}
         style={{
           background: "var(--component-header-background)",
@@ -510,7 +586,8 @@ export default function App() {
         <Button
           ghost
           size="icon"
-          onClick={() => setMobileOpen(true)}
+          onClick={openNavigation}
+          data-app-navigation-trigger
           aria-label={t.app.openNavigation}
           aria-expanded={mobileOpen}
           aria-controls="app-sidebar"
@@ -527,10 +604,12 @@ export default function App() {
       {mobileOpen && (
         <Button
           ghost
-          aria-label={t.app.closeNavigation}
+          aria-hidden
+          tabIndex={-1}
           onClick={closeMobile}
           className={cn(
-            "lg:hidden fixed inset-0 z-40 p-0 block",
+            "fixed inset-0 z-40 block p-0",
+            !isChatRoute && "lg:hidden",
             "bg-black/70",
           )}
         />
@@ -539,24 +618,42 @@ export default function App() {
       <PluginSlot name="header-banner" />
       <ProfileScopeBanner />
 
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden pt-14 lg:pt-0">
+      <div
+        className={cn(
+          "flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden",
+          isChatRoute ? "pt-0" : "pt-14 lg:pt-0",
+        )}
+      >
         <div className="flex min-h-0 min-w-0 flex-1">
           <aside
+            ref={navigationPanelRef}
             id="app-sidebar"
             aria-label={t.app.navigation}
+            aria-hidden={!navigationVisible}
+            aria-modal={mobileOpen ? true : undefined}
+            inert={!navigationVisible}
+            role={mobileOpen ? "dialog" : undefined}
             className={cn(
               "fixed top-0 left-0 z-50 flex h-dvh max-h-dvh w-64 min-h-0 flex-col font-sans",
               "border-r border-current/20",
               "bg-background-base",
               "transition-[transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]",
               mobileOpen ? "translate-x-0" : "-translate-x-full",
-              "lg:sticky lg:top-0 lg:translate-x-0 lg:shrink-0 lg:overflow-hidden",
-              "lg:transition-[width] lg:duration-300 lg:ease-[cubic-bezier(0.23,1,0.32,1)]",
-              collapsed && "lg:w-14",
+              isChatRoute
+                ? "isolate w-[296px] max-w-[calc(100vw-1rem)] overflow-hidden shadow-[24px_0_80px_rgba(0,0,0,0.72)]"
+                : cn(
+                    "lg:sticky lg:top-0 lg:translate-x-0 lg:shrink-0 lg:overflow-hidden",
+                    "lg:transition-[width] lg:duration-300 lg:ease-[cubic-bezier(0.23,1,0.32,1)]",
+                    collapsed && "lg:w-14",
+                  ),
             )}
             style={{
-              background: "var(--component-sidebar-background)",
-              clipPath: "var(--component-sidebar-clip-path)",
+              background: isChatRoute
+                ? "var(--background-base, #0a0a0a)"
+                : "var(--component-sidebar-background)",
+              clipPath: isChatRoute
+                ? "none"
+                : "var(--component-sidebar-clip-path)",
               borderImage: "var(--component-sidebar-border-image)",
             }}
           >
@@ -564,13 +661,15 @@ export default function App() {
               className={cn(
                 "flex h-14 shrink-0 items-center gap-2",
                 "border-b border-current/20",
-                collapsed ? "lg:justify-center lg:px-0" : "px-4 justify-between",
+                isDesktopCollapsed
+                  ? "lg:justify-center lg:px-0"
+                  : "justify-between px-4",
               )}
             >
               <div
                 className={cn(
                   "flex items-center gap-2",
-                  collapsed && "lg:hidden",
+                  isDesktopCollapsed && "lg:hidden",
                 )}
               >
                 <PluginSlot name="header-left" />
@@ -586,8 +685,12 @@ export default function App() {
                 ghost
                 size="icon"
                 onClick={closeMobile}
+                data-navigation-close
                 aria-label={t.app.closeNavigation}
-                className="lg:hidden text-text-secondary hover:text-midground"
+                className={cn(
+                  "text-text-secondary hover:text-midground",
+                  !isChatRoute && "lg:hidden",
+                )}
               >
                 <X />
               </Button>
@@ -599,7 +702,10 @@ export default function App() {
                 aria-label={
                   collapsed ? t.common.expand : t.common.collapse
                 }
-                className="hidden lg:flex text-text-secondary hover:text-midground"
+                className={cn(
+                  "hidden text-text-secondary hover:text-midground",
+                  !isChatRoute && "lg:flex",
+                )}
               >
                 {collapsed ? (
                   <PanelLeftOpen className="h-4 w-4" />
@@ -717,12 +823,13 @@ export default function App() {
 
           <PageHeaderProvider pluginTabs={pluginTabMeta}>
             <div
+              aria-hidden={mobileOpen}
+              inert={mobileOpen}
               className={cn(
                 "relative z-2 flex min-w-0 min-h-0 flex-1 flex-col",
-                "px-3 sm:px-6",
                 isChatRoute
-                  ? "pb-0 pt-1 sm:pt-2 lg:pt-4"
-                  : "pt-2 sm:pt-4 lg:pt-6",
+                  ? "p-2 sm:p-3 xl:p-4"
+                  : "px-3 pt-2 sm:px-6 sm:pt-4 lg:pt-6",
                 isDocsRoute && "min-h-0 flex-1",
               )}
             >
@@ -774,7 +881,10 @@ export default function App() {
                       )}
                       aria-hidden={!isChatRoute}
                     >
-                      <ChatPage isActive={isChatRoute} />
+                      <ChatPage
+                        isActive={isChatRoute}
+                        onOpenNavigation={openNavigation}
+                      />
                     </div>
                   ))}
               </div>
@@ -797,8 +907,8 @@ export default function App() {
  * fetchJSON ?profile= injection) silently targeted the newly selected
  * profile B — the exact stale-target footgun the switcher exists to kill.
  * Keying by profile resets every page's local state so it refetches under
- * the new scope. The persistent ChatPage host below handles its own
- * remount (channel keyed on scopedProfile).
+ * the new scope. The persistent ChatPage host below manages its own Gateway
+ * session lifecycle when the active profile changes.
  */
 function ProfileKeyedRoutes({ children }: { children: ReactNode }) {
   const { profile } = useProfileScope();

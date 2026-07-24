@@ -62,6 +62,10 @@ import { Input } from "@zorin/ui/ui/components/input";
 import { useI18n } from "@/i18n";
 import { usePageHeader } from "@/contexts/usePageHeader";
 import { PluginSlot } from "@/plugins";
+import { PageLoadState } from "@/components/PageLoadState";
+import { withTimeout } from "@/lib/promise-timeout";
+
+const INITIAL_LOAD_TIMEOUT_MS = 4_500;
 
 /* ------------------------------------------------------------------ */
 /*  Types & helpers                                                    */
@@ -129,6 +133,8 @@ export default function SkillsPage() {
   const [skills, setSkills] = useState<SkillInfo[]>([]);
   const [toolsets, setToolsets] = useState<ToolsetInfo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [loadRevision, setLoadRevision] = useState(0);
   const [search, setSearch] = useState("");
   const [view, setView] = useState<"skills" | "toolsets" | "hub">("skills");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -157,21 +163,39 @@ export default function SkillsPage() {
     // effect body stays lint-clean (react-hooks/set-state-in-effect). On a
     // profile switch the old list stays visible until the new one arrives.
     let cancelled = false;
-    Promise.all([
-      api.getSkills(selectedProfile || undefined),
-      api.getToolsets(selectedProfile || undefined),
+    Promise.allSettled([
+      withTimeout(
+        api.getSkills(selectedProfile || undefined),
+        INITIAL_LOAD_TIMEOUT_MS,
+        "Skills",
+      ),
+      withTimeout(
+        api.getToolsets(selectedProfile || undefined),
+        INITIAL_LOAD_TIMEOUT_MS,
+        "Toolsets",
+      ),
     ])
-      .then(([s, tsets]) => {
+      .then(([skillsResult, toolsetsResult]) => {
         if (cancelled) return;
-        setSkills(s);
-        setToolsets(tsets);
+        if (skillsResult.status === "fulfilled") setSkills(skillsResult.value);
+        if (toolsetsResult.status === "fulfilled") {
+          setToolsets(toolsetsResult.value);
+        }
+        const failures = [skillsResult, toolsetsResult].filter(
+          (result) => result.status === "rejected",
+        ).length;
+        setLoadError(
+          failures > 0
+            ? `${failures === 2 ? "Skills and toolsets are" : "Part of this page is"} unavailable. Check the dashboard service and retry.`
+            : null,
+        );
+        if (failures > 0) showToast("Failed to load all skill data", "error");
       })
-      .catch(() => !cancelled && showToast(t.common.loading, "error"))
       .finally(() => !cancelled && setLoading(false));
     return () => {
       cancelled = true;
     };
-  }, [selectedProfile]);
+  }, [loadRevision, selectedProfile, showToast]);
 
   /* ---- Toggle skill ---- */
   const handleToggleSkill = async (skill: SkillInfo) => {
@@ -371,16 +395,39 @@ export default function SkillsPage() {
   /* ---- Loading ---- */
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-24">
-        <Spinner className="text-2xl text-primary" />
-      </div>
+      <PageLoadState label="Loading skills and toolsets…" loading />
+    );
+  }
+
+  if (loadError && skills.length === 0 && toolsets.length === 0) {
+    return (
+      <PageLoadState
+        error={loadError}
+        label="Skills could not be loaded"
+        onRetry={() => {
+          setLoading(true);
+          setLoadError(null);
+          setLoadRevision((revision) => revision + 1);
+        }}
+      />
     );
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex min-w-0 max-w-full flex-col gap-4">
       <PluginSlot name="skills:top" />
       <Toast toast={toast} />
+
+      {loadError ? (
+        <PageLoadState
+          error={loadError}
+          label="Some skill data could not be loaded"
+          onRetry={() => {
+            setLoadError(null);
+            setLoadRevision((revision) => revision + 1);
+          }}
+        />
+      ) : null}
 
       <div className="flex flex-col sm:flex-row sm:items-start gap-4">
         <aside aria-label={t.skills.title} className="sm:w-56 sm:shrink-0">
@@ -468,7 +515,7 @@ export default function SkillsPage() {
           {isSearching ? (
             <Card className="rounded-none">
               <CardHeader className="py-3 px-4">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <CardTitle className="text-sm flex items-center gap-2">
                     <Search className="h-4 w-4" />
                     {t.skills.title}
@@ -518,7 +565,7 @@ export default function SkillsPage() {
                         )
                       : t.skills.all}
                   </CardTitle>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     <Badge tone="secondary" className="text-xs">
                       {t.skills.skillCount
                         .replace("{count}", String(activeSkills.length))
@@ -682,31 +729,34 @@ export default function SkillsPage() {
           </DialogHeader>
           <div className="grid gap-3 py-2">
             <div className="grid gap-1.5">
-              <label className="text-xs font-medium text-muted-foreground">
+              <label htmlFor="learn-skill-directory" className="text-xs font-medium text-muted-foreground">
                 Local file or directory
               </label>
               <Input
+                id="learn-skill-directory"
                 placeholder="~/projects/some-sdk  (read with read_file / search_files)"
                 value={learnDir}
                 onChange={(e) => setLearnDir(e.target.value)}
               />
             </div>
             <div className="grid gap-1.5">
-              <label className="text-xs font-medium text-muted-foreground">
+              <label htmlFor="learn-skill-url" className="text-xs font-medium text-muted-foreground">
                 URL
               </label>
               <Input
+                id="learn-skill-url"
                 placeholder="https://docs.example.com/api  (fetched with web_extract)"
                 value={learnUrl}
                 onChange={(e) => setLearnUrl(e.target.value)}
               />
             </div>
             <div className="grid gap-1.5">
-              <label className="text-xs font-medium text-muted-foreground">
+              <label htmlFor="learn-skill-notes" className="text-xs font-medium text-muted-foreground">
                 Anything else — describe the workflow, paste notes, or say
                 "what we just did"
               </label>
               <textarea
+                id="learn-skill-notes"
                 className="min-h-[90px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 placeholder="e.g. how I file an expense report: open the portal, …"
                 value={learnText}
@@ -766,7 +816,7 @@ function SkillRow({
       <Button
         ghost
         size="icon"
-        className="shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100 hover:text-foreground"
+        className="shrink-0 text-muted-foreground opacity-100 transition-opacity hover:text-foreground sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
         title="Edit SKILL.md"
         aria-label={`Edit ${skill.name}`}
         onClick={onEdit}

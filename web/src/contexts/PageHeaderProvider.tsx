@@ -58,6 +58,7 @@ export function PageHeaderProvider({
             "bg-background-base",
             // Mobile stacks title + toolbar — fixed h-14 clips content; desktop stays one row.
             "min-h-0 overflow-x-hidden overflow-y-visible py-3 sm:h-14 sm:min-h-[3.5rem] sm:overflow-hidden sm:py-0",
+            isChatRoute && "hidden",
           )}
           role="banner"
         >

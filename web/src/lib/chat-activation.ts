@@ -1,17 +1,17 @@
 /**
- * Chat PTY activation latch.
+ * Persistent web-chat activation latch.
  *
- * The dashboard keeps `ChatPage` mounted persistently (just hidden with CSS)
- * on every route so the embedded chat PTY survives tab switches. The downside
- * is that the PTY-connect effect would otherwise open `/api/pty` — which spawns
- * the whole TUI + agent bootstrap (on a fresh checkout this prints
- * `Installing TUI dependencies…` and runs `npm install`) — the moment the
- * dashboard loads *any* page, even one the user never navigates the chat into.
+ * The dashboard keeps `ChatPage` mounted (and hides it with CSS on other
+ * routes) so an active JSON-RPC session and in-flight response survive tab
+ * switches. Connecting before the user has ever opened `/chat` would still
+ * allocate a gateway session and build an agent for every dashboard visit.
  *
- * The fix is to only open the PTY once the chat tab has actually been active,
- * while keeping activation **sticky** so the PTY still persists across later
- * tab switches. This helper computes that latch: once `true`, it stays `true`.
+ * Activate only after the chat route has been shown once, then keep that
+ * activation sticky so the WebSocket session survives later navigation.
  */
-export function latchChatActivation(previous: boolean, isActive: boolean): boolean {
+export function latchChatActivation(
+  previous: boolean,
+  isActive: boolean,
+): boolean {
   return previous || isActive;
 }

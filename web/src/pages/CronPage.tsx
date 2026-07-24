@@ -45,7 +45,11 @@ import { usePageHeader } from "@/contexts/usePageHeader";
 import { PluginSlot } from "@/plugins";
 import { Segmented } from "@zorin/ui/ui/components/segmented";
 import { AutomationBlueprints } from "@/components/AutomationBlueprints";
+import { PageLoadState } from "@/components/PageLoadState";
 import { cn, themedBody } from "@/lib/utils";
+import { withTimeout } from "@/lib/promise-timeout";
+
+const INITIAL_LOAD_TIMEOUT_MS = 4_500;
 
 function formatTime(iso?: string | null): string {
   if (!iso) return "—";
@@ -514,6 +518,7 @@ export default function CronPage() {
   const [selectedProfile, setSelectedProfile] = useState("all");
   const [view, setView] = useState<"jobs" | "blueprints">("jobs");
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const { toast, showToast } = useToast();
   const { t, locale } = useI18n();
   const { setEnd } = usePageHeader();
@@ -577,12 +582,23 @@ export default function CronPage() {
   }, []);
 
   const loadJobs = useCallback(() => {
-    api
-      .getCronJobs(selectedProfile)
-      .then(setJobs)
-      .catch(() => showToast(t.common.loading, "error"))
+    return withTimeout(
+      api.getCronJobs(selectedProfile),
+      INITIAL_LOAD_TIMEOUT_MS,
+      "Scheduled jobs",
+    )
+      .then((nextJobs) => {
+        setJobs(nextJobs);
+        setLoadError(null);
+      })
+      .catch((error: unknown) => {
+        const message =
+          error instanceof Error ? error.message : "The jobs service is unavailable.";
+        setLoadError(message);
+        showToast("Failed to load scheduled jobs", "error");
+      })
       .finally(() => setLoading(false));
-  }, [selectedProfile, showToast, t.common.loading]);
+  }, [selectedProfile, showToast]);
 
   useEffect(() => {
     api
@@ -763,9 +779,20 @@ export default function CronPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-24">
-        <Spinner className="text-2xl text-primary" />
-      </div>
+      <PageLoadState label="Loading scheduled jobs…" loading />
+    );
+  }
+
+  if (loadError && jobs.length === 0) {
+    return (
+      <PageLoadState
+        error={loadError}
+        label="Scheduled jobs could not be loaded"
+        onRetry={() => {
+          setLoading(true);
+          void loadJobs();
+        }}
+      />
     );
   }
 
@@ -774,9 +801,17 @@ export default function CronPage() {
     : null;
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex min-w-0 max-w-full flex-col gap-6">
       <PluginSlot name="cron:top" />
       <Toast toast={toast} />
+
+      {loadError ? (
+        <PageLoadState
+          error={loadError}
+          label="Scheduled jobs may be out of date"
+          onRetry={() => void loadJobs()}
+        />
+      ) : null}
 
       <Segmented
         value={view}
@@ -959,7 +994,7 @@ export default function CronPage() {
             {t.cron.scheduledJobs} ({jobs.length})
           </H2>
 
-          <div className="grid gap-1 min-w-[220px]">
+          <div className="grid w-full min-w-0 gap-1 sm:w-auto sm:min-w-[220px]">
             <Label htmlFor="cron-profile-filter">Profile</Label>
             <Select
               id="cron-profile-filter"
@@ -1000,9 +1035,9 @@ export default function CronPage() {
 
           return (
             <Card key={jobKey}>
-              <CardContent className="flex items-start gap-4 py-4">
+              <CardContent className="flex flex-col items-stretch gap-4 py-4 sm:flex-row sm:items-start">
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
+                  <div className="mb-1 flex min-w-0 flex-wrap items-center gap-2">
                     <span className="font-medium text-sm truncate">
                       {title}
                     </span>
@@ -1039,7 +1074,7 @@ export default function CronPage() {
                       {truncateText(promptText, 100)}
                     </p>
                   )}
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
                     <span className="font-mono-ui">
                       {getJobScheduleDisplay(job, scheduleDescribeStrings)}
                     </span>
@@ -1063,7 +1098,7 @@ export default function CronPage() {
                   )}
                 </div>
 
-                <div className="flex items-center gap-1 shrink-0">
+                <div className="flex shrink-0 items-center gap-1 self-end sm:self-start">
                   <Button
                     ghost
                     size="icon"

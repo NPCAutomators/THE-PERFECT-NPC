@@ -34,24 +34,86 @@ const DEFAULT_LAYOUT: ThemeLayout = {
   density: "comfortable",
 };
 
+const NPC_CYBER_TYPOGRAPHY: ThemeTypography = {
+  ...DEFAULT_TYPOGRAPHY,
+  fontSans: `"Inter Tight", "Inter", ${SYSTEM_SANS}`,
+  fontMono: `"JetBrains Mono", ${SYSTEM_MONO}`,
+  fontUrl:
+    "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap",
+  letterSpacing: "-0.005em",
+};
+
+/**
+ * The semantic layer that lets the existing dashboard adopt the NPC Cyber
+ * palette without page-by-page color literals. It is injected only while the
+ * default theme is active, so the other built-in and user themes stay intact.
+ */
+const NPC_CYBER_CUSTOM_CSS = `
+:root {
+  color-scheme: dark;
+  --text-primary: #fafafa;
+  --text-secondary: #b8b8b8;
+  --text-tertiary: #8a8a8a;
+  --text-disabled: #5f5f5f;
+}
+
+#root > [data-layout-variant] {
+  background-image:
+    radial-gradient(circle at 72% -12%, rgb(197 255 74 / 0.07), transparent 32rem),
+    linear-gradient(rgb(250 250 250 / 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(250 250 250 / 0.018) 1px, transparent 1px);
+  background-size: auto, 40px 40px, 40px 40px;
+}
+
+::selection {
+  background: #c5ff4a;
+  color: #0a0a0a;
+}
+`;
+
 // ---------------------------------------------------------------------------
 // Themes
 // ---------------------------------------------------------------------------
 
 export const defaultTheme: DashboardTheme = {
   name: "default",
-  label: "Zorin Teal",
-  description: "Classic dark teal — the canonical Zorin look",
+  label: "NPC Cyber",
+  description: "Near-black operations UI with the NPCAUTOMATORS lime accent",
   palette: {
-    background: { hex: "#041c1c", alpha: 1 },
-    midground: { hex: "#ffe6cb", alpha: 1 },
-    foreground: { hex: "#ffffff", alpha: 0 },
-    warmGlow: "rgba(255, 189, 56, 0.35)",
-    noiseOpacity: 1,
+    background: { hex: "#0A0A0A", alpha: 1 },
+    midground: { hex: "#FAFAFA", alpha: 1 },
+    foreground: { hex: "#C5FF4A", alpha: 1 },
+    warmGlow: "rgba(197, 255, 74, 0.14)",
+    noiseOpacity: 0.35,
   },
-  typography: DEFAULT_TYPOGRAPHY,
+  typography: NPC_CYBER_TYPOGRAPHY,
   layout: DEFAULT_LAYOUT,
-  terminalBackground: "#000000",
+  colorOverrides: {
+    card: "#141414",
+    cardForeground: "#FAFAFA",
+    popover: "#141414",
+    popoverForeground: "#FAFAFA",
+    primary: "#C5FF4A",
+    primaryForeground: "#0A0A0A",
+    secondary: "#1A1A1A",
+    secondaryForeground: "#FAFAFA",
+    muted: "#1A1A1A",
+    mutedForeground: "#8A8A8A",
+    accent: "#C5FF4A",
+    accentForeground: "#0A0A0A",
+    success: "#84CC16",
+    border: "#262626",
+    input: "#262626",
+    ring: "#C5FF4A",
+  },
+  customCSS: NPC_CYBER_CUSTOM_CSS,
+  terminalBackground: "#0A0A0A",
+  terminalForeground: "#FAFAFA",
+  seriesColors: {
+    inputTokenAccent: "#C5FF4A",
+    outputTokenAccent: "#84CC16",
+  },
+  swatchColors: ["#0A0A0A", "#C5FF4A", "#141414"],
 };
 
 export const midnightTheme: DashboardTheme = {
@@ -214,11 +276,11 @@ export const npcAutomatorsBlueTheme: DashboardTheme = {
  */
 export const defaultLargeTheme: DashboardTheme = {
   name: "default-large",
-  label: "Zorin Teal (Large)",
-  description: "Zorin Teal with bigger fonts and roomier spacing",
+  label: "NPC Cyber (Large)",
+  description: "NPC Cyber with bigger fonts and roomier spacing",
   palette: defaultTheme.palette,
   typography: {
-    ...DEFAULT_TYPOGRAPHY,
+    ...NPC_CYBER_TYPOGRAPHY,
     baseSize: "18px",
     lineHeight: "1.65",
   },
@@ -226,6 +288,12 @@ export const defaultLargeTheme: DashboardTheme = {
     ...DEFAULT_LAYOUT,
     density: "spacious",
   },
+  colorOverrides: defaultTheme.colorOverrides,
+  customCSS: defaultTheme.customCSS,
+  terminalBackground: defaultTheme.terminalBackground,
+  terminalForeground: defaultTheme.terminalForeground,
+  seriesColors: defaultTheme.seriesColors,
+  swatchColors: defaultTheme.swatchColors,
 };
 
 export const BUILTIN_THEMES: Record<string, DashboardTheme> = {

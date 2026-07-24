@@ -1,7 +1,7 @@
 import { authedFetch } from "@/lib/api";
 
-// Clipboard image MIME → file extension. Mirrors the set the TUI's /image
-// attach path and the gateway's image sniffer accept.
+// Clipboard image MIME → file extension. Mirrors the formats accepted by the
+// web chat attachment flow and the gateway's image sniffer.
 const IMAGE_MIME_EXT: Record<string, string> = {
   "image/png": "png",
   "image/jpeg": "jpg",
@@ -113,11 +113,9 @@ function fileToDataUrl(file: File): Promise<string> {
  * Upload a browser clipboard/drop image to ``ZORIN_HOME/images`` via the
  * dedicated chat upload endpoint and return the absolute gateway path.
  *
- * The dashboard Chat tab is an xterm mirror of a TUI running INSIDE the
- * gateway. The container has no access to the browser's clipboard, so the
- * server-side ``clipboard.paste`` path can never see a pasted image.
- * Upload the bytes the browser already holds, then hand the path to the
- * TUI's ``/image`` command.
+ * The gateway cannot read a browser's clipboard directly. Upload the bytes
+ * the browser already holds, then attach the returned server-visible path to
+ * the active JSON-RPC chat session with ``image.attach``.
  */
 export async function uploadChatImage(
   blob: Blob,
