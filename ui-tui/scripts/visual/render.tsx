@@ -22,9 +22,8 @@ import { GatewayProvider } from '../../src/app/gatewayContext.js'
 import { patchOverlayState, resetOverlayState } from '../../src/app/overlayStore.js'
 import { patchUiState, resetUiState } from '../../src/app/uiStore.js'
 import { FloatingOverlays } from '../../src/components/appOverlays.js'
-import { Banner, SessionPanel } from '../../src/components/branding.js'
+import { Banner } from '../../src/components/branding.js'
 import { fromSkin, type Theme } from '../../src/theme.js'
-import type { SessionInfo } from '../../src/types.js'
 
 const noop = () => {}
 const pending = () => new Promise<never>(() => {})
@@ -52,27 +51,6 @@ const SLATE = {
 // The regenerated slate light_colors block from zorin_cli/skin_engine.py
 // (relight recipe: vivid hue-preserved accents, airy capped-saturation text,
 // darker calm dims).
-
-const info: SessionInfo = {
-  cwd: '/Users/brooklyn/www/zorin-agent',
-  mcp_servers: [{ connected: true, name: 'figma', tools: 12, transport: 'sse' }],
-  model: 'claude-opus-4.8-fast',
-  skills: {
-    devops: ['docker', 'kubernetes', 'terraform'],
-    github: ['pr-review', 'issue-triage'],
-    productivity: ['powerpoint', 'excel', 'notion-sync']
-  },
-  tools: {
-    browser: ['browser_back', 'browser_click', 'browser_console', 'browser_get_images'],
-    clarify: ['clarify'],
-    code_execution: ['execute_code'],
-    cronjob: ['cronjob'],
-    delegation: ['delegate_task'],
-    file: ['patch', 'read_file', 'search_files', 'write_file']
-  },
-  update_behind: 1,
-  version: '3.2.1'
-}
 
 const completions = [
   { display: '/new', meta: 'Start a new session (fresh session ID + history)', text: '/new' },
@@ -257,7 +235,6 @@ for (const scene of scenes) {
   const intro = renderAnsi(
     <Box flexDirection="column">
       <Banner maxWidth={86} t={scene.theme} />
-      <SessionPanel info={info} maxWidth={86} sid="d2a6ecf8" t={scene.theme} />
     </Box>,
     88
   )

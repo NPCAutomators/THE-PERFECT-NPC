@@ -51,19 +51,20 @@ describe('DEFAULT_THEME', () => {
   it('has color palette', async () => {
     const { DEFAULT_THEME } = await importThemeWithCleanEnv()
 
-    expect(DEFAULT_THEME.color.primary).toBe('#FFD700')
+    expect(DEFAULT_THEME.color.primary).toBe('#D97757')
+    expect(DEFAULT_THEME.color.text).toBe('#FFFFFF')
     expect(DEFAULT_THEME.color.error).toBe('#ef5350')
   })
 })
 
 describe('LIGHT_THEME', () => {
-  it('avoids bright-yellow accents unreadable on white backgrounds (#11300)', async () => {
+  it('uses darker coral accents that remain readable on white backgrounds', async () => {
     const { LIGHT_THEME } = await importThemeWithCleanEnv()
 
-    expect(LIGHT_THEME.color.primary).not.toBe('#FFD700')
-    expect(LIGHT_THEME.color.accent).not.toBe('#FFBF00')
-    expect(LIGHT_THEME.color.muted).not.toBe('#B8860B')
-    expect(LIGHT_THEME.color.statusWarn).not.toBe('#FFD700')
+    expect(LIGHT_THEME.color.primary).not.toBe('#D97757')
+    expect(LIGHT_THEME.color.accent).not.toBe('#D97757')
+    expect(LIGHT_THEME.color.muted).not.toBe('#A39189')
+    expect(LIGHT_THEME.color.statusWarn).not.toBe('#E5A46B')
   })
 
   it('keeps the same shape as DARK_THEME', async () => {
@@ -389,28 +390,24 @@ const channelDelta = (a: string, b: string) => {
 }
 
 describe('derived tone ladder', () => {
-  it('reproduces the original hand-tuned tones from seeds (reverse-engineered knobs)', async () => {
-    // The ladder's knobs were grid-search fitted so the MATH lands on the
-    // pre-refactor hand-tuned literals. Contract: every derived tone stays
-    // within a-few-RGB-units of the original (imperceptible), so knob edits
-    // that drift the classic look fail here instead of shipping as vibes.
+  it('keeps derived tones near the authored palette targets', async () => {
+    // Contract: each generated tone stays within a few RGB units of the
+    // authored target, so color-mix changes cannot silently drift the look.
     const dark = await importThemeWithCleanEnv()
     const light = await importThemeWithEnv({ ZORIN_TUI_BACKGROUND: '#ffffff' })
 
     const cases: Array<[string, string, string]> = [
-      [dark.DARK_THEME.color.muted, '#CC9B1F', 'dark muted'],
-      [dark.DARK_THEME.color.label, '#DAA520', 'dark label'],
-      [dark.DARK_THEME.color.statusFg, '#C0C0C0', 'dark statusFg'],
-      [dark.DARK_THEME.color.completionBg, '#1a1a2e', 'dark surface'],
-      [dark.DARK_THEME.color.completionCurrentBg, '#333355', 'dark chip'],
-      [dark.DARK_THEME.color.selectionBg, '#3a3a55', 'dark selection'],
-      // Light canon = liftForContrast(dark literal, white, 4.5): the exact
-      // colors xterm's minimumContrastRatio rendered on light hosts.
-      [light.LIGHT_THEME.color.muted, '#946C08', 'light muted'],
-      [light.LIGHT_THEME.color.statusFg, '#6F6F6F', 'light statusFg'],
-      [light.LIGHT_THEME.color.completionBg, '#F5F5F5', 'light surface'],
-      [light.LIGHT_THEME.color.completionCurrentBg, '#e0d1bf', 'light chip'],
-      [light.LIGHT_THEME.color.selectionBg, '#D4E4F7', 'light selection']
+      [dark.DARK_THEME.color.muted, '#A39189', 'dark muted'],
+      [dark.DARK_THEME.color.label, '#B46D55', 'dark label'],
+      [dark.DARK_THEME.color.statusFg, '#C6C6C6', 'dark statusFg'],
+      [dark.DARK_THEME.color.completionBg, '#211E1D', 'dark surface'],
+      [dark.DARK_THEME.color.completionCurrentBg, '#44342E', 'dark chip'],
+      [dark.DARK_THEME.color.selectionBg, '#563A31', 'dark selection'],
+      [light.LIGHT_THEME.color.muted, '#75665F', 'light muted'],
+      [light.LIGHT_THEME.color.statusFg, '#6A6A6A', 'light statusFg'],
+      [light.LIGHT_THEME.color.completionBg, '#F7F3F1', 'light surface'],
+      [light.LIGHT_THEME.color.completionCurrentBg, '#ECDDD7', 'light chip'],
+      [light.LIGHT_THEME.color.selectionBg, '#EAD3CA', 'light selection']
     ]
 
     for (const [got, original, label] of cases) {

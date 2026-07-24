@@ -92,16 +92,19 @@ class TestCliSkinPromptIntegration:
 
 
 class TestCompactBannerSkinIntegration:
-    def test_default_compact_banner_keeps_legacy_npcautomators_zorin_branding(self):
+    def test_default_compact_banner_shows_zorin_product_branding_and_commands(self):
         set_active_skin("default")
 
         with patch("cli.shutil.get_terminal_size", return_value=SimpleNamespace(columns=90)), \
              patch.dict(_build_compact_banner.__globals__, {"format_banner_version_label": lambda: "ZORIN v0.1.0 (test)"}):
             banner = _build_compact_banner()
 
-        assert "NPCAUTOMATORS ZORIN" in banner
+        assert "ZORIN" in banner
+        assert "A product of " in banner
+        assert "NPCAUTOMATORS." in banner
+        assert all(command in banner for command in ("/help", "/new", "/resume", "/model", "/quit"))
 
-    def test_poseidon_compact_banner_uses_skin_branding_instead_of_npcautomators_zorin(self):
+    def test_poseidon_compact_banner_uses_skin_agent_name(self):
         set_active_skin("poseidon")
 
         with patch("cli.shutil.get_terminal_size", return_value=SimpleNamespace(columns=90)), \
@@ -109,7 +112,8 @@ class TestCompactBannerSkinIntegration:
             banner = _build_compact_banner()
 
         assert "Poseidon Agent" in banner
-        assert "NPCAUTOMATORS ZORIN" not in banner
+        assert "A product of " in banner
+        assert "NPCAUTOMATORS." in banner
 
     def test_poseidon_compact_banner_uses_skin_colors(self):
         set_active_skin("poseidon")
@@ -119,18 +123,18 @@ class TestCompactBannerSkinIntegration:
              patch.dict(_build_compact_banner.__globals__, {"format_banner_version_label": lambda: "ZORIN v0.1.0 (test)"}):
             banner = _build_compact_banner()
 
-        assert skin.get_color("banner_border") in banner
         assert skin.get_color("banner_title") in banner
+        assert skin.get_color("banner_accent") in banner
         assert skin.get_color("banner_dim") in banner
 
-    def test_compact_banner_shows_version_label(self):
+    def test_compact_banner_omits_version_clutter(self):
         set_active_skin("default")
 
         with patch("cli.shutil.get_terminal_size", return_value=SimpleNamespace(columns=90)), \
              patch.dict(_build_compact_banner.__globals__, {"format_banner_version_label": lambda: "ZORIN v1.0 (test) · upstream abc12345"}):
             banner = _build_compact_banner()
 
-        assert "upstream abc12345" in banner
+        assert "upstream abc12345" not in banner
 
 
 class TestAnsiRichTextHelper:

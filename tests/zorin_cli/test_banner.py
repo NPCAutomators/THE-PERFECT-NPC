@@ -9,6 +9,31 @@ import model_tools
 import tools.mcp_tool
 
 
+def test_build_startup_banner_is_focused_and_actionable():
+    """The first screen contains only brand identity and essential commands."""
+    from zorin_cli.skin_engine import set_active_skin
+
+    set_active_skin("default")
+    console = Console(record=True, force_terminal=False, color_system=None, width=90)
+
+    banner.build_startup_banner(console)
+
+    output = console.export_text()
+    assert "███████╗ ██████╗ ██████╗ ██╗███╗   ██╗" in output
+    assert "A product of NPCAUTOMATORS." in output
+    assert len(banner.STARTUP_COMMANDS) == 5
+    for command, description in banner.STARTUP_COMMANDS:
+        assert command in output
+        assert description not in output
+    assert any(
+        all(command in line for command, _ in banner.STARTUP_COMMANDS)
+        for line in output.splitlines()
+    )
+    assert "Available Tools" not in output
+    assert "Messenger of the Digital Gods" not in output
+    assert "ZORIN v" not in output
+
+
 def test_display_toolset_name_strips_legacy_suffix():
     assert banner._display_toolset_name("homeassistant_tools") == "homeassistant"
     assert banner._display_toolset_name("honcho_tools") == "honcho"

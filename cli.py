@@ -914,7 +914,7 @@ def get_toolset_for_tool(*args, **kwargs):
     return _get_toolset_for_tool(*args, **kwargs)
 
 # Extracted CLI modules (Phase 3)
-from zorin_cli.banner import build_welcome_banner
+from zorin_cli.banner import STARTUP_COMMANDS, build_startup_banner, build_welcome_banner
 from zorin_cli.commands import SlashCommandCompleter, SlashCommandAutoSuggest
 
 
@@ -2138,7 +2138,7 @@ def _prune_orphaned_branches(repo_root: str) -> None:
 # - Dim: #B8860B (muted text)
 
 # ANSI building blocks for conversation display
-_ACCENT_ANSI_DEFAULT = "\033[1;38;2;255;215;0m"  # True-color #FFD700 bold — fallback
+_ACCENT_ANSI_DEFAULT = "\033[1;38;2;217;119;87m"  # True-color #D97757 bold — fallback
 _BOLD = "\033[1m"
 _RST = "\033[0m"
 _STREAM_PAD = "    "  # 4-space indent for streamed response text (matches Panel padding)
@@ -2159,7 +2159,7 @@ def _hex_to_ansi(hex_color: str, *, bold: bool = False) -> str:
         prefix = "1;" if bold else ""
         return f"\033[{prefix}38;2;{r};{g};{b}m"
     except (ValueError, IndexError):
-        return _ACCENT_ANSI_DEFAULT if bold else "\033[38;2;184;134;11m"
+        return _ACCENT_ANSI_DEFAULT if bold else "\033[38;2;217;119;87m"
 
 
 # ────────────────────────────────────────────────────────────────────────
@@ -2345,6 +2345,7 @@ def _detect_light_mode() -> bool:
 # become invisible the OTHER direction (dark gray on dark navy).
 _LIGHT_MODE_REMAP: dict[str, str] = {
     # Original (dark-mode) -> Light-mode replacement (darker, readable)
+    "#FFFFFF": "#1A1A1A",   # white response text -> near-black
     "#FFF8DC": "#1A1A1A",   # cornsilk -> near-black
     "#FFD700": "#9A6B00",   # gold -> dark goldenrod (readable on cream)
     "#FFBF00": "#8A5A00",   # amber -> dark amber
@@ -2453,7 +2454,7 @@ class _SkinAwareAnsi:
         self._cached = None
 
 
-_ACCENT = _SkinAwareAnsi("response_border", "#FFD700", bold=True)
+_ACCENT = _SkinAwareAnsi("response_border", "#D97757", bold=True)
 # Use ANSI dim+italic attributes (\x1b[2;3m) instead of a hardcoded
 # hex color so dim/thinking text inherits the terminal's default
 # foreground color and stays readable in both light and dark
@@ -3530,13 +3531,13 @@ class ChatConsole:
         """
         yield self
 
-# ASCII Art - ZORIN-AGENT logo (full width, single line - requires ~95 char terminal)
-ZORIN_AGENT_LOGO = """[bold #FFD700]██╗  ██╗███████╗██████╗ ███╗   ███╗███████╗███████╗       █████╗  ██████╗ ███████╗███╗   ██╗████████╗[/]
-[bold #FFD700]██║  ██║██╔════╝██╔══██╗████╗ ████║██╔════╝██╔════╝      ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝[/]
-[#FFBF00]███████║█████╗  ██████╔╝██╔████╔██║█████╗  ███████╗█████╗███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
-[#FFBF00]██╔══██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══╝  ╚════██║╚════╝██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
-[#CD7F32]██║  ██║███████╗██║  ██║██║ ╚═╝ ██║███████╗███████║      ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
-[#CD7F32]╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]"""
+# ASCII Art - ZORIN logo (full size fits terminals 45 columns and wider)
+ZORIN_AGENT_LOGO = """[bold #D97757]███████╗ ██████╗ ██████╗ ██╗███╗   ██╗[/]
+[bold #D97757]╚══███╔╝██╔═══██╗██╔══██╗██║████╗  ██║[/]
+[#E18A6D]  ███╔╝ ██║   ██║██████╔╝██║██╔██╗ ██║[/]
+[#E18A6D] ███╔╝  ██║   ██║██╔══██╗██║██║╚██╗██║[/]
+[#8C5B4A]███████╗╚██████╔╝██║  ██║██║██║ ╚████║[/]
+[#8C5B4A]╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝[/]"""
 
 # ASCII Art - Zorin Caduceus (compact, fits in left panel)
 ZORIN_CADUCEUS = """[#CD7F32]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⣀⣀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
@@ -3558,51 +3559,28 @@ ZORIN_CADUCEUS = """[#CD7F32]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⣀⣀⠀
 
 
 def _build_compact_banner() -> str:
-    """Build a compact banner that fits the current terminal width."""
+    """Build the focused welcome for compact and narrow terminals."""
+    from rich.markup import escape as escape_markup
+
     try:
         from zorin_cli.skin_engine import get_active_skin
         _skin = get_active_skin()
     except Exception:
         _skin = None
 
-    skin_name = getattr(_skin, "name", "default") if _skin else "default"
-    border_color = _skin.get_color("banner_border", "#FFD700") if _skin else "#FFD700"
-    title_color = _skin.get_color("banner_title", "#FFBF00") if _skin else "#FFBF00"
-    dim_color = _skin.get_color("banner_dim", "#B8860B") if _skin else "#B8860B"
-
-    if skin_name == "default":
-        line1 = "⚕ NPCAUTOMATORS ZORIN - AI Agent Framework"
-        tiny_line = "⚕ NPCAUTOMATORS ZORIN"
-    else:
-        agent_name = _skin.get_branding("agent_name", "ZORIN") if _skin else "ZORIN"
-        line1 = f"{agent_name} - AI Agent Framework"
-        tiny_line = agent_name
-
-    if os.environ.get("ZORIN_FAST_STARTUP_BANNER") == "1":
-        from zorin_cli import __release_date__ as _release_date
-        from zorin_cli import __version__ as _version
-
-        version_line = f"ZORIN v{_version} ({_release_date})"
-    else:
-        version_line = format_banner_version_label()
-
-    w = min(shutil.get_terminal_size().columns - 2, 88)
-    if w < 30:
-        return f"\n[{title_color}]{tiny_line}[/] [dim {dim_color}]- NPCAUTOMATORS[/]\n"
-
-    inner = w - 2  # inside the box border
-    bar = "═" * w
-    content_width = inner - 2
-
-    # Truncate and pad to fit
-    line1 = line1[:content_width].ljust(content_width)
-    line2 = version_line[:content_width].ljust(content_width)
+    title_color = _skin.get_color("banner_title", "#D97757") if _skin else "#D97757"
+    accent_color = _skin.get_color("banner_accent", "#E18A6D") if _skin else "#E18A6D"
+    dim_color = _skin.get_color("banner_dim", "#A39189") if _skin else "#A39189"
+    agent_name = _skin.get_branding("agent_name", "ZORIN") if _skin else "ZORIN"
+    command_line = "   ".join(
+        f"[bold {accent_color}]{command}[/]"
+        for command, _ in STARTUP_COMMANDS
+    )
 
     return (
-        f"\n[bold {border_color}]╔{bar}╗[/]\n"
-        f"[bold {border_color}]║[/] [{title_color}]{line1}[/] [bold {border_color}]║[/]\n"
-        f"[bold {border_color}]║[/] [dim {dim_color}]{line2}[/] [bold {border_color}]║[/]\n"
-        f"[bold {border_color}]╚{bar}╝[/]\n"
+        f"\n[bold {title_color}]{escape_markup(agent_name)}[/]\n"
+        f"[dim {dim_color}]A product of [/][bold {title_color}]NPCAUTOMATORS.[/]\n\n"
+        f"{command_line}\n"
     )
 
 
@@ -5991,10 +5969,10 @@ class ZorinCLI(CLIAgentSetupMixin, CLICommandsMixin, CLIBillingMixin):
                 from zorin_cli.skin_engine import get_active_skin
                 _skin = get_active_skin()
                 label = _skin.get_branding("response_label", "⚕ Zorin")
-                _text_hex = _skin.get_color("banner_text", "#FFF8DC")
+                _text_hex = _skin.get_color("banner_text", "#FFFFFF")
             except Exception:
                 label = "⚕ Zorin"
-                _text_hex = "#FFF8DC"
+                _text_hex = "#FFFFFF"
             # Build a true-color ANSI escape for the response text color
             # so streamed content matches the Rich Panel appearance.
             try:
@@ -6385,34 +6363,17 @@ class ZorinCLI(CLIAgentSetupMixin, CLICommandsMixin, CLIBillingMixin):
         ctx_len = None
         if hasattr(self, 'agent') and self.agent and hasattr(self.agent, 'context_compressor'):
             ctx_len = self.agent.context_compressor.context_length
-        
-        # Auto-compact for narrow terminals — the full banner with caduceus
-        # + tool list needs ~80 columns minimum to render without wrapping.
+
+        # The block-art wordmark fits at 45 columns. Explicit compact mode and
+        # narrower terminals use the same content with a one-line wordmark.
         term_width = shutil.get_terminal_size().columns
-        use_compact = self.compact or term_width < 80
-        
+        use_compact = self.compact or term_width < 45
+
         if use_compact:
             self._console_print(_build_compact_banner())
-            self._show_status()
         else:
-            # Get tools for display
-            tools = get_tool_definitions(enabled_toolsets=self.enabled_toolsets, quiet_mode=True)
-            
-            # Get terminal working directory (where commands will execute)
-            cwd = os.getenv("TERMINAL_CWD", os.getcwd())
-            
-            # Build and display the banner
-            build_welcome_banner(
-                console=self.console,
-                model=self.model,
-                cwd=cwd,
-                tools=tools,
-                enabled_toolsets=self.enabled_toolsets,
-                session_id=self.session_id,
-                context_length=ctx_len,
-                provider=self.provider,
-            )
-        
+            build_startup_banner(self.console)
+
         # Tool discovery is intentionally deferred on the Termux bare prompt
         # path; availability warnings are shown once tools are initialized.
         if os.environ.get("ZORIN_DEFER_AGENT_STARTUP") != "1":
@@ -8926,52 +8887,14 @@ class ZorinCLI(CLIAgentSetupMixin, CLICommandsMixin, CLIBillingMixin):
             if self._app:
                 cc = ChatConsole()
                 term_w = shutil.get_terminal_size().columns
-                if self.compact or term_w < 80:
+                if self.compact or term_w < 45:
                     cc.print(_build_compact_banner())
                 else:
-                    tools = get_tool_definitions(enabled_toolsets=self.enabled_toolsets, quiet_mode=True)
-                    cwd = os.getenv("TERMINAL_CWD", os.getcwd())
-                    ctx_len = None
-                    if hasattr(self, 'agent') and self.agent and hasattr(self.agent, 'context_compressor'):
-                        ctx_len = self.agent.context_compressor.context_length
-                    build_welcome_banner(
-                        console=cc,
-                        model=self.model,
-                        cwd=cwd,
-                        tools=tools,
-                        enabled_toolsets=self.enabled_toolsets,
-                        session_id=self.session_id,
-                        context_length=ctx_len,
-                        provider=self.provider,
-                    )
+                    build_startup_banner(cc)
                 _cprint("  ✨ (◕‿◕)✨ Fresh start! Screen cleared and conversation reset.\n")
-                # Show a random tip on new session
-                try:
-                    from zorin_cli.tips import get_random_tip
-                    _tip = get_random_tip()
-                    try:
-                        from zorin_cli.skin_engine import get_active_skin
-                        _tip_color = get_active_skin().get_color("banner_dim", "#B8860B")
-                    except Exception:
-                        _tip_color = "#B8860B"
-                    cc.print(f"[dim {_tip_color}]✦ Tip: {_tip}[/]")
-                except Exception:
-                    pass
             else:
                 self.show_banner()
                 print("  ✨ (◕‿◕)✨ Fresh start! Screen cleared and conversation reset.\n")
-                # Show a random tip on new session
-                try:
-                    from zorin_cli.tips import get_random_tip
-                    _tip = get_random_tip()
-                    try:
-                        from zorin_cli.skin_engine import get_active_skin
-                        _tip_color = get_active_skin().get_color("banner_dim", "#B8860B")
-                    except Exception:
-                        _tip_color = "#B8860B"
-                    self._console_print(f"[dim {_tip_color}]✦ Tip: {_tip}[/]")
-                except Exception:
-                    pass
         elif canonical == "history":
             self.show_history()
         elif canonical == "title":
@@ -12577,12 +12500,12 @@ class ZorinCLI(CLIAgentSetupMixin, CLICommandsMixin, CLIBillingMixin):
                     from zorin_cli.skin_engine import get_active_skin
                     _skin = get_active_skin()
                     label = _skin.get_branding("response_label", "⚕ Zorin")
-                    _resp_color = _maybe_remap_for_light_mode(_skin.get_color("response_border", "#CD7F32"))
-                    _resp_text = _maybe_remap_for_light_mode(_skin.get_color("banner_text", "#FFF8DC"))
+                    _resp_color = _maybe_remap_for_light_mode(_skin.get_color("response_border", "#D97757"))
+                    _resp_text = _maybe_remap_for_light_mode(_skin.get_color("banner_text", "#FFFFFF"))
                 except Exception:
                     label = "⚕ Zorin"
-                    _resp_color = _maybe_remap_for_light_mode("#CD7F32")
-                    _resp_text = _maybe_remap_for_light_mode("#FFF8DC")
+                    _resp_color = _maybe_remap_for_light_mode("#D97757")
+                    _resp_text = _maybe_remap_for_light_mode("#FFFFFF")
 
                 is_error_response = result and (result.get("failed") or result.get("partial"))
                 already_streamed = self._stream_started and self._stream_box_opened and not is_error_response
@@ -13131,16 +13054,6 @@ class ZorinCLI(CLIAgentSetupMixin, CLICommandsMixin, CLIBillingMixin):
             if self._preload_resumed_session():
                 self._display_resumed_history()
 
-        try:
-            from zorin_cli.skin_engine import get_active_skin
-            _welcome_skin = get_active_skin()
-            _welcome_text = _welcome_skin.get_branding("welcome", "Welcome to ZORIN! Type your message or /help for commands.")
-            _welcome_color = _welcome_skin.get_color("banner_text", "#FFF8DC")
-        except Exception:
-            _welcome_text = "Welcome to ZORIN! Type your message or /help for commands."
-            _welcome_color = "#FFF8DC"
-        self._console_print(f"[{_welcome_color}]{_welcome_text}[/]")
-
         # Warm the /model picker's provider-models cache off-thread during this
         # idle window (banner shown, user about to type). The no-args picker
         # otherwise blocks ~1-2s on serial /v1/models fetches the first time
@@ -13215,18 +13128,6 @@ class ZorinCLI(CLIAgentSetupMixin, CLICommandsMixin, CLIBillingMixin):
                     pass  # best-effort — banner will fire again next session
         except Exception:
             pass  # banner is non-critical — never break startup
-        # Show a random tip to help users discover features
-        try:
-            from zorin_cli.tips import get_random_tip
-            _tip = get_random_tip()
-            try:
-                _tip_color = _welcome_skin.get_color("banner_dim", "#B8860B")
-            except Exception:
-                _tip_color = "#B8860B"
-            self._console_print(f"[dim {_tip_color}]✦ Tip: {_tip}[/]")
-        except Exception:
-            pass  # Tips are non-critical — never break startup
-
         # Curator — kick off a background skill-maintenance pass on startup
         # if the schedule says we're due.  Runs in a daemon thread so it
         # never blocks the interactive loop.  Best-effort; any failure is

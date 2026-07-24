@@ -407,7 +407,7 @@ const renderTable = (k: number, rows: string[][], t: Theme, cols?: number) => {
       <Box flexDirection="column" key={k} paddingLeft={TABLE_PADDING_LEFT}>
         {normalizedRows.map((row, ri) => (
           <Fragment key={ri}>
-            <Text bold={ri === 0} color={ri === 0 ? t.color.accent : undefined} wrap="truncate-end">
+            <Text bold={ri === 0} color={ri === 0 ? t.color.accent : t.color.text} wrap="truncate-end">
               {buildRowString(row)}
             </Text>
             {ri === 0 && normalizedRows.length > 1 ? (
@@ -507,7 +507,7 @@ const renderTable = (k: number, rows: string[][], t: Theme, cols?: number) => {
               const label = stripInlineMarkup(header) || `Col ${ci + 1}`
 
               return (
-                <Text key={ci} wrap="wrap-trim">
+                <Text color={t.color.text} key={ci} wrap="wrap-trim">
                   <Text bold color={t.color.accent}>
                     {label}:
                   </Text>{' '}
@@ -527,7 +527,7 @@ const renderTable = (k: number, rows: string[][], t: Theme, cols?: number) => {
       {allEntries.map((entry, i) => (
         <Text
           bold={entry.kind === 'header'}
-          color={entry.kind === 'header' ? t.color.accent : entry.kind === 'separator' ? t.color.muted : undefined}
+          color={entry.kind === 'header' ? t.color.accent : entry.kind === 'separator' ? t.color.muted : t.color.text}
           dimColor={entry.kind === 'separator'}
           key={i}
           wrap="truncate-end"
@@ -539,8 +539,9 @@ const renderTable = (k: number, rows: string[][], t: Theme, cols?: number) => {
   )
 }
 
-function MdInline({ t, text }: { t: Theme; text: string }) {
+function MdInline({ color, t, text }: { color?: string; t: Theme; text: string }) {
   const parts: ReactNode[] = []
+  const textColor = color ?? t.color.text
 
   let last = 0
 
@@ -565,7 +566,7 @@ function MdInline({ t, text }: { t: Theme; text: string }) {
     } else if (m[6]) {
       parts.push(
         <Text key={parts.length} strikethrough>
-          <MdInline t={t} text={m[6]} />
+          <MdInline color={textColor} t={t} text={m[6]} />
         </Text>
       )
     } else if (m[7]) {
@@ -585,19 +586,19 @@ function MdInline({ t, text }: { t: Theme; text: string }) {
       // verbatim and the math renderer never sees it.
       parts.push(
         <Text bold key={parts.length}>
-          <MdInline t={t} text={m[8] ?? m[9]!} />
+          <MdInline color={textColor} t={t} text={m[8] ?? m[9]!} />
         </Text>
       )
     } else if (m[10] ?? m[11]) {
       parts.push(
         <Text italic key={parts.length}>
-          <MdInline t={t} text={m[10] ?? m[11]!} />
+          <MdInline color={textColor} t={t} text={m[10] ?? m[11]!} />
         </Text>
       )
     } else if (m[12]) {
       parts.push(
         <Text backgroundColor={t.color.diffAdded} color={t.color.diffAddedWord} key={parts.length}>
-          <MdInline t={t} text={m[12]} />
+          <MdInline color={t.color.diffAddedWord} t={t} text={m[12]} />
         </Text>
       )
     } else if (m[13]) {
@@ -650,7 +651,11 @@ function MdInline({ t, text }: { t: Theme; text: string }) {
     parts.push(<Text key={parts.length}>{text.slice(last)}</Text>)
   }
 
-  return <Text wrap="wrap-trim">{parts.length ? parts : text}</Text>
+  return (
+    <Text color={textColor} wrap="wrap-trim">
+      {parts.length ? parts : text}
+    </Text>
+  )
 }
 
 // Cross-instance parsed-children cache: useMemo's per-instance cache dies
@@ -803,14 +808,16 @@ function MdImpl({ cols, compact, t, text }: MdProps) {
             {block.map((l, j) => {
               if (highlighted) {
                 return (
-                  <Text key={j}>
+                  <Text color={t.color.text} key={j}>
                     {highlightLine(l, lang, t).map(([color, text], kk) =>
                       color ? (
                         <Text color={color} key={kk}>
                           {text}
                         </Text>
                       ) : (
-                        <Text key={kk}>{text}</Text>
+                        <Text color={t.color.text} key={kk}>
+                          {text}
+                        </Text>
                       )
                     )}
                   </Text>
@@ -824,7 +831,9 @@ function MdImpl({ cols, compact, t, text }: MdProps) {
               return (
                 <Text
                   backgroundColor={add ? t.color.diffAdded : del ? t.color.diffRemoved : undefined}
-                  color={add ? t.color.diffAddedWord : del ? t.color.diffRemovedWord : hunk ? t.color.muted : undefined}
+                  color={
+                    add ? t.color.diffAddedWord : del ? t.color.diffRemovedWord : hunk ? t.color.muted : t.color.text
+                  }
                   dimColor={isDiff && !add && !del && !hunk && l.startsWith(' ')}
                   key={j}
                 >
@@ -922,7 +931,7 @@ function MdImpl({ cols, compact, t, text }: MdProps) {
         start('heading')
         nodes.push(
           <Text bold color={t.color.accent} key={key} wrap="wrap-trim">
-            <MdInline t={t} text={heading} />
+            <MdInline color={t.color.accent} t={t} text={heading} />
           </Text>
         )
         i++
@@ -934,7 +943,7 @@ function MdImpl({ cols, compact, t, text }: MdProps) {
         start('heading')
         nodes.push(
           <Text bold color={t.color.accent} key={key} wrap="wrap-trim">
-            <MdInline t={t} text={line.trim()} />
+            <MdInline color={t.color.accent} t={t} text={line.trim()} />
           </Text>
         )
         i += 2
@@ -960,7 +969,7 @@ function MdImpl({ cols, compact, t, text }: MdProps) {
         start('list')
         nodes.push(
           <Text color={t.color.muted} key={key} wrap="wrap-trim">
-            [{footnote[1]}] <MdInline t={t} text={footnote[2] ?? ''} />
+            [{footnote[1]}] <MdInline color={t.color.muted} t={t} text={footnote[2] ?? ''} />
           </Text>
         )
         i++
@@ -969,7 +978,7 @@ function MdImpl({ cols, compact, t, text }: MdProps) {
           nodes.push(
             <Box key={`${key}-cont-${i}`} paddingLeft={2}>
               <Text color={t.color.muted} wrap="wrap-trim">
-                <MdInline t={t} text={lines[i]!.trim()} />
+                <MdInline color={t.color.muted} t={t} text={lines[i]!.trim()} />
               </Text>
             </Box>
           )
@@ -982,7 +991,7 @@ function MdImpl({ cols, compact, t, text }: MdProps) {
       if (i + 1 < lines.length && DEF_RE.test(lines[i + 1]!)) {
         start('list')
         nodes.push(
-          <Text bold key={key} wrap="wrap-trim">
+          <Text bold color={t.color.text} key={key} wrap="wrap-trim">
             {line.trim()}
           </Text>
         )
@@ -996,7 +1005,7 @@ function MdImpl({ cols, compact, t, text }: MdProps) {
           }
 
           nodes.push(
-            <Text key={`${key}-def-${i}`} wrap="wrap-trim">
+            <Text color={t.color.text} key={`${key}-def-${i}`} wrap="wrap-trim">
               <Text color={t.color.muted}> · </Text>
               <MdInline t={t} text={def} />
             </Text>
@@ -1062,7 +1071,7 @@ function MdImpl({ cols, compact, t, text }: MdProps) {
             {quoteLines.map((ql, qi) => (
               <Box key={qi} paddingLeft={Math.max(0, ql.depth - 1) * 2}>
                 <Text color={t.color.muted} wrap="wrap-trim">
-                  │ <MdInline t={t} text={ql.text} />
+                  │ <MdInline color={t.color.muted} t={t} text={ql.text} />
                 </Text>
               </Box>
             ))}

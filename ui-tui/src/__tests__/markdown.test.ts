@@ -1,6 +1,7 @@
 import { PassThrough } from 'stream'
 
 import { Box, renderSync } from '@zorin/ink'
+import chalk from 'chalk'
 import React from 'react'
 import { describe, expect, it } from 'vitest'
 
@@ -14,13 +15,13 @@ const ESC = String.fromCharCode(27)
 const CSI_RE = new RegExp(`${ESC}\\[[0-?]*[ -/]*[@-~]`, 'g')
 const OSC_RE = new RegExp(`${ESC}\\][\\s\\S]*?(?:${BEL}|${ESC}\\\\)`, 'g')
 
-const renderPlain = (node: React.ReactNode) => {
+const renderAnsi = (node: React.ReactNode, isTTY = false) => {
   const stdout = new PassThrough()
   const stdin = new PassThrough()
   const stderr = new PassThrough()
   let output = ''
 
-  Object.assign(stdout, { columns: 80, isTTY: false, rows: 24 })
+  Object.assign(stdout, { columns: 80, isTTY, rows: 24 })
   Object.assign(stdin, { isTTY: false })
   Object.assign(stderr, { isTTY: false })
   stdout.on('data', chunk => {
@@ -38,10 +39,13 @@ const renderPlain = (node: React.ReactNode) => {
   instance.cleanup()
 
   return output
+}
+
+const renderPlain = (node: React.ReactNode) =>
+  renderAnsi(node)
     .replace(OSC_RE, '')
     .split('\n')
     .map(line => stripAnsi(line).replace(CSI_RE, '').trimEnd())
-}
 
 describe('INLINE_RE emphasis', () => {
   it('matches word-boundary italic/bold', () => {
@@ -192,6 +196,30 @@ describe('protocol sentinels', () => {
     expect(AUDIO_DIRECTIVE_RE.test('[[audio_as_voice]]')).toBe(true)
     expect(AUDIO_DIRECTIVE_RE.test('  [[audio_as_voice]]  ')).toBe(true)
     expect(AUDIO_DIRECTIVE_RE.test('audio_as_voice')).toBe(false)
+  })
+})
+
+describe('Md body color', () => {
+  it('renders ordinary assistant prose with the theme text color', () => {
+    const theme = {
+      ...DEFAULT_THEME,
+      color: { ...DEFAULT_THEME.color, text: '#123456' }
+    }
+
+    const previousLevel = chalk.level
+
+    try {
+      chalk.level = 3
+
+      const output = renderAnsi(
+        React.createElement(Box, { width: 40 }, React.createElement(Md, { t: theme, text: 'plain response' })),
+        true
+      )
+
+      expect(output).toContain('\u001b[38;2;18;52;86mplain')
+    } finally {
+      chalk.level = previousLevel
+    }
   })
 })
 

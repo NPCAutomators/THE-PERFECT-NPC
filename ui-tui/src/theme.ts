@@ -343,51 +343,48 @@ export function buildPalette(seeds: ThemeSeeds, isLight: boolean): ThemeColors {
 }
 
 export const DARK_SEEDS: ThemeSeeds = {
-  accent: '#FFBF00',
-  // The classic Zorin navy surfaces are IDENTITY, not derivation drift —
-  // keep them as explicit fill seeds (the ladder derives them for skins
-  // that don't care).
-  activeRow: '#333355',
+  accent: '#D97757',
+  // Warm charcoal fills keep the Claude-style coral identity coherent in
+  // menus, selections, and status surfaces.
+  activeRow: '#44342E',
   bg: '#101014',
-  border: '#CD7F32',
+  border: '#A16F5D',
   error: '#ef5350',
+  muted: '#A39189',
   ok: '#4caf50',
-  primary: '#FFD700',
-  prompt: '#FFF8DC',
-  selection: '#3a3a55',
+  primary: '#D97757',
+  prompt: '#D97757',
+  selection: '#563A31',
   shellDollar: '#4dabf7',
-  statusBad: '#FF8C00',
+  statusBad: '#E07A4F',
   statusCritical: '#FF6B6B',
   statusGood: '#8FBC8F',
-  statusWarn: '#FFD700',
-  surface: '#1a1a2e',
-  text: '#FFF8DC',
-  warn: '#ffa726'
+  statusWarn: '#E5A46B',
+  surface: '#211E1D',
+  text: '#FFFFFF',
+  warn: '#E5A46B'
 }
 
-// Light-terminal seeds: darker golds/ambers that stay legible on white.
-// The classic light-mode Zorin look was never hand-authored: for years the
-// TUI emitted the DARK golds and hosts with xterm's minimumContrastRatio
-// (Cursor defaults to 4.5) lifted them against white — hue and saturation
-// kept, luminance clamped. These seeds are those exact lifts
-// (liftForContrast(dark, '#ffffff', 4.5)), so hosts WITHOUT a contrast pass
-// render the same thing Cursor always showed. Text/prompt stay ink — body
-// copy historically rendered in the terminal's default near-black fg.
+// Light-terminal seeds keep the same coral identity with dark, readable ink.
 export const LIGHT_SEEDS: ThemeSeeds = {
-  accent: '#956E00',
+  accent: '#B4533A',
+  activeRow: '#ECDDD7',
   bg: '#ffffff',
-  border: '#A56628',
+  border: '#8C5B4A',
   error: '#C14240',
+  muted: '#75665F',
   ok: '#367E39',
-  primary: '#867000',
-  prompt: '#2B2014',
+  primary: '#B24F35',
+  prompt: '#B4533A',
+  selection: '#EAD3CA',
   shellDollar: '#377BB3',
-  statusBad: '#A65A00',
+  statusBad: '#B4533A',
   statusCritical: '#B94D4D',
   statusGood: '#5C7A5C',
-  statusWarn: '#867000',
-  text: '#3D2F13',
-  warn: '#956115'
+  statusWarn: '#9A5B17',
+  surface: '#F7F3F1',
+  text: '#2E2927',
+  warn: '#9A5B17'
 }
 
 export const DARK_THEME: Theme = {

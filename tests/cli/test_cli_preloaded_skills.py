@@ -112,7 +112,7 @@ def test_show_banner_does_not_print_skills():
     cli_obj.preloaded_skills = ["zorin-agent-dev", "github-auth"]
     cli_obj.console = MagicMock()
 
-    with patch("cli.build_welcome_banner") as mock_banner, patch(
+    with patch("cli.build_startup_banner") as mock_banner, patch(
         "shutil.get_terminal_size", return_value=os.terminal_size((120, 40))
     ):
         cli_obj.show_banner()

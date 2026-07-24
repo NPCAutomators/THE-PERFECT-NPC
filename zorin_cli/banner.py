@@ -60,12 +60,29 @@ def _skin_color(key: str, fallback: str) -> str:
 
 from zorin_cli import __version__ as VERSION, __release_date__ as RELEASE_DATE
 
-ZORIN_AGENT_LOGO = """[bold #FFD700]██╗  ██╗███████╗██████╗ ███╗   ███╗███████╗███████╗       █████╗  ██████╗ ███████╗███╗   ██╗████████╗[/]
-[bold #FFD700]██║  ██║██╔════╝██╔══██╗████╗ ████║██╔════╝██╔════╝      ██╔══██╗██╔════╝ ██╔════╝████╗  ██║╚══██╔══╝[/]
-[#FFBF00]███████║█████╗  ██████╔╝██╔████╔██║█████╗  ███████╗█████╗███████║██║  ███╗█████╗  ██╔██╗ ██║   ██║[/]
-[#FFBF00]██╔══██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══╝  ╚════██║╚════╝██╔══██║██║   ██║██╔══╝  ██║╚██╗██║   ██║[/]
-[#CD7F32]██║  ██║███████╗██║  ██║██║ ╚═╝ ██║███████╗███████║      ██║  ██║╚██████╔╝███████╗██║ ╚████║   ██║[/]
-[#CD7F32]╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝      ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝[/]"""
+ZORIN_LOGO_ART = (
+    "███████╗ ██████╗ ██████╗ ██╗███╗   ██╗",
+    "╚══███╔╝██╔═══██╗██╔══██╗██║████╗  ██║",
+    "  ███╔╝ ██║   ██║██████╔╝██║██╔██╗ ██║",
+    " ███╔╝  ██║   ██║██╔══██╗██║██║╚██╗██║",
+    "███████╗╚██████╔╝██║  ██║██║██║ ╚████║",
+    "╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝",
+)
+
+_ZORIN_LOGO_DEFAULT_COLORS = ("#D97757", "#D97757", "#E18A6D", "#E18A6D", "#8C5B4A", "#8C5B4A")
+
+ZORIN_AGENT_LOGO = "\n".join(
+    f"[bold {color}]{line}[/]"
+    for color, line in zip(_ZORIN_LOGO_DEFAULT_COLORS, ZORIN_LOGO_ART)
+)
+
+STARTUP_COMMANDS = (
+    ("/help", "Show all commands and hotkeys"),
+    ("/new", "Start a new session"),
+    ("/resume", "Resume a previous session"),
+    ("/model", "Choose a model"),
+    ("/quit", "Exit Zorin"),
+)
 
 ZORIN_CADUCEUS = """[#CD7F32]⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⣀⣀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀[/]
 [#CD7F32]⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣇⠸⣿⣿⠇⣸⣿⣿⣷⣦⣄⡀⠀⠀⠀⠀⠀⠀[/]
@@ -575,6 +592,50 @@ def _display_toolset_name(toolset_name: str) -> str:
         if toolset_name.endswith("_tools")
         else toolset_name
     )
+
+
+def build_startup_banner(console: "Console") -> None:
+    """Render the focused terminal welcome shown before the first prompt."""
+    from rich.text import Text
+
+    try:
+        from zorin_cli.skin_engine import get_active_skin
+
+        skin = get_active_skin()
+    except Exception:
+        skin = None
+
+    title = skin.get_color("banner_title", "#D97757") if skin else "#D97757"
+    accent = skin.get_color("banner_accent", "#E18A6D") if skin else "#E18A6D"
+    border = skin.get_color("banner_border", "#8C5B4A") if skin else "#8C5B4A"
+    dim = skin.get_color("banner_dim", "#A39189") if skin else "#A39189"
+    custom_logo = getattr(skin, "banner_logo", "") if skin else ""
+    agent_name = skin.get_branding("agent_name", "ZORIN") if skin else "ZORIN"
+    width = getattr(console, "width", None)
+    if not isinstance(width, int):
+        width = shutil.get_terminal_size((80, 24)).columns
+
+    console.print()
+    if custom_logo:
+        console.print(custom_logo)
+    elif width >= max(len(line) for line in ZORIN_LOGO_ART) + 2:
+        logo_colors = (title, title, accent, accent, border, border)
+        for color, line in zip(logo_colors, ZORIN_LOGO_ART):
+            console.print(Text(line, style=f"bold {color}"))
+    else:
+        console.print(Text(agent_name, style=f"bold {title}"))
+
+    product = Text("A product of ", style=dim)
+    product.append("NPCAUTOMATORS.", style=f"bold {title}")
+    console.print(product)
+    console.print()
+
+    commands = Text(no_wrap=True, overflow="ellipsis")
+    for index, (command, _) in enumerate(STARTUP_COMMANDS):
+        if index:
+            commands.append("   ")
+        commands.append(command, style=f"bold {accent}")
+    console.print(commands)
 
 
 def build_welcome_banner(console: "Console", model: str, cwd: str,

@@ -49,53 +49,29 @@ export function ArtLines({ lines }: { lines: [string, string][] }) {
   )
 }
 
-// Responsive Banner: full art → compact rule → text → hidden.
-//
-// Terminals can't scale glyphs, so "responsive" means picking a layout that
-// fits the available columns. Thresholds are picked so each tier reads
-// comfortably without forcing wrap or truncation drift on box-drawing edges.
-const TAG_FULL = 'NPCAUTOMATORS · Messenger of the Digital Gods'
-const TAG_MID = 'Messenger of the Digital Gods'
-const TAG_TINY = 'NPCAUTOMATORS'
-const HIDE_BELOW = 34
-const COMPACT_FROM = 58
+export const STARTER_COMMANDS = [
+  ['/help', 'Show all commands and hotkeys'],
+  ['/new', 'Start a new session'],
+  ['/resume', 'Resume a previous session'],
+  ['/model', 'Choose a model'],
+  ['/quit', 'Exit Zorin']
+] as const
 
-const clip = (s: string, w: number) => (w <= 0 ? '' : s.length > w ? `${s.slice(0, Math.max(0, w - 1))}…` : s)
+const HIDE_BELOW = 12
 
-const centerIn = (s: string, w: number) => {
-  const f = clip(s, w)
-  const slack = Math.max(0, w - f.length)
-  const left = slack >> 1
+function StarterCommands({ cols, t }: { cols: number; t: Theme }) {
+  const gap = cols >= 42 ? '   ' : ' '
 
-  return `${' '.repeat(left)}${f}${' '.repeat(slack - left)}`
-}
-
-const ruleIn = (label: string, w: number) => {
-  const f = clip(label, Math.max(1, w - 4))
-  const slack = Math.max(0, w - f.length - 2)
-  const left = slack >> 1
-
-  return `${'─'.repeat(left)} ${f} ${'─'.repeat(slack - left)}`
-}
-
-function CompactBanner({ cols, t }: { cols: number; t: Theme }) {
-  // -4 keeps a margin so exact-edge rows don't trip terminal pending-wrap.
-  const w = Math.max(28, cols - 4)
-
-  // No `opaque` (see ArtLines): the dashed rules are glyphs and the tagline's
-  // centering spaces carry the text's own fg style, so every cell paints with
-  // a real see-through background. The opaque fill was writing default-bg
-  // spaces that a transparent terminal renders as black bars.
-  // NOT bold: on Cursor's transparent-background terminal, a full-width run
-  // of BOLD box-drawing dashes renders with an opaque black cell background
-  // (the plain-dash rule right below renders clean — pixel-diffed live; the
-  // only stylistic delta was bold). Bold on short label runs is fine; bold on
-  // full-width box-drawing rows is what triggers the slab.
   return (
-    <Box flexDirection="column" height={3} marginBottom={1} width={w}>
-      <Text color={t.color.primary}>{ruleIn(t.brand.name, w)}</Text>
-      <Text color={t.color.muted}>{centerIn(TAG_FULL, w)}</Text>
-      <Text color={t.color.primary}>{'─'.repeat(w)}</Text>
+    <Box marginTop={1}>
+      <Text wrap="wrap">
+        {STARTER_COMMANDS.map(([command], index) => (
+          <Text bold color={t.color.accent} key={command}>
+            {index ? gap : ''}
+            {command}
+          </Text>
+        ))}
+      </Text>
     </Box>
   )
 }
@@ -111,81 +87,26 @@ export function Banner({ maxWidth, t }: { maxWidth?: number; t: Theme }) {
   const logoLines = logo(t.color, t.bannerLogo || undefined)
   const logoW = t.bannerLogo ? artWidth(logoLines) : LOGO_WIDTH
 
-  // Each tier renders its rows through a single-column WidgetGrid sized to
-  // the available columns — same visual output as the old plain flex column
-  // (cells clip where truncate-end used to), but the banner is now a
-  // layout-engine surface.
-  if (cols >= logoW + 2) {
-    return (
-      <Box flexDirection="column" marginBottom={1}>
-        <WidgetGrid
-          cols={cols}
-          columns={1}
-          gap={0}
-          paddingX={0}
-          paddingY={0}
-          rowGap={0}
-          widgets={[
-            { children: <ArtLines lines={logoLines} />, id: 'banner-art' },
-            {
-              children: (
-                <Text color={t.color.muted} wrap="truncate-end">
-                  {t.brand.icon} {TAG_FULL}
-                </Text>
-              ),
-              id: 'banner-tagline'
-            }
-          ]}
-        />
-      </Box>
-    )
-  }
-
-  if (cols >= COMPACT_FROM) {
-    return (
-      <WidgetGrid
-        cols={cols}
-        columns={1}
-        gap={0}
-        paddingX={0}
-        paddingY={0}
-        rowGap={0}
-        widgets={[{ children: <CompactBanner cols={cols} t={t} />, id: 'banner-compact' }]}
-      />
-    )
-  }
-
-  const name = cols >= 52 ? t.brand.name : (t.brand.name.split(' ')[0] ?? t.brand.name)
-  const tag = cols >= 64 ? TAG_FULL : cols >= 46 ? TAG_MID : TAG_TINY
+  const showLogo = cols >= logoW + 2
 
   return (
-    <Box flexDirection="column" marginBottom={1}>
-      <WidgetGrid
-        cols={cols}
-        columns={1}
-        gap={0}
-        paddingX={0}
-        paddingY={0}
-        rowGap={0}
-        widgets={[
-          {
-            children: (
-              <Text bold color={t.color.primary} wrap="truncate-end">
-                {t.brand.icon} {name}
-              </Text>
-            ),
-            id: 'banner-name'
-          },
-          {
-            children: (
-              <Text color={t.color.muted} wrap="truncate-end">
-                {t.brand.icon} {tag}
-              </Text>
-            ),
-            id: 'banner-tag'
-          }
-        ]}
-      />
+    <Box flexDirection="column" marginBottom={1} width={Math.max(1, cols - 2)}>
+      {showLogo ? (
+        <ArtLines lines={logoLines} />
+      ) : (
+        <Text bold color={t.color.primary} wrap="truncate-end">
+          {t.brand.name}
+        </Text>
+      )}
+
+      <Text color={t.color.muted} wrap="truncate-end">
+        A product of{' '}
+        <Text bold color={t.color.primary}>
+          NPCAUTOMATORS.
+        </Text>
+      </Text>
+
+      <StarterCommands cols={cols} t={t} />
     </Box>
   )
 }

@@ -88,7 +88,9 @@ export const estimatedMsgHeight = (
   }
 ) => {
   if (msg.kind === 'intro') {
-    return msg.info?.version ? 9 : 5
+    // Full wordmark (6) + product line + spacing + one command row,
+    // including the intro wrapper's top padding and banner bottom margin.
+    return cols >= 45 ? 11 : 6
   }
 
   if (msg.kind === 'panel') {
