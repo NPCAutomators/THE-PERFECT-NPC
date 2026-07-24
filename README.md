@@ -37,7 +37,7 @@ Use any model you want — [NPCAUTOMATORS Portal](https://portal.npcautomators.c
 ### Linux, macOS, WSL2, Termux
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/NPCAutomators/AGENT-ZORIN/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/NPCAutomators/THE-PERFECT-NPC/main/scripts/install.sh | bash
 ```
 
 ### Windows (native, PowerShell)
@@ -47,7 +47,7 @@ curl -fsSL https://raw.githubusercontent.com/NPCAutomators/AGENT-ZORIN/main/scri
 Run this in PowerShell:
 
 ```powershell
-iex (irm https://raw.githubusercontent.com/NPCAutomators/AGENT-ZORIN/main/scripts/install.ps1)
+iex (irm https://raw.githubusercontent.com/NPCAutomators/THE-PERFECT-NPC/main/scripts/install.ps1)
 ```
 
 The installer handles everything: uv, Python 3.11, Node.js, ripgrep, ffmpeg, **and a portable Git Bash** (MinGit, unpacked to `%LOCALAPPDATA%\zorin\git` — no admin required, completely isolated from any system Git install). Zorin uses this bundled Git Bash to run shell commands.
@@ -224,7 +224,7 @@ full git checkout it creates at `$ZORIN_HOME/zorin-agent` (usually
 managed venv, lazy dependencies, gateway, and docs tooling.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/NPCAutomators/AGENT-ZORIN/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/NPCAutomators/THE-PERFECT-NPC/main/scripts/install.sh | bash
 cd "${ZORIN_HOME:-$HOME/.zorin}/zorin-agent"
 uv pip install -e ".[all,dev]"
 scripts/run_tests.sh
