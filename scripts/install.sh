@@ -210,7 +210,7 @@ print_banner() {
     echo ""
     echo -e "${MAGENTA}${BOLD}"
     echo "┌─────────────────────────────────────────────────────────┐"
-    echo "│             ⚕ ZORIN Installer                    │"
+    echo "│               ZORIN Installer                    │"
     echo "├─────────────────────────────────────────────────────────┤"
     echo "│  An open source AI agent by NPCAUTOMATORS.              │"
     echo "└─────────────────────────────────────────────────────────┘"
