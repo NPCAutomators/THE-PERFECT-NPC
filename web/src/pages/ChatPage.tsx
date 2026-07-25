@@ -205,7 +205,7 @@ export default function ChatPage({
                 streaming={message.status === "streaming"}
               />
               {message.reasoning ? (
-                <details className="mt-3 text-left text-xs text-[#8a8a8a]">
+                <details className="mt-3 text-left text-xs text-[var(--chat-muted)]">
                   <summary className="cursor-pointer text-[#c5ff4a]">Reasoning</summary>
                   <div className="mt-2 whitespace-pre-wrap">{message.reasoning}</div>
                 </details>
@@ -425,7 +425,7 @@ export default function ChatPage({
       {notice ? (
         <button
           type="button"
-          className="fixed bottom-5 right-5 z-50 max-w-sm rounded-xl border border-[#262626] bg-[#141414] px-4 py-3 text-left text-sm text-[#fafafa] shadow-2xl"
+          className="fixed bottom-5 right-5 z-50 max-w-sm rounded-2xl border border-[rgb(197_255_74_/_0.2)] bg-[var(--chat-surface)] px-4 py-3 text-left text-sm text-[var(--chat-text)] shadow-2xl"
           onClick={() => setNotice(null)}
           aria-label="Dismiss notification"
         >
@@ -437,7 +437,7 @@ export default function ChatPage({
         ? createPortal(
             <div className="fixed inset-0 z-[70] grid place-items-center bg-black/70 p-4" role="presentation">
               <form
-                className="w-full max-w-md rounded-2xl border border-[#262626] bg-[#141414] p-5 text-[#fafafa] shadow-2xl"
+                className="w-full max-w-md rounded-3xl border border-[rgb(197_255_74_/_0.2)] bg-[var(--chat-surface)] p-5 text-[var(--chat-text)] shadow-2xl"
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="chat-response-title"
@@ -452,7 +452,7 @@ export default function ChatPage({
                 <h2 id="chat-response-title" className="mt-2 text-xl font-semibold">
                   {responseDialog.title}
                 </h2>
-                <p className="mt-2 text-sm text-[#8a8a8a]">{responseDialog.description}</p>
+                <p className="mt-2 text-sm text-[var(--chat-muted)]">{responseDialog.description}</p>
                 <label className="mt-5 block text-sm">
                   <span className="sr-only">Response</span>
                   <input
@@ -461,7 +461,7 @@ export default function ChatPage({
                     autoComplete="off"
                     value={responseValue}
                     onChange={(event) => setResponseValue(event.target.value)}
-                    className="min-h-12 w-full rounded-xl border border-[#303030] bg-[#0a0a0a] px-3 text-base text-[#fafafa] outline-none focus:border-[#c5ff4a]"
+                    className="min-h-12 w-full rounded-xl border border-[rgb(197_255_74_/_0.18)] bg-[var(--chat-canvas)] px-3 text-base text-[var(--chat-text)] outline-none focus:border-[var(--chat-accent)] focus:shadow-[0_0_0_3px_rgb(197_255_74_/_0.12)]"
                   />
                 </label>
                 <div className="mt-5 flex justify-end gap-2">
@@ -475,7 +475,7 @@ export default function ChatPage({
                   <button
                     type="submit"
                     disabled={!responseValue.trim()}
-                    className="min-h-11 rounded-xl bg-[#c5ff4a] px-4 text-sm font-semibold text-[#0a0a0a] disabled:opacity-40"
+                    className="min-h-11 rounded-xl bg-[var(--chat-accent)] px-4 text-sm font-semibold text-[var(--chat-canvas)] shadow-[0_5px_18px_rgb(197_255_74_/_0.25)] disabled:opacity-40"
                   >
                     Continue
                   </button>

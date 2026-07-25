@@ -43,7 +43,8 @@
 
 /* ------------------------------------------------------------------ */
 /* ZORIN — NpcAutomators DS with the NPC Cyber palette applied statically
-   as the default dashboard theme. */
+   as the default dashboard theme. Deep blue-violet foundation with the
+   iconic lime accent plus ambient purple/cyan/pink glow accents. */
 /* ------------------------------------------------------------------ */
 
 :root {
@@ -52,23 +53,38 @@
   --foreground: color-mix(in srgb, #c5ff4a 100%, transparent);
   --foreground-base: #c5ff4a;
   --foreground-alpha: 1;
-  --midground: color-mix(in srgb, #fafafa 100%, transparent);
-  --midground-base: #fafafa;
+  --midground: color-mix(in srgb, #f5f7ff 100%, transparent);
+  --midground-base: #f5f7ff;
   --midground-alpha: 1;
-  --background: color-mix(in srgb, #0a0a0a 100%, transparent);
-  --background-base: #0a0a0a;
+  --background: color-mix(in srgb, #050510 100%, transparent);
+  --background-base: #050510;
   --background-alpha: 1;
 
   /* Stable NPC Cyber primitives for new pages and small rebrand passes. Use
      the semantic shadcn/DS tokens for normal components; these are exposed
      for decorative surfaces and branded effects. */
-  --npc-cyber-bg: #0a0a0a;
-  --npc-cyber-surface: #141414;
-  --npc-cyber-border: #262626;
+  --npc-cyber-bg: #050510;
+  --npc-cyber-surface: #0f0f1e;
+  --npc-cyber-surface-2: #151530;
+  --npc-cyber-border: #2a2a4a;
   --npc-cyber-accent: #c5ff4a;
-  --npc-cyber-accent-strong: #84cc16;
-  --npc-cyber-text: #fafafa;
-  --npc-cyber-muted: #8a8a8a;
+  --npc-cyber-accent-strong: #a8e62c;
+  --npc-cyber-accent-light: #e8ff99;
+  --npc-cyber-text: #f5f7ff;
+  --npc-cyber-muted: #8a8db8;
+  --npc-cyber-purple: #8b5cf6;
+  --npc-cyber-blue: #3b82f6;
+  --npc-cyber-cyan: #06b6d4;
+  --npc-cyber-pink: #ec4899;
+  --npc-cyber-orange: #ff8737;
+
+  /* Spacing scale for hand-rolled layout CSS (chat surface, plugins). */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
 
   /* Typography tokens — rewritten by ThemeProvider. Static defaults mirror
      NPC Cyber so the first paint matches the active default theme. */
@@ -87,8 +103,8 @@
   --theme-letter-spacing: -0.005em;
 
   /* Layout tokens. */
-  --radius: 0.5rem;
-  --theme-radius: 0.5rem;
+  --radius: 0.75rem;
+  --theme-radius: 0.75rem;
   --theme-spacing-mul: 1;
   --theme-density: comfortable;
 
@@ -234,6 +250,31 @@ code { font-size: 0.875rem; }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+/* Shared motion vocabulary — entrance, glow, float, shimmer. Used by the
+   chat surface and available to every dashboard page and plugin. */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 0.75; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 1; }
+}
+
+.animate-fade-up { animation: fade-up 0.3s ease-out both; }
+
 /* Hide scrollbar utility — used by the header's overflow-x nav row. */
 .scrollbar-none {
   -ms-overflow-style: none;
@@ -271,8 +312,8 @@ code { font-size: 0.875rem; }
    interaction contrast. */
 .npc-cyber-grid {
   background-image:
-    linear-gradient(rgb(250 250 250 / 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(250 250 250 / 0.025) 1px, transparent 1px);
+    linear-gradient(rgb(245 247 255 / 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(245 247 255 / 0.025) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -286,31 +327,48 @@ code { font-size: 0.875rem; }
 
 .npc-cyber-backdrop {
   background-image:
-    radial-gradient(circle at 72% -12%, rgb(197 255 74 / 0.07), transparent 32rem),
-    linear-gradient(rgb(250 250 250 / 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(250 250 250 / 0.018) 1px, transparent 1px);
-  background-size: auto, 40px 40px, 40px 40px;
+    radial-gradient(circle at 78% -12%, rgb(197 255 74 / 0.08), transparent 34rem),
+    radial-gradient(circle at -8% 28%, rgb(139 92 246 / 0.07), transparent 30rem),
+    linear-gradient(rgb(245 247 255 / 0.016) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(245 247 255 / 0.016) 1px, transparent 1px);
+  background-size: auto, auto, 40px 40px, 40px 40px;
+}
+
+/* Glass surface primitives — one gradient recipe reused everywhere so the
+   whole product reads as a single material. No backdrop-filter here; the
+   gradients are opaque enough that blur stacking is never needed. */
+.glass-surface {
+  border: 1px solid rgb(197 255 74 / 0.15);
+  background: linear-gradient(135deg, rgb(20 15 35 / 0.6) 0%, rgb(15 10 30 / 0.72) 100%);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.3), inset 0 1px 0 rgb(255 255 255 / 0.05);
+}
+.glass-border {
+  border: 1px solid rgb(197 255 74 / 0.15);
+}
+.shadow-glow {
+  box-shadow: 0 8px 24px rgb(197 255 74 / 0.15), inset 0 1px 0 rgb(255 255 255 / 0.08);
 }
 
 /* ------------------------------------------------------------------ */
-/* Chat shell — stable dark product surface inspired by the approved   */
-/* reference. These semantic tokens are intentionally local to /chat,  */
-/* so dashboard themes continue to own every management page.          */
+/* Chat shell — the /chat page owns its own semantic tokens so dashboard
+   themes continue to own every management page. Matches the NPC Cyber
+   deep blue-violet foundation.                                         */
 /* ------------------------------------------------------------------ */
 
 .zorin-chat-shell {
-  --chat-canvas: #101011;
-  --chat-panel: #050506;
-  --chat-surface: #19191b;
-  --chat-border: rgb(255 255 255 / 0.08);
-  --chat-text: #f5f5f7;
-  --chat-muted: #8b8b93;
-  --chat-accent: #8b5cf6;
+  --chat-canvas: #050510;
+  --chat-panel: #04040c;
+  --chat-surface: #0f0f1e;
+  --chat-border: rgb(197 255 74 / 0.12);
+  --chat-text: #f5f7ff;
+  --chat-muted: #8a8db8;
+  --chat-accent: #c5ff4a;
   color-scheme: dark;
-  scrollbar-color: rgb(255 255 255 / 0.14) transparent;
+  scrollbar-color: rgb(197 255 74 / 0.18) transparent;
   scrollbar-width: thin;
   background:
-    radial-gradient(circle at 82% -10%, rgb(124 58 237 / 0.06), transparent 28rem),
+    radial-gradient(circle at 82% -10%, rgb(139 92 246 / 0.08), transparent 28rem),
+    radial-gradient(circle at 8% 110%, rgb(6 182 212 / 0.05), transparent 24rem),
     var(--chat-canvas);
   font-family: var(--theme-font-sans, "Inter Tight", "Inter", ui-sans-serif, sans-serif);
 }
@@ -322,7 +380,7 @@ code { font-size: 0.875rem; }
 
 .zorin-chat-shell ::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: rgb(255 255 255 / 0.14);
+  background: rgb(197 255 74 / 0.18);
 }
 
 @media (prefers-reduced-motion: reduce) {

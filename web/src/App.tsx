@@ -649,7 +649,7 @@ export default function App() {
             )}
             style={{
               background: isChatRoute
-                ? "var(--background-base, #0a0a0a)"
+                ? "var(--background-base, #050510)"
                 : "var(--component-sidebar-background)",
               clipPath: isChatRoute
                 ? "none"
