@@ -401,6 +401,8 @@ class TestMem0ModeSwitch:
         monkeypatch.setenv("ZORIN_HOME", str(tmp_path))
         monkeypatch.setenv("MEM0_API_KEY", "test-key")
         provider = Mem0MemoryProvider()
+        # This test covers mode resolution, not dependency installation.
+        provider._create_backend = lambda: None  # type: ignore[method-assign]
         provider.initialize("test")
         assert provider._mode == "platform"
 
@@ -411,6 +413,8 @@ class TestMem0ModeSwitch:
         config_path.write_text('{"user_id": "old-user"}')
         monkeypatch.setenv("MEM0_API_KEY", "test-key")
         provider = Mem0MemoryProvider()
+        # This test covers config compatibility, not dependency installation.
+        provider._create_backend = lambda: None  # type: ignore[method-assign]
         provider.initialize("test")
         assert provider._mode == "platform"
         assert provider._user_id == "old-user"

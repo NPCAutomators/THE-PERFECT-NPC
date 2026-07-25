@@ -162,6 +162,7 @@ class TestMem0UserIdScoping:
         from plugins.memory.mem0 import Mem0MemoryProvider
 
         provider = Mem0MemoryProvider()
+        provider._create_backend = lambda: None  # type: ignore[method-assign]
         # Mock _load_config to return a config with default user_id
         with patch("plugins.memory.mem0._load_config", return_value={
             "api_key": "test-key",
@@ -178,6 +179,7 @@ class TestMem0UserIdScoping:
         from plugins.memory.mem0 import Mem0MemoryProvider
 
         provider = Mem0MemoryProvider()
+        provider._create_backend = lambda: None  # type: ignore[method-assign]
         with patch("plugins.memory.mem0._load_config", return_value={
             "api_key": "test-key",
             "user_id": "custom-default",
@@ -193,6 +195,7 @@ class TestMem0UserIdScoping:
         from plugins.memory.mem0 import Mem0MemoryProvider
 
         provider = Mem0MemoryProvider()
+        provider._create_backend = lambda: None  # type: ignore[method-assign]
         with patch("plugins.memory.mem0._load_config", return_value={
             "api_key": "test-key",
             "agent_id": "zorin",
@@ -208,6 +211,8 @@ class TestMem0UserIdScoping:
 
         p1 = Mem0MemoryProvider()
         p2 = Mem0MemoryProvider()
+        p1._create_backend = lambda: None  # type: ignore[method-assign]
+        p2._create_backend = lambda: None  # type: ignore[method-assign]
 
         with patch("plugins.memory.mem0._load_config", return_value={
             "api_key": "test-key",
